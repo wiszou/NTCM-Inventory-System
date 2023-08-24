@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogRegController;
+use App\Http\Controllers\DateTimeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/register-data', [LogRegController::class, 'registerUser'])->name('register');
+
+Route::get('/time-date', [LogRegController::class, 'getDateTime'])->name('timedate');
+

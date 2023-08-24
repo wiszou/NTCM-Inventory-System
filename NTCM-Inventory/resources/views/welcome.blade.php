@@ -21,47 +21,43 @@
             <div class="w-80">
                 <img src="assets/Logo.png">
             </div>
+            <form action="{{ route('register') }}" method = "post">
+            @csrf
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-700 tracking-wide">Username</label>
+                        <input class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none"
+                            type="" placeholder="Enter your username" name="username" id="username" required>
+                    </div>
 
-            <div class="space-y-5">
-                <div class="space-y-2">
-                    <label class="text-sm font-medium text-gray-700 tracking-wide">Username</label>
-                    <input class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none"
-                        type="" placeholder="Enter your username">
-                </div>
-
-                <!--ENTER PASSWORD-->
-                <div class="space-y-2">
-                    <label class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
-                        Password
-                    </label>
-                    <input
-                        class="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none"
-                        type="password" placeholder="Enter your password">
-                </div>
-
-                <!--REMEMBER ME-->
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="remember_me" name="remember_me" type="checkbox"
-                            class="h-4 w-4 bg-blue-500 focus:ring-blue-400 border-gray-300 rounded">
-                        <label for="remember_me" class="ml-2 block text-sm text-gray-800">
-                            Remember me
+                    <!--ENTER PASSWORD-->
+                    <div class="space-y-2">
+                        <label class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
+                            Password
                         </label>
+                        <input
+                            class="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none"
+                            type="password" placeholder="Enter your password" name="password" id="password" required>
                     </div>
 
-                    <div class="text-sm">
-                        <a href="#" class="text-blue-400 hover:text-blue-500">
-                            Forgot password
-                        </a>
+                    <!--REMEMBER ME-->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember_me" name="remember_me" type="checkbox"
+                                class="h-4 w-4 bg-blue-500 focus:ring-blue-400 border-gray-300 rounded">
+                            <label for="remember_me" class="ml-2 block text-sm text-gray-800">
+                                Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center bg-teal-600 hover:bg-teal-500 text-gray-100 p-3  
+                rounded-lg font-semibold  shadow-lg cursor-pointer transition ease-in duration-200 dark:bg-teal-500 ">
+                            Sign in
+                        </button>
                     </div>
                 </div>
-                <div>
-                    <button type="submit" class="w-full flex justify-center bg-teal-600 hover:bg-teal-500 text-gray-100 p-3  
-                rounded-lg font-semibold  shadow-lg cursor-pointer transition ease-in duration-200 dark:bg-teal-500 ">
-                        Sign in
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     </div>
