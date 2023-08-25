@@ -8,8 +8,9 @@ class InventoryController extends Controller
 {
     public function addItem(Request $request)
     {
-        $username = $request->input('username');
-        $password = $request->input('password');
+        $item_name = $request->input('item-name');
+        $item_code = $request->input('item-code');
+        $item_description = $request->input('item-code');
     }
 
     public function removeItem()

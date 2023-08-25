@@ -50,9 +50,9 @@ class LogRegController extends Controller
     {
         $username = $request->input('username');
         $password = $request->input('password');
-
+        $checkbox = $request->input('remember');
+        echo "HAHAHA", $checkbox;
         $user = DB::table('m-users')->where('username', $username)->first();
-
         if ($user) {
             if (Hash::check($password, $user->password)) {
                 Session::put('user_id', $user->id);
@@ -64,5 +64,11 @@ class LogRegController extends Controller
         } else {
             return redirect()->route('welcome');
         }
+    }
+
+    public function saveUser($username, $passsword)
+    {
+        Session::put('local_user', $username);
+        Session::put('local_pass', $passsword);
     }
 }
