@@ -21,7 +21,7 @@
             <div class="w-80">
                 <img src="assets/Logo.png">
             </div>
-            <form action="{{ route('register') }}" method = "post">
+            <form action="{{ route('login') }}" method = "post">
             @csrf
                 <div class="space-y-5">
                     <div class="space-y-2">

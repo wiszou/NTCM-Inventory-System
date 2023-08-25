@@ -15,3 +15,4 @@ class DateTimeController extends Controller
         return $formatedDate;
     }
 }
+?>

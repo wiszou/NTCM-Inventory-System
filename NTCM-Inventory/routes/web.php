@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogRegController;
 use App\Http\Controllers\DateTimeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\SessionChecker;
+use App\Http\Controllers\SessionCheckerLogin;
 
 
 /*
@@ -15,12 +18,19 @@ use App\Http\Controllers\DateTimeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/register-user', [LogRegController::class, 'registerUser'])->name('register');
+Route::post('/login-user', [LogRegController::class, 'loginUser'])->name('login');
+Route::get('/time-date', [DateTimeController::class, 'getDateTime'])->name('timedate');
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => ['session-checker']], function () {
+
+    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 });
 
-Route::post('/register-data', [LogRegController::class, 'registerUser'])->name('register');
 
-Route::get('/time-date', [LogRegController::class, 'getDateTime'])->name('timedate');
-
+Route::middleware(['session-checker-login'])->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');;
+});
