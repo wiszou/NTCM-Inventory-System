@@ -30,19 +30,19 @@ class LogRegController extends Controller
             $uniqueId = Str::random(20);
         } else {
 
-            $currentDate = $dateTimeController->getDateTime(new Request());
-            $userData = array(
-                'username' => $username,
-                'password' => $hashedPassword,
-                'userID' => $uniqueId,
-                'user_created' => "admin",
-                'user_change' => 'admin',
-                'date_created' => $currentDate,
-                'date_change' => $currentDate
-            );
+                $currentDate = $dateTimeController->getDateTime(new Request());
+                $userData = array(
+                    'username' => $username,
+                    'password' => $hashedPassword,
+                    'userID' => $uniqueId,
+                    'user_created' => "admin",
+                    'user_change' => 'admin',
+                    'date_created' => $currentDate,
+                    'date_change' => $currentDate
+                );
 
-            DB::table('m_users')->insert($userData);
-            return response()->json(['message' => 'success'], 200);
+                DB::table('m_users')->insert($userData);
+                return response()->json(['message' => 'success'], 200);
         }
     }
 
