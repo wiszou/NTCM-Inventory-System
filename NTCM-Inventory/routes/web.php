@@ -20,11 +20,12 @@ use App\Http\Controllers\SessionCheckerLogin;
 */
 Route::post('/register-user', [LogRegController::class, 'registerUser'])->name('register');
 Route::post('/login-user', [LogRegController::class, 'loginUser'])->name('login');
+Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
+
 Route::get('/time-date', [DateTimeController::class, 'getDateTime'])->name('timedate');
 
 
 Route::group(['middleware' => ['session-checker']], function () {
-
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 });
 

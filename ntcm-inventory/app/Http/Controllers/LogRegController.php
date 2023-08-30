@@ -22,7 +22,7 @@ class LogRegController extends Controller
         $hashedPassword = Hash::make($password);
 
         $uniqueId = Str::random(20);
-        $duplicateCheck = DB::table('m-users')
+        $duplicateCheck = DB::table('m_users')
             ->where('userID', $uniqueId)
             ->count();
 
@@ -35,13 +35,13 @@ class LogRegController extends Controller
                 'username' => $username,
                 'password' => $hashedPassword,
                 'userID' => $uniqueId,
-                'user-created' => "admin",
-                'user-change' => 'admin',
-                'date-created' => $currentDate,
-                'date-change' => $currentDate
+                'user_created' => "admin",
+                'user_change' => 'admin',
+                'date_created' => $currentDate,
+                'date_change' => $currentDate
             );
 
-            DB::table('m-users')->insert($userData);
+            DB::table('m_users')->insert($userData);
             return response()->json(['message' => 'success'], 200);
         }
     }
@@ -51,11 +51,10 @@ class LogRegController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $checkbox = $request->input('remember');
-        echo "HAHAHA", $checkbox;
-        $user = DB::table('m-users')->where('username', $username)->first();
+        $user = DB::table('m_users')->where('username', $username)->first();
         if ($user) {
             if (Hash::check($password, $user->password)) {
-                Session::put('user_id', $user->id);
+                Session::put('user_id', $user->userID);
                 Session::put('user_name', $user->username);
                 return redirect()->route('dashboard');
             } else {
@@ -66,9 +65,10 @@ class LogRegController extends Controller
         }
     }
 
-    public function saveUser($username, $passsword)
+    public function logOut()
     {
-        Session::put('local_user', $username);
-        Session::put('local_pass', $passsword);
+        Session::forget('user_id');
+        Session::forget('user_name');
+        return redirect()->route('welcome');
     }
 }
