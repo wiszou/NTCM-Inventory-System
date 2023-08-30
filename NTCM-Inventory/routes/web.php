@@ -24,10 +24,10 @@ Route::get('/time-date', [DateTimeController::class, 'getDateTime'])->name('time
 Route::post('/register-user', [LogRegController::class, 'registerUser'])->name('register');
 Route::post('/login-user', [LogRegController::class, 'loginUser'])->name('login');
 Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
-
-
 Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
 
+Route::get('/inventory', [InventoryController::class, 'getAllItems']);
+Route::get('/get-updated-inventory', [InventoryController::class, 'getUpdatedInventory']);
 
 Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
@@ -40,11 +40,6 @@ Route::middleware(['session-checker-login'])->group(function () {
     })->name('welcome');;
 });
 
-
-
-Route::get('/inventory', function () {
-    return view('inventory');
-})->name('inventory');;
 
 
 Route::get('/test', function () {

@@ -23,8 +23,7 @@ class InventoryController extends Controller
         $min_quantity = $request->input('item-minQuantity');
         $max_quantity = $request->input('item-maxQuantity');
 
-        DB::table('m_inventory')->insert($this->inventoryData($item_code,$item_name,$item_category,$brand,$model,$price,$serialNum,$item_description,$remarks,$current_quantity,$min_quantity,$max_quantity,$supplier_name));
-        
+        DB::table('m_inventory')->insert($this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $item_description, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name));
     }
 
     public function removeItem(Request $request)
@@ -35,8 +34,20 @@ class InventoryController extends Controller
 
     public function updateItem()
     {
-        
     }
+
+    public function getAllItems()
+    {
+        $inventory = DB::table('m_inventory')->get();
+
+        return view('inventory', ['inventory' => $inventory]);
+    }
+
+    public function getUpdatedInventory()
+{
+    $inventory = DB::table('m_inventory')->get();
+    return response()->json(['inventory' => $inventory]);
+}
 
     public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $description, $remarks, $current, $min, $max, $supplier_name)
     {
@@ -58,7 +69,7 @@ class InventoryController extends Controller
             'remarks' => $remarks,
             'item_status' => '0',
             'current_quantity' => $current,
-            'min_quantity' => $min, 
+            'min_quantity' => $min,
             'max_quantity' => $max,
             'user_created' => $user,
             'date_created' => $currentDate,
@@ -69,7 +80,8 @@ class InventoryController extends Controller
         return $inventoryData;
     }
 
-    public function generateItemCode() {
+    public function generateItemCode()
+    {
         $rowCount = DB::table('m_inventory')->count();
         $rowCount++;
         return $rowCount;
