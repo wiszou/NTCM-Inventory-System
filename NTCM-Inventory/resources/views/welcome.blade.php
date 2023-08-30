@@ -27,7 +27,8 @@
                 <div class="space-y-5">
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-gray-700 tracking-wide">Username</label>
-                        <input class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none" type="" placeholder="Enter your username" name="username" id="username" required>
+                        <input class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none"
+                            type="" placeholder="Enter your username" name="username" id="username" required>
                     </div>
 
                     <!--ENTER PASSWORD-->
@@ -35,7 +36,9 @@
                         <label class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
                             Password
                         </label>
-                        <input class="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none" type="password" placeholder="Enter your password" name="password" id="password" required>
+                        <input
+                            class="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none"
+                            type="password" placeholder="Enter your password" name="password" id="password" required>
                     </div>
                     <div>
                         <button type="submit" class="w-full flex justify-center bg-teal-600 hover:bg-teal-500 text-gray-100 p-3  

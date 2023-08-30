@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogRegController;
 use App\Http\Controllers\DateTimeController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\SessionChecker;
-use App\Http\Controllers\SessionCheckerLogin;
+use App\Http\Controllers\InventoryController;
 
 
 /*
@@ -18,11 +17,16 @@ use App\Http\Controllers\SessionCheckerLogin;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/time-date', [DateTimeController::class, 'getDateTime'])->name('timedate');
+
+
 Route::post('/register-user', [LogRegController::class, 'registerUser'])->name('register');
 Route::post('/login-user', [LogRegController::class, 'loginUser'])->name('login');
 Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
 
-Route::get('/time-date', [DateTimeController::class, 'getDateTime'])->name('timedate');
+
+Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
 
 
 Route::group(['middleware' => ['session-checker']], function () {

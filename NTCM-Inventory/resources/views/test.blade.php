@@ -167,7 +167,8 @@
     <body class="bg-gray-100 py-2">
         <div class="mx-4 my-4 w-1/2 h-50 pt-4 pb-7 px-6 rounded-xl border border-gray-200 bg-white shadow-sm">
 
-            <form class="w-full max-w-lg">
+            <form class="w-full max-w-lg" action="{{ route('insert') }}" method="post">
+                @csrf
                 <div class="flex flex-wrap -mx-3 mb-6 ">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -176,7 +177,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-code" name="item-code" type="text" placeholder="" required>
                     </div>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -186,7 +187,7 @@
                         <div class="relative">
                             <select
                                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-state">
+                                id="grid-state" id="supplier-name" name="supplier-name" required>
                                 <option>New Mexico</option>
                                 <option>Missouri</option>
                                 <option>Texas</option>
@@ -208,7 +209,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item_name" name="item_name" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -218,7 +219,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-category" name="item-category" type="text" placeholder="" required>
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -227,7 +228,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-last-name" type="text" placeholder="">
+                            id="item-brand" name="item-brand" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3">
@@ -237,7 +238,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-last-name" type="text" placeholder="">
+                            id="item-model" name="item-model" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
@@ -247,7 +248,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-price" name="item-price" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
@@ -257,7 +258,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-serial" name="item-serial" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
@@ -267,7 +268,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-description" name="item-description" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
@@ -277,7 +278,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-remarks" name="item-remarks" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -287,7 +288,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-currentQuantity" name="item-currentQuantity" type="text" placeholder="" required>
                     </div>
 
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -297,7 +298,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-minQuantity" name="item-minQuantity" type="text" placeholder="" required>
                     </div>
 
 
@@ -308,12 +309,13 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="">
+                            id="item-maxQuantity" name="item-maxQuantity" type="text" placeholder="" required>
                     </div>
 
                     <!-- Using utilities: -->
                     <div class="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
-                        <button class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded w-1/2">
+                        <button type="submit"
+                            class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded w-1/2">
                             Add
                         </button>
                     </div>

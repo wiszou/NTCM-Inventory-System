@@ -21,7 +21,8 @@ class InventoryController extends Controller
         $remarks = $request->input('item-remarks');
         $current_quantity = $request->input('item-currentQuantity');
         $min_quantity = $request->input('item-minQuantity');
-        $max_quantity = $request->input('item-minQuantity');
+        $max_quantity = $request->input('item-maxQuantity');
+
         DB::table('m_inventory')->insert($this->inventoryData($item_code,$item_name,$item_category,$brand,$model,$price,$serialNum,$item_description,$remarks,$current_quantity,$min_quantity,$max_quantity,$supplier_name));
         
     }
@@ -29,7 +30,7 @@ class InventoryController extends Controller
     public function removeItem(Request $request)
     {
         $item_code = $request->input('item-code');
-        DB::table('m-inventory')->where('item_code', $item_code)->delete();
+        DB::table('m_inventory')->where('item_code', $item_code)->delete();
     }
 
     public function updateItem()
@@ -42,26 +43,26 @@ class InventoryController extends Controller
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
         $uniqueID = $this->generateItemCode();
-        
+        $user = session()->get('user_name');
         $inventoryData = array(
-            'invetory_id' => $uniqueID,
-            'item_code' => $item_code,
+            'inventory_id' => $uniqueID,
+            'item_id' => $item_code,
             'supplier_name' => $supplier_name,
-            'item_name' => $item_name,
-            'item_category' =>  $item_category,
+            'item_name' => "sadasd",
+            'category' =>  $item_category,
             'brand' => $brand,
             'model' => $model,
             'price' => $price,
             'serial_num' => $serialNum,
             'description' => $description,
             'remarks' => $remarks,
-            'item_status' => 'Stock',
+            'item_status' => '0',
             'current_quantity' => $current,
             'min_quantity' => $min, 
             'max_quantity' => $max,
-            'user_created' => session()->get('user_name'),
+            'user_created' => $user,
             'date_created' => $currentDate,
-            'user_change' => session()->get('user_name'),
+            'user_change' => $user,
             'date_change' => $currentDate
         );
 
@@ -69,7 +70,7 @@ class InventoryController extends Controller
     }
 
     public function generateItemCode() {
-        $rowCount = DB::table('m-inventory')->count();
+        $rowCount = DB::table('m_inventory')->count();
         $rowCount++;
         return $rowCount;
     }
