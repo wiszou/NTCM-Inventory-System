@@ -35,3 +35,14 @@ Route::middleware(['session-checker-login'])->group(function () {
         return view('welcome');
     })->name('welcome');;
 });
+
+
+
+Route::get('/inventory', function () {
+    return view('inventory');
+})->name('inventory');;
+
+
+Route::get('/test', function () {
+    return view('test');
+})->name('test');;
