@@ -11,7 +11,7 @@ class InventoryController extends Controller
     {
         $item_code = $request->input('item-code');
         $supplier_name = $request->input('supplier-name');
-        $item_name = $request->input('item_name');
+        
         $item_category = $request->input('item-category');
         $brand = $request->input('item-brand');
         $model = $request->input('item-model');
@@ -22,7 +22,7 @@ class InventoryController extends Controller
         $current_quantity = $request->input('item-currentQuantity');
         $min_quantity = $request->input('item-minQuantity');
         $max_quantity = $request->input('item-maxQuantity');
-
+        $item_name = "$brand $model $serialNum";
         DB::table('m_inventory')->insert($this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $item_description, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name));
     }
 
@@ -60,7 +60,7 @@ class InventoryController extends Controller
             'inventory_id' => $uniqueID,
             'item_id' => $item_code,
             'supplier_name' => $supplier_name,
-            'item_name' => "sadasd",
+            'item_name' => $item_name,
             'category' =>  $item_category,
             'brand' => $brand,
             'model' => $model,
