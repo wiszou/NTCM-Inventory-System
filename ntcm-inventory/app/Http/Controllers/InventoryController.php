@@ -33,8 +33,75 @@ class InventoryController extends Controller
         // You can return a response or redirect here
     }
 
-    public function updateItem()
+    public function updateItem(Request $request, $id)
     {
+        $item_code = $request->input('item-code');
+        $supplier_name = $request->input('supplier-name');
+        $item_category = $request->input('item-category');
+        $brand = $request->input('item-brand');
+        $model = $request->input('item-model');
+        $price = $request->input('item-price');
+        $serialNum = $request->input('item-serial');
+        $item_description = $request->input('item-description');
+        $remarks = $request->input('item-remarks');
+        $current_quantity = $request->input('item-currentQuantity');
+        $min_quantity = $request->input('item-minQuantity');
+        $max_quantity = $request->input('item-maxQuantity');
+    
+        $dataToUpdate = [];
+    
+        if (!empty($item_code)) {
+            $dataToUpdate['item_code'] = $item_code;
+        }
+        if (!empty($supplier_name)) {
+            $dataToUpdate['supplier_name'] = $supplier_name;
+        }
+
+        if (!empty($item_category)) {
+            $dataToUpdate['supplier_name'] = $item_category;
+        }
+
+        if (!empty($brand)) {
+            $dataToUpdate['supplier_name'] = $brand;
+        }
+
+        if (!empty($model)) {
+            $dataToUpdate['supplier_name'] = $model;
+        }
+
+        if (!empty($price)) {
+            $dataToUpdate['supplier_name'] = $price;
+        }
+
+        if (!empty($serialNum)) {
+            $dataToUpdate['supplier_name'] = $serialNum;
+        }
+
+        if (!empty($item_description)) {
+            $dataToUpdate['supplier_name'] = $item_description;
+        }
+
+        if (!empty($remarks)) {
+            $dataToUpdate['supplier_name'] = $remarks;
+        }
+
+        if (!empty($remarks)) {
+            $dataToUpdate['supplier_name'] = $remarks;
+        }
+
+        if (!empty($remarks)) {
+            $dataToUpdate['supplier_name'] = $remarks;
+        }
+    
+        if (empty($dataToUpdate)) {
+            return response()->json(['message' => 'No fields to update'], 200);
+        }
+
+        DB::table('m_inventory')
+            ->where('id', $id)
+            ->update($dataToUpdate);
+    
+        return response()->json(['message' => 'Item updated successfully'], 200);
     }
 
     public function getAllItems()
