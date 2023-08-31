@@ -32,13 +32,32 @@ Route::get('/get-updated-inventory', [InventoryController::class, 'getUpdatedInv
 
 Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/inventory', function () {
+        return view('inventory');
+    })->name('inventory');
+
+    Route::get('/newitem', function () {
+        return view('newitem');
+    })->name('newitem');
+
+    Route::get('/logs', function () {
+        return view('logs');
+    })->name('logs');
+
+    Route::get('/custodian', function () {
+        return view('custodian');
+    })->name('custodian');
+
+    Route::get('/suppliers', function () {
+        return view('suppliers');
+    })->name('suppliers');
 });
 
 
 Route::middleware(['session-checker-login'])->group(function () {
     Route::get('/', function () {
         return view('welcome');
-    })->name('welcome');;
+    })->name('welcome');
 });
 
 
