@@ -26,10 +26,11 @@ class InventoryController extends Controller
         DB::table('m_inventory')->insert($this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $item_description, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name));
     }
 
-    public function removeItem(Request $request)
+    public function removeItem($itemCode)
     {
-        $item_code = $request->input('item-code');
-        DB::table('m_inventory')->where('item_code', $item_code)->delete();
+        DB::table('m_inventory')->where('item_id', $itemCode)->delete();
+
+        // You can return a response or redirect here
     }
 
     public function updateItem()
@@ -44,10 +45,10 @@ class InventoryController extends Controller
     }
 
     public function getUpdatedInventory()
-{
-    $inventory = DB::table('m_inventory')->get();
-    return response()->json(['inventory' => $inventory]);
-}
+    {
+        $inventory = DB::table('m_inventory')->get();
+        return response()->json(['inventory' => $inventory]);
+    }
 
     public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $description, $remarks, $current, $min, $max, $supplier_name)
     {

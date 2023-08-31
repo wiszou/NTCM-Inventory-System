@@ -24,8 +24,9 @@ Route::get('/time-date', [DateTimeController::class, 'getDateTime'])->name('time
 Route::post('/register-user', [LogRegController::class, 'registerUser'])->name('register');
 Route::post('/login-user', [LogRegController::class, 'loginUser'])->name('login');
 Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
-Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
 
+Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
+Route::post('/remove-item/{itemCode}', [InventoryController::class, 'removeItem'])->name('remove');
 Route::get('/inventory', [InventoryController::class, 'getAllItems']);
 Route::get('/get-updated-inventory', [InventoryController::class, 'getUpdatedInventory']);
 
