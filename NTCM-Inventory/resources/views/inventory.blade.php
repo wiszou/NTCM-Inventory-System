@@ -308,7 +308,7 @@ td {
                 modal.classList.add('fadeOut');
                 setTimeout(() => {
                     modal.style.display = 'none';
-                }, 500);
+                }, 0);
             }
 
             const openModal = () => {
