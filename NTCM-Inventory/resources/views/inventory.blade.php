@@ -109,47 +109,55 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
     background-color: #4facb6 !important;
     /*bg-indigo-500*/
 }
+
+
+th {
+    text-align: left;
+    /* Align header text to the left */
+}
+
+td {
+    text-align: left;
+    /* Align cell text to the left */
+}
 </style>
 
 <body class="bg-gray-100 py-2">
 
     @include('components.sidebar')
 
-    <div class="ml-auto lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-        <div class="relative my-auto">
+    <div class="ml-auto px-2 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] h-full">
+        <div class="my-auto flex justify-start">
             <!--Container-->
-            <div class="container w-full px-4">
+            <div class="w-full">
+
                 <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
-                    <h1>Inventory List</h1>
+                    <h2 class="text-2xl font-bold text-teal-700">
+                        Inventory List
+                    </h2>
                     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                        class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
                         type="button">Status <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
                         </svg></button>
                     <!-- Dropdown menu -->
-                    <div id="dropdown"
-                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="dropdownDefaultButton">
+                    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl shadow w-44">
+                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">All</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Spare</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Spare</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Deployed</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Borrowed</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
                             </li>
-                           
+
                         </ul>
                     </div>
 
@@ -158,38 +166,51 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
                     <table id="example" class="stripe hover"
                         style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                        <thead>
+                        <thead class="">
                             <tr>
                                 <th data-priority="1">Item Code</th>
                                 <th data-priority="2">Item Name</th>
                                 <th data-priority="3">Brand</th>
                                 <th data-priority="4">Model</th>
                                 <th data-priority="5">Quantity</th>
-                                <th>Edit</th>
+                                <th data-priority="6">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td></td>
+                            <tr onclick="openModal()">
+                                <td>IT230001</td>
+                                <td>Laptop</td>
+                                <td>Lenovo</td>
+                                <td>X250</td>
+                                <td>1</td>
+                                <td>
+                                    <span
+                                        class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                                        <span aria-hidden
+                                            class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
+                                        <span class="relative">Deployed</span>
+                                    </span>
+                                </td>
                             </tr>
 
                             <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
 
-                            <tr class="text-center">
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>27</td>
-                                <td>2011/01/25</td>
-                                <td>$112,000</td>
+                            <tr class="">
+                                <td>IT230002</td>
+                                <td>Laptop</td>
+                                <td>Acer</td>
+                                <td>Enduro Urban</td>
+                                <td>1</td>
+                                <td>
+                                    <span
+                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                        <span aria-hidden
+                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                        <span class="relative">Spare</span>
+                                    </span>
+                                </td>
                             </tr>
                         </tbody>
-
                     </table>
 
 
@@ -201,7 +222,63 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
             <!--/container-->
 
 
+            <div class="main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
+                style="background: rgba(0,0,0,.7);">
+                <div
+                    class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
+                    <div class="modal-content py-4 text-left px-6">
+                        <!--Title-->
+                        <div class="flex justify-between items-center pb-3">
+                            <p class="text-xl font-semibold">IT230001 - Laptop</p>
+                            <div class="modal-close cursor-pointer z-50">
+                                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18"
+                                    height="18" viewBox="0 0 18 18">
+                                    <path
+                                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <!--Body-->
+                        <div class="flex justify-center">
+                        <div class="border py-4 rounded-lg grid grid-cols-2 w-full">
+                            <!-- Left Grid (Labels) -->
+                            <div class="pl-20">
+                                <p class="font-semibold">Item Code:</p>
+                                <p class="font-semibold">Inventory ID:</p>
+                                <p class="font-semibold">Item Name:</p>
+                                <p class="font-semibold">Category:</p>
+                                <p class="font-semibold">Brand:</p>
+                                <p class="font-semibold">Model:</p>
+                                <p class="font-semibold">Price:</p>
+                                <p class="font-semibold">Serial Number:</p>
+                                <p class="font-semibold">Quantity:</p>
+                                <p class="font-semibold">Status:</p>
 
+                                <!-- Add more labels as needed -->
+                            </div>
+
+                            <!-- Right Grid (Data) -->
+                            <div class="pl-8">
+                                <p class="">IT230001</p>
+                                <p class="">LT-0001</p>
+                                <p class="">Laptop</p>
+                                <p class="">Device</p>
+                                <p class="">Lenovo</p>
+                                <p class="">X250</p>
+                                <p class="">40,000</p>
+                                <p class="">4CE0460D0G</p>
+                                <p class="">1</p>
+                                <p class="">Deployed</p>
+                            </div>
+                            <div>
+                        </div>
+                        <!--Footer-->
+                        <div class="flex justify-end pt-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- jQuery -->
@@ -220,6 +297,41 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
                     .responsive.recalc();
             });
             </script>
+
+
+            <script>
+            const modal = document.querySelector('.main-modal');
+            const closeButton = document.querySelectorAll('.modal-close');
+
+            const modalClose = () => {
+                modal.classList.remove('fadeIn');
+                modal.classList.add('fadeOut');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 500);
+            }
+
+            const openModal = () => {
+                modal.classList.remove('fadeOut');
+                modal.classList.add('fadeIn');
+                modal.style.display = 'flex';
+            }
+
+            for (let i = 0; i < closeButton.length; i++) {
+
+                const elements = closeButton[i];
+
+                elements.onclick = (e) => modalClose();
+
+                modal.style.display = 'none';
+
+                window.onclick = function(event) {
+                    if (event.target == modal) modalClose();
+                }
+            }
+            </script>
+
+
         </div>
     </div>
 </body>
