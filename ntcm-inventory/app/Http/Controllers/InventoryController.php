@@ -13,6 +13,7 @@ class InventoryController extends Controller
         $supplier_name = $request->input('supplier-name');
 
         $item_category = $request->input('item-category');
+        $item_category = DB::table('m_category')->where('category_name', $item_category)->pluck('prefix');
         $brand = $request->input('item-brand');
         $model = $request->input('item-model');
         $price = $request->input('item-price');
@@ -98,15 +99,9 @@ class InventoryController extends Controller
         }
     }
 
-    public function getUpdatedInventory()
-    {
-        $inventory = DB::table('m_inventory')->get();
-        return response()->json(['inventory' => $inventory]);
-    }
-
     public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $description, $remarks, $current, $min, $max, $supplier_name)
     {
-        $uniqueID = $this->generateItemCode();
+        $uniqueID = $this->generateItemCode($item_category);
         $user = session()->get('user_name');
         $inventoryData = array(
             'inventory_id' => $uniqueID,
@@ -133,11 +128,15 @@ class InventoryController extends Controller
         return $inventoryData;
     }
 
-    public function generateItemCode()
+    public function generateItemCode($category)
     {
+        $currentYear = date('Y');
         $rowCount = DB::table('m_inventory')->count();
         $rowCount++;
-        return $rowCount;
+        $CategPrefixl = $this->getCategory();
+
+        $id =  $category . "-" . $currentYear . "-" . $rowCount;
+        return $id;
     }
 
     public function getDate()
@@ -145,5 +144,11 @@ class InventoryController extends Controller
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
         return $currentDate;
+    }
+
+    public function getUpdatedInventory()
+    {
+        $inventory = DB::table('m_inventory')->get();
+        return response()->json(['inventory' => $inventory]);
     }
 }
