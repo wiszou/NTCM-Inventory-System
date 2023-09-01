@@ -28,14 +28,13 @@ Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
 
 Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
 Route::post('/remove-item/{itemCode}', [InventoryController::class, 'removeItem'])->name('remove');
-Route::get('/inventory', [InventoryController::class, 'getAllItems']);
-Route::get('/get-updated-inventory', [InventoryController::class, 'getUpdatedInventory']);
 
 Route::get('/addCategory', [CategoryController::class, 'addCategory'])->name('addCategory');
 Route::get('/addSupplier', [SupplierController::class, 'addSupplier'])->name('addSupplier');
 
 Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');

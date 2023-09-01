@@ -142,18 +142,17 @@
                     <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl shadow w-44">
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">All</a>
+                                <a href="#" id="allStatus" class="block px-4 py-2 hover:bg-gray-100">All</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Spare</a>
+                                <a href="#" id="spareStatus" class="block px-4 py-2 hover:bg-gray-100 ">Spare</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
+                                <a href="#" id="deployedStatus" class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
+                                <a href="#" id="borrowedStatus" class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
                             </li>
-
                         </ul>
                     </div>
 
@@ -171,36 +170,35 @@
                                 <th data-priority="6">Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr onclick="openModal()">
-                                <td>IT230001</td>
-                                <td>Laptop</td>
-                                <td>Lenovo</td>
-                                <td>X250</td>
-                                <td>1</td>
-                                <td>
-                                    <span class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Deployed</span>
-                                    </span>
+                        <tbody id="inventoryTableBody">
+                            @foreach ($inventory as $item)
+                            @php
+                            $statusText = '';
+                            $statusClass = '';
+
+                            if ($item->item_status == 0) {
+                            $statusText = 'On Stock';
+                            $statusClass = 'bg-green-500';
+                            } else if ($item->item_status == 1) {
+                            $statusText = 'Borrowed';
+                            $statusClass = 'bg-orange-500';
+                            } else if ($item->item_status == 2) {
+                            $statusText = 'Deployed';
+                            $statusClass = 'bg-blue-500';
+                            }
+                            @endphp
+                            <tr onclick="openModal()" class="{{ $statusClass }}">
+                                <td>{{ $item->item_id }}</td>
+                                <td>{{ $item->item_name }}</td>
+                                <td>{{ $item->brand }}</td>
+                                <td>{{ $item->model }}</td>
+                                <td>{{ $item->current_quantity }}</td>
+                                <td class="px-6 py-4 text-gray-900">
+
+                                    <span class="{{ $statusClass }} text-gray-50 rounded-xl px-2 py-1">{{ $statusText }}</span>
                                 </td>
                             </tr>
-
-                            <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
-
-                            <tr class="">
-                                <td>IT230002</td>
-                                <td>Laptop</td>
-                                <td>Acer</td>
-                                <td>Enduro Urban</td>
-                                <td>1</td>
-                                <td>
-                                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Spare</span>
-                                    </span>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -269,7 +267,7 @@
 
 
                     <!-- jQuery -->
-                    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
                     <!--Datatables -->
                     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -317,10 +315,42 @@
                             }
                         }
                     </script>
-
-
                 </div>
             </div>
+
+            <script>
+                $(document).ready(function() {
+                    // Function to show/hide rows based on the selected status
+                    function filterInventoryTable(statusClass) {
+                        $('#example tbody tr').hide(); // Hide all rows initially
+                        if (statusClass === 'all') {
+                            $('#example tbody tr').show(); // Show all rows for "All" option
+                        } else {
+                            $(`.${statusClass}`).show(); // Show rows with the selected status class
+                        }
+                    }
+
+                    // Initialize filtering with "All" status selected
+                    filterInventoryTable('all');
+
+                    // Handle status option clicks
+                    $('#allStatus').click(function() {
+                        filterInventoryTable('all');
+                    });
+
+                    $('#spareStatus').click(function() {
+                        filterInventoryTable('bg-green-500'); // Adjust the class as needed
+                    });
+
+                    $('#deployedStatus').click(function() {
+                        filterInventoryTable('bg-blue-500'); // Adjust the class as needed
+                    });
+
+                    $('#borrowedStatus').click(function() {
+                        filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+                    });
+                });
+            </script>
 </body>
 
 

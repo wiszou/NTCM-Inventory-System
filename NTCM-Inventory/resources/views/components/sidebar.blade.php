@@ -42,7 +42,7 @@
                             class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 pl-11">Add/Edit Item</a>
                     </li>
                     <li>
-                        <a href="{{ route('inventory') }}"
+                        <a href="{{ route('updated-inventory') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 pl-11">Item
                             Lists</a>
                     </li>
