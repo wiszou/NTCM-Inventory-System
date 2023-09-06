@@ -54,9 +54,9 @@ Route::group(['middleware' => ['session-checker']], function () {
         return view('custodian');
     })->name('custodian');
 
-    Route::get('/suppliers', function () {
-        return view('suppliers');
-    })->name('suppliers');
+    Route::get('/suppandcategs', function () {
+        return view('suppandcategs');
+    })->name('suppandcategs');
 });
 
 
