@@ -9,6 +9,7 @@ class CategoryController extends Controller
     public function addCategory(Request $request)
     {
         $name = $request->input('supplier-name');
+        $prefix = $request->input('prefix');
         $id =  $this->generateID();
         $user = session()->get('user_name');
 
@@ -25,11 +26,26 @@ class CategoryController extends Controller
     }
 
     public function generateID(){
+        
+        $currentYear = date('Y');
         $rowCount = DB::table('m_category')->count();
+    
         $rowCount++;
-        $id = "Category" . getDate() . $rowCount++;
-        return $id;
+        $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+        $candidateId = "ID-Category-" . $formattedRowCount;
+
+        $existingCategory = DB::table('m_category')->where('category_id', $candidateId)->first();
+
+        while ($existingCategory) {
+            $rowCount++;
+            $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+            $candidateId = "ID-Category-" . $formattedRowCount;
+            $existingCategory = DB::table('m_category')->where('category_id', $candidateId)->first();
+        }
+    
+        return $candidateId;
     }
+    
     
     public function getDate(){
         $dateTimeController = new DateTimeController();
@@ -37,5 +53,3 @@ class CategoryController extends Controller
         return $currentDate;
     }
 }
-
-?>

@@ -4,7 +4,6 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogRegController;
 use App\Http\Controllers\DateTimeController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\SupplierController;
 

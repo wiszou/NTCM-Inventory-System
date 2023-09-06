@@ -31,14 +31,13 @@ class InventoryController extends Controller
         $brand = $request->input('item-brand');
         $model = $request->input('item-model');
         $price = $request->input('item-price');
-        $item_description = $request->input('item-description');
         $remarks = $request->input('item-remarks');
         $current_quantity = $request->input('item-currentQuantity');
         $min_quantity = $request->input('item-minQuantity');
         $max_quantity = $request->input('item-maxQuantity');
         $item_name = $item_category . "-" . $model . "-" . $serialNum;
 
-        $data = $this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $item_description, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name);
+        $data = $this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name);
         DB::table('m_inventory')->insert($data);
 
         // Redirect or provide a success message here
@@ -52,7 +51,7 @@ class InventoryController extends Controller
         // You can return a response or redirect here
     }
 
-    public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $description, $remarks, $current, $min, $max, $supplier_name)
+    public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name)
     {
         $uniqueID = $this->generateItemCode($item_category);
 
@@ -69,7 +68,6 @@ class InventoryController extends Controller
             'model' => $model,
             'price' => $price,
             'serial_num' => $serialNum,
-            'description' => $description,
             'remarks' => $remarks,
             'item_status' => 1,
             'current_quantity' => $current,
@@ -94,6 +92,15 @@ class InventoryController extends Controller
         $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
 
         $id = $category . $currentYear . $formattedRowCount;
+        $existingItem = DB::table('m_inventory')->where('inventory_id', $id)->first();
+
+        while ($existingItem) {
+            $rowCount++;
+            $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+            $id = $category . $currentYear . $formattedRowCount;
+            $existingItem = DB::table('m_inventory')->where('inventory_id', $id)->first();
+        }
+
         return $id;
     }
 

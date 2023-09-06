@@ -26,9 +26,21 @@ class SupplierController extends Controller
 
     public function generateID(){
         $rowCount = DB::table('m_supplier')->count();
+        
         $rowCount++;
-        $id = "Supplier" . getDate() . $rowCount++;
-        return $id;
+        $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+        $candidateId = "ID-Supplier-" . $formattedRowCount;
+
+        $existingSuppllier = DB::table('m_supplier')->where('supplier_id', $candidateId)->first();
+
+        while ($existingSuppllier) {
+            $rowCount++;
+            $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+            $candidateId = "ID-Supplier-" . $formattedRowCount;
+            $existingSuppllier = DB::table('m_supplier')->where('supplier_id', $candidateId)->first();
+        }
+
+        return $candidateId;
     }
     
     public function getDate(){
