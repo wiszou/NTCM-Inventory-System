@@ -226,7 +226,9 @@
                         <!--Body-->
                         <div class="flex justify-center">
                             <div class="border rounded-lg w-full">
-                                <form action="#" class="relative bg-white">
+                                <form action="/items" method="POST" class="relative bg-white" id="item-form">
+                                    @csrf
+                                    @method('PUT')
                                     <!-- Modal body -->
                                     <div class="p-6 space-y-6">
                                         <div class="grid grid-cols-6 gap-6">
@@ -319,7 +321,7 @@
                                             <div class=" w-full flex justify-end pt-4">
                                                 <a class="mr-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Delete</a>
                                                 <a class="mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="editButton">Edit</a>
-                                                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Save</button>
+                                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Save</button>
 
                                             </div>
                                         </div>
@@ -381,6 +383,8 @@
                                 modal.querySelector('#supplier-name').value = data.item.supplier_name;
                                 modal.querySelector('#item-remarks').value = data.item.remarks;
 
+                                const form = document.getElementById('item-form');
+                                form.action = `/items/${itemId}`;
                                 // Check item_status and perform actions accordingly
                                 const itemStatus = data.item.item_status;
                                 if (itemStatus === 0) {
@@ -469,8 +473,10 @@
             // Change the text of the button based on the state
             if (isEditing) {
                 editButton.textContent = 'Edit';
+                document.querySelector('button[type="submit"]').disabled = true;
             } else {
                 editButton.textContent = 'Stop Editing';
+                document.querySelector('button[type="submit"]').disabled = false;
             }
 
             // Toggle the editing state
