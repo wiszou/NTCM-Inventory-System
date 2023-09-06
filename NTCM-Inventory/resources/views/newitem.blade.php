@@ -133,90 +133,139 @@ td {
 
                 <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
                     <h2 class="text-2xl font-bold text-teal-700">
-                        Edit Items
+                        Add Item
                     </h2>
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                        class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
-                        type="button">Status <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl shadow w-44">
-                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">All</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Spare</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
-                            </li>
-
-                        </ul>
-                    </div>
 
                 </div>
                 <!--Card-->
-                <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
-                    <table id="example" class="stripe hover"
-                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                        <thead class="">
-                            <tr>
-                                <th data-priority="1">Item Code</th>
-                                <th data-priority="2">Item Name</th>
-                                <th data-priority="3">Brand</th>
-                                <th data-priority="4">Model</th>
-                                <th data-priority="5">Quantity</th>
-                                <th data-priority="6">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr onclick="openModal()">
-                                <td>IT230001</td>
-                                <td>Laptop</td>
-                                <td>Lenovo</td>
-                                <td>X250</td>
-                                <td>1</td>
-                                <td>
-                                    <span
-                                        class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                                        <span aria-hidden
-                                            class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Deployed</span>
-                                    </span>
-                                </td>
-                            </tr>
+                <form action="#" class="relative bg-white">
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <div class="grid grid-cols-6 gap-6">
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Item
+                                    Code</label>
+                                <input type="text" name="first-name" id="first-name"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Item Code" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Inventory
+                                    ID</label>
+                                <input type="text" name="last-name" id="last-name"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Inventory ID" required="" disabled>
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Item
+                                    Name:</label>
+                                <input type="text" name="email" id="email"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Item Name" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="phone-number"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Category</label>
+                                <input type="text" name="phone-number" id="phone-number"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Category" required="">
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="department"
+                                    class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
+                                <input type="text" name="department" id="department"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Brand" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="company" class="block mb-2 text-sm font-medium text-gray-900">Model</label>
+                                <input type="text" name="company" id="company"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Model" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="current-password"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
+                                <input type="Number" name="current-password" id="current-password"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Price" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="new-password" class="block mb-2 text-sm font-medium text-gray-900">Serial
+                                    Number:</label>
+                                <input type="password" name="new-password" id="new-password"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Serial" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="current-password"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
+                                <input type="Number" name="current-password" id="current-password"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Quantity" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="current-password"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
+                                <input type="Text" name="current-password" id="current-password"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Remarks" required="">
+                            </div>
 
-                            <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="current-password"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Supplier</label>
+                                <input type="text" name="current-password" id="current-password"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                    placeholder="Supplier" required="" >
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="Status"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
+                                <ul class="grid grid-cols-3 gap-x-5">
+                                    <li class="">
+                                        <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes"
+                                            checked />
+                                        <label
+                                            class="text-sm flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out"
+                                            for="yes">Spare</label>
+                                    </li>
+                                    <li class="">
+                                        <input class="peer sr-only" type="radio" value="no" name="answer" id="no"
+                                             />
+                                        <label
+                                            class="text-sm flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out"
+                                            for="no">Deployed</label>
 
-                            <tr class="">
-                                <td>IT230002</td>
-                                <td>Laptop</td>
-                                <td>Acer</td>
-                                <td>Enduro Urban</td>
-                                <td>1</td>
-                                <td>
-                                    <span
-                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden
-                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Spare</span>
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                                    </li>
+
+                                    <li class="">
+                                        <input class="peer sr-only" type="radio" value="yesno" name="answer" id="yesno"
+                                             />
+                                        <label
+                                            class="text-sm flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out "
+                                            for="yesno">Borrowed</label>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
 
-                </div>
-                <!--/Card-->
+                        <div class=" w-full">
 
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="flex space-x-2 border-t border-gray-200 rounded-b">
+                            <div class=" w-full flex justify-end pt-4">
+                                <button type="submit"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Add Item</button>
+
+
+                            </div>
+                        </div>
+                </form>
 
             </div>
             <!--/container-->
@@ -357,10 +406,10 @@ td {
                                             <div class=" w-2/5 flex justify-end">
                                                 <button type="submit"
                                                     class="mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Update</button>
-                                                    <!--GANA LANG YUNG UPDATE BUTTON FOR STATUS SIGURO?-->
+                                                <!--GANA LANG YUNG UPDATE BUTTON FOR STATUS SIGURO?-->
                                                 <button type="submit"
                                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Save</button>
-                                                    
+
 
                                             </div>
                                         </div>

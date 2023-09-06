@@ -39,7 +39,7 @@
                 <ul id="dropdown-example" class="hidden py-2 space-y-2">
                     <li>
                         <a href="{{ route('newitem') }}"
-                            class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 pl-11">Add/Edit Item</a>
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 pl-11">Add Item</a>
                     </li>
                     <li>
                         <a href="{{ route('updated-inventory') }}"
