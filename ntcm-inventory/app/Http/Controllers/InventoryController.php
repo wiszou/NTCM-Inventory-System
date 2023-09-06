@@ -13,18 +13,15 @@ class InventoryController extends Controller
         $serialNum = $request->input('item-serial');
         $item_code = $request->input('item-code');
 
-        // Check if a record with the same serial number or item name already exists
         $existingRecord = DB::table('m_inventory')
             ->where('serial_num', $serialNum)
             ->orWhere('item_id', $item_code)
             ->first();
 
         if ($existingRecord) {
-            // Handle the case where a similar record already exists
             return redirect()->back()->with('error', 'A similar item or serial number already exists.');
         }
 
-        // If no similar record exists, proceed to add the new item
         $item_code = $request->input('item-code');
         $supplier_name = $request->input('supplier-name');
         $item_category = $request->input('item-category');
@@ -40,7 +37,6 @@ class InventoryController extends Controller
         $data = $this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name);
         DB::table('m_inventory')->insert($data);
 
-        // Redirect or provide a success message here
         return redirect()->back()->with('success', 'Item added successfully.');
     }
 
@@ -48,7 +44,6 @@ class InventoryController extends Controller
     {
         DB::table('m_inventory')->where('item_id', $itemCode)->delete();
 
-        // You can return a response or redirect here
     }
 
     public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name)
@@ -88,7 +83,6 @@ class InventoryController extends Controller
         $rowCount = DB::table('m_inventory')->count();
         $rowCount++;
 
-        // Format $rowCount with leading zeros (e.g., "0001", "0010", "0100")
         $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
 
         $id = $category . $currentYear . $formattedRowCount;
@@ -121,47 +115,42 @@ class InventoryController extends Controller
         $model = $request->input('item-model');
         $price = $request->input('item-price');
         $serialNum = $request->input('item-serial');
-        $item_description = $request->input('item-description');
         $remarks = $request->input('item-remarks');
         $current_quantity = $request->input('item-currentQuantity');
         $min_quantity = $request->input('item-minQuantity');
         $max_quantity = $request->input('item-maxQuantity');
 
-        // Update the item's attributes if the variables are not empty
         $dataToUpdate = [];
 
         if (!empty($item_code)) {
             $dataToUpdate['item_code'] = $item_code;
         }
         if (!empty($item_category)) {
-            $dataToUpdate['supplier_name'] = $item_category;
+            $dataToUpdate['item_category'] = $item_category;
         }
         if (!empty($brand)) {
-            $dataToUpdate['supplier_name'] = $brand;
+            $dataToUpdate['brand'] = $brand;
         }
         if (!empty($model)) {
-            $dataToUpdate['supplier_name'] = $model;
+            $dataToUpdate['model'] = $model;
         }
         if (!empty($price)) {
-            $dataToUpdate['supplier_name'] = $price;
+            $dataToUpdate['price'] = $price;
         }
         if (!empty($serialNum)) {
-            $dataToUpdate['supplier_name'] = $serialNum;
-        }
-        if (!empty($item_description)) {
-            $dataToUpdate['supplier_name'] = $item_description;
+            $dataToUpdate['serialNum'] = $serialNum;
         }
         if (!empty($remarks)) {
-            $dataToUpdate['supplier_name'] = $remarks;
+            $dataToUpdate['remarks'] = $remarks;
         }
         if (!empty($current_quantity)) {
-            $dataToUpdate['supplier_name'] = $current_quantity;
+            $dataToUpdate['current_quantity'] = $current_quantity;
         }
         if (!empty($min_quantity)) {
-            $dataToUpdate['supplier_name'] = $min_quantity;
+            $dataToUpdate['min_quantity'] = $min_quantity;
         }
         if (!empty($max_quantity)) {
-            $dataToUpdate['supplier_name'] = $max_quantity;
+            $dataToUpdate['max_quantity'] = $max_quantity;
         }
 
         if (empty($dataToUpdate)) {

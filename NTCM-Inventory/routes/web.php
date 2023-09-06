@@ -32,8 +32,12 @@ Route::get('/addCategory', [CategoryController::class, 'addCategory'])->name('ad
 Route::get('/addSupplier', [SupplierController::class, 'addSupplier'])->name('addSupplier');
 
 Route::group(['middleware' => ['session-checker']], function () {
-    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
+
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');
