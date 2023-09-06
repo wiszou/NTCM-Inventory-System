@@ -22,7 +22,6 @@ class InventoryController extends Controller
             return redirect()->back()->with('error', 'A similar item or serial number already exists.');
         }
 
-        $item_code = $request->input('item-code');
         $supplier_name = $request->input('supplier-name');
         $item_category = $request->input('item-category');
         $brand = $request->input('item-brand');
@@ -32,9 +31,10 @@ class InventoryController extends Controller
         $current_quantity = $request->input('item-currentQuantity');
         $min_quantity = $request->input('item-minQuantity');
         $max_quantity = $request->input('item-maxQuantity');
+        $item_status = $request->input('item-status');
         $item_name = $item_category . "-" . $model . "-" . $serialNum;
 
-        $data = $this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name);
+        $data = $this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name, $item_status);
         DB::table('m_inventory')->insert($data);
 
         return redirect()->back()->with('success', 'Item added successfully.');
@@ -43,10 +43,9 @@ class InventoryController extends Controller
     public function removeItem($itemCode)
     {
         DB::table('m_inventory')->where('item_id', $itemCode)->delete();
-
     }
 
-    public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name)
+    public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name, $item_status)
     {
         $uniqueID = $this->generateItemCode($item_category);
 
@@ -64,7 +63,7 @@ class InventoryController extends Controller
             'price' => $price,
             'serial_num' => $serialNum,
             'remarks' => $remarks,
-            'item_status' => 1,
+            'item_status' => $item_status,
             'current_quantity' => $current,
             'min_quantity' => $min,
             'max_quantity' => $max,
@@ -163,5 +162,26 @@ class InventoryController extends Controller
             ->update($dataToUpdate);
 
         return response()->json(['message' => 'Item updated successfully'], 200);
+    }
+
+    public function getItemDetails($itemId)
+    {
+        try {
+            // Fetch item details based on the $itemId using the DB facade
+            $item = DB::table('m_inventory')
+                ->where('item_id', $itemId)
+                ->first(); // Get the first matching item
+
+            if (!$item) {
+                // Item not found, return a JSON response with an error message
+                return response()->json(['success' => false, 'message' => 'Item not found'], 404);
+            }
+
+            // Return the item details as JSON response
+            return response()->json(['success' => true, 'item' => $item]);
+        } catch (\Exception $e) {
+            // Handle exceptions and return an error JSON response
+            return response()->json(['success' => false, 'message' => 'Error fetching item details'], 500);
+        }
     }
 }
