@@ -30,6 +30,7 @@ Route::post('/remove-item/{itemCode}', [InventoryController::class, 'removeItem'
 
 Route::get('/addCategory', [CategoryController::class, 'addCategory'])->name('addCategory');
 Route::get('/addSupplier', [SupplierController::class, 'addSupplier'])->name('addSupplier');
+Route::get('/api/getItemDetails/{itemId}', [InventoryController::class, 'getItemDetails']);
 
 Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', function () {
