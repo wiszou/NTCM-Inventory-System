@@ -342,7 +342,7 @@
                                             <div class=" w-full flex justify-end pt-4">
                                                 <a class="mr-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Delete</a>
                                                 <a class="mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="editButton">Edit</a>
-                                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Save</button>
+                                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="saveButton" disabled>Save</button>
 
                                             </div>
                                         </div>
@@ -404,7 +404,7 @@
                                 modal.querySelector('#item-currentQuantity').value = data.item.current_quantity;
                                 modal.querySelector('#supplier-name').value = data.item.supplier_name;
                                 modal.querySelector('#title').textContent = data.item.item_name;
-                
+
                                 // Check item_status and perform actions accordingly
                                 const itemStatus = data.item.item_status;
                                 if (itemStatus === 0) {
@@ -479,11 +479,11 @@
     </script>
 
     <script>
-        // JavaScript to toggle the disabled attribute for all input fields
         const inputFields = document.querySelectorAll('.editable-input');
         const editButton = document.getElementById('editButton');
         const exitButton = document.getElementById('exitButton');
-
+        const saveButton = document.getElementById('saveButton');
+        saveButton.style.backgroundColor = 'grey';
         // Initialize the button text to "Edit"
         let isEditing = false;
 
@@ -495,8 +495,12 @@
             // Change the text of the button based on the state
             if (isEditing) {
                 editButton.textContent = 'Edit';
+                saveButton.disabled = true; // Disable the "Save" button
+                saveButton.style.backgroundColor = 'grey'; // Change the color to grey
             } else {
                 editButton.textContent = 'Stop Editing';
+                saveButton.disabled = false; // Enable the "Save" button
+                saveButton.style.backgroundColor = ''; // Reset the color
             }
 
             // Toggle the editing state
@@ -508,6 +512,8 @@
                 inputField.disabled = true; // Disable the input fields
             });
             editButton.textContent = 'Edit'; // Reset the "Edit" button text
+            saveButton.disabled = true; // Disable the "Save" button
+            saveButton.style.backgroundColor = 'grey'; // Change the color to grey
             isEditing = false; // Reset the editing state
         });
     </script>
