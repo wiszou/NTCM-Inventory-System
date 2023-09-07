@@ -247,9 +247,24 @@
                                                     Name:</label>
                                                 <input type="text" name="item-name" id="item-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Laptop" required="" disabled>
                                             </div>
-                                            <div class="col-span-6 sm:col-span-3">
+                                            <!-- <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900 ">Category</label>
                                                 <input type="text" name="item-category" id="item-category" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Device" required="" disabled>
+                                            </div> -->
+                                            <div class="col-span-6 sm:col-span-3">
+
+                                                <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+
+                                                <select name="item-category" id="item-category" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" disabled>
+
+                                                    <option value="Device">Device</option>
+
+                                                    <option value="Electronics">Electronics</option>
+
+                                                    <option value="Furniture">Peripherals</option>
+
+                                                </select>
+
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
@@ -278,8 +293,19 @@
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900 ">Supplier:</label>
-                                                <input type="text" name="supplier-name" id="supplier-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="20" required="" disabled>
+
+                                                <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier:</label>
+
+                                                <select name="supplier-name" id="supplier-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" disabled>
+
+                                                    <option value="Supplier A">Hanap Usap Build</option>
+
+                                                    <option value="Supplier B">DJS Tech</option>
+
+                                                    <option value="Supplier C">TCL</option>
+
+                                                </select>
+
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="Status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
