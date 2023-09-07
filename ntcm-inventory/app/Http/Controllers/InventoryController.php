@@ -103,67 +103,6 @@ class InventoryController extends Controller
         return view('inventory', ['inventory' => $inventory]);
     }
 
-
-
-    public function updateItem(Request $request, $id)
-    {
-        $item_code = $request->input('item-code');
-        $supplier_name = $request->input('supplier-name');
-        $item_category = $request->input('item-category');
-        $brand = $request->input('item-brand');
-        $model = $request->input('item-model');
-        $price = $request->input('item-price');
-        $serialNum = $request->input('item-serial');
-        $remarks = $request->input('item-remarks');
-        $current_quantity = $request->input('item-currentQuantity');
-        $min_quantity = $request->input('item-minQuantity');
-        $max_quantity = $request->input('item-maxQuantity');
-
-        $dataToUpdate = [];
-
-        if (!empty($item_code)) {
-            $dataToUpdate['item_code'] = $item_code;
-        }
-        if (!empty($item_category)) {
-            $dataToUpdate['item_category'] = $item_category;
-        }
-        if (!empty($brand)) {
-            $dataToUpdate['brand'] = $brand;
-        }
-        if (!empty($model)) {
-            $dataToUpdate['model'] = $model;
-        }
-        if (!empty($price)) {
-            $dataToUpdate['price'] = $price;
-        }
-        if (!empty($serialNum)) {
-            $dataToUpdate['serialNum'] = $serialNum;
-        }
-        if (!empty($remarks)) {
-            $dataToUpdate['remarks'] = $remarks;
-        }
-        if (!empty($current_quantity)) {
-            $dataToUpdate['current_quantity'] = $current_quantity;
-        }
-        if (!empty($min_quantity)) {
-            $dataToUpdate['min_quantity'] = $min_quantity;
-        }
-        if (!empty($max_quantity)) {
-            $dataToUpdate['max_quantity'] = $max_quantity;
-        }
-
-        if (empty($dataToUpdate)) {
-            return response()->json(['message' => 'No fields to update'], 200);
-        }
-
-        // Perform the update using the DB facade
-        DB::table('m_inventory')
-            ->where('id', $id)
-            ->update($dataToUpdate);
-
-        return response()->json(['message' => 'Item updated successfully'], 200);
-    }
-
     public function getItemDetails($itemId)
     {
         try {
@@ -183,5 +122,42 @@ class InventoryController extends Controller
             // Handle exceptions and return an error JSON response
             return response()->json(['success' => false, 'message' => 'Error fetching item details'], 500);
         }
+    }
+
+
+
+    public function updateItem(Request $request, $id)
+    {
+        // Retrieve the item by its ID
+        $item = DB::table('m_inventory')->where('item_id', $id)
+        ->first(); // Get the first matching item
+
+        if (!$item) {
+            return response()->json(['message' => 'Item not found'], 404);
+        }
+
+        // Retrieve the data from the request
+        $dataToUpdate = $request->only([
+            'item_category',
+            'brand',
+            'model',
+            'price',
+            'serial_number',
+            'remarks',
+            'current_quantity',
+            'supplier_name',
+        ]);
+
+        // Filter out any null or empty values
+        $dataToUpdate = array_filter($dataToUpdate);
+
+        if (empty($dataToUpdate)) {
+            return response()->json(['message' => 'No fields to update'], 200);
+        }
+
+        // Perform the update using the update method
+        DB::table('m_inventory')->where('id', $id)->update($dataToUpdate);
+
+        return response()->json(['message' => 'Item updated successfully'], 200);
     }
 }
