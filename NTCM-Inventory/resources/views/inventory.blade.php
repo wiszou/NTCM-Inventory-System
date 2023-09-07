@@ -12,7 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!--Replace with your tailwind.css once created-->
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -58,6 +58,7 @@ table.dataTable.display tbody tr:hover {
     color: #ffffff;
     font-weight: 400;
 }
+
 
 /*Pagination Buttons*/
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -132,7 +133,7 @@ td {
             <div class="w-full">
 
                 <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
-                    <h2 class="text-2xl font-bold text-teal-700">
+                    <h2 class="text-2xl font-bold text-ntccolor">
                         Inventory List
                     </h2>
                     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
@@ -216,10 +217,10 @@ td {
             <!--/container-->
 
 
-            <div class="main-modal fixed w-full h-100 inset-0 z-50 flex justify-center items-center animated fadeIn faster"
+            <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster"
                 style="background: rgba(0,0,0,.7);">
-                <div class="modal-container bg-white w-3/6 rounded-xl z-50 overflow-y-auto">
-                    <div class="modal-content py-4 text-left px-6">
+                <div class="modal-container bg-white w-3/6 rounded-xl z-50">
+                    <div class="modal-content py-4 text-left px-6 max-h-screen overflow-y-auto">
                         <!--Title-->
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-xl font-semibold">Item Name</p>
@@ -239,99 +240,108 @@ td {
                                     <!-- Modal body -->
                                     <div class="p-6 space-y-6">
                                         <div class="grid grid-cols-6 gap-6">
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="item-code"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 ">Item
-                                                    Code</label>
-                                                <input type="text" name="item-code" id="item-code"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                                    placeholder="IT230001" required="" disabled>
-                                            </div>
+
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="inventory-id"
                                                     class="block mb-2 text-sm font-medium text-gray-900">Inventory
                                                     ID</label>
                                                 <input type="text" name="inventory-id" id="inventory-id"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                                                     placeholder="LT-0001" required="" disabled>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="item-name"
+                                                <label for="item-code"
                                                     class="block mb-2 text-sm font-medium text-gray-900 ">Item
-                                                    Name:</label>
-                                                <input type="text" name="item-name" id="item-name"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                                    placeholder="Laptop" required="" disabled>
-                                            </div>
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="item-category"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Category</label>
-                                                <select name="item-category" id="item-category"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" disabled> 
-                                                    <option value="Device">Device</option>
-                                                    <option value="Electronics">Electronics</option>
-                                                    <option value="Furniture">Peripherals</option>
-                                                </select>
+                                                    Code</label>
+                                                <input type="text" name="item-code" id="item-code"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    placeholder="IT230001" required="" disabled>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-brand"
                                                     class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
                                                 <input type="text" name="item-brand" id="item-brand"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
                                                     placeholder="Lenovo" required="" disabled>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-model"
                                                     class="block mb-2 text-sm font-medium text-gray-900">Model</label>
                                                 <input type="text" name="item-model" id="item-model"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
                                                     placeholder="X250" required="" disabled>
-                                            </div>
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="item-price"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
-                                                <input type="Number" name="item-price" id="item-price"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                                    placeholder="40,000" required="" disabled>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-serial"
                                                     class="block mb-2 text-sm font-medium text-gray-900">Serial
                                                     Number:</label>
                                                 <input type="text" name="item-serial" id="item-serial"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
                                                     placeholder="4CE0460D0G" required="" disabled>
                                             </div>
+
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-currentQuantity"
                                                     class="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
                                                 <input type="Number" name="item-currentQuantity"
                                                     id="item-currentQuantity"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
                                                     placeholder="20" required="" disabled>
                                             </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="item-price"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
+                                                <input type="Number" name="item-price" id="item-price"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    placeholder="40,000" required="" disabled>
+                                            </div>
+
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-remarks"
                                                     class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
                                                 <input type="Text" name="item-remarks" id="item-remarks"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
                                                     placeholder="Returned by Ronald" required="" disabled>
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="supplier-name"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Supplier:</label>
-                                                <select name="supplier-name" id="supplier-name"
-                                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" disabled>
-                                                    <option value="Supplier A">Hanap Usap Build</option>
-                                                    <option value="Supplier B">DJS Tech</option>
-                                                    <option value="Supplier C">TCL</option>
+                                                <label for="item-category"
+                                                    class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="item-category" id="item-category"
+                                                    class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5">
+                                                    <option value="Device">Device</option>
+                                                    <option value="Electronics">Electronics</option>
+                                                    <option value="Furniture">Peripherals</option>
                                                 </select>
                                             </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="supplier-name"
+                                                    class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="supplier-name" id="supplier-name"
+                                                    class="shadow-sm w-full p-2.5">
+                                                    <option value="Device">DJS Tech</option>
+                                                    <option value="Electronics">Hanap Usap Build</option>
+                                                    <option value="Electronics">Hanap Usap Build</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="item-name"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 ">Item
+                                                    Description:</label>
+                                                <textarea name="item-name" id="item-name"
+                                                    class="min-h-16 resize-y shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                                    placeholder="Description" required="" disabled></textarea>
+                                            </div>
+
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="Status"
                                                     class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
-                                                <ul class="grid grid-cols-3 gap-x-5">
+                                                <ul class="grid grid-cols-4 gap-x-5">
 
                                                     <li class="">
 
@@ -339,7 +349,7 @@ td {
                                                             value="0" name="answer" id="yes" disabled />
 
                                                         <label
-                                                            class="text-sm flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out"
+                                                            class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out"
                                                             for="yes">Spare</label>
 
                                                     </li>
@@ -350,7 +360,7 @@ td {
                                                             value="1" name="answer" id="no" disabled />
 
                                                         <label
-                                                            class="text-sm flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out"
+                                                            class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out"
                                                             for="no">Deployed</label>
 
                                                     </li>
@@ -361,8 +371,18 @@ td {
                                                             value="2" name="answer" id="yesno" disabled />
 
                                                         <label
-                                                            class="text-sm flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out "
+                                                            class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out "
                                                             for="yesno">Borrowed</label>
+                                                    </li>
+
+                                                    <li class="">
+
+                                                        <input class="peer sr-only editable-input" type="radio"
+                                                            value="3" name="answer" id="yesnono" disabled />
+
+                                                        <label
+                                                            class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out "
+                                                            for="yesnono">Defect</label>
                                                     </li>
 
                                                 </ul>
@@ -548,7 +568,7 @@ td {
     });
     </script>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
 
 
