@@ -104,7 +104,9 @@ class InventoryController extends Controller
     public function getUpdatedInventory()
     {
         $inventory = DB::table('m_inventory')->get();
-        return view('inventory', ['inventory' => $inventory]);
+        $supplier = DB::table('m_supplier')->get();
+        $category = DB::table('m_category')->get();
+        return view('inventory', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier]);
     }
 
     public function getItemDetails($itemId)
