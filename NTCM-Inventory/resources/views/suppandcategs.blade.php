@@ -23,7 +23,7 @@
             <div class="w-full">
 
                 <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
-                    <h2 class="text-2xl font-bold text-teal-700">
+                    <h2 class="text-2xl font-bold text-ntccolor">
                         Suppliers and Categories
                     </h2>
                 </div>
@@ -36,7 +36,7 @@
                 @csrf
                 <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Suppliers</h2>
                 <div class="my-1"></div>
-                <div class="bg-teal-600 h-px mb-6"></div>
+                <div class="bg-ntccolor h-px mb-6"></div>
 
                 <div class="grid grid-cols-6 gap-6 px-2">
                     <div class="col-span-6 sm:col-span-3">
@@ -53,7 +53,7 @@
                 <div class="flex space-x-2">
                     <div class=" w-full flex justify-end pt-4">
 
-                        <button type="submit" class="text-white bg-teal-700 hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
+                        <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
                     </div>
                 </div>
             </form>
@@ -63,7 +63,7 @@
             <form action="/addCategory" method="post" class="flex-1 bg-white p-4 shadow rounded-lg">
                 @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Category</h2>
                 <div class="my-1"></div>
-                <div class="bg-teal-600 h-px mb-6"></div>
+                <div class="bg-ntccolor h-px mb-6"></div>
 
                 <div class="px-2 flex justify-center">
                     <div class="w-1/2">
@@ -75,7 +75,7 @@
                 <div class="flex space-x-2">
                     <div class=" w-full flex justify-end pt-4">
 
-                        <button type="submit" class="text-white bg-teal-700 hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
+                        <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
                     </div>
                 </div>
             </form>
