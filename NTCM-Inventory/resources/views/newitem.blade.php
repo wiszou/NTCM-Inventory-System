@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Edit Items</title>
+    <title>Add Item</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -136,7 +136,7 @@
                     @csrf
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
-                        <h2 class="text-2xl font-bold text-teal-700">
+                        <h2 class="text-2xl font-bold text-ntccolor border-b">
                             Add Item
                         </h2>
                         <div class="grid grid-cols-6 gap-6">
@@ -144,12 +144,6 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Inventory
                                     ID</label>
-                                <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Auto Generated" disabled>
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Item
-                                    Name</label>
                                 <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Auto Generated" disabled>
                             </div>
 
@@ -183,6 +177,11 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
+                                <label for="item-remarks" class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
+                                <input type="Text" name="item-remarks" id="item-remarks" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Returned by Ronald">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
                                 <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
                                     @foreach ($categories as $item)
@@ -200,10 +199,6 @@
                                 </select>
                             </div>
 
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="item-remarks" class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
-                                <input type="Text" name="item-remarks" id="item-remarks" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Returned by Ronald">
-                            </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Item
@@ -211,16 +206,8 @@
                                 <textarea name="description" id="description" class="min-h-16 resize-y shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Description" required=""></textarea>
                             </div>
 
-                        </div>
-
-
-                        <div class=" w-full">
-
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="flex space-x-2 border-t border-gray-200 rounded-b">
-                            <div class=" w-full flex justify-between pt-4">
-                                <div class="col-span-6 sm:col-span-3 w-1/2">
+                            <div class="col-span-6 sm:col-span-3">
+                            <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
                                     <ul class="grid grid-cols-4 gap-x-5 mt-4">
                                         <li class="">
                                             <input class="peer sr-only editable-input" type="radio" value="0" name="item-status" id="yes" />
@@ -240,7 +227,17 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Add
+
+                        </div>
+
+
+                        <div class=" w-full">
+
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="flex space-x-2 border-t border-gray-200 rounded-b">
+                            <div class=" w-full flex justify-end pt-4">
+                                <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Add
                                     Item</button>
 
 
