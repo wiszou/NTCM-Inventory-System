@@ -340,10 +340,9 @@
                                         <!-- Modal footer -->
                                         <div class="flex space-x-2 border-t border-gray-200 rounded-b">
                                             <div class=" w-full flex justify-end pt-4">
-                                                <a class="mr-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">Delete</a>
+                                                <button class="mr-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="removeButton">Delete</button>
                                                 <a class="mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="editButton">Edit</a>
                                                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="saveButton" disabled>Save</button>
-
                                             </div>
                                         </div>
                                 </form>
@@ -354,7 +353,7 @@
                 </div>
             </div>
 
-
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
             <!-- jQuery -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
@@ -376,7 +375,6 @@
             <script>
                 const modal = document.querySelector('.main-modal');
                 const closeButton = document.querySelectorAll('.modal-close');
-
                 const modalClose = () => {
                     modal.classList.remove('fadeIn');
                     modal.classList.add('fadeOut');
@@ -404,7 +402,7 @@
                                 modal.querySelector('#item-currentQuantity').value = data.item.current_quantity;
                                 modal.querySelector('#supplier-name').value = data.item.supplier_name;
                                 modal.querySelector('#title').textContent = data.item.brand + "-" + data.item.model + "-" + data.item.serial_num;
-
+                                modal.querySelector('#removeButton').value = data.item.inventory_id;
                                 // Check item_status and perform actions accordingly
                                 const itemStatus = data.item.item_status;
                                 if (itemStatus === 0) {
@@ -420,6 +418,7 @@
                                 modal.classList.remove('fadeOut');
                                 modal.classList.add('fadeIn');
                                 modal.style.display = 'flex';
+
                             } else {
                                 // Handle error if item details cannot be fetched
                                 console.error('Error fetching item details.');
@@ -439,6 +438,27 @@
                 window.onclick = function(event) {
                     if (event.target == modal) modalClose();
                 }
+
+                document.getElementById('removeButton').addEventListener('click', function() {
+                    // Assuming you have a variable with the item ID you want to remove
+                    var itemId = this.value; // Replace with your actual item ID
+
+                    // Send a POST request to the 'remove' route
+                    axios.post('/remove-item/' + itemId)
+                        .then(function(response) {
+                            if (response.status === 200) {
+                                // Handle success
+                                console.log('Item removed successfully');
+                            } else {
+                                // Handle error
+                                console.error('Error removing item');
+                            }
+                        })
+                        .catch(function(error) {
+                            // Handle network or other errors
+                            console.error('Network error:', error);
+                        });
+                });
             </script>
 
         </div>
@@ -517,8 +537,8 @@
             isEditing = false; // Reset the editing state
         });
     </script>
-    
-     <!-- Tailwind Elements Script -->
+
+    <!-- Tailwind Elements Script -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
 

@@ -45,11 +45,12 @@ class InventoryController extends Controller
         return redirect()->back()->with('success', 'Item added successfully.');
     }
 
-    public function removeItem($itemCode)
+    public function removeItem($removeID)
     {
-        DB::table('m_inventory')->where('item_id', $itemCode)->delete();
+        $inventoryId = $removeID; // Assuming 'id' is the correct name
+        DB::table('m_inventory')->where('inventory_id', $inventoryId)->delete();
+        return redirect()->back()->with('success', 'Item removed successfully.');
     }
-
     public function inventoryData($item_code, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name, $item_status, $description)
     {
         $uniqueID = $this->generateItemCode($item_category);
@@ -94,7 +95,7 @@ class InventoryController extends Controller
         while ($existingItem) {
             $rowCount++;
             $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
-            $id = $category . $currentYear . $formattedRowCount;
+            $id = $category . "-" . $currentYear . "-" . $formattedRowCount;
             $existingItem = DB::table('m_inventory')->where('inventory_id', $id)->first();
         }
 
