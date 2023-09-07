@@ -41,13 +41,10 @@ Route::group(['middleware' => ['session-checker']], function () {
 
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
     Route::get('/CategorynSupplier', [CatSuppController::class, 'updateTable'])->name('CatSupp');
+    Route::get('/new-item', [CatSuppController::class, 'updateAdd'])->name('newitem');
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');
-
-    Route::get('/newitem', function () {
-        return view('newitem');
-    })->name('newitem');
 
     Route::get('/logs', function () {
         return view('logs');
@@ -56,7 +53,6 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/custodian', function () {
         return view('custodian');
     })->name('custodian');
-
 });
 
 

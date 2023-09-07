@@ -190,7 +190,7 @@
                             @endphp
                             <tr onclick="openModal('{{ $item->item_id }}')" class="{{ $statusClass }}">
                                 <td>{{ $item->item_id }}</td>
-                                <td>{{ $item->item_name }}</td>
+                                <td>{{ $item->brand }}-{{ $item->model }}-{{ $item->serial_num }}</td>
                                 <td>{{ $item->brand }}</td>
                                 <td>{{ $item->model }}</td>
                                 <td>{{ $item->current_quantity }}</td>
@@ -403,7 +403,7 @@
                                 modal.querySelector('#item-serial').value = data.item.serial_num;
                                 modal.querySelector('#item-currentQuantity').value = data.item.current_quantity;
                                 modal.querySelector('#supplier-name').value = data.item.supplier_name;
-                                modal.querySelector('#title').textContent = data.item.item_name;
+                                modal.querySelector('#title').textContent = data.item.brand + "-" + data.item.model + "-" + data.item.serial_num;
 
                                 // Check item_status and perform actions accordingly
                                 const itemStatus = data.item.item_status;

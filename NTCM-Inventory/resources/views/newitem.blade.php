@@ -25,102 +25,102 @@
 </head>
 
 <style>
-/*Overrides for Tailwind CSS */
+    /*Overrides for Tailwind CSS */
 
-/*Form fields*/
-.dataTables_wrapper select,
-.dataTables_wrapper .dataTables_filter input {
-    color: #4a5568;
-    /*text-gray-700*/
-    padding-left: 1rem;
-    /*pl-4*/
-    padding-right: 1rem;
-    /*pl-4*/
-    padding-top: .5rem;
-    /*pl-2*/
-    padding-bottom: .5rem;
-    /*pl-2*/
-    line-height: 1.25;
-    /*leading-tight*/
-    border-width: 1px;
-    /*border-2*/
-    border-radius: .25rem;
-    border-color: #4d4d4d;
-    /*border-gray-200*/
-    background-color: #ffffff;
-    /*bg-gray-200*/
-}
+    /*Form fields*/
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 1px;
+        /*border-2*/
+        border-radius: .25rem;
+        border-color: #4d4d4d;
+        /*border-gray-200*/
+        background-color: #ffffff;
+        /*bg-gray-200*/
+    }
 
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-    background-color: #4facb6;
-    /*bg-indigo-100*/
-    color: #ffffff;
-    font-weight: 400;
-}
+    /*Row Hover*/
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #4facb6;
+        /*bg-indigo-100*/
+        color: #ffffff;
+        font-weight: 400;
+    }
 
-/*Pagination Buttons*/
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    font-weight: 500;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
+    /*Pagination Buttons*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 500;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
 
-/*Pagination Buttons - Current selected */
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #5c5c5c !important;
-    /*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 200;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
+    /*Pagination Buttons - Current selected */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #5c5c5c !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 200;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
 
-/*Pagination Buttons - Hover */
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #ffffff;
-    /*text-white*/
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 400;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px;
-    /*border border-transparent*/
+    /*Pagination Buttons - Hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #ffffff;
+        /*text-white*/
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 400;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px;
+        /*border border-transparent*/
 
-}
-
-
-/*Change colour of responsive icon*/
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #4facb6 !important;
-    /*bg-indigo-500*/
-}
+    }
 
 
-th {
-    text-align: left;
-    /* Align header text to the left */
-}
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #4facb6 !important;
+        /*bg-indigo-500*/
+    }
 
-td {
-    text-align: left;
-    /* Align cell text to the left */
-}
+
+    th {
+        text-align: left;
+        /* Align header text to the left */
+    }
+
+    td {
+        text-align: left;
+        /* Align cell text to the left */
+    }
 </style>
 
 <body class="bg-gray-100 py-2">
@@ -144,100 +144,71 @@ td {
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Inventory
                                     ID</label>
-                                <input type="text" name="inventory-id" id="inventory-id"
-                                    class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-                                    placeholder="Auto Generated" disabled>
+                                <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Auto Generated" disabled>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Item
                                     Name</label>
-                                <input type="text" name="inventory-id" id="inventory-id"
-                                    class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-                                    placeholder="Auto Generated" disabled>
+                                <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Auto Generated" disabled>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-code" class="block mb-2 text-sm font-medium text-gray-900 ">Item
                                     Code</label>
-                                <input type="text" name="item-code" id="item-code"
-                                    class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="IT230001" required="">
+                                <input type="text" name="item-code" id="item-code" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="IT230001" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-brand"
-                                    class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
-                                <input type="text" name="item-brand" id="item-brand"
-                                    class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="Lenovo" required="">
+                                <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
+                                <input type="text" name="brand" id="item-brand" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Lenovo" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-model"
-                                    class="block mb-2 text-sm font-medium text-gray-900">Model</label>
-                                <input type="text" name="item-model" id="item-model"
-                                    class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="X250" required="">
+                                <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Model</label>
+                                <input type="text" name="model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="X250" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
                                     Number:</label>
-                                <input type="text" name="item-serial" id="item-serial"
-                                    class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="4CE0460D0G" required="">
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-currentQuantity"
-                                    class="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
-                                <input type="Number" name="item-currentQuantity" id="item-currentQuantity"
-                                    class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="20" required="">
+                                <label for="item-currentQuantity" class="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
+                                <input type="Number" name="item-quantity" id="item-quantity" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="20" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-price"
-                                    class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
-                                <input type="Number" name="item-price" id="item-price"
-                                    class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="40,000" required="">
+                                <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
+                                <input type="Number" name="price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="40,000" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-category"
-                                    class="block mb-2 text-sm font-medium text-gray-900">Category</label>
-                                <select data-te-select-init data-te-select-filter="true" name="item-category"
-                                    id="item-category"
-                                    class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
-
-                                    <option>1</option>
-
+                                <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                                <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
+                                    @foreach ($categories as $item)
+                                    <option value="{{ $item->category_name }}">{{ $item->category_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="supplier-name"
-                                    class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
-                                <select data-te-select-init data-te-select-filter="true" name="supplier-name"
-                                    id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
-
-                                    <option>1</option>
+                                <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
+                                <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
+                                    @foreach ($suppliers as $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-remarks"
-                                    class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
-                                <input type="Text" name="item-remarks" id="item-remarks"
-                                    class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="Returned by Ronald" required="">
+                                <label for="item-remarks" class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
+                                <input type="Text" name="item-remarks" id="item-remarks" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Returned by Ronald">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Item
                                     Description:</label>
-                                <textarea name="item-name" id="item-name"
-                                    class="min-h-16 resize-y shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="Description" required=""></textarea>
+                                <textarea name="description" id="description" class="min-h-16 resize-y shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Description" required=""></textarea>
                             </div>
 
                         </div>
@@ -248,41 +219,28 @@ td {
                         </div>
                         <!-- Modal footer -->
                         <div class="flex space-x-2 border-t border-gray-200 rounded-b">
-                            <div class=" w-full flex justify-between pt-4">  
+                            <div class=" w-full flex justify-between pt-4">
                                 <div class="col-span-6 sm:col-span-3 w-1/2">
                                     <ul class="grid grid-cols-4 gap-x-5 mt-4">
                                         <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="0"
-                                                name="answer" id="yes" />
-                                            <label
-                                                class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out"
-                                                for="yes">Spare</label>
+                                            <input class="peer sr-only editable-input" type="radio" value="0" name="item-status" id="yes" />
+                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="yes">Spare</label>
                                         </li>
                                         <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="1"
-                                                name="answer" id="no" />
-                                            <label
-                                                class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out"
-                                                for="no">Deployed</label>
+                                            <input class="peer sr-only editable-input" type="radio" value="1" name="item-status" id="no" />
+                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="no">Deployed</label>
                                         </li>
                                         <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="2"
-                                                name="answer" id="yesno" />
-                                            <label
-                                                class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out "
-                                                for="yesno">Borrowed</label>
+                                            <input class="peer sr-only editable-input" type="radio" value="2" name="item-status" id="yesno" />
+                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out " for="yesno">Borrowed</label>
                                         </li>
                                         <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="3"
-                                                name="answer" id="yesnono" />
-                                            <label
-                                                class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out "
-                                                for="yesnono">Defect</label>
+                                            <input class="peer sr-only editable-input" type="radio" value="3" name="item-status" id="yesnono" />
+                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out " for="yesnono">Defect</label>
                                         </li>
                                     </ul>
                                 </div>
-                                <button type="submit"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Add
+                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Add
                                     Item</button>
 
 
@@ -300,47 +258,47 @@ td {
             <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
             <script>
-            $(document).ready(function() {
+                $(document).ready(function() {
 
-                var table = $('#example').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
+                    var table = $('#example').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
+                });
             </script>
 
 
             <script>
-            const modal = document.querySelector('.main-modal');
-            const closeButton = document.querySelectorAll('.modal-close');
+                const modal = document.querySelector('.main-modal');
+                const closeButton = document.querySelectorAll('.modal-close');
 
-            const modalClose = () => {
-                modal.classList.remove('fadeIn');
-                modal.classList.add('fadeOut');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 0);
-            }
-
-            const openModal = () => {
-                modal.classList.remove('fadeOut');
-                modal.classList.add('fadeIn');
-                modal.style.display = 'flex';
-            }
-
-            for (let i = 0; i < closeButton.length; i++) {
-
-                const elements = closeButton[i];
-
-                elements.onclick = (e) => modalClose();
-
-                modal.style.display = 'none';
-
-                window.onclick = function(event) {
-                    if (event.target == modal) modalClose();
+                const modalClose = () => {
+                    modal.classList.remove('fadeIn');
+                    modal.classList.add('fadeOut');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 0);
                 }
-            }
+
+                const openModal = () => {
+                    modal.classList.remove('fadeOut');
+                    modal.classList.add('fadeIn');
+                    modal.style.display = 'flex';
+                }
+
+                for (let i = 0; i < closeButton.length; i++) {
+
+                    const elements = closeButton[i];
+
+                    elements.onclick = (e) => modalClose();
+
+                    modal.style.display = 'none';
+
+                    window.onclick = function(event) {
+                        if (event.target == modal) modalClose();
+                    }
+                }
             </script>
 
             <!-- Tailwind Elements Script -->

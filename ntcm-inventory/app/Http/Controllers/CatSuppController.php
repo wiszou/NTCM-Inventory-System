@@ -120,6 +120,14 @@ class CatSuppController extends Controller
         return view('suppandcategs', ['category' => $category, 'suppliers' => $supplier]);
     }
 
+    public function updateAdd()
+    {
+        $supplier = DB::table('m_supplier')->get();
+        $category = DB::table('m_category')->get();
+
+        return view('newitem', ['categories' => $category, 'suppliers' => $supplier]);
+    }
+
     
     public function removeCategory($itemCode)
     {

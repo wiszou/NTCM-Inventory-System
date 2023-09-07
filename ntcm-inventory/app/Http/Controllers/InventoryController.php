@@ -11,7 +11,7 @@ class InventoryController extends Controller
     public function addItem(Request $request)
     {
 
-        $serialNum = $request->input('serial-number');
+        $serialNum = $request->input('item-serial');
         $item_code = $request->input('item-code');
 
         $existingRecord = DB::table('m_inventory')
@@ -29,17 +29,17 @@ class InventoryController extends Controller
         $model = $request->input('model');
         $price = $request->input('price');
         $remarks = $request->input('item-remarks');
-        $current_quantity = $request->input('current-quantity');
-        $item_status = $request->input('item_status');
+        $current_quantity = $request->input('item-quantity');
+        $item_status = $request->input('item-status');
+        $description =  $request->input('description');
         $min_quantity = $current_quantity / 2;
         $max_quantity = $current_quantity;
-        $item_name = $item_category . "-" . $model . "-" . $serialNum;
 
         if ($item_status === null) {
             $item_status = 0;
         }
 
-        $data = $this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name, $item_status);
+        $data = $this->inventoryData($item_code, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name, $item_status, $description);
         DB::table('m_inventory')->insert($data);
 
         return redirect()->back()->with('success', 'Item added successfully.');
@@ -50,7 +50,7 @@ class InventoryController extends Controller
         DB::table('m_inventory')->where('item_id', $itemCode)->delete();
     }
 
-    public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name, $item_status)
+    public function inventoryData($item_code, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name, $item_status, $description)
     {
         $uniqueID = $this->generateItemCode($item_category);
         $user = session()->get('user_name');
@@ -60,13 +60,13 @@ class InventoryController extends Controller
             'inventory_id' => $uniqueID,
             'item_id' => $item_code,
             'supplier_name' => $supplier_name,
-            'item_name' => $item_name,
             'category' =>  $item_category,
             'brand' => $brand,
             'model' => $model,
             'price' => $price,
             'serial_num' => $serialNum,
             'remarks' => $remarks,
+            'description' => $description,
             'item_status' => $item_status,
             'current_quantity' => $current,
             'min_quantity' => $min,
