@@ -47,7 +47,7 @@
                             Lists</a>
                     </li>
                     <li>
-                        <a href="{{ route('suppandcategs') }}"
+                        <a href="{{ route('CatSupp') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 pl-11">Suppliers & Categories</a>
                     </li>
 

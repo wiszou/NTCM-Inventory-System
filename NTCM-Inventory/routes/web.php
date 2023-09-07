@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogRegController;
 use App\Http\Controllers\DateTimeController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\CatSuppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +29,10 @@ Route::post('/remove-item/{itemCode}', [InventoryController::class, 'removeItem'
 Route::get('/api/getItemDetails/{itemId}', [InventoryController::class, 'getItemDetails']);
 Route::put('/items/{id}',  [InventoryController::class, 'updateItem']);
 
-Route::get('/addCategory', [CategoryController::class, 'addCategory'])->name('addCategory');
-Route::get('/addSupplier', [SupplierController::class, 'addSupplier'])->name('addSupplier');
-
+Route::post('/addSupplier', [CatSuppController::class, 'addSupplier']);
+Route::post('/addCategory', [CatSuppController::class, 'addCategory']);
+Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
+Route::get('/remove-supplier/{itemCode}', [CatSuppController::class, 'removeSupplier']);
 
 Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', function () {
@@ -40,7 +40,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     })->name('dashboard');
 
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
-
+    Route::get('/CategorynSupplier', [CatSuppController::class, 'updateTable'])->name('CatSupp');
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');
@@ -57,9 +57,6 @@ Route::group(['middleware' => ['session-checker']], function () {
         return view('custodian');
     })->name('custodian');
 
-    Route::get('/suppandcategs', function () {
-        return view('suppandcategs');
-    })->name('suppandcategs');
 });
 
 

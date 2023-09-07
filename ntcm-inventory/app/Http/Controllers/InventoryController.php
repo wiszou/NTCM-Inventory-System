@@ -10,7 +10,8 @@ class InventoryController extends Controller
 {
     public function addItem(Request $request)
     {
-        $serialNum = $request->input('item-serial');
+
+        $serialNum = $request->input('serial-number');
         $item_code = $request->input('item-code');
 
         $existingRecord = DB::table('m_inventory')
@@ -23,16 +24,20 @@ class InventoryController extends Controller
         }
 
         $supplier_name = $request->input('supplier-name');
-        $item_category = $request->input('item-category');
-        $brand = $request->input('item-brand');
-        $model = $request->input('item-model');
-        $price = $request->input('item-price');
+        $item_category = $request->input('category');
+        $brand = $request->input('brand');
+        $model = $request->input('model');
+        $price = $request->input('price');
         $remarks = $request->input('item-remarks');
-        $current_quantity = $request->input('item-currentQuantity');
-        $min_quantity = $request->input('item-minQuantity');
-        $max_quantity = $request->input('item-maxQuantity');
-        $item_status = $request->input('item-status');
+        $current_quantity = $request->input('current-quantity');
+        $item_status = $request->input('item_status');
+        $min_quantity = $current_quantity / 2;
+        $max_quantity = $current_quantity;
         $item_name = $item_category . "-" . $model . "-" . $serialNum;
+
+        if ($item_status === null) {
+            $item_status = 0;
+        }
 
         $data = $this->inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name, $item_status);
         DB::table('m_inventory')->insert($data);
@@ -48,7 +53,6 @@ class InventoryController extends Controller
     public function inventoryData($item_code, $item_name, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name, $item_status)
     {
         $uniqueID = $this->generateItemCode($item_category);
-
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
@@ -130,7 +134,7 @@ class InventoryController extends Controller
     {
         // Retrieve the item by its ID
         $item = DB::table('m_inventory')->where('item_id', $id)
-        ->first(); // Get the first matching item
+            ->first(); // Get the first matching item
 
         if (!$item) {
             return response()->json(['message' => 'Item not found'], 404);
