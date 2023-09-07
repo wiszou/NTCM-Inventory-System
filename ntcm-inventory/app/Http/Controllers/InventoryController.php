@@ -167,4 +167,45 @@ class InventoryController extends Controller
 
         return response()->json(['message' => 'Item updated successfully'], 200);
     }
+
+    public function updateTab(request $request)
+    {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+        $serialNum = $request->input('item-serial');
+        $inventoryID = $request->input('idid');
+        $item_code = $request->input('item-code');
+        $supplier_name = $request->input('supplier-name');
+        $item_category = $request->input('item-category');
+        $brand = $request->input('item-brand');
+        $model = $request->input('item-model');
+        $price = $request->input('item-price');
+        $remarks = $request->input('item-remarks');
+        $current_quantity = $request->input('item-currentQuantity');
+        $item_status = $request->input('answer');
+        $description = $request->input('item-name');
+
+        $data = array(
+            'serial_num' => $serialNum,
+            'item_id' => $item_code,
+            'supplier_name' => $supplier_name,
+            'category' => $item_category,
+            'brand' => $brand,
+            'model' => $model,
+            'price' => $price,
+            'remarks' => $remarks,
+            'current_quantity' => $current_quantity,
+            'item_status' => $item_status,
+            'description' => $description,
+            'user_change' => $user,
+            'date_change' => $currentDate,
+        );
+        DB::table('m_inventory')
+            ->where('inventory_id', $inventoryID)  // find your inventory item by its ID
+            ->limit(1)  // optional - to ensure only one record is updated
+            ->update($data);
+
+            return redirect()->back()->with('success', 'Item updated successfully.');
+    }
 }

@@ -232,7 +232,8 @@
                         <!--Body-->
                         <div class="flex justify-center">
                             <div class="border rounded-lg w-full">
-                                <form action="#" class="relative bg-white">
+                                <form action="/update-item" method="post" class="relative bg-white">
+                                    @csrf
                                     <!-- Modal body -->
                                     <div class="p-6 space-y-6">
                                         <div class="grid grid-cols-6 gap-6">
@@ -241,6 +242,7 @@
                                                 <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Inventory
                                                     ID</label>
                                                 <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="LT-0001" required="" disabled>
+                                                <input type="hidden" name="idid" id="idid" value="">
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item-code" class="block mb-2 text-sm font-medium text-gray-900 ">Item
@@ -404,6 +406,7 @@
                                 modal.querySelector('#item-model').value = data.item.model;
                                 modal.querySelector('#item-price').value = data.item.price;
                                 modal.querySelector('#item-serial').value = data.item.serial_num;
+                                modal.querySelector('#idid').value = data.item.inventory_id;
                                 modal.querySelector('#item-currentQuantity').value = data.item.current_quantity;
                                 modal.querySelector('#supplier-name').value = data.item.supplier_name;
                                 modal.querySelector('#title').textContent = data.item.brand + "-" + data.item.model + "-" + data.item.serial_num;
