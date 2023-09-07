@@ -178,7 +178,7 @@
                             $statusClass = '';
 
                             if ($item->item_status == 0) {
-                            $statusText = 'On Stock';
+                            $statusText = 'Spare';
                             $statusClass = 'bg-green-500';
                             } else if ($item->item_status == 1) {
                             $statusText = 'Borrowed';
@@ -187,6 +187,11 @@
                             $statusText = 'Deployed';
                             $statusClass = 'bg-blue-500';
                             }
+                            else if ($item->item_status == 3) {
+                            $statusText = 'Defect';
+                            $statusClass = 'bg-red-500';
+                            }
+
                             @endphp
                             <tr onclick="openModal('{{ $item->item_id }}')" class="{{ $statusClass }}">
                                 <td>{{ $item->item_id }}</td>
