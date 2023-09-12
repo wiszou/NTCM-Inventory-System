@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogRegController;
 use App\Http\Controllers\DateTimeController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\CatSuppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,21 +25,26 @@ Route::post('/login-user', [LogRegController::class, 'loginUser'])->name('login'
 Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
 
 Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
-Route::post('/remove-item/{itemCode}', [InventoryController::class, 'removeItem'])->name('remove');
+Route::post('/remove-item/{removeItem}', [InventoryController::class, 'removeItem'])->name('remove');
+Route::get('/api/getItemDetails/{itemId}', [InventoryController::class, 'getItemDetails']);
+Route::post('/update-item',  [InventoryController::class, 'updateTab']);
 
-Route::get('/addCategory', [CategoryController::class, 'addCategory'])->name('addCategory');
-Route::get('/addSupplier', [SupplierController::class, 'addSupplier'])->name('addSupplier');
+Route::post('/addSupplier', [CatSuppController::class, 'addSupplier']);
+Route::post('/addCategory', [CatSuppController::class, 'addCategory']);
+Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
+Route::get('/remove-supplier/{itemCode}', [CatSuppController::class, 'removeSupplier']);
 
 Route::group(['middleware' => ['session-checker']], function () {
-    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
+    Route::get('/CategorynSupplier', [CatSuppController::class, 'updateTable'])->name('CatSupp');
+    Route::get('/new-item', [CatSuppController::class, 'updateAdd'])->name('newitem');
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');
-
-    Route::get('/newitem', function () {
-        return view('newitem');
-    })->name('newitem');
 
     Route::get('/logs', function () {
         return view('logs');
@@ -50,10 +53,6 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/custodian', function () {
         return view('custodian');
     })->name('custodian');
-
-    Route::get('/suppliers', function () {
-        return view('suppliers');
-    })->name('suppliers');
 });
 
 

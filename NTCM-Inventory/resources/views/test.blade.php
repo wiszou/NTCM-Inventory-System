@@ -107,212 +107,142 @@
 
 <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] h-full">
     <div class="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
-        <div class="px-6 flex items-center justify-between space-x-4 2xl:container">
-
-            <!--search bar -->
-            <div hidden class="md:block w-80">
-                <div class="relative flex items-center text-gray-400">
-                    <span class="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
-                        <svg xmlns="http://ww50w3.org/2000/svg" class="w-4 fill-current" viewBox="0 0 35.997 36.004">
-                            <path id="Icon_awesome-search" data-name="search"
-                                d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z">
-                            </path>
-                        </svg>
-                    </span>
-                    <input type="search" name="leadingIcon" id="leadingIcon" placeholder="Search here"
-                        class="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300">
-                </div>
-            </div>
-            <button class="w-12 h-16 -mr-2 border-r lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 my-auto" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <!-- component -->
+        <div class='bg-sky-300 w-screen h-screen flex justify-center items-start pt-32'>
+            <div class='relative searchable-list'>
+                <input type='text'
+                    class='data-list peer w-30 h-10 rounded-sm bg-white cursor-pointer outline-none text-gray-700
+            caret-gray-800 pl-2 pr-7 focus:bg-gray-200 font-bold transition-all duration-300 text-sm text-overflow-ellipsis '
+                    spellcheck="false" placeholder="Select a fruit"></input>
+                <svg class="outline-none cursor-pointer fill-gray-400 absolute transition-all duration-200 h-full w-4 -rotate-90 right-2 top-[50%] -translate-y-[50%]"
+                    viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path d="M0 256l512 512L1024 256z"></path>
                 </svg>
-            </button>
-            <!--/search bar -->
+                <ul class='absolute option-list overflow-y-scroll max-h-64 min-h-[0px] flex flex-col top-12 
+            left-0 max-w-[120%] min-w-[120%] bg-white rounded-sm   scale-0 opacity-0 
+            transition-all 
+            duration-200 origin-top-left'>
+                </ul>
 
-            <!--notification-->
-            <div class="flex space-x-4">
-                <button aria-label="search"
-                    class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200 md:hidden">
-                    <svg xmlns="http://ww50w3.org/2000/svg" class="w-4 mx-auto fill-current text-gray-600"
-                        viewBox="0 0 35.997 36.004">
-                        <path id="Icon_awesome-search" data-name="search"
-                            d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z">
-                        </path>
-                    </svg>
-                </button>
-                <button aria-label="chat"
-                    class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 m-auto text-gray-600" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                    </svg>
-                </button>
-                <button aria-label="notification"
-                    class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 m-auto text-gray-600" viewBox="0 0 20 20"
-                        fill="currentColor">
-                        <path
-                            d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-                    </svg>
-                </button>
             </div>
         </div>
+        <script>
+        // see how to use at the end of the script
+        const domParser = new DOMParser();
+        const dataList = {
+            el: document.querySelector('.data-list'),
+            listEl: document.querySelector('.option-list'),
+            arrow: document.querySelector(".searchable-list>svg"),
+            currentValue: null,
+            listOpened: false,
+            optionTemplate: `
+        <li
+			class='data-option select-none break-words inline-block text-sm text-gray-500 bg-gray-100 odd:bg-gray-200 hover:bg-gray-300 hover:text-gray-700 transition-all duration-200 font-bold p-3 cursor-pointer max-w-full '>
+				[[REPLACEMENT]]
+        </li>
+        `,
+            optionElements: [],
+            options: [],
+            find(str) {
+                for (let i = 0; i < dataList.options.length; i++) {
+                    const option = dataList.options[i];
+                    if (!option.toLowerCase().includes(str.toLowerCase())) {
+                        dataList.optionElements[i].classList.remove('block');
+                        dataList.optionElements[i].classList.add('hidden');
+                    } else {
+                        dataList.optionElements[i].classList.remove('hidden');
+                        dataList.optionElements[i].classList.add('block');
+                    }
+                }
+            },
+            remove(value) {
+                const foundIndex = dataList.options.findIndex(v => v === value);
+                if (foundIndex !== -1) {
+                    dataList.listEl.removeChild(dataList.optionElements[foundIndex])
+                    dataList.optionElements.splice(foundIndex, 1);
+                    dataList.options.splice(value, 1);
+                }
+            },
+            append(value) {
+                if (!value || typeof value === 'object' || typeof value === 'symbol' || typeof value === 'function')
+                    return;
+                value = value.toString().trim();
+                if (value.length === 0) return;
+                if (dataList.options.includes(value)) return;
+
+                const html = dataList.optionTemplate.replace('[[REPLACEMENT]]', value);
+                const targetEle = domParser.parseFromString(html, "text/html").querySelector('li');
+                targetEle.innerHTML = targetEle.innerHTML.trim();
+                dataList.listEl.appendChild(targetEle);
+                dataList.optionElements.push(targetEle);
+                dataList.options.push(value);
+
+                if (!dataList.currentValue) dataList.setValue(value);
+
+                targetEle.onmousedown = (e) => {
+                    dataList.optionElements.forEach((el, index) => {
+                        if (e.target === el) {
+                            dataList.setValue(dataList.options[index]);
+                            dataList.hideList();
+                            return;
+                        }
+                    })
+                }
+            },
+            setValue(value) {
+                dataList.el.value = value;
+                dataList.currentValue = value;
+            },
+            showList() {
+                dataList.listOpened = true;
+                dataList.listEl.classList.add('opacity-100');
+                dataList.listEl.classList.add('scale-100');
+                dataList.arrow.classList.add("rotate-0");
+            },
+            hideList() {
+                dataList.listOpened = false;
+                dataList.listEl.classList.remove('opacity-100');
+                dataList.listEl.classList.remove('scale-100');
+                dataList.arrow.classList.remove("rotate-0");
+            },
+            init() {
+                dataList.arrow.onclick = () => {
+                    dataList.listOpened ? dataList.hideList() : dataList.showList();
+                }
+                dataList.el.oninput = (e) => {
+                    dataList.find(e.target.value);
+                }
+                dataList.el.onclick = (el) => {
+                    dataList.showList();
+                    for (let el of dataList.optionElements) {
+                        el.classList.remove('hidden');
+                    }
+                }
+                dataList.el.onblur = (e) => {
+                    dataList.hideList();
+                    dataList.setValue(dataList.currentValue);
+                }
+            }
+        }
+
+        // how to use
+        dataList.init();
+        // add items
+        const data = ["Apple", "Apple", "Pear", "Avocado", "Pineapple", "Banana", "Peach",
+            "Oraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaange", " ", "", null, undefined, [], {}, {
+                a: 1
+            }
+        ];
+        data.forEach(v => (dataList.append(v)));
+
+        // remove item
+        // dataList.remove("Peach");
+
+        // get selected value
+        // dataList.currentvalue;
+        </script>
     </div>
-    <!--End notification-->
-
-
-    <body class="bg-gray-100 py-2">
-        <div class="mx-4 my-4 w-1/2 h-50 pt-4 pb-7 px-6 rounded-xl border border-gray-200 bg-white shadow-sm">
-
-            <form class="w-full max-w-lg" action="{{ route('insert') }}" method="post">
-                @csrf
-                <div class="flex flex-wrap -mx-3 mb-6 ">
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Item Code
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-code" name="item-code" type="text" placeholder="" required>
-                    </div>
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-state">
-                            Supplier Name
-                        </label>
-                        <div class="relative">
-                            <select
-                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-state" id="supplier-name" name="supplier-name" required>
-                                <option>New Mexico</option>
-                                <option>Missouri</option>
-                                <option>Texas</option>
-                            </select>
-                            <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Item Category
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-category" name="item-category" type="text" placeholder="" required>
-                    </div>
-                    <div class="w-full md:w-1/2 px-3">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-last-name">
-                            Brand
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="item-brand" name="item-brand" type="text" placeholder="" required>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-last-name">
-                            Model
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="item-model" name="item-model" type="text" placeholder="" required>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Price
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-price" name="item-price" type="text" placeholder="" required>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Serial Number
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-serial" name="item-serial" type="text" placeholder="" required>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Item Description
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-description" name="item-description" type="text" placeholder="" required>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mt-4 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Remarks
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-remarks" name="item-remarks" type="text" placeholder="" required>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Current Quantity
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-currentQuantity" name="item-currentQuantity" type="text" placeholder="" required>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Minimum Quantity
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-minQuantity" name="item-minQuantity" type="text" placeholder="" required>
-                    </div>
-
-
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Maximum Quantity
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="item-maxQuantity" name="item-maxQuantity" type="text" placeholder="" required>
-                    </div>
-
-                    <!-- Using utilities: -->
-                    <div class="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
-                        <button type="submit"
-                            class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded w-1/2">
-                            Add
-                        </button>
-                    </div>
-                </div>
-
-            </form>
-        </div>
 
     </body>
 
