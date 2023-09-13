@@ -154,7 +154,11 @@
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
-                                <input type="text" name="brand" id="item-brand" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Lenovo" required="">
+                                <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                
+                                    <option value=""></option>
+                             
+                                </select>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Model</label>

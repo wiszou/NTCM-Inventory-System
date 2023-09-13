@@ -1,3 +1,14 @@
+<style>
+.active {
+    background-color: #F3F4F6;
+    /* Change this to your desired active button background color */
+
+    /* Add any other styles you want for the active button */
+}
+</style>
+
+
+
 <!--SIDEBAR-->
 <aside
     class="fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-64 xl:w-[20%] 2xl:w-[15%] ">
@@ -8,7 +19,7 @@
         <ul class="space-y-2">
             <li>
                 <a href="{{ route('dashboard') }}"
-                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 {{ Request::is('dashboard') ? 'active' : '' }}">
                     <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -19,7 +30,7 @@
             </li>
             <li>
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 {{ Request::is('newitem', 'updated-inventory', 'CatSupp') ? 'active' : '' }}"
                     aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -38,17 +49,7 @@
 
                 <ul id="dropdown-example" class="hidden py-2 space-y-2">
 
-                    <li class="flex items-center">
-                        <a href="{{ route('newitem') }}"
-                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                            </svg>
-                            <span class="text-gray-800 pl-2">Add Item</span>
-                        </a>
-                    </li>
+
                     <li>
                         <a href="{{ route('updated-inventory') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
@@ -58,42 +59,69 @@
                                     d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
                                     id="mainIconPathAttribute" stroke-width="0.6" stroke="#808080"></path>
                             </svg>
-                            <span class="text-gray-800 pl-2">Item Lists</span>
+                            <span class="text-gray-800 pl-2">IT Equipments</span>
+                        </a>
+                    </li>
+                    <li class="flex items-center">
+                        <a href="{{ route('newitem') }}"
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8 {{ Request::is('newitem') ? 'active' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                            </svg>
+                            <span class="text-gray-800 pl-2">Add Item</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('CatSupp') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
-                                class="bi bi-stickies-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z" />
-                                <path
-                                    d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V10.5z" />
+                            <svg fill="#000000" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <title></title>
+                                    <path
+                                        d="M181.75,42.5c-3-13-15-22.5-29-22.5h-105a30.6,30.6,0,0,0-29.5,22.5l-10.5,40c-2,7,1,14,7,18l2,1.5c3,1.5,5.5,3,8.5,3.5V160a20.06,20.06,0,0,0,20,20h23.5a20.06,20.06,0,0,0,20-20V140h27.5v20a20.06,20.06,0,0,0,20,20h19a20.06,20.06,0,0,0,20-20V105.5a22.09,22.09,0,0,0,8-3l2-1.5a16.87,16.87,0,0,0,7-18.5ZM156.25,160h-20V140a20.06,20.06,0,0,0-20-20H88.75a20.06,20.06,0,0,0-20,20v20H45.25V100c6.5-2.5,13.5-1.5,19.5,2a21.07,21.07,0,0,0,24,0,21.07,21.07,0,0,1,24,0,21.07,21.07,0,0,0,24,0,20.87,20.87,0,0,1,19.5-2Zm14.5-74.5a40.69,40.69,0,0,0-46,0,.94.94,0,0,1-1.5,0,40.69,40.69,0,0,0-46,0,.94.94,0,0,1-1.5,0,40.69,40.69,0,0,0-46,0,.94.94,0,0,1-1.5,0l9.5-38c1-4.5,5-7.5,10-7.5h105.5a9.64,9.64,0,0,1,9.5,7.5l9.5,38S171.25,86,170.75,85.5Z">
+                                    </path>
+                                </g>
                             </svg>
-                            <span class="text-gray-800 pl-2">Suppliers & Categories</span>
+                            <span class="text-gray-800 pl-2">Suppliers <br>& Brands</span>
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ route('CatSupp') }}"
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M 0 3 L 0 21 L 20.53125 21 L 24 9 L 4 9 L 2 16 L 1.4375 15.3125 L 3.09375 8 L 21 8 L 21 6 L 9 6 L 7.21875 3 Z">
+                                </path>
+                            </svg>
+                            <span class="text-gray-800 pl-2">Categories</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li>
                 <a href="{{ route('updated-equipment') }}"
-                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 ">
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 {{ Request::is('updated-equipment') ? 'active' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
                         viewBox="0 0 20 20">
                         <path
                             d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1H4.98zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374L3.81.563zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z" />
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Equipment</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Custodian</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('updated-custodian') }}"
-                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" class="text-gray-500" fill="currentColor"
-                        viewBox="0 0 30 30">
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 {{ Request::is('updated-custodian') ? 'active' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" class="text-gray-500"
+                        fill="currentColor" viewBox="0 0 30 30">
                         <path
                             d="M24.707,8.793l-6.5-6.5C18.019,2.105,17.765,2,17.5,2H7C5.895,2,5,2.895,5,4v22c0,1.105,0.895,2,2,2h16c1.105,0,2-0.895,2-2 V9.5C25,9.235,24.895,8.981,24.707,8.793z M18,21h-8c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h8c0.552,0,1,0.448,1,1 C19,20.552,18.552,21,18,21z M20,17H10c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h10c0.552,0,1,0.448,1,1C21,16.552,20.552,17,20,17 z M18,10c-0.552,0-1-0.448-1-1V3.904L23.096,10H18z">
                         </path>
@@ -103,7 +131,7 @@
             </li>
             <li>
                 <a href="{{ route('logs') }}"
-                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 ">
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 {{ Request::is('logs') ? 'active' : '' }}">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -140,4 +168,7 @@
 </div>
 </div>
 </aside>
+
+
+
 <!--END SIDEBAR-->
