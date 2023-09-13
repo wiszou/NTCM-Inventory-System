@@ -180,10 +180,10 @@
                             if ($item->item_status == 0) {
                             $statusText = 'Spare';
                             $statusClass = 'bg-green-500';
-                            } else if ($item->item_status == 1) {
+                            } else if ($item->item_status == 2) {
                             $statusText = 'Borrowed';
                             $statusClass = 'bg-orange-500';
-                            } else if ($item->item_status == 2) {
+                            } else if ($item->item_status == 1) {
                             $statusText = 'Deployed';
                             $statusClass = 'bg-blue-500';
                             }
@@ -415,9 +415,9 @@
                                 const itemStatus = data.item.item_status;
                                 if (itemStatus === 0) {
                                     document.getElementById('yes').checked = true;
-                                } else if (itemStatus === 1) {
-                                    document.getElementById('yesno').checked = true;
                                 } else if (itemStatus === 2) {
+                                    document.getElementById('yesno').checked = true;
+                                } else if (itemStatus === 1) {
                                     document.getElementById('no').checked = true;
                                 } else if (itemStatus === 3) {
                                     document.getElementById('yesnono').checked = true;
