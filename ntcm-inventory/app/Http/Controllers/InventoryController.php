@@ -109,6 +109,13 @@ class InventoryController extends Controller
         $category = DB::table('m_category')->get();
         return view('inventory', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier]);
     }
+    public function getUpdatedEquipment()
+    {
+        $inventory = DB::table('m_inventory')->get();
+        $supplier = DB::table('m_supplier')->get();
+        $category = DB::table('m_category')->get();
+        return view('equipment', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier]);
+    }
 
     public function getItemDetails($itemId)
     {

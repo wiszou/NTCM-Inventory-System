@@ -38,8 +38,8 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
+    Route::get('/updated-equipment', [InventoryController::class, 'getUpdatedEquipment'])->name('updated-equipment');
     Route::get('/CategorynSupplier', [CatSuppController::class, 'updateTable'])->name('CatSupp');
     Route::get('/new-item', [CatSuppController::class, 'updateAdd'])->name('newitem');
     Route::get('/inventory', function () {
