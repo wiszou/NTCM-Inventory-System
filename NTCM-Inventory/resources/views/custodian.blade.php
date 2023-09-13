@@ -232,187 +232,204 @@ input[disabled] {
                 style="background: rgba(0,0,0,.7);">
                 <div class="modal-container bg-white w-2/6 rounded-xl z-50">
                     <div class="modal-content py-4 text-left px-6 max-h-screen overflow-y-auto">
-                        <div class="">
-                            <!--body-->
-                            <div class="text-center p-5 flex-auto justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <!--Title-->
+                        <div class="flex justify-between items-center pb-3">
+                            <p class="text-xl font-semibold" name="title" id="title"></p>
+                            <div class="modal-close cursor-pointer z-50">
+                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg"
+                                    width="18" height="18" viewBox="0 0 18 18">
+                                    <path
+                                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                    </path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <h2 class="text-xl font-bold py-4 ">Form</h3>
-                                    <p class="text-sm text-gray-500 px-8">If all the item from this is returned. Click</p>
-                            </div>
-                            <!--footer-->
-                            <div class="p-3  mt-2 text-center space-x-4 md:block">
-                                <button
-                                    class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
-                                    Cancel
-                                </button>
-                                <button
-                                    class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">Delete</button>
                             </div>
                         </div>
+                        <!--Body-->
+                        <div class="flex justify-center">
+                            <div class="px-2 py-2 rounded-lg w-full ">
+                                <h1 class="text-gray-900 text-3xl title-font font-medium mb-7">Custodian Name</h1>
+                                <div class="flex border-t border-gray-200 py-2">
+                                    <span class="text-gray-700">Item 1</span>
+                                </div>
+                                <div class="flex border-t border-gray-200 py-2">
+                                    <span class="text-gray-700">Item 2</span>
+                                </div>
+                                <div class="flex border-t border-gray-200 py-2">
+                                    <span class="text-gray-700">Item 3</span>
+                                </div>
+                                <div class="flex border-t border-gray-200 py-2">
+                                    <span class="text-gray-700">Item 4</span>
+                                </div>
+                                <div class="flex border-t border-b border-gray-200 py-2">
+                                    <span class="text-gray-700">Item 5</span>
+                                </div>
+                                <div class="flex mt-6 mb-2">
+
+                                    <button
+                                        class="ml-auto mr-4 rounded-lg w-16 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-700 hover:bg-gray-300">
+                                        <span>View</span>
+                                    </button>
+                                    <button
+                                        class="text-white bg-orange-400 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded-lg">Returned</button>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+
                 </div>
-
-                <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-                <!-- jQuery -->
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-                <!--Datatables -->
-                <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-                <script>
-                $(document).ready(function() {
-
-                    var table = $('#example').DataTable({
-                            responsive: true
-                        })
-                        .columns.adjust()
-                        .responsive.recalc();
-                });
-                </script>
-
-
-                <script>
-                const modal = document.querySelector('.main-modal');
-                const closeButton = document.querySelectorAll('.modal-close');
-                const modalClose = () => {
-                    modal.classList.remove('fadeIn');
-                    modal.classList.add('fadeOut');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 0);
-                }
-
-                const openModal = () => {
-
-                    modal.classList.remove('fadeOut');
-                    modal.classList.add('fadeIn');
-                    modal.style.display = 'flex';
-
-                }
-
-                for (let i = 0; i < closeButton.length; i++) {
-                    const elements = closeButton[i];
-                    elements.onclick = (e) => modalClose();
-                    modal.style.display = 'none';
-                }
-
-                window.onclick = function(event) {
-                    if (event.target == modal) modalClose();
-                }
-
-                document.getElementById('removeButton').addEventListener('click', function() {
-                    // Assuming you have a variable with the item ID you want to remove
-                    var itemId = this.value; // Replace with your actual item ID
-
-                    // Send a POST request to the 'remove' route
-                    axios.post('/remove-item/' + itemId)
-                        .then(function(response) {
-                            if (response.status === 200) {
-                                // Handle success
-                                console.log('Item removed successfully');
-                            } else {
-                                // Handle error
-                                console.error('Error removing item');
-                            }
-                        })
-                        .catch(function(error) {
-                            // Handle network or other errors
-                            console.error('Network error:', error);
-                        });
-                });
-                </script>
-
             </div>
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!--Datatables -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script>
         $(document).ready(function() {
-            // Function to show/hide rows based on the selected status
-            function filterInventoryTable(statusClass) {
-                $('#example tbody tr').hide(); // Hide all rows initially
-                if (statusClass === 'all') {
-                    $('#example tbody tr').show(); // Show all rows for "All" option
-                } else {
-                    $(`.${statusClass}`).show(); // Show rows with the selected status class
-                }
-            }
 
-            // Initialize filtering with "All" status selected
-            filterInventoryTable('all');
-
-            // Handle status option clicks
-            $('#allStatus').click(function() {
-                filterInventoryTable('all');
-            });
-
-            $('#spareStatus').click(function() {
-                filterInventoryTable('bg-green-500'); // Adjust the class as needed
-            });
-
-            $('#deployedStatus').click(function() {
-                filterInventoryTable('bg-blue-500'); // Adjust the class as needed
-            });
-
-            $('#borrowedStatus').click(function() {
-                filterInventoryTable('bg-orange-500'); // Adjust the class as needed
-            });
+            var table = $('#example').DataTable({
+                    responsive: true
+                })
+                .columns.adjust()
+                .responsive.recalc();
         });
         </script>
+
 
         <script>
-        const inputFields = document.querySelectorAll('.editable-input');
-        const editButton = document.getElementById('editButton');
-        const exitButton = document.getElementById('exitButton');
-        const saveButton = document.getElementById('saveButton');
-        saveButton.style.backgroundColor = 'grey';
-        // Initialize the button text to "Edit"
-        let isEditing = false;
+        const modal = document.querySelector('.main-modal');
+        const closeButton = document.querySelectorAll('.modal-close');
+        const modalClose = () => {
+            modal.classList.remove('fadeIn');
+            modal.classList.add('fadeOut');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 0);
+        }
 
-        editButton.addEventListener('click', () => {
-            inputFields.forEach(inputField => {
-                inputField.disabled = isEditing;
-            });
+        const openModal = () => {
 
-            // Change the text of the button based on the state
-            if (isEditing) {
-                editButton.textContent = 'Edit';
-                saveButton.disabled = true; // Disable the "Save" button
-                saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-            } else {
-                editButton.textContent = 'Stop Editing';
-                saveButton.disabled = false; // Enable the "Save" button
-                saveButton.style.backgroundColor = ''; // Reset the color
-            }
+            modal.classList.remove('fadeOut');
+            modal.classList.add('fadeIn');
+            modal.style.display = 'flex';
 
-            // Toggle the editing state
-            isEditing = !isEditing;
-        });
+        }
 
-        exitButton.addEventListener('click', () => {
-            inputFields.forEach(inputField => {
-                inputField.disabled = true; // Disable the input fields
-            });
-            editButton.textContent = 'Edit'; // Reset the "Edit" button text
-            saveButton.disabled = true; // Disable the "Save" button
-            saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-            isEditing = false; // Reset the editing state
+        for (let i = 0; i < closeButton.length; i++) {
+            const elements = closeButton[i];
+            elements.onclick = (e) => modalClose();
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) modalClose();
+        }
+
+        document.getElementById('removeButton').addEventListener('click', function() {
+            // Assuming you have a variable with the item ID you want to remove
+            var itemId = this.value; // Replace with your actual item ID
+
+            // Send a POST request to the 'remove' route
+            axios.post('/remove-item/' + itemId)
+                .then(function(response) {
+                    if (response.status === 200) {
+                        // Handle success
+                        console.log('Item removed successfully');
+                    } else {
+                        // Handle error
+                        console.error('Error removing item');
+                    }
+                })
+                .catch(function(error) {
+                    // Handle network or other errors
+                    console.error('Network error:', error);
+                });
         });
         </script>
 
-        <!-- Tailwind Elements Script -->
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    </div>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        // Function to show/hide rows based on the selected status
+        function filterInventoryTable(statusClass) {
+            $('#example tbody tr').hide(); // Hide all rows initially
+            if (statusClass === 'all') {
+                $('#example tbody tr').show(); // Show all rows for "All" option
+            } else {
+                $(`.${statusClass}`).show(); // Show rows with the selected status class
+            }
+        }
+
+        // Initialize filtering with "All" status selected
+        filterInventoryTable('all');
+
+        // Handle status option clicks
+        $('#allStatus').click(function() {
+            filterInventoryTable('all');
+        });
+
+        $('#spareStatus').click(function() {
+            filterInventoryTable('bg-green-500'); // Adjust the class as needed
+        });
+
+        $('#deployedStatus').click(function() {
+            filterInventoryTable('bg-blue-500'); // Adjust the class as needed
+        });
+
+        $('#borrowedStatus').click(function() {
+            filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+        });
+    });
+    </script>
+
+    <script>
+    const inputFields = document.querySelectorAll('.editable-input');
+    const editButton = document.getElementById('editButton');
+    const exitButton = document.getElementById('exitButton');
+    const saveButton = document.getElementById('saveButton');
+    saveButton.style.backgroundColor = 'grey';
+    // Initialize the button text to "Edit"
+    let isEditing = false;
+
+    editButton.addEventListener('click', () => {
+        inputFields.forEach(inputField => {
+            inputField.disabled = isEditing;
+        });
+
+        // Change the text of the button based on the state
+        if (isEditing) {
+            editButton.textContent = 'Edit';
+            saveButton.disabled = true; // Disable the "Save" button
+            saveButton.style.backgroundColor = 'grey'; // Change the color to grey
+        } else {
+            editButton.textContent = 'Stop Editing';
+            saveButton.disabled = false; // Enable the "Save" button
+            saveButton.style.backgroundColor = ''; // Reset the color
+        }
+
+        // Toggle the editing state
+        isEditing = !isEditing;
+    });
+
+    exitButton.addEventListener('click', () => {
+        inputFields.forEach(inputField => {
+            inputField.disabled = true; // Disable the input fields
+        });
+        editButton.textContent = 'Edit'; // Reset the "Edit" button text
+        saveButton.disabled = true; // Disable the "Save" button
+        saveButton.style.backgroundColor = 'grey'; // Change the color to grey
+        isEditing = false; // Reset the editing state
+    });
+    </script>
+
+    <!-- Tailwind Elements Script -->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
 
 
