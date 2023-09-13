@@ -53,6 +53,10 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/custodian', function () {
         return view('custodian');
     })->name('custodian');
+
+    Route::get('/equipment', function () {
+        return view('equipment');
+    })->name('equipment');
 });
 
 
