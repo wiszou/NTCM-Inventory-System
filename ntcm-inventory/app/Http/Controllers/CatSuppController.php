@@ -63,7 +63,7 @@ class CatSuppController extends Controller
     public function addCategory(Request $request)
     {
         $name = $request->input('name');
-
+        $stock = $request->input('stock');
         // Check if a category with the same name already exists
         $existingCategory = DB::table('m_category')
             ->where('category_name', $name)
@@ -74,13 +74,16 @@ class CatSuppController extends Controller
             return redirect()->back()->with('error', 'Category with this name already exists.');
         }
 
-        $id =  $this->generateCategoryID();
+        $id =  $this->generateInventoryID($name);
+        $categId = $this->generateCategoryID($name);
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $date = $dateTimeController->getDateTime(new Request());
 
         $categoryData = array(
-            'category_id' => $id,
+            'inventory_id' => $id,
+            'category_id' => $categId,
+            'stock_req' => $stock,
             'category_name' => $name,
             'user_created' => $user,
             'user_change' => $user,
@@ -92,25 +95,47 @@ class CatSuppController extends Controller
         return redirect()->back()->with('success', 'Category added successfully.');
     }
 
-    public function generateCategoryID()
+    public function generateInventoryID($name)
     {
         $rowCount = DB::table('m_category')->count();
 
         $rowCount++;
         $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
-        $candidateId = "ID-Category-" . $formattedRowCount;
+        $candidateId = "IT-". $name . $formattedRowCount;
 
-        $existingCategory = DB::table('m_category')->where('category_id', $candidateId)->first();
+        $existingCategory = DB::table('m_category')->where('inventory_id', $candidateId)->first();
 
         while ($existingCategory) {
             $rowCount++;
             $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
             $candidateId = "ID-Category-" . $formattedRowCount;
-            $existingCategory = DB::table('m_category')->where('category_id', $candidateId)->first();
+            $existingCategory = DB::table('m_category')->where('inventory_id', $candidateId)->first();
         }
 
         return $candidateId;
     }
+
+    public function generateCategoryID($name)
+    {
+        $rowCount = DB::table('m_category')->count();
+
+        $rowCount++;
+        $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+        $candidateId = $name . $formattedRowCount;
+
+        $existingCategory = DB::table('m_category')->where('inventory_id', $candidateId)->first();
+
+        while ($existingCategory) {
+            $rowCount++;
+            $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+            $candidateId = "ID-Category-" . $formattedRowCount;
+            $existingCategory = DB::table('m_category')->where('inventory_id', $candidateId)->first();
+        }
+
+        return $candidateId;
+    }
+
+    
 
     public function updateTable()
     {
@@ -131,7 +156,7 @@ class CatSuppController extends Controller
     
     public function removeCategory($itemCode)
     {
-        DB::table('m_category')->where('category_id', $itemCode)->delete();
+        DB::table('m_category')->where('', $itemCode)->delete();
         return redirect()->back()->with('success', 'Category removed successfully.');
     }
 

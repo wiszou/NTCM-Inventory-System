@@ -142,16 +142,10 @@
                         <div class="grid grid-cols-6 gap-6">
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Inventory
-                                    ID</label>
+                                <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Item Code</label>
                                 <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Auto Generated" disabled>
                             </div>
 
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="item-code" class="block mb-2 text-sm font-medium text-gray-900 ">Item
-                                    Code</label>
-                                <input type="text" name="item-code" id="item-code" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="IT230001" required="">
-                            </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
                                 <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
@@ -181,15 +175,10 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-remarks" class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
-                                <input type="Text" name="item-remarks" id="item-remarks" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Returned by Ronald">
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3">
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
                                 <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
                                     @foreach ($categories as $item)
-                                    <option value="{{ $item->category_name }}">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->inventory_id }}">{{ $item->category_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -198,16 +187,9 @@
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
                                 <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
                                     @foreach ($suppliers as $item)
-                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-
-
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Item
-                                    Description:</label>
-                                <textarea name="description" id="description" class="min-h-16 resize-y shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Description" required=""></textarea>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
