@@ -75,16 +75,21 @@
                     </li>
                     <li>
                         <a href="{{ route('CatSupp') }}"
-                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
-                            <svg fill="#000000" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1"
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-7">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                 <g id="SVGRepo_iconCarrier">
-                                    <title></title>
                                     <path
-                                        d="M181.75,42.5c-3-13-15-22.5-29-22.5h-105a30.6,30.6,0,0,0-29.5,22.5l-10.5,40c-2,7,1,14,7,18l2,1.5c3,1.5,5.5,3,8.5,3.5V160a20.06,20.06,0,0,0,20,20h23.5a20.06,20.06,0,0,0,20-20V140h27.5v20a20.06,20.06,0,0,0,20,20h19a20.06,20.06,0,0,0,20-20V105.5a22.09,22.09,0,0,0,8-3l2-1.5a16.87,16.87,0,0,0,7-18.5ZM156.25,160h-20V140a20.06,20.06,0,0,0-20-20H88.75a20.06,20.06,0,0,0-20,20v20H45.25V100c6.5-2.5,13.5-1.5,19.5,2a21.07,21.07,0,0,0,24,0,21.07,21.07,0,0,1,24,0,21.07,21.07,0,0,0,24,0,20.87,20.87,0,0,1,19.5-2Zm14.5-74.5a40.69,40.69,0,0,0-46,0,.94.94,0,0,1-1.5,0,40.69,40.69,0,0,0-46,0,.94.94,0,0,1-1.5,0,40.69,40.69,0,0,0-46,0,.94.94,0,0,1-1.5,0l9.5-38c1-4.5,5-7.5,10-7.5h105.5a9.64,9.64,0,0,1,9.5,7.5l9.5,38S171.25,86,170.75,85.5Z">
-                                    </path>
+                                        d="M10.5021 1.40276C10.9577 1.14026 11.4742 1.00208 12 1.00208C12.5258 1.00208 13.0424 1.14027 13.4979 1.4028L13.5 1.404L20.5 5.40399C20.6632 5.49822 20.8165 5.60722 20.9581 5.72926L11.9999 10.8482L3.0418 5.72931C3.18347 5.60725 3.33678 5.49823 3.5 5.404L3.50386 5.40177L10.5021 1.40276Z"
+                                        fill="currentColor"></path>
+                                    <path
+                                        d="M2.04843 7.46517C2.01651 7.64064 2.00018 7.81927 2 7.999V16.0011C2.00054 16.5271 2.13941 17.0438 2.40269 17.4993C2.66597 17.9548 3.04439 18.333 3.5 18.5961L3.50386 18.5983L10.5 22.5961L10.5019 22.5971C10.6612 22.689 10.828 22.7656 11 22.8264V12.5804L2.04843 7.46517Z"
+                                        fill="currentColor"></path>
+                                    <path
+                                        d="M13 22.8264C13.1721 22.7656 13.3389 22.6889 13.4982 22.5971L13.5 22.5961L20.4961 18.5983L20.5 18.5961C20.9556 18.333 21.334 17.9548 21.5973 17.4993C21.8606 17.0438 21.9995 16.5271 22 16.0011V7.999C21.9998 7.81925 21.9835 7.64059 21.9516 7.4651L13 12.5803V22.8264Z"
+                                        fill="currentColor"></path>
                                 </g>
                             </svg>
                             <span class="text-gray-800 pl-2">Suppliers <br>& Brands</span>
@@ -92,8 +97,8 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('CatSupp') }}"
-                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
+                        <a href="{{ route('categories') }}"
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-7">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path

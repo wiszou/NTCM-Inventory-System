@@ -63,6 +63,10 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/itemheader', function () {
         return view('itemheader');
     })->name('itemheader');
+
+    Route::get('/categories', function () {
+        return view('categories');
+    })->name('categories');
 });
 
 

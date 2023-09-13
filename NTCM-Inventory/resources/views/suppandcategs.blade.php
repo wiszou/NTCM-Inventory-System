@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Suppliers and Categories</title>
+    <title>Suppliers and Brands</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -24,7 +24,7 @@
 
                 <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
                     <h2 class="text-2xl font-bold text-ntccolor">
-                        Suppliers and Categories
+                        Suppliers and Brands
                     </h2>
                 </div>
             </div>
@@ -61,15 +61,15 @@
 
             <!-- Categories -->
             <form action="/addCategory" method="post" class="flex-1 bg-white p-4 shadow rounded-lg">
-                @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Category</h2>
+                @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Brand</h2>
                 <div class="my-1"></div>
                 <div class="bg-ntccolor h-px mb-6"></div>
 
                 <div class="px-2 flex justify-center">
                     <div class="w-1/2">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Category
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Brand
                             Name:</label>
-                        <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5" placeholder="Category Name">
+                        <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5" placeholder="Brand Name">
                     </div>
                 </div>
                 <div class="flex space-x-2">
@@ -130,7 +130,7 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 justify-center">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Category Name
+                                Brand Name
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
