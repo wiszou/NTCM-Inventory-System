@@ -90,6 +90,18 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('updated-custodian') }}"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" class="text-gray-500" fill="currentColor"
+                        viewBox="0 0 30 30">
+                        <path
+                            d="M24.707,8.793l-6.5-6.5C18.019,2.105,17.765,2,17.5,2H7C5.895,2,5,2.895,5,4v22c0,1.105,0.895,2,2,2h16c1.105,0,2-0.895,2-2 V9.5C25,9.235,24.895,8.981,24.707,8.793z M18,21h-8c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h8c0.552,0,1,0.448,1,1 C19,20.552,18.552,21,18,21z M20,17H10c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h10c0.552,0,1,0.448,1,1C21,16.552,20.552,17,20,17 z M18,10c-0.552,0-1-0.448-1-1V3.904L23.096,10H18z">
+                        </path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Archives</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('logs') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
@@ -104,17 +116,7 @@
                     <span class="flex-1 ml-3 whitespace-nowrap">Logs</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('custodian') }}"
-                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
-                    <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Custodian</span>
-                </a>
-            </li>
+
 
         </ul>
     </div>
