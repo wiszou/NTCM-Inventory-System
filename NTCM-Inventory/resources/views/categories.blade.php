@@ -39,15 +39,15 @@
 
             <div class="px-2 flex justify-center">
                 <div class="w-1/2">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Brand
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Category
                         Name:</label>
                     <input type="text" name="name" id="name"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
-                        placeholder="Brand Name">
+                        placeholder="Category Name">
                 </div>
                 <div class="w-1/2 px-2">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Quantity:</label>
-                    <input type="number" name="name" id="name"
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Stock Requirement:</label>
+                    <input type="number" name="stock" id="name"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
                         placeholder="Quantity">
                 </div>
@@ -70,7 +70,7 @@
                     class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 justify-center">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Brand Name
+                            Category Name
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -80,11 +80,13 @@
                 <tbody>
 
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        @foreach ($category as $item)
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-
+                            {{ $item->category_name }}
                         </th>
                         <td class="px-6 py-4">
-                            <a href=""
+                            <a href="/remove-category/{{ $item->category_id }}"
                                 class="text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15"
                                     fill="currentcolor" viewBox="0 0 16 16">
@@ -95,7 +97,7 @@
                             </a>
                         </td>
                     </tr>
-
+                    @endforeach
                 </tbody>
             </table>
         </div>

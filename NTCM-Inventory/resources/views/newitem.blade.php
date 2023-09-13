@@ -148,10 +148,10 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
-                                <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
-                                
-                                    <option value=""></option>
-                             
+                                <select data-te-select-init data-te-select-filter="true" name="brand" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                    @foreach ($brand as $item)
+                                    <option value="{{ $item->brand_id }}">{{ $item->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
@@ -193,26 +193,26 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                            <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
-                                    <ul class="grid grid-cols-4 gap-x-5 mt-4">
-                                        <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="0" name="item-status" id="yes" />
-                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="yes">Spare</label>
-                                        </li>
-                                        <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="1" name="item-status" id="no" />
-                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="no">Deployed</label>
-                                        </li>
-                                        <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="2" name="item-status" id="yesno" />
-                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out " for="yesno">Borrowed</label>
-                                        </li>
-                                        <li class="">
-                                            <input class="peer sr-only editable-input" type="radio" value="3" name="item-status" id="yesnono" />
-                                            <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out " for="yesnono">Defect</label>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
+                                <ul class="grid grid-cols-4 gap-x-5 mt-4">
+                                    <li class="">
+                                        <input class="peer sr-only editable-input" type="radio" value="0" name="item-status" id="yes" />
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="yes">Spare</label>
+                                    </li>
+                                    <li class="">
+                                        <input class="peer sr-only editable-input" type="radio" value="1" name="item-status" id="no" />
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="no">Deployed</label>
+                                    </li>
+                                    <li class="">
+                                        <input class="peer sr-only editable-input" type="radio" value="2" name="item-status" id="yesno" />
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out " for="yesno">Borrowed</label>
+                                    </li>
+                                    <li class="">
+                                        <input class="peer sr-only editable-input" type="radio" value="3" name="item-status" id="yesnono" />
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out " for="yesnono">Defect</label>
+                                    </li>
+                                </ul>
+                            </div>
 
                         </div>
 

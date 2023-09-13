@@ -14,7 +14,7 @@ class InventoryController extends Controller
         $serialNum = $request->input('item-serial');
         $item_code = $request->input('item-code');
 
-        $existingRecord = DB::table('m_inventory')
+        $existingRecord = DB::table('t_inventory')
             ->where('serial_num', $serialNum)
             ->orWhere('item_id', $item_code)
             ->first();
@@ -39,8 +39,8 @@ class InventoryController extends Controller
             $item_status = 0;
         }
 
-        $data = $this->inventoryData($item_code, $item_category, $brand, $model, $price, $serialNum, $remarks, $current_quantity, $min_quantity, $max_quantity, $supplier_name, $item_status, $description);
-        DB::table('m_inventory')->insert($data);
+        $data = $this->inventoryData($item_category, $brand, $model, $price, $serialNum, $current_quantity, $supplier_name, $item_status);
+        DB::table('t_inventory')->insert($data);
 
         return redirect()->back()->with('success', 'Item added successfully.');
     }
@@ -48,30 +48,25 @@ class InventoryController extends Controller
     public function removeItem($removeID)
     {
         $inventoryId = $removeID; // Assuming 'id' is the correct name
-        DB::table('m_inventory')->where('inventory_id', $inventoryId)->delete();
+        DB::table('t_inventory')->where('inventory_id', $inventoryId)->delete();
         return redirect()->back()->with('success', 'Item removed successfully.');
     }
-    public function inventoryData($item_code, $item_category, $brand, $model, $price, $serialNum, $remarks, $current, $min, $max, $supplier_name, $item_status, $description)
+    public function inventoryData($item_category, $brand, $model, $price, $serialNum, $current, $supplier_name, $item_status)
     {
         $uniqueID = $this->generateItemCode($item_category);
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
         $inventoryData = array(
-            'inventory_id' => $uniqueID,
-            'item_id' => $item_code,
-            'supplier_name' => $supplier_name,
-            'category' =>  $item_category,
-            'brand' => $brand,
+            'item_id' => $uniqueID,
+            'supplier_id' => $supplier_name,
+            'category_id' =>  $item_category,
+            'brand_id' => $brand,
             'model' => $model,
             'price' => $price,
             'serial_num' => $serialNum,
-            'remarks' => $remarks,
-            'description' => $description,
             'item_status' => $item_status,
             'current_quantity' => $current,
-            'min_quantity' => $min,
-            'max_quantity' => $max,
             'user_created' => $user,
             'date_created' => $currentDate,
             'user_change' => $user,
@@ -84,19 +79,19 @@ class InventoryController extends Controller
     public function generateItemCode($category)
     {
         $currentYear = date('Y');
-        $rowCount = DB::table('m_inventory')->count();
+        $rowCount = DB::table('t_inventory')->count();
         $rowCount++;
 
         $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
 
         $id = $category . $currentYear . $formattedRowCount;
-        $existingItem = DB::table('m_inventory')->where('inventory_id', $id)->first();
+        $existingItem = DB::table('t_inventory')->where('item_id', $id)->first();
 
         while ($existingItem) {
             $rowCount++;
             $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
             $id = $category . "-" . $currentYear . "-" . $formattedRowCount;
-            $existingItem = DB::table('m_inventory')->where('inventory_id', $id)->first();
+            $existingItem = DB::table('t_inventory')->where('item_id', $id)->first();
         }
 
         return $id;
@@ -104,14 +99,14 @@ class InventoryController extends Controller
 
     public function getUpdatedInventory()
     {
-        $inventory = DB::table('m_inventory')->get();
+        $inventory = DB::table('t_inventory')->get();
         $supplier = DB::table('m_supplier')->get();
         $category = DB::table('m_category')->get();
         return view('inventory', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier]);
     }
     public function getUpdatedEquipment()
     {
-        $inventory = DB::table('m_inventory')->get();
+        $inventory = DB::table('t_inventory')->get();
         $supplier = DB::table('m_supplier')->get();
         $category = DB::table('m_category')->get();
         return view('equipment', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier]);
@@ -121,7 +116,7 @@ class InventoryController extends Controller
     {
         try {
             // Fetch item details based on the $itemId using the DB facade
-            $item = DB::table('m_inventory')
+            $item = DB::table('t_inventory')
                 ->where('item_id', $itemId)
                 ->first(); // Get the first matching item
 
@@ -143,7 +138,7 @@ class InventoryController extends Controller
     public function updateItem(Request $request, $id)
     {
         // Retrieve the item by its ID
-        $item = DB::table('m_inventory')->where('item_id', $id)
+        $item = DB::table('t_inventory')->where('item_id', $id)
             ->first(); // Get the first matching item
 
         if (!$item) {
@@ -170,7 +165,7 @@ class InventoryController extends Controller
         }
 
         // Perform the update using the update method
-        DB::table('m_inventory')->where('id', $id)->update($dataToUpdate);
+        DB::table('t_inventory')->where('id', $id)->update($dataToUpdate);
 
         return response()->json(['message' => 'Item updated successfully'], 200);
     }
@@ -208,7 +203,7 @@ class InventoryController extends Controller
             'user_change' => $user,
             'date_change' => $currentDate,
         );
-        DB::table('m_inventory')
+        DB::table('t_inventory')
             ->where('inventory_id', $inventoryID)  // find your inventory item by its ID
             ->limit(1)  // optional - to ensure only one record is updated
             ->update($data);

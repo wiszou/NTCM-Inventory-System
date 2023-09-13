@@ -32,7 +32,9 @@ Route::post('/update-item',  [InventoryController::class, 'updateTab']);
 
 Route::post('/addSupplier', [CatSuppController::class, 'addSupplier']);
 Route::post('/addCategory', [CatSuppController::class, 'addCategory']);
+Route::post('/addBrand', [CatSuppController::class, 'addBrand']);
 Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
+Route::get('/remove-brand/{itemCode}', [CatSuppController::class, 'removeBrand']);
 Route::get('/remove-supplier/{itemCode}', [CatSuppController::class, 'removeSupplier']);
 
 Route::group(['middleware' => ['session-checker']], function () {
@@ -43,6 +45,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
     Route::get('/updated-equipment', [InventoryController::class, 'getUpdatedEquipment'])->name('updated-equipment');
     Route::get('/CategorynSupplier', [CatSuppController::class, 'updateTable'])->name('CatSupp');
+    Route::get('/updated-category', [CatSuppController::class, 'updateCateg'])->name('updated-category');
     Route::get('/new-item', [CatSuppController::class, 'updateAdd'])->name('newitem');
     Route::get('/inventory', function () {
         return view('inventory');
