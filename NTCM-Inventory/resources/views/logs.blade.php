@@ -10,11 +10,133 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
     <!-- Styles -->
+
+
+
 </head>
+<style>
+/*Overrides for Tailwind CSS */
+
+/*Form fields*/
+
+.dataTables_wrapper select,
+.dataTables_wrapper .dataTables_filter input {
+    color: #4a5568;
+    /*text-gray-700*/
+    padding-left: 1rem;
+    /*pl-4*/
+    padding-right: 1rem;
+    /*pl-4*/
+    padding-top: .5rem;
+    /*pl-2*/
+    padding-bottom: .5rem;
+    /*pl-2*/
+    line-height: 1.25;
+    /*leading-tight*/
+    border-width: 1px;
+    /*border-2*/
+    border-radius: .25rem;
+    border-color: #4d4d4d;
+    /*border-gray-200*/
+    background-color: #ffffff;
+    /*bg-gray-200*/
+}
 
 
+/*Row Hover*/
+table.dataTable.hover tbody tr:hover,
+table.dataTable.display tbody tr:hover {
+    background-color: #4facb6;
+    /*bg-indigo-100*/
+    color: #ffffff;
+    font-weight: 400;
+}
+
+
+/*Pagination Buttons*/
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+
+    font-weight: 500;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    border: 1px solid transparent;
+    /*border border-transparent*/
+
+}
+
+
+/*Pagination Buttons - Current selected */
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: #5c5c5c !important;
+    /*text-white*/
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    /*shadow*/
+    font-weight: 200;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    background: #d6d6d6 !important;
+    /*bg-indigo-500*/
+    border: 1px solid transparent;
+    /*border border-transparent*/
+
+}
+
+
+/*Pagination Buttons - Hover */
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: #ffffff;
+    /*text-white*/
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    /*shadow*/
+    font-weight: 400;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    background: #d6d6d6 !important;
+    /*bg-indigo-500*/
+    border: 1px;
+    /*border border-transparent*/
+
+}
+
+
+/*Change colour of responsive icon*/
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+    background-color: #4facb6 !important;
+    /*bg-indigo-500*/
+}
+
+
+th {
+    text-align: left;
+    /* Align header text to the left */
+}
+
+
+td {
+    text-align: left;
+    /* Align cell text to the left */
+}
+
+
+input[disabled] {
+    background-color: #E9ECEF;
+    /* Change the text color to gray */
+}
+</style>
 
 
 <body class="bg-gray-100 py-2">
@@ -31,46 +153,53 @@
                         Inventory Logs
                     </h2>
                 </div>
-
-
-                <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <!--Card-->
+                <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
+                    <table id="logs" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                        <thead class="">
                             <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Logs
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Item Code
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Custodian
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    
-                                </th>
+                                <th data-priority="1">Changes</th>
+                                <th data-priority="2">Description</th>
+                                <th data-priority="3">User</th>
+                                <th data-priority="4">Date</th>
+
+
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Borrowed - Laptop Lenovo X250
-                                </th>
-                                <td class="px-6 py-4">
-                                    IT230001
-                                </td>
-                                <td class="px-6 py-4">
-                                    Kai Sotto
-                                </td>
-                                <td class="px-6 py-4">
-                                    2h ago
-                                </td>
+                        <tbody id="inventoryTableBody">
+
+                            <tr class="text-center">
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
                             </tr>
+
                         </tbody>
                     </table>
+
+
                 </div>
+                <!--/Card-->
+
             </div>
+            <!--/container-->
+
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+            <!--Datatables -->
+            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+            <script>
+            $(document).ready(function() {
+                var table = $('#logs').DataTable({
+                    responsive: true
+                }).columns.adjust().responsive.recalc();
+            });
+            </script>
+
 
         </div>
     </div>
