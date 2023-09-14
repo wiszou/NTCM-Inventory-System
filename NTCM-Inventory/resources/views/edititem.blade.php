@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Add Item</title>
+    <title>Edit Item</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -137,7 +137,7 @@
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
                         <h2 class="text-2xl font-bold text-ntccolor border-b">
-                            Add Item
+                           Edit Item 
                         </h2>
                         <div class="grid grid-cols-6 gap-6">
 
@@ -149,9 +149,9 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
                                 <select data-te-select-init data-te-select-filter="true" name="brand" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
-                                    @foreach ($brand as $item)
-                                    <option value="{{ $item->brand_id }}">{{ $item->name }}</option>
-                                    @endforeach
+                              
+                                    <option value=""></option>
+
                                 </select>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
@@ -172,40 +172,29 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
                                 <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
-                                    @foreach ($categories as $item)
-                                    <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
-                                    @endforeach
+                              
+                                    <option value=""></option>
+                           
                                 </select>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
                                 <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
-                                    @foreach ($suppliers as $item)
-                                    <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
-                                    @endforeach
+                                    
+                                    <option value=""></option>
+                                   
                                 </select>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
-                                <ul class="grid grid-cols-4 gap-x-5 mt-2">
+                                <ul class="grid grid-cols-4 gap-x-5 mt-3">
                                     <li class="">
                                         <input class="peer sr-only editable-input" type="radio" value="0" name="item-status" id="yes" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="yes">Spare</label>
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="yes">Defect</label>
                                     </li>
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="1" name="item-status" id="no" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="no">Deployed</label>
-                                    </li>
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="2" name="item-status" id="yesno" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out " for="yesno">Borrowed</label>
-                                    </li>
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="3" name="item-status" id="yesnono" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out " for="yesnono">Defect</label>
-                                    </li>
+                                   
                                 </ul>
                             </div>
 
@@ -218,8 +207,8 @@
                         <!-- Modal footer -->
                         <div class="flex space-x-2 border-t border-gray-200 rounded-b">
                             <div class=" w-full flex justify-end pt-4">
-                                <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Add
-                                    Item</button>
+                            <button type="submit" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center mr-2">Delete</button>
+                                <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Update</button>
 
 
                             </div>

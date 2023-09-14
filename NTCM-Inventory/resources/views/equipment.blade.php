@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Equipment</title>
+    <title>Custodian</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -134,7 +134,7 @@ td {
 
                 <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
                     <h2 class="text-2xl font-bold text-ntccolor">
-                        IT Equipment
+                        Custodian
                     </h2>
 
                     <div>

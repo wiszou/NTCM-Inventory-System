@@ -64,6 +64,12 @@ Route::group(['middleware' => ['session-checker']], function () {
         return view('equipment');
     })->name('equipment');
 
+    Route::get('/edititem', function () {
+        return view('edititem');
+    })->name('edititem');
+
+    
+
 });
 
 
