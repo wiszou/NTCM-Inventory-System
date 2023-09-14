@@ -44,6 +44,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/updated-custodian', [CustodianController::class, 'getUpdatedCustodian'])->name('updated-custodian');
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
     Route::get('/updated-equipment', [InventoryController::class, 'getUpdatedEquipment'])->name('updated-equipment');
+    Route::get('/editItems/{itemID}', [InventoryController::class, 'editItem'])->name('editItem');;
     Route::get('/CategorynSupplier', [CatSuppController::class, 'updateTable'])->name('CatSupp');
     Route::get('/updated-category', [CatSuppController::class, 'updateCateg'])->name('categories');
     Route::get('/check-brand/{categoryID}', [CatSuppController::class, 'checkBrand']);
@@ -63,12 +64,6 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/equipment', function () {
         return view('equipment');
     })->name('equipment');
-
-    Route::get('/edititem', function () {
-        return view('edititem');
-    })->name('edititem');
-
-    
 
 });
 

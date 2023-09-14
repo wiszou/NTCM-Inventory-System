@@ -92,6 +92,12 @@ class InventoryController extends Controller
         return view('equipment', ['categories' => $category]);
     }
 
+
+    public function editItem($itemID)
+    {
+        $category = DB::table('t_inventory')->where("item_id", $itemID)->first();
+        return view('edititem', ['dataItem' => $category]);
+    }
     public function getItemDetails($brandID, $categoryID)
     {
 
