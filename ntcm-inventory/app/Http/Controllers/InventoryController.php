@@ -39,12 +39,6 @@ class InventoryController extends Controller
         return redirect()->back()->with('success', 'Item added successfully.');
     }
 
-    public function removeItem($removeID)
-    {
-        $inventoryId = $removeID; // Assuming 'id' is the correct name
-        DB::table('t_inventory')->where('inventory_id', $inventoryId)->delete();
-        return redirect()->back()->with('success', 'Item removed successfully.');
-    }
     public function inventoryData($item_category, $brand, $model, $price, $serialNum, $current, $supplier_name, $item_status)
     {
         $uniqueID = $this->generateItemCode();
@@ -94,11 +88,11 @@ class InventoryController extends Controller
         $category = DB::table('m_category')->get();
         return view('inventory', ['categories' => $category]);
     }
-    // public function getUpdatedEquipment()
-    // {
-    //     $category = DB::table('m_category')->get();
-    //     return view('equipment', ['categories' => $category]);
-    // }
+    public function getUpdatedEquipment()
+    {
+        $category = DB::table('m_category')->get();
+        return view('equipment', ['categories' => $category]);
+    }
 
     public function getItemDetails($brandID, $categoryID)
     {
@@ -216,5 +210,29 @@ class InventoryController extends Controller
         );
 
         DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
+    }
+
+    public function removeItem($removeID)
+    {
+        $inventoryId = $removeID; // Assuming 'id' is the correct name
+
+        $quantity = DB::table('t_inventory')->where('inventory_id', $inventoryId)->value('current_quantity');
+        $category = DB::table('t_inventory')->where('inventory_id', $inventoryId)->value('category_id');
+        DB::table('t_inventory')->where('inventory_id', $inventoryId)->value('current_quantity');
+
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+        $existingQuantity = DB::table('m_category')->where('category_id', $category)->value('quantity');
+        $quantity =  $quantity += $existingQuantity;
+
+        $dataToUpdate = array(
+            'quantity' => $quantity,
+            'user_change' => $user,
+            'date_change' => $currentDate,
+        );
+        
+        DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
+        return redirect()->back()->with('success', 'Item removed successfully.');
     }
 }

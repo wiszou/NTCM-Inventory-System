@@ -188,52 +188,7 @@ td {
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
-                            @foreach ($categories as $item)
-                            @php
-                            // Your existing code for status
-                            $statusText = '';
-                            $statusClass = '';
 
-                            if ($item->item_status == 0) {
-                            $statusText = 'Spare';
-                            $statusClass = 'bg-green-500';
-                            } else if ($item->item_status == 2) {
-                            $statusText = 'Borrowed';
-                            $statusClass = 'bg-orange-500';
-                            } else if ($item->item_status == 1) {
-                            $statusText = 'Deployed';
-                            $statusClass = 'bg-blue-500';
-                            } else if ($item->item_status == 3) {
-                            $statusText = 'Defect';
-                            $statusClass = 'bg-red-500';
-                            }
-
-                            // Fetch the item name from the m_custodian table
-                            $currentholder = DB::table('m_custodian')
-                            ->where('item_id', $item->item_id)
-                            ->where('status', 1)
-                            ->value('name_custodian');
-
-                            $startDate = DB::table('m_custodian')
-                            ->where('item_id', $item->item_id)
-                            ->where('status', 1)
-                            ->value('start_date');
-
-                            @endphp
-                            <tr>
-                                <td>{{ $item->inventory_id }}</td>
-                                <td></td>
-                                <td></td>
-                                <td>{{ $startDate }}</td>
-
-                                <td>{{ $item->current_quantity }}</td>
-                                <!-- Display the item name -->
-                                <td class="px-6 py-4 text-gray-900">
-                                    <span
-                                        class="{{ $statusClass }} text-gray-50 rounded-xl px-2 py-1">{{ $statusText }}</span>
-                                </td>
-                            </tr>
-                            @endforeach
                         </tbody>
                     </table>
 
@@ -279,11 +234,6 @@ td {
                                                     name="item-category" id="item-category"
                                                     class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input"
                                                     required="">
-                                                    <!-- @foreach ($categories as $item) -->
-                                                    <option value="{{ substr($item->category_name, 0, 3) }}">
-                                                        <!-- {{ $item->category_name }} -->
-                                                    </option>
-                                                    @endforeach
                                                 </select>
                                             </div>
 
@@ -293,11 +243,6 @@ td {
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input" required="">
-                                                    <!-- @foreach ($suppliers as $item) -->
-                                                    <option value="{{ $item->name }}">
-                                                        <!-- {{ $item->name }} -->
-                                                    </option>
-                                                    @endforeach
                                                 </select>
                                             </div>
 
@@ -307,11 +252,7 @@ td {
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input" required="">
-                                                    <!-- @foreach ($suppliers as $item) -->
-                                                    <option value="{{ $item->name }}">
-                                                        <!-- {{ $item->name }} -->
-                                                    </option>
-                                                    @endforeach
+                                    
                                                 </select>
                                             </div>
 
@@ -321,11 +262,7 @@ td {
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input">
-                                                    <!-- @foreach ($suppliers as $item) -->
-                                                    <option value="{{ $item->name }}">
-                                                        <!-- {{ $item->name }} -->
-                                                    </option>
-                                                    @endforeach
+                    
                                                 </select>
                                             </div>
 
@@ -335,11 +272,7 @@ td {
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input">
-                                                    <!-- @foreach ($suppliers as $item) -->
-                                                    <option value="{{ $item->name }}">
-                                                        <!-- {{ $item->name }} -->
-                                                    </option>
-                                                    @endforeach
+                  
                                                 </select>
                                             </div>
                                              
@@ -349,11 +282,7 @@ td {
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input">
-                                                    <!-- @foreach ($suppliers as $item) -->
-                                                    <option value="{{ $item->name }}">
-                                                        <!-- {{ $item->name }} -->
-                                                    </option>
-                                                    @endforeach
+                 
                                                 </select>
                                             </div>
                                              
@@ -363,11 +292,9 @@ td {
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input">
-                                                    <!-- @foreach ($suppliers as $item) -->
-                                                    <option value="{{ $item->name }}">
-                                                        <!-- {{ $item->name }} -->
-                                                    </option>
-                                                    @endforeach
+                
+                                        
+                                
                                                 </select>
                                             </div>
                                             
