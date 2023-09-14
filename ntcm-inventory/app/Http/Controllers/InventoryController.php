@@ -12,11 +12,9 @@ class InventoryController extends Controller
     {
 
         $serialNum = $request->input('item-serial');
-        $item_code = $request->input('item-code');
 
         $existingRecord = DB::table('t_inventory')
             ->where('serial_num', $serialNum)
-            ->orWhere('item_id', $item_code)
             ->first();
 
         if ($existingRecord) {
@@ -28,12 +26,8 @@ class InventoryController extends Controller
         $brand = $request->input('brand');
         $model = $request->input('model');
         $price = $request->input('price');
-        $remarks = $request->input('item-remarks');
         $current_quantity = $request->input('item-quantity');
         $item_status = $request->input('item-status');
-        $description =  $request->input('description');
-        $min_quantity = $current_quantity / 2;
-        $max_quantity = $current_quantity;
 
         if ($item_status === null) {
             $item_status = 0;
@@ -41,7 +35,7 @@ class InventoryController extends Controller
 
         $data = $this->inventoryData($item_category, $brand, $model, $price, $serialNum, $current_quantity, $supplier_name, $item_status);
         DB::table('t_inventory')->insert($data);
-
+        $this->addQuantity($current_quantity, $item_category);
         return redirect()->back()->with('success', 'Item added successfully.');
     }
 
@@ -53,7 +47,7 @@ class InventoryController extends Controller
     }
     public function inventoryData($item_category, $brand, $model, $price, $serialNum, $current, $supplier_name, $item_status)
     {
-        $uniqueID = $this->generateItemCode($item_category);
+        $uniqueID = $this->generateItemCode();
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
@@ -69,14 +63,12 @@ class InventoryController extends Controller
             'current_quantity' => $current,
             'user_created' => $user,
             'date_created' => $currentDate,
-            'user_change' => $user,
-            'date_change' => $currentDate
         );
 
         return $inventoryData;
     }
 
-    public function generateItemCode($category)
+    public function generateItemCode()
     {
         $currentYear = date('Y');
         $rowCount = DB::table('t_inventory')->count();
@@ -84,13 +76,13 @@ class InventoryController extends Controller
 
         $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
 
-        $id = $category . $currentYear . $formattedRowCount;
+        $id = "IT-" . $currentYear . "-" . $formattedRowCount;
         $existingItem = DB::table('t_inventory')->where('item_id', $id)->first();
 
         while ($existingItem) {
             $rowCount++;
             $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
-            $id = $category . "-" . $currentYear . "-" . $formattedRowCount;
+            $id = "IT-" . $currentYear . "-" . $formattedRowCount;
             $existingItem = DB::table('t_inventory')->where('item_id', $id)->first();
         }
 
@@ -99,18 +91,14 @@ class InventoryController extends Controller
 
     public function getUpdatedInventory()
     {
-        $inventory = DB::table('t_inventory')->get();
-        $supplier = DB::table('m_supplier')->get();
         $category = DB::table('m_category')->get();
-        return view('inventory', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier]);
+        return view('inventory', ['categories' => $category]);
     }
-    public function getUpdatedEquipment()
-    {
-        $inventory = DB::table('t_inventory')->get();
-        $supplier = DB::table('m_supplier')->get();
-        $category = DB::table('m_category')->get();
-        return view('equipment', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier]);
-    }
+    // public function getUpdatedEquipment()
+    // {
+    //     $category = DB::table('m_category')->get();
+    //     return view('equipment', ['categories' => $category]);
+    // }
 
     public function getItemDetails($itemId)
     {
@@ -208,6 +196,15 @@ class InventoryController extends Controller
             ->limit(1)  // optional - to ensure only one record is updated
             ->update($data);
 
-            return redirect()->back()->with('success', 'Item updated successfully.');
+        return redirect()->back()->with('success', 'Item updated successfully.');
+    }
+
+    private function addQuantity($quantity, $category)
+    {
+        $dataToUpdate = array(
+            'quantity' => $quantity
+        );
+
+        DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
     }
 }

@@ -188,7 +188,7 @@ td {
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
-                            @foreach ($inventory as $item)
+                            @foreach ($categories as $item)
                             @php
                             // Your existing code for status
                             $statusText = '';
@@ -222,8 +222,8 @@ td {
                             @endphp
                             <tr>
                                 <td>{{ $item->inventory_id }}</td>
-                                <td>{{ $currentholder }}</td>
-                                <td>{{ $item->brand }}-{{ $item->model }}-{{ $item->serial_num }}</td>
+                                <td></td>
+                                <td></td>
                                 <td>{{ $startDate }}</td>
 
                                 <td>{{ $item->current_quantity }}</td>

@@ -24,109 +24,109 @@
 </head>
 
 <style>
-/*Overrides for Tailwind CSS */
+    /*Overrides for Tailwind CSS */
 
-/*Form fields*/
-.dataTables_wrapper select,
-.dataTables_wrapper .dataTables_filter input {
-    color: #4a5568;
-    /*text-gray-700*/
-    padding-left: 1rem;
-    /*pl-4*/
-    padding-right: 1rem;
-    /*pl-4*/
-    padding-top: .5rem;
-    /*pl-2*/
-    padding-bottom: .5rem;
-    /*pl-2*/
-    line-height: 1.25;
-    /*leading-tight*/
-    border-width: 1px;
-    /*border-2*/
-    border-radius: .25rem;
-    border-color: #4d4d4d;
-    /*border-gray-200*/
-    background-color: #ffffff;
-    /*bg-gray-200*/
-}
+    /*Form fields*/
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 1px;
+        /*border-2*/
+        border-radius: .25rem;
+        border-color: #4d4d4d;
+        /*border-gray-200*/
+        background-color: #ffffff;
+        /*bg-gray-200*/
+    }
 
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-    background-color: #4facb6;
-    /*bg-indigo-100*/
-    color: #ffffff;
-    font-weight: 400;
-}
-
-
-/*Pagination Buttons*/
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    font-weight: 500;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
-
-/*Pagination Buttons - Current selected */
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #5c5c5c !important;
-    /*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 200;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
-
-/*Pagination Buttons - Hover */
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #ffffff;
-    /*text-white*/
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 400;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px;
-    /*border border-transparent*/
-
-}
+    /*Row Hover*/
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #4facb6;
+        /*bg-indigo-100*/
+        color: #ffffff;
+        font-weight: 400;
+    }
 
 
-/*Change colour of responsive icon*/
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #4facb6 !important;
-    /*bg-indigo-500*/
-}
+    /*Pagination Buttons*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 500;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
+
+    /*Pagination Buttons - Current selected */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #5c5c5c !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 200;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
+
+    /*Pagination Buttons - Hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #ffffff;
+        /*text-white*/
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 400;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px;
+        /*border border-transparent*/
+
+    }
 
 
-th {
-    text-align: left;
-    /* Align header text to the left */
-}
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #4facb6 !important;
+        /*bg-indigo-500*/
+    }
 
-td {
-    text-align: left;
-    /* Align cell text to the left */
-}
 
-input[disabled] {
-    background-color: #E9ECEF;
-    /* Change the text color to gray */
+    th {
+        text-align: left;
+        /* Align header text to the left */
+    }
 
-}
+    td {
+        text-align: left;
+        /* Align cell text to the left */
+    }
+
+    input[disabled] {
+        background-color: #E9ECEF;
+        /* Change the text color to gray */
+
+    }
 </style>
 
 <body class="bg-gray-100 py-2">
@@ -142,12 +142,8 @@ input[disabled] {
                     <h2 class="text-2xl font-bold text-ntccolor">
                         Inventory List
                     </h2>
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                        class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
-                        type="button">Status <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Status <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <!-- Dropdown menu -->
                     <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl shadow w-44">
@@ -170,8 +166,7 @@ input[disabled] {
                 </div>
                 <!--Card-->
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
-                    <table id="example" class="stripe hover"
-                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
                             <tr>
                                 <th data-priority="1">Inventory Code</th>
@@ -184,39 +179,35 @@ input[disabled] {
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
-                            @foreach ($inventory as $item)
+                            @foreach ($categories as $item)
+
                             @php
-                            $statusText = '';
-                            $statusClass = '';
+                            $stock_actual = DB::table('t_inventory')
+                            ->where('category_id', $item->category_id)
+                            ->where('item_status', 0)
+                            ->count();
 
-                            if ($item->item_status == 0) {
-                            $statusText = 'Spare';
+                            if ($stock_actual >= $item->stock_req) {
                             $statusClass = 'bg-green-500';
-                            } else if ($item->item_status == 2) {
-                            $statusText = 'Borrowed';
-                            $statusClass = 'bg-orange-500';
-                            } else if ($item->item_status == 1) {
-                            $statusText = 'Deployed';
-                            $statusClass = 'bg-blue-500';
-                            }
-                            else if ($item->item_status == 3) {
-                            $statusText = 'Defect';
-                            $statusClass = 'bg-red-500';
-                            }
+                            } else if ($stock_actual <= $item->stock_req) {
+                                $statusClass = 'bg-red-500 ';
+                                }
 
-                            @endphp
-                            <tr onclick="openNewTab('{{ $item->item_id }}')" class="">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="px-6 py-4 text-gray-900">
-                                    <span></span>
-                                </td>
-                                <td></td>
-                            </tr>
-                            @endforeach
+                                @endphp
+                                <tr onclick="redirectToBrand('{{ $item->category_id }}')" class="">
+                                    <td>{{ $item->inventory_id }}</td>
+                                    <td>{{ $item->category_name }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{ $item->stock_req }}</td>
+                                    <td class='{{$statusClass}}'>{{ $stock_actual }}</td>
+                                    <td>{{ $item->date_created }}</td>
+                                    <td>{{ $item->date_change }}</td>
+                                    <td class="px-6 py-4 text-gray-900">
+                                        <span></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                @endforeach
                         </tbody>
                     </table>
 
@@ -237,98 +228,97 @@ input[disabled] {
             <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
             <script>
-            $(document).ready(function() {
-                var table = $('#example').DataTable({
-                    responsive: true
-                }).columns.adjust().responsive.recalc();
-            });
+                $(document).ready(function() {
+                    var table = $('#example').DataTable({
+                        responsive: true
+                    }).columns.adjust().responsive.recalc();
+                });
             </script>
 
-            <script>
-            function openNewTab(itemheader) {
-                // Define the URL you want to open in a new tab
-                var url = '/itemheader';
-
-                // Open the URL in a new tab
-                window.open(url, '_blank');
-            }
-            </script>
 
         </div>
     </div>
-
     <script>
-    $(document).ready(function() {
-        // Function to show/hide rows based on the selected status
-        function filterInventoryTable(statusClass) {
-            $('#example tbody tr').hide(); // Hide all rows initially
-            if (statusClass === 'all') {
-                $('#example tbody tr').show(); // Show all rows for "All" option
-            } else {
-                $(`.${statusClass}`).show(); // Show rows with the selected status class
-            }
+        function redirectToBrand(categoryId) {
+            // Construct the URL based on the category ID
+            var url = "/check-brand/" + categoryId;
+
+            // Redirect to the URL
+            window.location.href = url;
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Function to show/hide rows based on the selected status
+            function filterInventoryTable(statusClass) {
+                $('#example tbody tr').hide(); // Hide all rows initially
+                if (statusClass === 'all') {
+                    $('#example tbody tr').show(); // Show all rows for "All" option
+                } else {
+                    $(`.${statusClass}`).show(); // Show rows with the selected status class
+                }
+            }
 
-        // Initialize filtering with "All" status selected
-        filterInventoryTable('all');
-
-        // Handle status option clicks
-        $('#allStatus').click(function() {
+            // Initialize filtering with "All" status selected
             filterInventoryTable('all');
-        });
 
-        $('#spareStatus').click(function() {
-            filterInventoryTable('bg-green-500'); // Adjust the class as needed
-        });
+            // Handle status option clicks
+            $('#allStatus').click(function() {
+                filterInventoryTable('all');
+            });
 
-        $('#deployedStatus').click(function() {
-            filterInventoryTable('bg-blue-500'); // Adjust the class as needed
-        });
+            $('#spareStatus').click(function() {
+                filterInventoryTable('bg-green-500'); // Adjust the class as needed
+            });
 
-        $('#borrowedStatus').click(function() {
-            filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            $('#deployedStatus').click(function() {
+                filterInventoryTable('bg-blue-500'); // Adjust the class as needed
+            });
+
+            $('#borrowedStatus').click(function() {
+                filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            });
         });
-    });
     </script>
 
     <script>
-    const inputFields = document.querySelectorAll('.editable-input');
-    const editButton = document.getElementById('editButton');
-    const exitButton = document.getElementById('exitButton');
-    const saveButton = document.getElementById('saveButton');
-    saveButton.style.backgroundColor = 'grey';
-    // Initialize the button text to "Edit"
-    let isEditing = false;
+        const inputFields = document.querySelectorAll('.editable-input');
+        const editButton = document.getElementById('editButton');
+        const exitButton = document.getElementById('exitButton');
+        const saveButton = document.getElementById('saveButton');
+        saveButton.style.backgroundColor = 'grey';
+        // Initialize the button text to "Edit"
+        let isEditing = false;
 
-    editButton.addEventListener('click', () => {
-        inputFields.forEach(inputField => {
-            inputField.disabled = isEditing;
+        editButton.addEventListener('click', () => {
+            inputFields.forEach(inputField => {
+                inputField.disabled = isEditing;
+            });
+
+            // Change the text of the button based on the state
+            if (isEditing) {
+                editButton.textContent = 'Edit';
+                saveButton.disabled = true; // Disable the "Save" button
+                saveButton.style.backgroundColor = 'grey'; // Change the color to grey
+            } else {
+                editButton.textContent = 'Stop Editing';
+                saveButton.disabled = false; // Enable the "Save" button
+                saveButton.style.backgroundColor = ''; // Reset the color
+            }
+
+            // Toggle the editing state
+            isEditing = !isEditing;
         });
 
-        // Change the text of the button based on the state
-        if (isEditing) {
-            editButton.textContent = 'Edit';
+        exitButton.addEventListener('click', () => {
+            inputFields.forEach(inputField => {
+                inputField.disabled = true; // Disable the input fields
+            });
+            editButton.textContent = 'Edit'; // Reset the "Edit" button text
             saveButton.disabled = true; // Disable the "Save" button
             saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-        } else {
-            editButton.textContent = 'Stop Editing';
-            saveButton.disabled = false; // Enable the "Save" button
-            saveButton.style.backgroundColor = ''; // Reset the color
-        }
-
-        // Toggle the editing state
-        isEditing = !isEditing;
-    });
-
-    exitButton.addEventListener('click', () => {
-        inputFields.forEach(inputField => {
-            inputField.disabled = true; // Disable the input fields
+            isEditing = false; // Reset the editing state
         });
-        editButton.textContent = 'Edit'; // Reset the "Edit" button text
-        saveButton.disabled = true; // Disable the "Save" button
-        saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-        isEditing = false; // Reset the editing state
-    });
     </script>
 
     <!-- Tailwind Elements Script -->

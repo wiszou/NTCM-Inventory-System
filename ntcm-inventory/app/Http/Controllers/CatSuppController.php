@@ -82,7 +82,7 @@ class CatSuppController extends Controller
             'inventory_id' => $id,
             'category_id' => $categId,
             'stock_req' => $stock,
-            'stock_actual' => 0,
+            'quantity' => 0,
             'category_name' => $name,
             'user_created' => $user,
             'date_created' => $date,
@@ -113,7 +113,6 @@ class CatSuppController extends Controller
         $categoryData = array(
             'brand_id' => $brand_id,
             'name' => $name,
-            'quantity' => 0,
             'user_created' => $user,
             'date_created' => $date,
         );
@@ -225,5 +224,11 @@ class CatSuppController extends Controller
     {
         DB::table('m_brand')->where('brand_id', $itemCode)->delete();
         return redirect()->back()->with('success', 'Brand removed successfully.');
+    }
+
+    public function checkBrand($categoryID)
+    {
+        $brand = DB::table('m_brand')->get();
+        return view('itemheader', ['brands' => $brand , 'category_id' => $categoryID]);
     }
 }

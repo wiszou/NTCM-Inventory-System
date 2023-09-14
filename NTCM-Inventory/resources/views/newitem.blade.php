@@ -178,7 +178,7 @@
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
                                 <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
                                     @foreach ($categories as $item)
-                                    <option value="{{ $item->inventory_id }}">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
