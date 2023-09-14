@@ -36,7 +36,7 @@ class InventoryController extends Controller
         $data = $this->inventoryData($item_category, $brand, $model, $price, $serialNum, $current_quantity, $supplier_name, $item_status);
         DB::table('t_inventory')->insert($data);
         $this->addQuantity($current_quantity, $item_category);
-        return redirect()->back()->with('success', 'Item added successfully.');
+        // return redirect()->back()->with('success', 'Item added successfully.');
     }
 
     public function removeItem($removeID)
@@ -201,8 +201,13 @@ class InventoryController extends Controller
 
     private function addQuantity($quantity, $category)
     {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
         $dataToUpdate = array(
-            'quantity' => $quantity
+            'quantity' => $quantity,
+            'user_change' => $user,
+            'date_change' => $currentDate,
         );
 
         DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
