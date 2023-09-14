@@ -92,7 +92,7 @@ class CatSuppController extends Controller
         return redirect()->back()->with('success', 'Category added successfully.');
     }
 
-    public function addBrand (Request $request)
+    public function addBrand(Request $request)
     {
         $name = $request->input('name');
         // Check if a category with the same name already exists
@@ -127,14 +127,14 @@ class CatSuppController extends Controller
 
         $rowCount++;
         $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
-        $candidateId = "IT-". $name . "-" . $formattedRowCount;
+        $candidateId = "IT-" . $name . "-" . $formattedRowCount;
 
         $existingCategory = DB::table('m_category')->where('inventory_id', $candidateId)->first();
 
         while ($existingCategory) {
             $rowCount++;
             $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
-            $candidateId = "IT-". $name . "-" . $formattedRowCount;
+            $candidateId = "IT-" . $name . "-" . $formattedRowCount;
             $existingCategory = DB::table('m_category')->where('inventory_id', $candidateId)->first();
         }
 
@@ -181,7 +181,7 @@ class CatSuppController extends Controller
         return $candidateId;
     }
 
-    
+
 
     public function updateTable()
     {
@@ -207,7 +207,7 @@ class CatSuppController extends Controller
         return view('newitem', ['categories' => $category, 'suppliers' => $supplier, 'brand' => $brand]);
     }
 
-    
+
     public function removeCategory($itemCode)
     {
         DB::table('m_category')->where('category_id', $itemCode)->delete();
@@ -228,7 +228,15 @@ class CatSuppController extends Controller
 
     public function checkBrand($categoryID)
     {
-        $brand = DB::table('m_brand')->get();
-        return view('itemheader', ['brands' => $brand , 'category_id' => $categoryID]);
+
+        $brandIds = DB::table('t_inventory')
+            ->where('category_id', $categoryID)
+            ->pluck('brand_id');
+
+        $brands = DB::table('m_brand')
+            ->whereIn('brand_id', $brandIds)
+            ->get();
+
+        return view('itemheader', ['brands' => $brands, 'category_id' => $categoryID]);
     }
 }

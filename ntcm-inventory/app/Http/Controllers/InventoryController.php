@@ -36,7 +36,7 @@ class InventoryController extends Controller
         $data = $this->inventoryData($item_category, $brand, $model, $price, $serialNum, $current_quantity, $supplier_name, $item_status);
         DB::table('t_inventory')->insert($data);
         $this->addQuantity($current_quantity, $item_category);
-        // return redirect()->back()->with('success', 'Item added successfully.');
+        return redirect()->back()->with('success', 'Item added successfully.');
     }
 
     public function removeItem($removeID)
@@ -100,21 +100,23 @@ class InventoryController extends Controller
     //     return view('equipment', ['categories' => $category]);
     // }
 
-    public function getItemDetails($itemId)
+    public function getItemDetails($brandID, $categoryID)
     {
-        try {
-            // Fetch item details based on the $itemId using the DB facade
-            $item = DB::table('t_inventory')
-                ->where('item_id', $itemId)
-                ->first(); // Get the first matching item
 
-            if (!$item) {
-                // Item not found, return a JSON response with an error message
-                return response()->json(['success' => false, 'message' => 'Item not found'], 404);
+        try {
+            // Fetch item details based on the $itemId and $category_id using the DB facade
+            $items = DB::table('t_inventory')
+                ->where('brand_id', $brandID)
+                ->where('category_id', $categoryID)
+                ->get(); // Get all matching items
+
+            if ($items->isEmpty()) {
+                // No items found, return a JSON response with an error message
+                return response()->json(['success' => false, 'message' => 'Items not found'], 404);
             }
 
             // Return the item details as JSON response
-            return response()->json(['success' => true, 'item' => $item]);
+            return response()->json(['success' => true, 'items' => $items]);
         } catch (\Exception $e) {
             // Handle exceptions and return an error JSON response
             return response()->json(['success' => false, 'message' => 'Error fetching item details'], 500);
@@ -204,6 +206,9 @@ class InventoryController extends Controller
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
+        $existingQuantity = DB::table('m_category')->where('category_id', $category)->value('quantity');
+        $quantity =  $quantity += $existingQuantity;
+
         $dataToUpdate = array(
             'quantity' => $quantity,
             'user_change' => $user,

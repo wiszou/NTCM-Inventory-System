@@ -23,122 +23,120 @@
 </head>
 
 <style>
-/*Overrides for Tailwind CSS */
+    /*Overrides for Tailwind CSS */
 
-/*Form fields*/
+    /*Form fields*/
 
-.dataTables_wrapper select,
-.dataTables_wrapper .dataTables_filter input {
-    color: #4a5568;
-    /*text-gray-700*/
-    padding-left: 1rem;
-    /*pl-4*/
-    padding-right: 1rem;
-    /*pl-4*/
-    padding-top: .5rem;
-    /*pl-2*/
-    padding-bottom: .5rem;
-    /*pl-2*/
-    line-height: 1.25;
-    /*leading-tight*/
-    border-width: 1px;
-    /*border-2*/
-    border-radius: .25rem;
-    border-color: #4d4d4d;
-    /*border-gray-200*/
-    background-color: #ffffff;
-    /*bg-gray-200*/
-}
-
-
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-    background-color: #4facb6;
-    /*bg-indigo-100*/
-    color: #ffffff;
-    font-weight: 400;
-}
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 1px;
+        /*border-2*/
+        border-radius: .25rem;
+        border-color: #4d4d4d;
+        /*border-gray-200*/
+        background-color: #ffffff;
+        /*bg-gray-200*/
+    }
 
 
-/*Pagination Buttons*/
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-
-    font-weight: 500;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-
-}
+    /*Row Hover*/
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #4facb6;
+        /*bg-indigo-100*/
+        color: #ffffff;
+        font-weight: 400;
+    }
 
 
-/*Pagination Buttons - Current selected */
+    /*Pagination Buttons*/
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #5c5c5c !important;
-    /*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 200;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
 
-}
+        font-weight: 500;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+
+    }
 
 
-/*Pagination Buttons - Hover */
+    /*Pagination Buttons - Current selected */
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #ffffff;
-    /*text-white*/
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 400;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px;
-    /*border border-transparent*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #5c5c5c !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 200;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
 
-}
-
-
-/*Change colour of responsive icon*/
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #4facb6 !important;
-    /*bg-indigo-500*/
-}
+    }
 
 
-th {
-    text-align: left;
-    /* Align header text to the left */
-}
+    /*Pagination Buttons - Hover */
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #ffffff;
+        /*text-white*/
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 400;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px;
+        /*border border-transparent*/
+
+    }
 
 
-td {
-    text-align: left;
-    /* Align cell text to the left */
-}
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #4facb6 !important;
+        /*bg-indigo-500*/
+    }
 
 
-input[disabled] {
-    background-color: #E9ECEF;
-    /* Change the text color to gray */
-}
+    th {
+        text-align: left;
+        /* Align header text to the left */
+    }
 
 
+    td {
+        text-align: left;
+        /* Align cell text to the left */
+    }
+
+
+    input[disabled] {
+        background-color: #E9ECEF;
+        /* Change the text color to gray */
+    }
 </style>
 
 <body class="bg-gray-100 py-2">
@@ -151,12 +149,8 @@ input[disabled] {
                     <h2 class="text-2xl font-bold text-ntccolor">
                         Item Header
                     </h2>
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                        class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
-                        type="button">Status <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Status <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
 
                     <!-- Dropdown menu -->
@@ -181,8 +175,7 @@ input[disabled] {
 
                 <!--Card-->
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
-                    <table id="example" class="stripe hover"
-                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
                             <tr>
                                 <th data-priority="1">Item Code</th>
@@ -203,8 +196,7 @@ input[disabled] {
                             ->count();
 
                             @endphp
-                            <tr onclick="openModal()">
-
+                            <tr onclick="openModal('{{ $item->brand_id }}', '{{ $category_id }}')">
                                 <td>{{ $item->brand_id }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $quantity }}</td>
@@ -223,18 +215,15 @@ input[disabled] {
             </div>
             <!--/container-->
 
-            <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster"
-                style="background: rgba(0,0,0,.7);">
+            <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
                 <div class="modal-container bg-white w-3/6 rounded-xl z-50">
                     <div class="modal-content py-4 text-left px-6 max-h-screen overflow-y-auto">
                         <!--Title-->
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-xl font-semibold text-gray-700 mb-2" name="title" id="title">Brand: Name</p>
                             <div class="modal-close cursor-pointer z-50">
-                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg"
-                                    width="18" height="18" viewBox="0 0 18 18">
-                                    <path
-                                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
                                     </path>
                                 </svg>
                             </div>
@@ -242,35 +231,18 @@ input[disabled] {
                         <!--Body-->
                         <div class="flex justify-center">
                             <div class="rounded-lg w-full">
-                                <table id="itemdetails" class="stripe hover"
-                                    style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                                <table id="modalTable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                                     <thead class="">
                                         <tr>
                                             <th data-priority="1">Item Code</th>
-                                            <th data-priority="2">Serial Number</th>
-                                            </th>
-                                            <th data-priority="3">Responsibility</th>
-                                            <th data-priority="4">Status</th>
+                                            <th data-priority="2">Model</th>
+                                            <th data-priority="3">Serial Number</th>
+                                            <th data-priority="4">Responsibility</th>
+                                            <th data-priority="5">Status</th>
                                         </tr>
                                     </thead>
 
-                                    <tbody id="inventoryTableBody">
-                                        @foreach ($brands as $item)
-                                        @php
-                                        $quantity = DB::table('t_inventory')
-                                        ->where('category_id', $category_id)
-                                        ->where('brand_id', $item->brand_id)
-                                        ->count();
-
-                                        @endphp
-                                        <tr>
-
-                                            <td>{{ $item->brand_id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $quantity }}</td>
-                                            <td></td>
-                                        </tr>
-                                        @endforeach
+                                    <tbody id="modalTableBody">
                                     </tbody>
                                 </table>
                             </div>
@@ -287,139 +259,133 @@ input[disabled] {
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
             <script>
-            $(document).ready(function() {
-                var table = $('#example').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
+                $(document).ready(function() {
+                    var table = $('#example').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
+                });
             </script>
 
             <script>
-            $(document).ready(function() {
+                $(document).ready(function() {
+                    var table = $('#modalTable').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
 
-                var table = $('#itemdetails').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
+                });
             </script>
 
             <script>
-            const modal = document.querySelector('.main-modal');
-            const closeButton = document.querySelectorAll('.modal-close');
+                const modal = document.querySelector('.main-modal');
+                const closeButton = document.querySelectorAll('.modal-close');
 
-            const modalClose = () => {
-                modal.classList.remove('fadeIn');
-                modal.classList.add('fadeOut');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 1); // Adjust the delay as needed
-            };
+                const modalClose = () => {
+                    modal.classList.remove('fadeIn');
+                    modal.classList.add('fadeOut');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 1); // Adjust the delay as needed
+                };
 
-            const openModal = () => {
-                modal.classList.remove('fadeOut');
-                modal.classList.add('fadeIn');
-                modal.style.display = 'flex';
-            };
-            for (let i = 0; i < closeButton.length; i++) {
-                const element = closeButton[i];
-                element.onclick = (e) => modalClose();
-            }
-            // Get the button element by its ID
-            const openModalButton = document.getElementById('open-modal-button');
-            if (openModalButton) {
-                openModalButton.addEventListener('click', () => openModal());
-            }
-            // Initially hide the modal
-            modal.style.display = 'none';
-            window.onclick = function(event) {
-                if (event.target == modal) modalClose();
-            };
+                const openModal = (brand_id, category_id) => {
+                    fetch(`/getItemDetails/${brand_id}/${category_id}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success && data.items.length > 0) {
+                                const modalTable = $('#modalTable').DataTable(); // Initialize DataTable
+
+                                // Clear existing rows and redraw the table
+                                modalTable.clear().draw();
+
+                                // Loop through the items and add rows to the DataTable
+                                data.items.forEach(item => {
+                                    // Check if custodian_id is empty and replace with "empty"
+                                    const custodianId = item.custodian_id ? item.custodian_id : 'Empty';
+
+                                    modalTable.row.add([
+                                        item.item_id,
+                                        item.model,
+                                        item.serial_num,
+                                        custodianId, // Use custodianId here
+                                        item.item_status
+                                    ]).draw(false);
+                                });
+
+                                // Show the modal
+                                modal.classList.remove('fadeOut');
+                                modal.classList.add('fadeIn');
+                                modal.style.display = 'flex';
+                            } else {
+                                // Handle error if item details cannot be fetched or if the array is empty
+                                console.error('Error fetching item details.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching item details:', error);
+                        });
+                };
+
+
+
+                for (let i = 0; i < closeButton.length; i++) {
+                    const element = closeButton[i];
+                    element.onclick = (e) => modalClose();
+                }
+                // Get the button element by its ID
+                const openModalButton = document.getElementById('open-modal-button');
+                if (openModalButton) {
+                    openModalButton.addEventListener('click', () => openModal());
+                }
+                // Initially hide the modal
+                modal.style.display = 'none';
+                window.onclick = function(event) {
+                    if (event.target == modal) modalClose();
+                };
             </script>
         </div>
     </div>
 
     <script>
-    $(document).ready(function() {
-        // Function to show/hide rows based on the selected status
-        function filterInventoryTable(statusClass) {
-            $('#example tbody tr').hide(); // Hide all rows initially
-            if (statusClass === 'all') {
-                $('#example tbody tr').show(); // Show all rows for "All" option
-            } else {
-                $(`.${statusClass}`).show(); // Show rows with the selected status class
+        $(document).ready(function() {
+            // Function to show/hide rows based on the selected status
+            function filterInventoryTable(statusClass) {
+                $('#example tbody tr').hide(); // Hide all rows initially
+                if (statusClass === 'all') {
+                    $('#example tbody tr').show(); // Show all rows for "All" option
+                } else {
+                    $(`.${statusClass}`).show(); // Show rows with the selected status class
+                }
             }
-        }
 
 
-        // Initialize filtering with "All" status selected
-        filterInventoryTable('all');
-
-        // Handle status option clicks
-        $('#allStatus').click(function() {
+            // Initialize filtering with "All" status selected
             filterInventoryTable('all');
+
+            // Handle status option clicks
+            $('#allStatus').click(function() {
+                filterInventoryTable('all');
+            });
+
+            $('#spareStatus').click(function() {
+                filterInventoryTable('bg-green-500'); // Adjust the class as needed
+            });
+
+            $('#deployedStatus').click(function() {
+                filterInventoryTable('bg-blue-500'); // Adjust the class as needed
+            });
+
+            $('#borrowedStatus').click(function() {
+                filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            });
         });
-
-        $('#spareStatus').click(function() {
-            filterInventoryTable('bg-green-500'); // Adjust the class as needed
-        });
-
-        $('#deployedStatus').click(function() {
-            filterInventoryTable('bg-blue-500'); // Adjust the class as needed
-        });
-
-        $('#borrowedStatus').click(function() {
-            filterInventoryTable('bg-orange-500'); // Adjust the class as needed
-        });
-    });
-    </script>
-
-    <script>
-    const inputFields = document.querySelectorAll('.editable-input');
-    const editButton = document.getElementById('editButton');
-    const exitButton = document.getElementById('exitButton');
-    const saveButton = document.getElementById('saveButton');
-    saveButton.style.backgroundColor = 'grey';
-
-    // Initialize the button text to "Edit"
-    let isEditing = false;
-
-    editButton.addEventListener('click', () => {
-        inputFields.forEach(inputField => {
-            inputField.disabled = isEditing;
-        });
-
-        // Change the text of the button based on the state
-        if (isEditing) {
-            editButton.textContent = 'Edit';
-            saveButton.disabled = true; // Disable the "Save" button
-            saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-        } else {
-            editButton.textContent = 'Stop Editing';
-            saveButton.disabled = false; // Enable the "Save" button
-            saveButton.style.backgroundColor = ''; // Reset the color
-        }
-
-        // Toggle the editing state
-        isEditing = !isEditing;
-    });
-
-
-    exitButton.addEventListener('click', () => {
-        inputFields.forEach(inputField => {
-            inputField.disabled = true; // Disable the input fields
-        });
-        editButton.textContent = 'Edit'; // Reset the "Edit" button text
-        saveButton.disabled = true; // Disable the "Save" button
-        saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-        isEditing = false; // Reset the editing state
-    });
     </script>
 
     <!-- Tailwind Elements Script -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
+
 </html>

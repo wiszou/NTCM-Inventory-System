@@ -179,9 +179,9 @@
                             ->count();
 
                             if ($stock_actual >= $item->stock_req) {
-                            $statusClass = 'text-green-500';
+                            $statusClass = 'text-green-500 font-bold';
                             } else if ($stock_actual <= $item->stock_req) {
-                                $statusClass = 'text-red-500 ';
+                                $statusClass = 'text-red-500 font-bold';
                                 }
 
                                 @endphp
