@@ -183,39 +183,7 @@ input[disabled] {
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
-                            @foreach ($inventory as $item)
-                            @php
-                            $statusText = '';
-                            $statusClass = '';
-
-                            if ($item->item_status == 0) {
-                            $statusText = 'Spare';
-                            $statusClass = 'bg-green-500';
-                            } else if ($item->item_status == 2) {
-                            $statusText = 'Borrowed';
-                            $statusClass = 'bg-orange-500';
-                            } else if ($item->item_status == 1) {
-                            $statusText = 'Deployed';
-                            $statusClass = 'bg-blue-500';
-                            }
-                            else if ($item->item_status == 3) {
-                            $statusText = 'Defect';
-                            $statusClass = 'bg-red-500';
-                            }
-
-                            @endphp
-                            <tr onclick="openModal('{{ $item->item_id }}')" class="{{ $statusClass }}">
-                                <td>{{ $item->item_id }}</td>
-                                <td>{{ $item->brand }}-{{ $item->model }}-{{ $item->serial_num }}</td>
-                                <td>{{ $item->brand }}</td>
-                                <td>{{ $item->model }}</td>
-                                <td>{{ $item->current_quantity }}</td>
-                                <td class="px-6 py-4 text-gray-900">
-                                    <span
-                                        class="{{ $statusClass }} text-gray-50 rounded-xl px-2 py-1">{{ $statusText }}</span>
-                                </td>
-                            </tr>
-                            @endforeach
+                         
                         </tbody>
                     </table>
 
