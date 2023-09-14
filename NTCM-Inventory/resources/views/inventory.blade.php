@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Inventory</title>
+    <title>IT Equipments</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -112,15 +112,6 @@
     }
 
 
-    th {
-        text-align: left;
-        /* Align header text to the left */
-    }
-
-    td {
-        text-align: left;
-        /* Align cell text to the left */
-    }
 
     input[disabled] {
         background-color: #E9ECEF;
@@ -188,24 +179,20 @@
                             ->count();
 
                             if ($stock_actual >= $item->stock_req) {
-                            $statusClass = 'bg-green-500';
+                            $statusClass = 'text-green-500';
                             } else if ($stock_actual <= $item->stock_req) {
-                                $statusClass = 'bg-red-500 ';
+                                $statusClass = 'text-red-500 ';
                                 }
 
                                 @endphp
-                                <tr onclick="redirectToBrand('{{ $item->category_id }}')" class="">
-                                    <td>{{ $item->inventory_id }}</td>
-                                    <td>{{ $item->category_name }}</td>
-                                    <td>{{ $item->quantity }}</td>
-                                    <td>{{ $item->stock_req }}</td>
+                                <tr onclick="redirectToBrand('{{ $item->category_id }}')" class="text-center">
+                                    <td class="text-center">{{ $item->inventory_id }}</td>
+                                    <td class="text-center">{{ $item->category_name }}</td>
+                                    <td class="text-center">{{ $item->quantity }}</td>
+                                    <td class="text-center">{{ $item->stock_req }}</td>
                                     <td class='{{$statusClass}}'>{{ $stock_actual }}</td>
-                                    <td>{{ $item->date_created }}</td>
+                                    <td class="text-center">{{ $item->date_created }}</td>
                                     <td>{{ $item->date_change }}</td>
-                                    <td class="px-6 py-4 text-gray-900">
-                                        <span></span>
-                                    </td>
-                                    <td></td>
                                 </tr>
                                 @endforeach
                         </tbody>
