@@ -132,72 +132,88 @@
             <!--Container-->
             <div class="w-full">
                 <!--Card-->
-                <form action="/insert-item" class="relative rounded-md bg-white" method="post">
+                <form action="/update-item" class="relative rounded-md bg-white" method="post">
                     @csrf
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
                         <h2 class="text-2xl font-bold text-ntccolor border-b">
-                           Edit Item 
+                            Edit Item : {{ $dataitem->model}}-{{$dataitem->serial_num}}
                         </h2>
                         <div class="grid grid-cols-6 gap-6">
-
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Item Code</label>
-                                <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Auto Generated" disabled>
+                                <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="{{ $dataitem->item_id }}" disabled>
+                                <input name="id" value="{{$dataitem->item_id}}" hidden>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
-                                <select data-te-select-init data-te-select-filter="true" name="brand" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
-                              
-                                    <option value=""></option>
+                                <select data-te-select-init data-te-select-filter="true" name="item-brand" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                    @foreach ($brands as $brand)
+                                    <option value="{{ $brand->brand_id }}" {{ $dataitem->brand_id == $brand->brand_id ? 'selected' : '' }}>
+                                        {{ $brand->name }}
+                                    </option>
+                                    @endforeach
 
                                 </select>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Model</label>
-                                <input type="text" name="model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="X250" required="">
+                                <input type="text" name="item-model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $dataitem->model }}" placeholder="X250" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
                                     Number:</label>
-                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $dataitem->serial_num }}" placeholder="4CE0460D0G" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
-                                <input type="Number" name="price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="40,000" required="">
+                                <input type="Number" name="item-price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $dataitem->price }}" placeholder="40,000" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
-                                <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
-                              
-                                    <option value=""></option>
-                           
+                                <select data-te-select-init data-te-select-filter="true" name="item-category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input">
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category->category_id }}" {{ $dataitem->category_id == $category->category_id ? 'selected' : '' }}>
+                                        {{ $category->category_name }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
                                 <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
-                                    
-                                    <option value=""></option>
-                                   
+                                    @foreach ($suppliers as $supplier)
+                                    <option value="{{ $supplier->supplier_id }}" {{ $dataitem->supplier_id == $supplier->supplier_id ? 'selected' : '' }}>
+                                        {{ $supplier->name }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
 
+                            @if ($dataitem->item_status != 'Deployed' && $dataitem->item_status != 'Borrowed')
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status:</label>
                                 <ul class="grid grid-cols-4 gap-x-5 mt-3">
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="0" name="item-status" id="yes" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="yes">Defect</label>
+                                        <input class="peer sr-only editable-input" type="radio" value="Spare" name="item-status" id="yes" {{ $dataitem->item_status === 'Spare' ? 'checked' : '' }} />
+                                        <label class="text-xs flex justify-center cursor-not-allowed rounded-full border border-gray-300 py-2 px-4 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="yes" {{ $dataitem->item_status !== 'Spare' ? 'disabled' : '' }}>Spare</label>
                                     </li>
-                                   
+                                    <li class="">
+                                        <input class="peer sr-only editable-input" type="radio" value="Stock" name="item-status" id="no" {{ $dataitem->item_status === 'Stock' ? 'checked' : '' }} />
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="no">Stock</label>
+                                    </li>
+                                    <li class="">
+                                        <input class="peer sr-only editable-input" type="radio" value="Defect" name="item-status" id="yesno" {{ $dataitem->item_status === 'Defect' ? 'checked' : '' }} />
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out" for="yesno">Defect</label>
+                                    </li>
+
                                 </ul>
                             </div>
-
+                            @endif
                         </div>
 
 
@@ -207,7 +223,7 @@
                         <!-- Modal footer -->
                         <div class="flex space-x-2 border-t border-gray-200 rounded-b">
                             <div class=" w-full flex justify-end pt-4">
-                            <button type="submit" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center mr-2">Delete</button>
+                                <button type="submit" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center mr-2">Delete</button>
                                 <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Update</button>
 
 

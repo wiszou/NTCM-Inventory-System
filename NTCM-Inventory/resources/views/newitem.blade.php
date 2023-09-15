@@ -189,21 +189,25 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
-                                <ul class="grid grid-cols-4 gap-x-5 mt-2">
+                                <ul class="grid grid-cols-5 gap-x-5 mt-2">
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="0" name="item-status" id="yes" />
+                                        <input class="peer sr-only editable-input" type="radio" value="Stock" name="item-status" id="yes" />
                                         <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="yes">Spare</label>
                                     </li>
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="1" name="item-status" id="no" />
+                                        <input class="peer sr-only editable-input" type="radio" value="Spare" name="item-status" id="no" />
                                         <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="no">Deployed</label>
                                     </li>
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="2" name="item-status" id="yesno" />
+                                        <input class="peer sr-only editable-input" type="radio" value="Borrow" name="item-status" id="yesno" />
                                         <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out " for="yesno">Borrowed</label>
                                     </li>
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="3" name="item-status" id="yesnono" />
+                                        <input class="peer sr-only editable-input" type="radio" value="Deployed" name="item-status" id="yesnono" />
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out " for="yesnono">Defect</label>
+                                    </li>
+                                    <li class="">
+                                        <input class="peer sr-only editable-input" type="radio" value="Defect" name="item-status" id="yesnonono" />
                                         <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out " for="yesnono">Defect</label>
                                     </li>
                                 </ul>

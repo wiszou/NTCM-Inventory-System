@@ -95,8 +95,11 @@ class InventoryController extends Controller
 
     public function editItem($itemID)
     {
-        $category = DB::table('t_inventory')->where("item_id", $itemID)->first();
-        return view('edititem', ['dataItem' => $category]);
+        $itemData = DB::table('t_inventory')->where("item_id", $itemID)->first();
+        $brand = DB::table('m_brand')->get();
+        $category = DB::table('m_category')->get();
+        $supplier = DB::table('m_supplier')->get();
+        return view('edititem', ['dataitem' => $itemData, 'suppliers' => $supplier, 'categories' => $category, 'brands' => $brand]);
     }
     public function getItemDetails($brandID, $categoryID)
     {
@@ -122,77 +125,34 @@ class InventoryController extends Controller
     }
 
 
-
-    public function updateItem(Request $request, $id)
-    {
-        // Retrieve the item by its ID
-        $item = DB::table('t_inventory')->where('item_id', $id)
-            ->first(); // Get the first matching item
-
-        if (!$item) {
-            return response()->json(['message' => 'Item not found'], 404);
-        }
-
-        // Retrieve the data from the request
-        $dataToUpdate = $request->only([
-            'item_category',
-            'brand',
-            'model',
-            'price',
-            'serial_number',
-            'remarks',
-            'current_quantity',
-            'supplier_name',
-        ]);
-
-        // Filter out any null or empty values
-        $dataToUpdate = array_filter($dataToUpdate);
-
-        if (empty($dataToUpdate)) {
-            return response()->json(['message' => 'No fields to update'], 200);
-        }
-
-        // Perform the update using the update method
-        DB::table('t_inventory')->where('id', $id)->update($dataToUpdate);
-
-        return response()->json(['message' => 'Item updated successfully'], 200);
-    }
-
     public function updateTab(request $request)
     {
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
         $serialNum = $request->input('item-serial');
-        $inventoryID = $request->input('idid');
-        $item_code = $request->input('item-code');
+        $id = $request->input('id');
         $supplier_name = $request->input('supplier-name');
         $item_category = $request->input('item-category');
         $brand = $request->input('item-brand');
         $model = $request->input('item-model');
         $price = $request->input('item-price');
-        $remarks = $request->input('item-remarks');
-        $current_quantity = $request->input('item-currentQuantity');
-        $item_status = $request->input('answer');
-        $description = $request->input('item-name');
+        $item_status = $request->input('item-status');
 
         $data = array(
             'serial_num' => $serialNum,
-            'item_id' => $item_code,
-            'supplier_name' => $supplier_name,
-            'category' => $item_category,
-            'brand' => $brand,
+            'supplier_id' => $supplier_name,
+            'category_id' => $item_category,
+            'brand_id' => $brand,
             'model' => $model,
             'price' => $price,
-            'remarks' => $remarks,
-            'current_quantity' => $current_quantity,
             'item_status' => $item_status,
-            'description' => $description,
             'user_change' => $user,
             'date_change' => $currentDate,
         );
+
         DB::table('t_inventory')
-            ->where('inventory_id', $inventoryID)  // find your inventory item by its ID
+            ->where('item_id', $id)  // find your inventory item by its ID
             ->limit(1)  // optional - to ensure only one record is updated
             ->update($data);
 
