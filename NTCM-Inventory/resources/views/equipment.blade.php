@@ -19,6 +19,7 @@
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @vite('resources/css/app.css')
     <!-- Styles -->
 </head>
@@ -238,12 +239,7 @@ td {
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="form-type"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Type</label>
-                                                <select data-te-select-init data-te-select-filter="true"
-                                                    name="supplier-name" id="supplier-name"
-                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
-                                                </select>
+
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
@@ -252,76 +248,59 @@ td {
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input" required="">
-                                    
+
                                                 </select>
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="item2"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Item 2</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900">Type</label>
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input">
-                    
+
                                                 </select>
                                             </div>
 
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="item3"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Item 3</label>
-                                                <select data-te-select-init data-te-select-filter="true"
-                                                    name="supplier-name" id="supplier-name"
-                                                    class="shadow-sm w-full p-2.5  editable-input">
-                  
-                                                </select>
-                                            </div>
-                                             
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="item4"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Item 4</label>
-                                                <select data-te-select-init data-te-select-filter="true"
-                                                    name="supplier-name" id="supplier-name"
-                                                    class="shadow-sm w-full p-2.5  editable-input">
-                 
-                                                </select>
-                                            </div>
-                                             
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="item5"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Item 5</label>
-                                                <select data-te-select-init data-te-select-filter="true"
-                                                    name="supplier-name" id="supplier-name"
-                                                    class="shadow-sm w-full p-2.5  editable-input">
-                
-                                        
-                                
-                                                </select>
-                                            </div>
-                                            
+                                            <div class="col-span-6 sm:col-span-6">
+                                                <div>
+                                                    <button id="add-input-button"
+                                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                        Add Input
+                                                    </button>
+                                                </div>
 
+                                                <div id="input-container">
+                                                    <div class="col-span-6 sm:col-span-3">
+                                                        <label for="item1"
+                                                            class="block mb-2 text-sm font-medium text-gray-900">Item</label>
+                                                        <select data-te-select-init data-te-select-filter="true"
+                                                        name="item-name" id="item-category-1"
+                                                            class="shadow-sm w-full p-2.5  editable-input" required="">
 
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="description"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 ">Item
-                                                    Description:</label>
-                                                <textarea name="item-name" id="item-name"
-                                                    class="min-h-16 resize-y shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                                    placeholder="Description"></textarea>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-span-6 sm:col-span-3">
+                                                        <label for="item2"
+                                                            class="block mb-2 text-sm font-medium text-gray-900">Type</label>
+                                                        <select data-te-select-init data-te-select-filter="true"
+                                                        name="item-category" id="item-category-1"
+                                                            class="shadow-sm w-full p-2.5  editable-input">
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal footer -->
+
+                                            <div class="flex space-x-2 border-t border-gray-200 rounded-b">
+                                                <div class=" w-full flex justify-end pt-4">
+                                                    <a class="mr-2 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+                                                        id="/update-item">Create</a>
+                                                </div>
                                             </div>
 
-                                        </div>
-
-
-                                        <div class=" w-full">
-
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div class="flex space-x-2 border-t border-gray-200 rounded-b">
-                                            <div class=" w-full flex justify-end pt-4">
-                                                <a class="mr-2 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
-                                                    id="/update-item">Create</a>
-                                            </div>
-                                        </div>
                                 </form>
                             </div>
                         </div>
@@ -329,6 +308,52 @@ td {
                     </div>
                 </div>
             </div>
+
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <script>
+            $(document).ready(function() {
+                // Initialize a counter to generate unique IDs
+                var divCount = 1;
+
+                // When the "Add Input" button is clicked
+                $("#add-input-button").click(function() {
+                    // Clone the entire div with id="input-container"
+                    var clonedDiv = $("#input-container").clone();
+
+                    // Generate unique IDs for the cloned elements
+                    clonedDiv.find('label[for^="item"]').each(function() {
+                        var originalFor = $(this).attr('for');
+                        var newFor = originalFor + '-' + divCount;
+                        $(this).attr('for', newFor);
+                    });
+
+                    clonedDiv.find('select[name^="supplier-name"]').each(function() {
+                        var originalName = $(this).attr('name');
+                        var newName = originalName + '-' + divCount;
+                        $(this).attr('name', newName);
+
+                        var originalId = $(this).attr('id');
+                        var newId = originalId + '-' + divCount;
+                        $(this).attr('id', newId);
+                    });
+
+                    // Increment the counter
+                    divCount++;
+
+                    // Append the cloned div below the original one
+                    $("#input-container").after(clonedDiv);
+                });
+            });
+            </script>
+
+
+
+
+
+
+
 
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
             <!-- jQuery -->
