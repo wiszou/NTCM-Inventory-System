@@ -43,13 +43,13 @@
                         Name:</label>
                     <input type="text" name="name" id="name"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
-                        placeholder="Category Name">
+                        placeholder="Category Name" required>
                 </div>
                 <div class="w-1/2 px-2">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Stock Requirement:</label>
                     <input type="number" name="stock" id="name"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
-                        placeholder="Quantity">
+                        placeholder="Quantity" required>
                 </div>
             </div>
             <div class="flex space-x-2">

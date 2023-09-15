@@ -152,11 +152,17 @@
                             @foreach ($categories as $item)
 
                             @php
-                            $stock_actual = DB::table('t_inventory')
+                            $stock_actual1 = DB::table('t_inventory')
                             ->where('category_id', $item->category_id)
-                            ->where('item_status', 0)
+                            ->where('item_status', "Stock")
                             ->count();
 
+                            $stock_actual2 = DB::table('t_inventory')
+                            ->where('category_id', $item->category_id)
+                            ->where('item_status', "Spare")
+                            ->count();
+
+                            $stock_actual = $stock_actual1 + $stock_actual2;
                             if ($stock_actual >= $item->stock_req) {
                             $statusClass = 'text-green-500 font-bold';
                             } else if ($stock_actual <= $item->stock_req) {

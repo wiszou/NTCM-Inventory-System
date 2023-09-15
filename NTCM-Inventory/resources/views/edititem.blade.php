@@ -199,8 +199,8 @@
                                 <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status:</label>
                                 <ul class="grid grid-cols-4 gap-x-5 mt-3">
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Spare" name="item-status" id="yes" {{ $dataitem->item_status === 'Spare' ? 'checked' : '' }} />
-                                        <label class="text-xs flex justify-center cursor-not-allowed rounded-full border border-gray-300 py-2 px-4 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="yes" {{ $dataitem->item_status !== 'Spare' ? 'disabled' : '' }}>Spare</label>
+                                        <input class="peer sr-only editable-input" type="radio" value="Spare" name="item-status" id="yes" {{ $dataitem->item_status === 'Spare' ? 'checked' : '' }} disabled/>
+                                        <label class="text-xs flex justify-center cursor-not-allowed rounded-full border border-gray-300 py-2 px-4 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="yes" disabled {{ $dataitem->item_status !== 'Spare' ? 'disabled' : '' }}>Spare</label>
                                     </li>
                                     <li class="">
                                         <input class="peer sr-only editable-input" type="radio" value="Stock" name="item-status" id="no" {{ $dataitem->item_status === 'Stock' ? 'checked' : '' }} />
