@@ -33,9 +33,14 @@ class InventoryController extends Controller
         }
 
         $data = $this->inventoryData($item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status);
-        DB::table('t_inventory')->insert($data);
-        $this->addQuantity($item_category);
-        return response()->json(['success' => true, 'message' => 'Item added successfully.']);
+        $itemADD = DB::table('t_inventory')->insert($data);
+
+        if ($itemADD) {
+            $this->addQuantity($item_category);
+            return response()->json(['success' => true, 'message' => 'Item added successfully.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Category addition failed.']);
+        }
     }
 
     public function inventoryData($item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status)
