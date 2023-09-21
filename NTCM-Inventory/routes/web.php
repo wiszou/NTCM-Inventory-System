@@ -26,7 +26,7 @@ Route::post('/login-user', [LogRegController::class, 'loginUser'])->name('login'
 Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
 
 Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
-Route::post('/remove-item/{removeItem}', [InventoryController::class, 'removeItem'])->name('remove');
+Route::get('/remove-item/{removeItem}', [InventoryController::class, 'removeItem'])->name('remove');
 Route::get('/getItemDetails/{brandID}/{categoryID}', [InventoryController::class, 'getItemDetails']);
 Route::post('/update-item',  [InventoryController::class, 'updateTab']);
 

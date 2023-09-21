@@ -132,7 +132,7 @@
             <!--Container-->
             <div class="w-full">
                 <!--Card-->
-                <form action="/update-item" class="relative rounded-md bg-white" method="post">
+                <form id="update-item-form" class="relative rounded-md bg-white" method="post">
                     @csrf
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
@@ -199,7 +199,7 @@
                                 <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status:</label>
                                 <ul class="grid grid-cols-4 gap-x-5 mt-3">
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Spare" name="item-status" id="yes" {{ $dataitem->item_status === 'Spare' ? 'checked' : '' }} disabled/>
+                                        <input class="peer sr-only editable-input" type="radio" value="Spare" name="item-status" id="yes" {{ $dataitem->item_status === 'Spare' ? 'checked' : '' }} disabled />
                                         <label class="text-xs flex justify-center cursor-not-allowed rounded-full border border-gray-300 py-2 px-4 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="yes" disabled {{ $dataitem->item_status !== 'Spare' ? 'disabled' : '' }}>Spare</label>
                                     </li>
                                     <li class="">
@@ -223,10 +223,8 @@
                         <!-- Modal footer -->
                         <div class="flex space-x-2 border-t border-gray-200 rounded-b">
                             <div class=" w-full flex justify-end pt-4">
-                                <button type="submit" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center mr-2">Delete</button>
+                                <a onclick="removeItemWithAjax('{{ $dataitem->item_id }}')" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center mr-2">Delete</a>
                                 <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Update</button>
-
-
                             </div>
                         </div>
                 </form>
@@ -251,39 +249,72 @@
                 });
             </script>
 
-
             <script>
-                const modal = document.querySelector('.main-modal');
-                const closeButton = document.querySelectorAll('.modal-close');
+                function removeItemWithAjax(item_id) {
+                    // Ask the user for confirmation
+                    var confirmation = confirm("Are you sure you want to remove this item?");
 
-                const modalClose = () => {
-                    modal.classList.remove('fadeIn');
-                    modal.classList.add('fadeOut');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 0);
-                }
+                    if (confirmation) {
+                        // If the user confirms, proceed with item removal
 
-                const openModal = () => {
-                    modal.classList.remove('fadeOut');
-                    modal.classList.add('fadeIn');
-                    modal.style.display = 'flex';
-                }
+                        // Construct the URL based on the item ID
+                        var url = "/remove-item/" + item_id;
 
-                for (let i = 0; i < closeButton.length; i++) {
-
-                    const elements = closeButton[i];
-
-                    elements.onclick = (e) => modalClose();
-
-                    modal.style.display = 'none';
-
-                    window.onclick = function(event) {
-                        if (event.target == modal) modalClose();
+                        // Create a fetch request
+                        fetch(url, {
+                                method: "get", // or "GET" depending on your server-side logic
+                            })
+                            .then(function(response) {
+                                if (response.ok) {
+                                    // Handle success (e.g., show a success message)
+                                    alert("Item removed successfully!");
+                                    // You can also reload the page or update the UI as needed
+                                    window.location.href = "/updated-inventory";
+                                } else {
+                                    // Handle errors (e.g., show an error message)
+                                    alert("Error removing item!");
+                                }
+                            })
+                            .catch(function(error) {
+                                // Handle network or other errors
+                                console.error("Request failed:", error);
+                            });
+                    } else {
+                        // If the user cancels, do nothing
+                        alert("Item removal canceled.");
                     }
                 }
             </script>
 
+            <script>
+                $(document).ready(function() {
+                    $('#update-item-form').submit(function(e) {
+                        e.preventDefault(); // Prevent the default form submission
+
+                        // Serialize the form data
+                        var formData = $(this).serialize();
+
+                        // Send an AJAX POST request to the server
+                        $.ajax({
+                            type: 'POST',
+                            url: '/update-item',
+                            data: formData,
+                            success: function(response) {
+                                // Handle the response from the server (e.g., show a success message)
+                                if (response.success) {
+                                    alert('Item updated successfully.');
+                                    location.reload();
+                                } else {
+                                    alert('Item update failed.');
+                                }
+                            },
+                            error: function() {
+                                alert('An error occurred while updating the item.');
+                            }
+                        });
+                    });
+                });
+            </script>
             <!-- Tailwind Elements Script -->
             <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         </div>

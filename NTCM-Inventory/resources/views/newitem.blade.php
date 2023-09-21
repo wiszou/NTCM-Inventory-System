@@ -132,7 +132,7 @@
             <!--Container-->
             <div class="w-full">
                 <!--Card-->
-                <form action="/insert-item" class="relative rounded-md bg-white" method="post">
+                <form id="item-form" class="relative rounded-md bg-white" method="post">
                     @csrf
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
@@ -142,7 +142,8 @@
                         <div class="grid grid-cols-6 gap-6">
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Item Code</label>
+                                <label for="inventory-id" class="block mb-2 text-sm font-medium text-gray-900">Item
+                                    Code</label>
                                 <input type="text" name="inventory-id" id="inventory-id" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Auto Generated" disabled>
                             </div>
 
@@ -224,8 +225,6 @@
                             <div class=" w-full flex justify-end pt-4">
                                 <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Add
                                     Item</button>
-
-
                             </div>
                         </div>
                 </form>
@@ -281,6 +280,42 @@
                         if (event.target == modal) modalClose();
                     }
                 }
+            </script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const form = document.getElementById('item-form');
+
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault(); // Prevent the default form submission
+
+                        // Serialize form data
+                        const formData = new FormData(form);
+
+                        fetch('/insert-item', {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                                },
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    // Handle a successful response (e.g., show success message)
+                                    alert('Item added successfully.');
+                                    // You can also reset the form or redirect to another page
+                                     location.reload();
+                                } else {
+                                    // Handle errors (e.g., show error message)
+                                    alert(data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                    });
+                });
             </script>
 
             <!-- Tailwind Elements Script -->

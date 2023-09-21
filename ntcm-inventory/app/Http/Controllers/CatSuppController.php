@@ -19,7 +19,7 @@ class CatSuppController extends Controller
 
         if ($existingSupplier) {
             // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
-            return redirect()->back()->with('error', 'Supplier with this name already exists.');
+            return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
         }
 
         $id =  $this->generatesupplierID();
@@ -33,9 +33,12 @@ class CatSuppController extends Controller
             'user_created' => $user,
             'date_created' => $date,
         );
-
-        DB::table('m_supplier')->insert($supplierData);
-        return redirect()->back()->with('success', 'Supplier added successfully.');
+        try {
+            DB::table('m_supplier')->insert($supplierData);
+            return response()->json(['success' => true, 'message' => 'Supplier added succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant add supplier']);
+        }
     }
 
     public function generatesupplierID()
@@ -69,7 +72,7 @@ class CatSuppController extends Controller
 
         if ($existingCategory) {
             // A category with the same name already exists, handle accordingly (e.g., show an error message).
-            return redirect()->back()->with('error', 'Category with this name already exists.');
+            return response()->json(['success' => false, 'message' => 'Category name already exist.']);
         }
 
         $id =  $this->generateInventoryID($name);
@@ -88,8 +91,12 @@ class CatSuppController extends Controller
             'date_created' => $date,
         );
 
-        DB::table('m_category')->insert($categoryData);
-        return redirect()->back()->with('success', 'Category added successfully.');
+        $categoryAddedSuccessfully = DB::table('m_category')->insert($categoryData);
+        if ($categoryAddedSuccessfully) {
+            return response()->json(['success' => true, 'message' => 'Category added successfully.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Category addition failed.']);
+        }
     }
 
     public function addBrand(Request $request)
@@ -102,7 +109,7 @@ class CatSuppController extends Controller
 
         if ($existingCategory) {
             // A category with the same name already exists, handle accordingly (e.g., show an error message).
-            return redirect()->back()->with('error', 'Category with this name already exists.');
+            return response()->json(['success' => false, 'message' => 'Similar brand name already exist']);
         }
 
         $brand_id = $this->generateBrandID($name);
@@ -117,8 +124,12 @@ class CatSuppController extends Controller
             'date_created' => $date,
         );
 
-        DB::table('m_brand')->insert($categoryData);
-        return redirect()->back()->with('success', 'Category added successfully.');
+        try {
+            DB::table('m_brand')->insert($categoryData);
+            return response()->json(['success' => true, 'message' => 'Brand added succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant add brand']);
+        }
     }
 
     public function generateInventoryID($name)
@@ -210,20 +221,33 @@ class CatSuppController extends Controller
 
     public function removeCategory($itemCode)
     {
-        DB::table('m_category')->where('category_id', $itemCode)->delete();
-        return redirect()->back()->with('success', 'Category removed successfully.');
+        try {
+            DB::table('m_category')->where('category_id', $itemCode)->delete();
+            return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant remove item']);
+        }
     }
 
     public function removeSupplier($itemCode)
     {
-        DB::table('m_supplier')->where('supplier_id', $itemCode)->delete();
-        return redirect()->back()->with('success', 'Supplier removed successfully.');
+
+        try {
+            DB::table('m_supplier')->where('supplier_id', $itemCode)->delete();
+            return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant remove item']);
+        }
     }
 
     public function removeBrand($itemCode)
     {
-        DB::table('m_brand')->where('brand_id', $itemCode)->delete();
-        return redirect()->back()->with('success', 'Brand removed successfully.');
+        try {
+            DB::table('m_brand')->where('brand_id', $itemCode)->delete();
+            return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant remove item']);
+        }
     }
 
     public function checkBrand($categoryID)

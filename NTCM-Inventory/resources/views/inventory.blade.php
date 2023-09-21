@@ -1,3 +1,9 @@
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -123,7 +129,6 @@
 <body class="bg-gray-100 py-2">
 
     @include('components.sidebar')
-
     <div class="ml-auto px-2 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] h-full">
         <div class="my-auto flex justify-start">
             <!--Container-->
@@ -250,46 +255,6 @@
             $('#borrowedStatus').click(function() {
                 filterInventoryTable('bg-orange-500'); // Adjust the class as needed
             });
-        });
-    </script>
-
-    <script>
-        const inputFields = document.querySelectorAll('.editable-input');
-        const editButton = document.getElementById('editButton');
-        const exitButton = document.getElementById('exitButton');
-        const saveButton = document.getElementById('saveButton');
-        saveButton.style.backgroundColor = 'grey';
-        // Initialize the button text to "Edit"
-        let isEditing = false;
-
-        editButton.addEventListener('click', () => {
-            inputFields.forEach(inputField => {
-                inputField.disabled = isEditing;
-            });
-
-            // Change the text of the button based on the state
-            if (isEditing) {
-                editButton.textContent = 'Edit';
-                saveButton.disabled = true; // Disable the "Save" button
-                saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-            } else {
-                editButton.textContent = 'Stop Editing';
-                saveButton.disabled = false; // Enable the "Save" button
-                saveButton.style.backgroundColor = ''; // Reset the color
-            }
-
-            // Toggle the editing state
-            isEditing = !isEditing;
-        });
-
-        exitButton.addEventListener('click', () => {
-            inputFields.forEach(inputField => {
-                inputField.disabled = true; // Disable the input fields
-            });
-            editButton.textContent = 'Edit'; // Reset the "Edit" button text
-            saveButton.disabled = true; // Disable the "Save" button
-            saveButton.style.backgroundColor = 'grey'; // Change the color to grey
-            isEditing = false; // Reset the editing state
         });
     </script>
 
