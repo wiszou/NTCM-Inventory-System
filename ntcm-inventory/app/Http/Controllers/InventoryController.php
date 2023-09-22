@@ -18,7 +18,7 @@ class InventoryController extends Controller
             ->first();
 
         if ($existingRecord) {
-            return redirect()->back()->with('error', 'A similar item or serial number already exists.');
+            return response()->json(['success' => false, 'message' => 'A similar item or serial number already exists.']);
         }
 
         $supplier_name = $request->input('supplier-name');
@@ -27,20 +27,28 @@ class InventoryController extends Controller
         $model = $request->input('model');
         $price = $request->input('price');
         $item_status = $request->input('item-status');
+        $uniqueID = $this->generateItemCode();
 
         if ($item_status === null) {
-            $item_status = 0;
+            $item_status = "Spare";
         }
 
-        $data = $this->inventoryData($item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status);
-        DB::table('t_inventory')->insert($data);
-        $this->addQuantity($item_category);
-        return redirect()->back()->with('success', 'Item added successfully.');
+        $data = $this->inventoryData($uniqueID, $item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status);
+        $itemADD = DB::table('t_inventory')->insert($data);
+
+        if ($itemADD) {
+            $this->addQuantity($item_category);
+            $logController = new LogController();
+            $logController->sendLog("Item " .$uniqueID . " Succesfully added");
+            return response()->json(['success' => true, 'message' => 'Item added successfully.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Category addition failed.']);
+        }
     }
 
-    public function inventoryData($item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status)
+    public function inventoryData($uniqueID, $item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status)
     {
-        $uniqueID = $this->generateItemCode();
+
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
@@ -151,12 +159,18 @@ class InventoryController extends Controller
             'date_change' => $currentDate,
         );
 
-        DB::table('t_inventory')
-            ->where('item_id', $id)  // find your inventory item by its ID
-            ->limit(1)  // optional - to ensure only one record is updated
+        $success = DB::table('t_inventory')
+            ->where('item_id', $id)
+            ->limit(1)
             ->update($data);
 
-        return redirect()->back()->with('success', 'Item updated successfully.');
+        if ($success) {
+            $logController = new LogController();
+            $logController->sendLog("Item " . $id . " Succesfully updated");
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false]);
+        }
     }
 
     private function addQuantity($category)
@@ -179,24 +193,29 @@ class InventoryController extends Controller
 
     public function removeItem($removeID)
     {
-        $inventoryId = $removeID; // Assuming 'id' is the correct name
-        $category = DB::table('t_inventory')->where('inventory_id', $inventoryId)->value('category_id');
-        DB::table('t_inventory')->where('inventory_id', $inventoryId)->value('current_quantity');
-
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
+        $category = DB::table('t_inventory')->where('item_id', $removeID)->value('category_id');
         $existingQuantity = DB::table('m_category')->where('category_id', $category)->value('quantity');
-        $quantity = 1;
-        $quantity =  $quantity += $existingQuantity;
-
+        $quantity = 1; // Initial quantity
+        $quantity = $existingQuantity -= $quantity; // Update quantity based on subtraction
+        
         $dataToUpdate = array(
             'quantity' => $quantity,
             'user_change' => $user,
             'date_change' => $currentDate,
         );
+        
+        $itemRemove = DB::table('t_inventory')->where('item_id', $removeID)->delete();
 
-        DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
-        return redirect()->back()->with('success', 'Item removed successfully.');
+        if ($itemRemove) {
+            DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
+            $logController = new LogController();
+            $logController->sendLog("Item " . $removeID . " Succesfully removed");
+            return response()->json(['success' => true, 'message' => 'Item removed successfully.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Item addition failed.']);
+        }
     }
 }
