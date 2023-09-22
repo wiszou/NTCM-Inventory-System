@@ -158,7 +158,7 @@ input[disabled] {
                     <table id="logs" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
                             <tr>
-                                <th data-priority="1">Changes</th>
+                                <th data-priority="1">Log ID</th>
                                 <th data-priority="2">Description</th>
                                 <th data-priority="3">User</th>
                                 <th data-priority="4">Date</th>
