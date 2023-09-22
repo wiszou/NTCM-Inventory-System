@@ -6,6 +6,7 @@ use App\Http\Controllers\LogRegController;
 use App\Http\Controllers\DateTimeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\CatSuppController;
+use App\Http\Controllers\LogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,13 +50,10 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/updated-category', [CatSuppController::class, 'updateCateg'])->name('categories');
     Route::get('/check-brand/{categoryID}', [CatSuppController::class, 'checkBrand']);
     Route::get('/new-item', [CatSuppController::class, 'updateAdd'])->name('newitem');
+    Route::get('/logs', [LogController::class, 'updateLogTable'])->name('logs');
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');
-
-    Route::get('/logs', function () {
-        return view('logs');
-    })->name('logs');
 
     Route::get('/custodian', function () {
         return view('custodian');

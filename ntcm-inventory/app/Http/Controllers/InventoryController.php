@@ -27,25 +27,28 @@ class InventoryController extends Controller
         $model = $request->input('model');
         $price = $request->input('price');
         $item_status = $request->input('item-status');
+        $uniqueID = $this->generateItemCode();
 
         if ($item_status === null) {
             $item_status = "Spare";
         }
 
-        $data = $this->inventoryData($item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status);
+        $data = $this->inventoryData($uniqueID, $item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status);
         $itemADD = DB::table('t_inventory')->insert($data);
 
         if ($itemADD) {
             $this->addQuantity($item_category);
+            $logController = new LogController();
+            $logController->sendLog("Item " .$uniqueID . " Succesfully added");
             return response()->json(['success' => true, 'message' => 'Item added successfully.']);
         } else {
             return response()->json(['success' => false, 'message' => 'Category addition failed.']);
         }
     }
 
-    public function inventoryData($item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status)
+    public function inventoryData($uniqueID, $item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status)
     {
-        $uniqueID = $this->generateItemCode();
+
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
@@ -162,6 +165,8 @@ class InventoryController extends Controller
             ->update($data);
 
         if ($success) {
+            $logController = new LogController();
+            $logController->sendLog("Item " . $id . " Succesfully updated");
             return response()->json(['success' => true]);
         } else {
             return response()->json(['success' => false]);
@@ -206,6 +211,8 @@ class InventoryController extends Controller
 
         if ($itemRemove) {
             DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
+            $logController = new LogController();
+            $logController->sendLog("Item " . $removeID . " Succesfully removed");
             return response()->json(['success' => true, 'message' => 'Item removed successfully.']);
         } else {
             return response()->json(['success' => false, 'message' => 'Item addition failed.']);

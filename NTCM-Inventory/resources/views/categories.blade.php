@@ -32,7 +32,7 @@
 
 
         <!-- Categories -->
-        <form id="category-form" method="post" class="flex-1 bg-white p-4 shadow rounded-lg">
+        <form id="category-form" class="flex-1 bg-white p-4 shadow rounded-lg">
             @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Brand</h2>
             <div class="my-1"></div>
             <div class="bg-ntccolor h-px mb-6"></div>
@@ -47,10 +47,14 @@
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Stock Requirement:</label>
                     <input type="number" name="stock" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5" placeholder="Quantity" required>
                 </div>
+
+                <div class="w-1/2 px-2">
+                    <label for="specs" class="block mb-2 text-sm font-medium text-gray-900 ">W/ Specs</label>
+                    <input type="checkbox" name="specs" id="specs" value="1" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5">
+                </div>
             </div>
             <div class="flex space-x-2">
                 <div class=" w-full flex justify-end pt-4">
-
                     <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
                 </div>
             </div>

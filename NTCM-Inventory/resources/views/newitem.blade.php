@@ -148,6 +148,28 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
+                                    Number:</label>
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-dateE" class="block mb-2 text-sm font-medium text-gray-900">Date Acquired</label>
+                                <input type="date" name="item-dateE" id="item-dateE" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-dateE" class="block mb-2 text-sm font-medium text-gray-900">Date Expiration</label>
+                                <input type="date" name="item-dateE" id="item-dateE" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                            </div>
+
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
+                                <input type="Number" name="price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="40,000" required="">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
                                 <select data-te-select-init data-te-select-filter="true" name="brand" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
                                     @foreach ($brand as $item)
@@ -158,16 +180,6 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Model</label>
                                 <input type="text" name="model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="X250" required="">
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
-                                    Number:</label>
-                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
-                                <input type="Number" name="price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="40,000" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
@@ -188,37 +200,37 @@
                                 </select>
                             </div>
 
-                            <div class="col-span-6 sm:col-span-3">
+                            <div class="col-span-6 sm:col-span-3" hidden    >
                                 <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
                                 <ul class="grid grid-cols-5 gap-x-5 mt-2">
                                     <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Stock" name="item-status" id="yes" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="yes">Stock</label>
-                                    </li>
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Spare" name="item-status" id="no" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-green-500 peer-checked:bg-green-50 transition-all duration-200 ease-in-out" for="no">Spare</label>
-                                    </li>
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Borrow" name="item-status" id="yesno" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-orange-500 peer-checked:bg-orange-50 transition-all duration-200 ease-in-out " for="yesno">Borrowed</label>
-                                    </li>
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Deployed" name="item-status" id="yesnono" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-yellow-500 peer-checked:bg-yellow-50 transition-all duration-200 ease-in-out " for="yesnono">Deployed</label>
-                                    </li>
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Defect" name="item-status" id="yesnonono" />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-red-500 peer-checked:bg-red-50 transition-all duration-200 ease-in-out " for="yesnonono">Defect</label>
+                                        <input class="peer sr-only editable-input" type="radio" value="Stock" name="item-status" id="yes" hidden CHECKED/>
+                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="yes" hidden>Stock</label>
                                     </li>
                                 </ul>
                             </div>
 
                         </div>
-
-
                         <div class=" w-full">
+                        <div class="col-span-6 sm:col-span-3">
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">CPU</label>
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                            </div>
 
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">GPU</label>
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">RAM</label>
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">STORAGE</label>
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                            </div>
                         </div>
                         <!-- Modal footer -->
                         <div class="flex space-x-2 border-t border-gray-200 rounded-b">
