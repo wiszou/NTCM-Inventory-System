@@ -1,6 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<style>
+    .w-16 {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+}
+</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,9 +54,9 @@
                     <input type="number" name="stock" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5" placeholder="Quantity" required>
                 </div>
 
-                <div class="w-1/2 px-2">
-                    <label for="specs" class="block mb-2 text-sm font-medium text-gray-900 ">W/ Specs</label>
-                    <input type="checkbox" name="specs" id="specs" value="1" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5">
+                <div class="w-24 px-2">
+                    <label for="specs" class="block mb-2 text-sm font-medium text-gray-900 ">With Specs</label>
+                    <input type="checkbox" name="specs" id="specs" value="1" class="w-16 mt-3">
                 </div>
             </div>
             <div class="flex space-x-2">
@@ -62,7 +68,7 @@
 
 
         <!-- List of Categories -->
-        <div class="flex-1 bg-white p-4 shadow rounded-lg w-full mt-2 ">
+        <div class="flex-1 bg-white p-4 shadow rounded-lg w-full mt-1">
 
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 justify-center">
