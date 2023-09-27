@@ -58,7 +58,7 @@ class CatSuppController extends Controller
             $candidateId = "ID-Supplier-" . $formattedRowCount;
             $existingSuppllier = DB::table('m_supplier')->where('supplier_id', $candidateId)->first();
         }
-
+        
         return $candidateId;
     }
 

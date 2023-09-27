@@ -62,15 +62,31 @@
                             placeholder="Supplier Name" required>
 
                         <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Brands:</label>
-                        <select data-te-select-init data-te-select-placeholder="Example placeholder" multiple>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
-                            <option value="5">Five</option>
+                        <select data-te-select-init data-te-select-placeholder="Example placeholder" id="checkResult"
+                            multiple>
+                            @foreach ($brand as $item)
+                            <option value="{{ $item->name }}">{{ $item->name }}</option>
+                            @endforeach 
                         </select>
+                        <button id="checkButton">Check Selected Values</button>
 
+                        <script>
+                        // Function to check selected values
+                        function checkResult() {
+                            var selectElement = document.getElementById("checkResult");
+                            var selectedValues = [];
+                            for (var i = 0; i < selectElement.options.length; i++) {
+                                if (selectElement.options[i].selected) {
+                                    selectedValues.push(selectElement.options[i].value);
+                                }
+                            }
+                            console.log(selectedValues);
+                        }
 
+                        // Bind the function to a button click event
+                        var checkButton = document.getElementById("checkButton");
+                        checkButton.addEventListener("click", checkResult);
+                        </script>
                         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
                     </div>
