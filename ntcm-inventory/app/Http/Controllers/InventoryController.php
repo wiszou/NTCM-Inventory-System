@@ -118,10 +118,11 @@ class InventoryController extends Controller
     public function editItem($itemID)
     {
         $itemData = DB::table('t_inventory')->where("item_id", $itemID)->first();
+        $itemSpecs = DB::table('t_itemdetails')->where("item_id", $itemID)->first();
         $brand = DB::table('m_brand')->get();
         $category = DB::table('m_category')->get();
         $supplier = DB::table('m_supplier')->get();
-        return view('edititem', ['dataitem' => $itemData, 'suppliers' => $supplier, 'categories' => $category, 'brands' => $brand]);
+        return view('edititem', ['dataitem' => $itemData, 'suppliers' => $supplier, 'categories' => $category, 'brands' => $brand, 'specs' => $itemSpecs]);
     }
     public function getItemDetails($brandID, $categoryID)
     {

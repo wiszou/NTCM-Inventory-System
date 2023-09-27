@@ -137,7 +137,7 @@
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
                         <h2 class="text-2xl font-bold text-ntccolor border-b">
-                            Edit Item : {{ $dataitem->model}}-{{$dataitem->serial_num}}
+                            Edit Item : {{ $specs->model}}-{{$specs->serial_num}}
                         </h2>
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
@@ -161,29 +161,29 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-dateE" class="block mb-2 text-sm font-medium text-gray-900">Date
                                     Acquired</label>
-                                <input type="date" value="{{ $dataitem->date_acquired}}" name="item-acquired" id="item-acquired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                                <input type="date" value="{{ $specs->date_acquired}}" name="item-acquired" id="item-acquired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-dateE" class="block mb-2 text-sm font-medium text-gray-900">Date
                                     Expiration</label>
-                                <input type="date" value="{{ $dataitem->date_expiration}}" name="item-expired" id="item-expired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                                <input type="date" value="{{ $specs->date_end}}" name="item-expired" id="item-expired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Model</label>
-                                <input type="text" name="item-model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $dataitem->model }}" placeholder="X250" required="">
+                                <input type="text" name="item-model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $specs->model }}" placeholder="X250" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
                                     Number:</label>
-                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $dataitem->serial_num }}" placeholder="4CE0460D0G" required="">
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $specs->serial_num }}" placeholder="4CE0460D0G" required="">
                             </div>
 
 
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
-                                <input type="Number" name="item-price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $dataitem->price }}" placeholder="40,000" required="">
+                                <input type="Number" name="item-price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $specs->price }}" placeholder="40,000" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
@@ -211,23 +211,23 @@
 
                             <div class="col-span-6 sm:col-span-3" id="cpuInput" hidden>
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">CPU</label>
-                                <input type="text" value="{{ $dataitem->cpu}}" name="item-cpu" id="item-serial-cpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="I7 - 12300">
+                                <input type="text" value="{{ $specs->cpu}}" name="item-cpu" id="item-serial-cpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="I7 - 12300">
                             </div>
 
 
                             <div class="col-span-6 sm:col-span-3" id="gpuInput" hidden>
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">GPU</label>
-                                <input type="text" value="{{ $dataitem->gpu}}" name="item-gpu" id="item-serial-gpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="GTX 3050">
+                                <input type="text" value="{{ $specs->gpu}}" name="item-gpu" id="item-serial-gpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="GTX 3050">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3" id="ramInput" hidden>
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">RAM</label>
-                                <input type="text" value="{{ $dataitem->ram}}" name="item-ram" id="item-serial-ram" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="8x2 16GB DDR4">
+                                <input type="text" value="{{ $specs->ram}}" name="item-ram" id="item-serial-ram" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="8x2 16GB DDR4">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3" id="storageInput" hidden>
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">STORAGE</label>
-                                <input type="text" value="{{ $dataitem->storage}}" name="item-storage" id="item-serial-storage" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="128GB SSD, 1TB HDD">
+                                <input type="text" value="{{ $specs->storage}}" name="item-storage" id="item-serial-storage" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="128GB SSD, 1TB HDD">
                             </div>
 
 
