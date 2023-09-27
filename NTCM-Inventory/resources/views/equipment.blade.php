@@ -242,7 +242,7 @@ td {
 
                                             </div>
 
-                                            <div class="col-span-6 sm:col-span-3">
+                                            <div class="col-span-6 sm:col-span-3" bind>
                                                 <label for="item1"
                                                     class="block mb-2 text-sm font-medium text-gray-900">Item 1</label>
                                                 <select data-te-select-init data-te-select-filter="true"
