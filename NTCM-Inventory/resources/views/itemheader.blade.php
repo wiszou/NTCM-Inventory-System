@@ -278,45 +278,71 @@
             </script>
 
             <script>
+                // Define the modal and closeButton variables
                 const modal = document.querySelector('.main-modal');
                 const closeButton = document.querySelectorAll('.modal-close');
 
+                // Function to close the modal
                 const modalClose = () => {
                     modal.classList.remove('fadeIn');
                     modal.classList.add('fadeOut');
                     setTimeout(() => {
                         modal.style.display = 'none';
-                    }, 1); // Adjust the delay as needed
+                    }, 500); // Adjust the delay as needed
                 };
 
+                // Function to open the modal
                 const openModal = (brand_id, category_id) => {
                     fetch(`/getItemDetails/${brand_id}/${category_id}`)
                         .then(response => response.json())
                         .then(data => {
                             if (data.success && data.items.length > 0) {
                                 const modalTable = $('#modalTable').DataTable(); // Initialize DataTable
-
                                 // Clear existing rows and redraw the table
                                 modalTable.clear().draw();
 
-                                // Loop through the items and add rows to the DataTable
-                                data.items.forEach(item => {
-                                    // Check if custodian_id is empty and replace with "empty"
+                                // Create an array of item spec promises
+                                const itemSpecPromises = data.items.map(item => {
+                                    const item_id = item.item_id;
                                     const custodianId = item.custodian_id ? item.custodian_id : 'Empty';
-
-                                    modalTable.row.add([
-                                        item.item_id,
-                                        item.model,
-                                        item.serial_num,
-                                        custodianId, // Use custodianId here
-                                        item.item_status,
-                                        '<button data-item-id="' + item.item_id + '" class="btn btn-primary underline underline-offset-1 text-blue-600">Edit/Delete</button>'
-                                    ]).draw(false);
+                                    return fetch(`/getItemSpecs/${item_id}`)
+                                        .then(specsResponse => specsResponse.json())
+                                        .then(specsData => {
+                                            if (specsData.success) {
+                                                const itemModel = specsData.specs.model;
+                                                const itemSerialNum = specsData.specs.serial_num;
+                                                return [
+                                                    item.item_id,
+                                                    itemModel,
+                                                    itemSerialNum,
+                                                    custodianId,
+                                                    item.item_status,
+                                                    `<button data-item-id="${item.item_id}" class="btn btn-primary underline underline-offset-1 text-blue-600">Edit/Delete</button>`
+                                                ];
+                                            } else {
+                                                // Handle error if item specs cannot be fetched
+                                                console.error('Error fetching item specs.');
+                                                return null;
+                                            }
+                                        });
                                 });
-                                // Show the modal
-                                modal.classList.remove('fadeOut');
-                                modal.classList.add('fadeIn');
-                                modal.style.display = 'flex';
+
+                                // Wait for all item spec requests to complete
+                                Promise.all(itemSpecPromises)
+                                    .then(itemSpecs => {
+                                        // Filter out any items with null specs (error cases)
+                                        const validItemSpecs = itemSpecs.filter(specs => specs !== null);
+                                        // Add valid item specs to the DataTable
+                                        modalTable.rows.add(validItemSpecs).draw();
+
+                                        // Show the modal - no need to redefine 'modal' here
+                                        modal.classList.remove('fadeOut');
+                                        modal.classList.add('fadeIn');
+                                        modal.style.display = 'flex';
+                                    })
+                                    .catch(error => {
+                                        console.error('Error fetching item specs:', error);
+                                    });
                             } else {
                                 // Handle error if item details cannot be fetched or if the array is empty
                                 console.error('Error fetching item details.');
@@ -327,23 +353,29 @@
                         });
                 };
 
-
-
+                // Attach click event listeners to close buttons
                 for (let i = 0; i < closeButton.length; i++) {
                     const element = closeButton[i];
-                    element.onclick = (e) => modalClose();
+                    element.onclick = () => modalClose();
                 }
+
                 // Get the button element by its ID
                 const openModalButton = document.getElementById('open-modal-button');
                 if (openModalButton) {
                     openModalButton.addEventListener('click', () => openModal());
                 }
+
                 // Initially hide the modal
                 modal.style.display = 'none';
+
+                // Click outside the modal to close it
                 window.onclick = function(event) {
-                    if (event.target == modal) modalClose();
+                    if (event.target === modal) {
+                        modalClose();
+                    }
                 };
             </script>
+
 
             <script>
                 function redirectToEdit(itemID) {
