@@ -45,67 +45,103 @@
             </div>
         </div>
 
-        <!-- Add Suppliers -->
-        <div class="flex flex-wrap space-x-0 space-y-2 md:space-x-2 md:space-y-0 mb-2">
-            <form id="supplier-form" class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
-                @csrf
-                <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Suppliers</h2>
-                <div class="my-1"></div>
-                <div class="bg-ntccolor h-px mb-6"></div>
+        <div class="flex flex-row">
 
-                <div class="grid grid-cols-6 gap-6 px-2">
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Supplier
-                            Name:</label>
-                        <input type="text" name="supplier-name" id="supplier-name"
-                            class="shadow-sm mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
-                            placeholder="Supplier Name" required>
+            <!-- Add Suppliers -->
+            <div class="flex flex-wrap space-x-0 space-y-2 md:space-x-2 md:space-y-0 mb-2 mr-1">
+                <form id="supplier-form" class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
+                    @csrf
+                    <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Suppliers</h2>
+                    <div class="my-1"></div>
+                    <div class="bg-ntccolor h-px mb-6"></div>
 
-                        <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Brands:</label>
-                        <select data-te-select-init data-te-select-placeholder="Example placeholder" id="checkResult"
-                            multiple>
+                    <div class="grid grid-cols-6 gap-6 px-2">
 
-                            <option value=""></option>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Supplier
+                                Name:</label>
+                            <input type="text" name="supplier-name" id="supplier-name"
+                                class="shadow-sm mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
+                                placeholder="Supplier Name" required>
 
-                        </select>
-
-
-                        <script>
-                        // Function to check selected values
-                        function checkResult() {
-                            var selectElement = document.getElementById("checkResult");
-                            var selectedValues = [];
-                            for (var i = 0; i < selectElement.options.length; i++) {
-                                if (selectElement.options[i].selected) {
-                                    selectedValues.push(selectElement.options[i].value);
+                            <script>
+                            // Function to check selected values
+                            function checkResult() {
+                                var selectElement = document.getElementById("checkResult");
+                                var selectedValues = [];
+                                for (var i = 0; i < selectElement.options.length; i++) {
+                                    if (selectElement.options[i].selected) {
+                                        selectedValues.push(selectElement.options[i].value);
+                                    }
                                 }
+                                console.log(selectedValues);
                             }
-                            console.log(selectedValues);
-                        }
 
-                        // Bind the function to a button click event
-                        var checkButton = document.getElementById("checkButton");
-                        checkButton.addEventListener("click", checkResult);
-                        </script>
-                        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+                            // Bind the function to a button click event
+                            var checkButton = document.getElementById("checkButton");
+                            checkButton.addEventListener("click", checkResult);
+                            </script>
+                            <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
+                            </script>
+
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Contact
+                                Number:</label>
+                            <div class="flex flex-row">
+
+                                <input type="telephone" name="contact" id="contact"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5 mr-6"
+                                    placeholder="Contact Number" required>
+
+                                <button type="submit"
+                                    class="text-white w-32 bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-1 text-center">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Suppliers -->
+
+            <!-- Add Brands to Suppliers -->
+            <div class="flex flex-wrap md:space-y-0 mb-2 ml-1 w-1/2">
+                <form id="supplier-form" class="flex-1 bg-white p-4 shadow rounded-lg ">
+                    @csrf
+                    <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Brands to Suppliers</h2>
+                    <div class="my-1"></div>
+                    <div class="bg-ntccolor h-px mb-6"></div>
+
+                    <div class="grid grid-cols-6 gap-6 px-2">
+
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
+                                Brands:</label>
+                            <select data-te-select-init data-te-select-placeholder="Example placeholder"
+                                name="brand-list[]" id="checkResult" multiple>
+                                <option value=""></option>
+                            </select>
+                  
+
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add to a
+                                Supplier:</label>
+                            <div class="flex flex-row">
+                                <select data-te-select-init data-te-select-placeholder="Example placeholder"
+                                    name="supplier[]" id="checkResult" multiple>
+                                    <option value=""></option>
+                                </select>
+    
+                                <button type="submit"
+                                    class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Add</button>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
+                                </script>
 
                     </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Contact
-                            Number:</label>
-                        <input type="telephone" name="contact" id="contact"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
-                            placeholder="Contact Number" required>
-                    </div>
-                </div>
-                <div class="flex space-x-2">
-                    <div class=" w-full flex justify-end pt-4">
-
-                        <button type="submit"
-                            class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
             <!-- End Suppliers -->
         </div>
 

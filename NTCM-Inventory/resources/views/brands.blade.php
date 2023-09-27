@@ -48,7 +48,7 @@
 
         <!-- BRANDS -->
         <form id="brand-form" class="flex-1 bg-white p-4 shadow rounded-lg mb-2">
-            @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Brand</h2>
+            @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add New Brand</h2>
             <div class="my-1"></div>
             <div class="bg-ntccolor h-px mb-6"></div>
 
