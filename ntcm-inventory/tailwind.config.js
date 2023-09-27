@@ -4,6 +4,7 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    
   ],
   theme: {
     extend: {
@@ -12,7 +13,6 @@ export default {
       }
     },
   },
-  plugins: [],
 
-}
+};
 

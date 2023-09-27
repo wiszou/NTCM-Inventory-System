@@ -26,16 +26,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<script>
-// Initialization for ES Users
-import {
-    Select,
-    initTE
-} from "tw-elements";
-initTE({
-    Select
-});
-</script>
+
 
 <body class="bg-gray-100 py-2">
     @include('components.sidebar')
@@ -70,17 +61,17 @@ initTE({
                             class="shadow-sm mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
                             placeholder="Supplier Name" required>
 
-                        <select data-te-select-init data-te-select-multiple>
+                        <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Brands:</label>
+                        <select data-te-select-init data-te-select-placeholder="Example placeholder" multiple>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                             <option value="4">Four</option>
                             <option value="5">Five</option>
-                            <option value="6">Six</option>
-                            <option value="7">Seven</option>
-                            <option value="8">Eight</option>
                         </select>
-                        <label data-te-select-label-ref>Example label</label>
+
+
+                        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
                     </div>
                     <div class="col-span-6 sm:col-span-3">
@@ -214,7 +205,6 @@ initTE({
 
 
     </div>
-
 
 
 
