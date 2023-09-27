@@ -11,6 +11,7 @@ class CatSuppController extends Controller
     {
         $name = $request->input('supplier-name');
         $contact = $request->input('contact');
+        $selectedBrands = $request->input('brand-list'); // $selectedBrands will be an array of selected values
         // Check if a supplier with the same name already exists
         $existingSupplier = DB::table('m_supplier')
             ->where('name', $name)
@@ -25,22 +26,41 @@ class CatSuppController extends Controller
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $date = $dateTimeController->getDateTime(new Request());
-        $supplierData = array(
-            'supplier_id' => $id,
-            'name' => $name,
-            'contact' => $contact,
-            'user_created' => $user,
-            'date_created' => $date,
-        );
+        $firstIteration = true;
         try {
-            DB::table('m_supplier')->insert($supplierData);
+            // Insert brand associations into m_supplierbrand table
+            foreach ($selectedBrands as $brandName) {
+                if ($firstIteration) {
+                    $firstIteration = false;
+                    continue; // Skip the first iteration
+                }
+
+                DB::table('m_supplierbrand')->insert([
+                    'supplier_id' => $id,
+                    'brand_id' => $brandName,
+                ]);
+
+                // Your logic for subsequent iterations goes here
+                // $brandName contains the value for the current iteration
+            }
+
+            // Insert supplier data into m_supplier table
+            DB::table('m_supplier')->insert([
+                'supplier_id' => $id,
+                'name' => $name,
+                'contact' => $contact,
+                'user_created' => $user,
+                'date_created' => $date,
+            ]);
+
             $logController = new LogController();
-            $logController->sendLog("Supplier " .$id . " Succesfully added");
-            return response()->json(['success' => true, 'message' => 'Supplier added succesfully']);
+            $logController->sendLog("Supplier " . $id . " Successfully added");
+            return response()->json(['success' => true, 'message' => 'Supplier added successfully']);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Cant add supplier']);
+            return response()->json(['success' => false, 'message' => 'Can\'t add supplier']);
         }
     }
+
 
     public function generatesupplierID()
     {
@@ -58,7 +78,7 @@ class CatSuppController extends Controller
             $candidateId = "ID-Supplier-" . $formattedRowCount;
             $existingSuppllier = DB::table('m_supplier')->where('supplier_id', $candidateId)->first();
         }
-        
+
         return $candidateId;
     }
 
@@ -98,7 +118,7 @@ class CatSuppController extends Controller
         $categoryAddedSuccessfully = DB::table('m_category')->insert($categoryData);
         if ($categoryAddedSuccessfully) {
             $logController = new LogController();
-            $logController->sendLog("Category " .$categId . " Succesfully added");
+            $logController->sendLog("Category " . $categId . " Succesfully added");
             return response()->json(['success' => true, 'message' => 'Category added successfully.']);
         } else {
             return response()->json(['success' => false, 'message' => 'Category addition failed.']);
@@ -133,7 +153,7 @@ class CatSuppController extends Controller
         try {
             DB::table('m_brand')->insert($categoryData);
             $logController = new LogController();
-            $logController->sendLog("Brand " .$brand_id . " Succesfully added");
+            $logController->sendLog("Brand " . $brand_id . " Succesfully added");
             return response()->json(['success' => true, 'message' => 'Brand added succesfully']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Cant add brand']);
@@ -232,7 +252,7 @@ class CatSuppController extends Controller
         try {
             DB::table('m_category')->where('category_id', $itemCode)->delete();
             $logController = new LogController();
-            $logController->sendLog("Category " .$itemCode . " Succesfully Deleted");
+            $logController->sendLog("Category " . $itemCode . " Succesfully Deleted");
             return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Cant remove item']);
@@ -245,7 +265,7 @@ class CatSuppController extends Controller
         try {
             DB::table('m_supplier')->where('supplier_id', $itemCode)->delete();
             $logController = new LogController();
-            $logController->sendLog("Supplier " .$itemCode . " Succesfully Deleted");
+            $logController->sendLog("Supplier " . $itemCode . " Succesfully Deleted");
             return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Cant remove item']);
@@ -257,7 +277,7 @@ class CatSuppController extends Controller
         try {
             DB::table('m_brand')->where('brand_id', $itemCode)->delete();
             $logController = new LogController();
-            $logController->sendLog("Brand " .$itemCode . " Succesfully Deleted");
+            $logController->sendLog("Brand " . $itemCode . " Succesfully Deleted");
             return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Cant remove item']);

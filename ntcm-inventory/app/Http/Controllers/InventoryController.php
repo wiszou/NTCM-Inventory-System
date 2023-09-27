@@ -10,6 +10,9 @@ class InventoryController extends Controller
 {
     public function addItem(Request $request)
     {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
 
         $serialNum = $request->input('item-serial');
 
@@ -26,6 +29,12 @@ class InventoryController extends Controller
         $brand = $request->input('brand');
         $model = $request->input('model');
         $price = $request->input('price');
+        $cpu = $request->input('item-cpu');
+        $gpu = $request->input('item-gpu');
+        $ram = $request->input('item-ram');
+        $storage = $request->input('item-storage');
+        $acquired = $request->input('item-acquired');
+        $expire = $request->input('item-expired');
         $item_status = $request->input('item-status');
         $uniqueID = $this->generateItemCode();
 
@@ -33,39 +42,42 @@ class InventoryController extends Controller
             $item_status = "Spare";
         }
 
-        $data = $this->inventoryData($uniqueID, $item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status);
-        $itemADD = DB::table('t_inventory')->insert($data);
-
-        if ($itemADD) {
-            $this->addQuantity($item_category);
-            $logController = new LogController();
-            $logController->sendLog("Item " .$uniqueID . " Succesfully added");
-            return response()->json(['success' => true, 'message' => 'Item added successfully.']);
-        } else {
-            return response()->json(['success' => false, 'message' => 'Category addition failed.']);
-        }
-    }
-
-    public function inventoryData($uniqueID, $item_category, $brand, $model, $price, $serialNum, $supplier_name, $item_status)
-    {
-
-        $user = session()->get('user_name');
-        $dateTimeController = new DateTimeController();
-        $currentDate = $dateTimeController->getDateTime(new Request());
         $inventoryData = array(
             'item_id' => $uniqueID,
             'supplier_id' => $supplier_name,
             'category_id' =>  $item_category,
             'brand_id' => $brand,
-            'model' => $model,
-            'price' => $price,
-            'serial_num' => $serialNum,
-            'item_status' => $item_status,
             'user_created' => $user,
             'date_created' => $currentDate,
         );
 
-        return $inventoryData;
+        $detailsData = array(
+            'model' => $model,
+            'price' => $price,
+            'serial_num' => $serialNum,
+            'item_status' => $item_status,
+            'date_acquired' => $acquired,
+            'date_expiration' => $expire,
+            'cpu' => $cpu,
+            'gpu' => $gpu,
+            'ram' => $ram,
+            'storage' => $storage,
+            'user_created' => $user,
+            'date_created' => $currentDate,
+        );
+
+
+
+        try {
+            DB::table('t_inventory')->insert($inventoryData);
+            DB::table('t_itemdetails')->insert($detailsData);
+            $this->addQuantity($item_category);
+            $logController = new LogController();
+            $logController->sendLog("Item " .$uniqueID . " Succesfully added");
+            return response()->json(['success' => true, 'message' => 'Item added successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant add brand']);
+        }
     }
 
     public function generateItemCode()
@@ -146,23 +158,47 @@ class InventoryController extends Controller
         $model = $request->input('item-model');
         $price = $request->input('item-price');
         $item_status = $request->input('item-status');
+        $cpu = $request->input('item-cpu');
+        $gpu = $request->input('item-gpu');
+        $ram = $request->input('item-ram');
+        $storage = $request->input('item-storage');
+        $acquired = $request->input('item-acquired');
+        $expire = $request->input('item-expired');
 
-        $data = array(
-            'serial_num' => $serialNum,
+        $inventoryData = array(
+            'item_id' => $id,
             'supplier_id' => $supplier_name,
-            'category_id' => $item_category,
+            'category_id' =>  $item_category,
             'brand_id' => $brand,
+            'user_created' => $user,
+            'date_created' => $currentDate,
+        );
+
+        $detailsData = array(
             'model' => $model,
             'price' => $price,
+            'serial_num' => $serialNum,
             'item_status' => $item_status,
-            'user_change' => $user,
-            'date_change' => $currentDate,
+            'date_acquired' => $acquired,
+            'date_expiration' => $expire,
+            'cpu' => $cpu,
+            'gpu' => $gpu,
+            'ram' => $ram,
+            'storage' => $storage,
+            'user_created' => $user,
+            'date_created' => $currentDate,
         );
+
 
         $success = DB::table('t_inventory')
             ->where('item_id', $id)
             ->limit(1)
-            ->update($data);
+            ->update($inventoryData);
+
+            $success = DB::table('t_itemdetails')
+            ->where('item_id', $id)
+            ->limit(1)
+            ->update($detailsData);
 
         if ($success) {
             $logController = new LogController();
@@ -211,6 +247,7 @@ class InventoryController extends Controller
 
         if ($itemRemove) {
             DB::table('m_category')->where('category_id', $category)->update($dataToUpdate);
+            DB::table('t_itemdetails')->where('item_id', $removeID)->delete();
             $logController = new LogController();
             $logController->sendLog("Item " . $removeID . " Succesfully removed");
             return response()->json(['success' => true, 'message' => 'Item removed successfully.']);
