@@ -116,10 +116,10 @@
                         <div class="col-span-6 sm:col-span-3">
                             <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
                                 Brands:</label>
-                            <select data-te-select-init data-te-select-placeholder="Example placeholder"
-                                name="brand-list[]" id="checkResult" multiple>
-                                <option value=""></option>
-                            </select>
+                                <select data-te-select-init data-te-select-placeholder="Example placeholder" name="brand-list[]" id="checkResult" multiple>
+                                    <option selected hidden>Select Brand</option>
+                                    <option value=""></option>
+                                </select>
                   
 
                         </div>
@@ -127,8 +127,8 @@
                             <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add to a
                                 Supplier:</label>
                             <div class="flex flex-row">
-                                <select data-te-select-init data-te-select-placeholder="Example placeholder"
-                                    name="supplier[]" id="checkResult" multiple>
+                            <select data-te-select-init data-te-select-placeholder="Example placeholder" name="brand-list[]" id="checkResult" multiple>
+                                    <option selected hidden>Select Supplier</option>
                                     <option value=""></option>
                                 </select>
     
