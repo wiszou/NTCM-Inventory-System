@@ -39,7 +39,7 @@
 
         <!-- Categories -->
         <form id="category-form" class="flex-1 bg-white p-4 shadow rounded-lg">
-            @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Brand</h2>
+            @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Category</h2>
             <div class="my-1"></div>
             <div class="bg-ntccolor h-px mb-6"></div>
 
