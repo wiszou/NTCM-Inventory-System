@@ -29,6 +29,7 @@ Route::get('/log-out', [LogRegController::class, 'logOut'])->name('logout');
 Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('insert');
 Route::get('/remove-item/{removeItem}', [InventoryController::class, 'removeItem'])->name('remove');
 Route::get('/getItemDetails/{brandID}/{categoryID}', [InventoryController::class, 'getItemDetails']);
+Route::get('/getItemSpecs/{itemID}', [InventoryController::class, 'getItemSpecs']);
 Route::post('/update-item',  [InventoryController::class, 'updateTab']);
 
 Route::post('/addSupplier', [CatSuppController::class, 'addSupplier']);
