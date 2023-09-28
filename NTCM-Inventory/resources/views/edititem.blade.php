@@ -357,32 +357,33 @@
 
 
             <script>
-                const categorySelect = document.getElementById('categorySelector');
-                const cpuInput = document.getElementById('cpuInput');
-                const gpuInput = document.getElementById('gpuInput');
-                const ramInput = document.getElementById('ramInput');
-                const storageInput = document.getElementById('storageInput');
+                document.addEventListener('DOMContentLoaded', function() {
+                    const categorySelect = document.getElementById('categorySelector');
+                    const cpuInput = document.getElementById('cpuInput');
+                    const gpuInput = document.getElementById('gpuInput');
+                    const ramInput = document.getElementById('ramInput');
+                    const storageInput = document.getElementById('storageInput');
 
-                categorySelect.addEventListener('change', function() {
-                    const selectedOption = categorySelect.options[categorySelect.selectedIndex];
-                    const specsValue = selectedOption.getAttribute('data-specs');
-                    console.log(specsValue);
+                    categorySelect.addEventListener('change', function() {
+                        const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+                        const specsValue = selectedOption.getAttribute('data-specs');
+                        console.log(specsValue);
 
-                    // Show or hide input fields based on specs value
-                    if (specsValue === '1') {
-                        cpuInput.removeAttribute('hidden');
-                        gpuInput.removeAttribute('hidden');
-                        ramInput.removeAttribute('hidden');
-                        storageInput.removeAttribute('hidden');
-                    } else {
-                        cpuInput.setAttribute('hidden', true);
-                        gpuInput.setAttribute('hidden', true);
-                        ramInput.setAttribute('hidden', true);
-                        storageInput.setAttribute('hidden', true);
-                    }
+                        // Show or hide input fields based on specs value
+                        if (specsValue === '1') {
+                            cpuInput.style.display = 'block';
+                            gpuInput.style.display = 'block';
+                            ramInput.style.display = 'block';
+                            storageInput.style.display = 'block';
+                        } else {
+                            cpuInput.style.display = 'none';
+                            gpuInput.style.display = 'none';
+                            ramInput.style.display = 'none';
+                            storageInput.style.display = 'none';
+                        }
+                    });
                 });
             </script>
-
             <!-- Tailwind Elements Script -->
             <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         </div>

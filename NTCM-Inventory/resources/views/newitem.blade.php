@@ -191,7 +191,7 @@
                                 <select data-te-select-init data-te-select-filter="true" name="category" id="categorySelector" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
                                     <option selected hidden>Select your option</option>
                                     @foreach ($categories as $item)
-                                    <option value="{{ $item->category_id }}" data-specs="">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}">{{ $item->category_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
