@@ -200,43 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('supplier-form');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        // Serialize form data
-        const formData = new FormData(form);
-
-        fetch('/addSupplier', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Handle a successful response (e.g., show success message)
-                    alert('Supplier added successfully.');
-                    // You can also reset the form or redirect to another page
-                    location.reload();
-                } else {
-                    // Handle errors (e.g., show error message)
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    });
-});
-</script>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('brand-form');
     const submitButton = document.getElementById('submit-brand');
 

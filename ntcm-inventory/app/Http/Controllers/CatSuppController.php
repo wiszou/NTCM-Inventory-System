@@ -11,7 +11,6 @@ class CatSuppController extends Controller
     {
         $name = $request->input('supplier-name');
         $contact = $request->input('contact');
-        $selectedBrands = $request->input('brand-list'); // $selectedBrands will be an array of selected values
         // Check if a supplier with the same name already exists
         $existingSupplier = DB::table('m_supplier')
             ->where('name', $name)
@@ -28,21 +27,21 @@ class CatSuppController extends Controller
         $date = $dateTimeController->getDateTime(new Request());
         $firstIteration = true;
         try {
-            // Insert brand associations into m_supplierbrand table
-            foreach ($selectedBrands as $brandName) {
-                if ($firstIteration) {
-                    $firstIteration = false;
-                    continue; // Skip the first iteration
-                }
+            // // Insert brand associations into m_supplierbrand table
+            // foreach ($selectedBrands as $brandName) {
+            //     if ($firstIteration) {
+            //         $firstIteration = false;
+            //         continue; // Skip the first iteration
+            //     }
 
-                DB::table('m_supplierbrand')->insert([
-                    'supplier_id' => $id,
-                    'brand_id' => $brandName,
-                ]);
+            //     DB::table('m_supplierbrand')->insert([
+            //         'supplier_id' => $id,
+            //         'brand_id' => $brandName,
+            //     ]);
 
-                // Your logic for subsequent iterations goes here
-                // $brandName contains the value for the current iteration
-            }
+            //     // Your logic for subsequent iterations goes here
+            //     // $brandName contains the value for the current iteration
+            // }
 
             // Insert supplier data into m_supplier table
             DB::table('m_supplier')->insert([
@@ -222,12 +221,20 @@ class CatSuppController extends Controller
 
 
 
-    public function updateTable()
+    public function updateTable1()
     {
-        $supplier = DB::table('m_supplier')->get();
+
         $brand = DB::table('m_brand')->get();
 
-        return view('suppandcategs', ['brand' => $brand, 'suppliers' => $supplier]);
+        return view('brands', ['brand' => $brand]);
+    }
+
+    public function updateTable2()
+    {
+
+        $supplier = DB::table('m_supplier')->get();
+
+        return view('suppliers', ['suppliers' => $supplier]);
     }
 
     public function updateCateg()
