@@ -84,7 +84,7 @@
             <div class="flex flex-wrap md:space-y-0 mb-2 ml-1 w-1/2">
                 <form id="supplier-to-brand" class="flex-1 bg-white p-4 shadow rounded-lg ">
                     @csrf
-                    <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Brands to Suppliers</h2>
+                    <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Category to Suppliers</h2>
                     <div class="my-1"></div>
                     <div class="bg-ntccolor h-px mb-6"></div>
 
@@ -92,20 +92,18 @@
 
                         <div class="col-span-6 sm:col-span-3">
                             <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
-                                Brands:</label>
+                                Supplier:</label>
                             <select data-te-select-init data-te-select-placeholder="Example placeholder" name="brand-list[]" id="checkResult" multiple>
-                                <option selected hidden>Select Category</option>
+                                <option selected hidden>Select Supplier</option>
                                 <option value=""></option>
                             </select>
-
-
                         </div>
+                        
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add to a
-                                Supplier:</label>
+                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add Category:</label>
                             <div class="flex flex-row">
                                 <select data-te-select-init data-te-select-placeholder="Example placeholder" name="brand-list[]" id="checkResult" multiple>
-                                    <option selected hidden>Select Supplier</option>
+                                    <option selected hidden>Select Category</option>
                                     <option value=""></option>
                                 </select>
 

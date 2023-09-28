@@ -79,26 +79,35 @@
                     <div class="my-1"></div>
                     <div class="bg-ntccolor h-px mb-6"></div>
 
-                    <div class="px-2 flex justify-center">
-                        <div class="w-1/2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Category
-                                Name:</label>
+
+                    <div class="grid grid-cols-6 gap-6 px-2">
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
+                                Supplier:</label>
                             <select data-te-select-init data-te-select-placeholder="Example placeholder"
                                 name="brand-list[]" id="checkResult" multiple>
-                                <option selected hidden>Select Category</option>
+                                <option selected hidden>Select Supplier</option>
                                 <option value=""></option>
                             </select>
+                        </div>
 
-                            <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
-                            </script>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add
+                                Category:</label> 
+                                <select data-te-select-init data-te-select-placeholder="Example placeholder"
+                                    name="brand-list[]" id="checkResult" multiple>
+                                    <option selected hidden>Select Category</option>
+                                    <option value=""></option>
+                                </select>
                         </div>
+                        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
+                        </script>
                     </div>
-                    <div class="flex space-x-2">
-                        <div class=" w-full flex justify-end pt-5">
-                            <button type="submit" id="submit-brand"
-                                class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
-                        </div>
+                    <div class="flex justify-end mt-6 mr-2">
+                        <button type="submit"
+                            class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Add</button>
                     </div>
+
                 </form>
             </div>
 
