@@ -324,26 +324,26 @@ class CatSuppController extends Controller
         $supplier = $request->input('supplier');
         $categories = $request->input('categories');
         $categoryArray = array();
-        $firstIteration= true;
+        $firstIteration = true;
         try {
             // Fetch all categories from the database
             $allCategories = DB::table('m_category')->get();
-    
+
             foreach ($allCategories as $category) {
                 $categoryId = $category->category_id;
-    
+
                 if (!in_array($categoryId, $categories)) {
                     // Category is not in the $categories array, so we remove the supplier
                     $supplierList = json_decode($category->supplier_list, true) ?? [];
-    
+
                     if (in_array($supplier, $supplierList)) {
                         // Supplier exists in the list, so remove it
                         $supplierList = array_diff($supplierList, [$supplier]);
-    
+
                         // Update the category's supplier_list
                         DB::table('m_category')->where('category_id', $categoryId)
                             ->update(['supplier_list' => json_encode(array_values($supplierList))]);
-    
+
                         $categoryArray[] = ['category_id' => $categoryId];
                     }
                 }
@@ -375,7 +375,7 @@ class CatSuppController extends Controller
                     $firstIteration = false;
                 }
             }
-    
+
             return response()->json(['success' => true, 'message' => 'Supplier removed successfully', 'categoryArray' => $categoryArray]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
@@ -387,26 +387,30 @@ class CatSuppController extends Controller
         $supplier = $request->input('category');
         $categories = $request->input('brands');
         $categoryArray = array();
-        $firstIteration= true;
+        $firstIteration = true;
+
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $date = $dateTimeController->getDateTime(new Request());
         try {
             // Fetch all categories from the database
             $allCategories = DB::table('m_brand')->get();
-    
+
             foreach ($allCategories as $category) {
                 $categoryId = $category->brand_id;
-    
+
                 if (!in_array($categoryId, $categories)) {
                     // Category is not in the $categories array, so we remove the supplier
                     $supplierList = json_decode($category->category_list, true) ?? [];
-    
+
                     if (in_array($supplier, $supplierList)) {
                         // Supplier exists in the list, so remove it
                         $supplierList = array_diff($supplierList, [$supplier]);
-    
+
                         // Update the category's supplier_list
                         DB::table('m_brand')->where('brand_id', $categoryId)
                             ->update(['category_list' => json_encode(array_values($supplierList))]);
-    
+
                         $categoryArray[] = ['category_id' => $categoryId];
                     }
                 }
@@ -430,7 +434,11 @@ class CatSuppController extends Controller
 
                         // Update the category's supplier_list
                         DB::table('m_brand')->where('brand_id', $categoryId)
-                            ->update(['category_list' => json_encode($supplierList)]);
+                            ->update([
+                                'category_list' => json_encode($supplierList),
+                                'user_created' => $user,
+                                'date_created' => $date,
+                            ]);
 
                         $categoryArray[] = ['category_id' => $categoryId];
                     }
@@ -438,7 +446,9 @@ class CatSuppController extends Controller
                     $firstIteration = false;
                 }
             }
-    
+            $logController = new LogController();
+            $logController->sendLog("Brand " . $supplier . " Succesfully Updated its Information");
+
             return response()->json(['success' => true, 'message' => 'Supplier removed successfully', 'categoryArray' => $categoryArray]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);

@@ -172,9 +172,30 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
+                                <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
+                                <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
+                                    <option selected hidden value="none">Select your option</option>
+                                    @foreach ($suppliers as $item)
+                                    <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                                <select data-te-select-init data-te-select-filter="true" name="category" id="categorySelector" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input">
+                                    <option selected hidden value="none">Select your option</option>
+                                    @foreach ($categories as $item)
+                                    <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}">{{ $item->category_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
                                 <select data-te-select-init data-te-select-filter="true" name="brand" id="category" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input">
-                                    <option selected hidden>Select your option</option>
+                                    <option selected hidden value="none">Select your option</option>
                                     @foreach ($brand as $item)
                                     <option value="{{ $item->brand_id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -186,25 +207,6 @@
                                 <input type="text" name="model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="X250" required="">
                             </div>
 
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
-                                <select data-te-select-init data-te-select-filter="true" name="category" id="categorySelector" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input">
-                                    <option selected hidden>Select your option</option>
-                                    @foreach ($categories as $item)
-                                    <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}">{{ $item->category_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
-                                <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
-                                    <option selected hidden>Select your option</option>
-                                    @foreach ($suppliers as $item)
-                                    <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
 
                             <div class="col-span-6 sm:col-span-3" hidden>
                                 <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
