@@ -94,7 +94,7 @@
                             <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
                                 Brands:</label>
                             <select data-te-select-init data-te-select-placeholder="Example placeholder" name="brand-list[]" id="checkResult" multiple>
-                                <option selected hidden>Select Brand</option>
+                                <option selected hidden>Select Category</option>
                                 <option value=""></option>
                             </select>
 
