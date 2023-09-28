@@ -89,11 +89,6 @@
                     <div class="bg-ntccolor h-px mb-6"></div>
 
                     <div class="grid grid-cols-6 gap-6 px-2">
-                        @php
-                        $supplierID = "";
-                        $categoryID = "";
-
-                        @endphp
                         <div class="col-span-6 sm:col-span-3">
                             <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
                                 Supplier:</label>
@@ -110,7 +105,7 @@
                             <div class="flex flex-row">
                                 <select data-te-select-init data-te-select-filter="true" name="categories[]" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
                                     @foreach ($categories as $item)
-                                    <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">{{ $item->category_name }}</option>
                                     @endforeach
                                 </select>
                                 <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Add</button>
@@ -252,6 +247,67 @@
                 .catch(error => {
                     console.error('Error:', error);
                 });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('supplier-to-category');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Serialize form data
+            const formData = new FormData(form);
+
+            fetch('/SupplierCategory', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Handle a successful response (e.g., show success message)
+                        alert('Supplier added successfully.');
+                        // You can also reset the form or redirect to another page
+                        location.reload();
+                    } else {
+                        // Handle errors (e.g., show error message)
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const supplierSelect = document.getElementById("supplier");
+        const categoriesSelect = document.querySelector("select[name='categories[]']");
+
+        supplierSelect.addEventListener("change", function() {
+            const selectedSupplierId = supplierSelect.value;
+
+            for (const option of categoriesSelect.options) {
+                const supplierList = option.getAttribute("compare");
+                console.log("Supplier List:", supplierList);
+                console.log("Selected Supplier Id:", selectedSupplierId);
+
+                if (supplierList && supplierList.includes(selectedSupplierId)) {
+                    option.setAttribute("selected", "selected");
+                    console.log("Selected");
+                } else {
+                    option.removeAttribute("selected");
+                    console.log("Not Selected");
+                }
+            }
         });
     });
 </script>

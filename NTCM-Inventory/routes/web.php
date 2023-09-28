@@ -50,7 +50,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/updated-equipment', [InventoryController::class, 'getUpdatedEquipment'])->name('updated-equipment');
     Route::get('/editItems/{itemID}', [InventoryController::class, 'editItem'])->name('editItem');;
     Route::get('/supplier', [CatSuppController::class, 'updateTable2'])->name('suppliers');
-    Route::get('/brand', [CatSuppController::class, 'updateTable1'])->name('brands');
+    Route::get('/brands', [CatSuppController::class, 'updateTable1'])->name('brands');
     Route::get('/updated-category', [CatSuppController::class, 'updateCateg'])->name('categories');
     Route::get('/check-brand/{categoryID}', [CatSuppController::class, 'checkBrand']);
     Route::get('/new-item', [CatSuppController::class, 'updateAdd'])->name('newitem');
