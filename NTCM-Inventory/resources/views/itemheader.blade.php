@@ -51,16 +51,6 @@
 }
 
 
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-    background-color: #4facb6;
-    /*bg-indigo-100*/
-    color: #ffffff;
-    font-weight: 400;
-}
-
-
 /*Pagination Buttons*/
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -205,23 +195,10 @@ input[disabled] {
                                 <td class="text-center">{{ $quantity }}</td>
                                 <td
                                     class="flex justify-center underline underline-offset-1 text-blue-500 hover:text-white">
-                                    <label class="text-white hover:text-white bg-ntccolor px-2 rounded-3xl cursor-pointer" onclick="openModal('{{ $item->brand_id }}', '{{ $category_id }}')">
-                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            stroke="#4FACB6" class="w-6 h-6">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <path
-                                                    d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z"
-                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round"></path>
-                                                <path
-                                                    d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z"
-                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round"></path>
-                                            </g>
-                                        </svg>
+                                    <label
+                                        class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center cursor-pointer"
+                                        onclick="openModal('{{ $item->brand_id }}', '{{ $category_id }}')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="eye" width="24" fill="currentColor"><path d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"></path></svg>
                                     </label>
                                 </td>
                             </tr>
@@ -345,7 +322,9 @@ input[disabled] {
                                                 itemSerialNum,
                                                 custodianId,
                                                 item.item_status,
-                                                `<button data-item-id="${item.item_id}" class="btn btn-primary rounded-3xl bg-ntccolor px-3 text-white hover:text-white">Edit/Delete</button>`
+                                                `<button data-item-id="${item.item_id}" class="btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" class="w-5"  fill="currentcolor">
+                                                <path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"></path></svg></button>`
                                             ];
                                         } else {
                                             // Handle error if item specs cannot be fetched
