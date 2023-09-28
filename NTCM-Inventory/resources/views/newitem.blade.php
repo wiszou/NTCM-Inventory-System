@@ -173,7 +173,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
-                                <select data-te-select-init data-te-select-filter="true" name="brand" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                <select data-te-select-init data-te-select-filter="true" name="brand" id="category" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input">
                                     <option selected hidden>Select your option</option>
                                     @foreach ($brand as $item)
                                     <option value="{{ $item->brand_id }}">{{ $item->name }}</option>
@@ -188,7 +188,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
-                                <select data-te-select-init data-te-select-filter="true" name="category" id="categorySelector" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                <select data-te-select-init data-te-select-filter="true" name="category" id="categorySelector" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input">
                                     <option selected hidden>Select your option</option>
                                     @foreach ($categories as $item)
                                     <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}">{{ $item->category_name }}</option>

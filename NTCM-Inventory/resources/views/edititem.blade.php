@@ -148,7 +148,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
-                                <select data-te-select-init data-te-select-filter="true" name="item-brand" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                <select data-te-select-init data-te-select-filter="true" name="item-brand" id="category" class="shadow-sm  bg-custom-color block w-full p-2.5 editable-input">
                                     @foreach ($brands as $brand)
                                     <option value="{{ $brand->brand_id }}" {{ $dataitem->brand_id == $brand->brand_id ? 'selected' : '' }}>
                                         {{ $brand->name }}
@@ -188,7 +188,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
-                                <select data-te-select-init data-te-select-filter="true" name="item-category" id="categorySelector" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                <select data-te-select-init data-te-select-filter="true" name="item-category" id="categorySelector" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input">
                                     <option selected hidden>Select your option</option>
                                     @foreach ($categories as $category)
                                     <option data-specs="{{ $category->specs }}" value="{{ $category->category_id }}" {{ $dataitem->category_id == $category->category_id ? 'selected' : '' }}>
@@ -198,6 +198,7 @@
                                 </select>
                             </div>
 
+                            
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
                                 <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
@@ -208,27 +209,7 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            <div class="col-span-6 sm:col-span-3" id="cpuInput" hidden>
-                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">CPU</label>
-                                <input type="text" value="{{ $specs->cpu}}" name="item-cpu" id="item-serial-cpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="I7 - 12300">
-                            </div>
-
-
-                            <div class="col-span-6 sm:col-span-3" id="gpuInput" hidden>
-                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">GPU</label>
-                                <input type="text" value="{{ $specs->gpu}}" name="item-gpu" id="item-serial-gpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="GTX 3050">
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3" id="ramInput" hidden>
-                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">RAM</label>
-                                <input type="text" value="{{ $specs->ram}}" name="item-ram" id="item-serial-ram" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="8x2 16GB DDR4">
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3" id="storageInput" hidden>
-                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">STORAGE</label>
-                                <input type="text" value="{{ $specs->storage}}" name="item-storage" id="item-serial-storage" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="128GB SSD, 1TB HDD">
-                            </div>
+                            
 
 
                             @if ($dataitem->item_status != 'Deployed' && $dataitem->item_status != 'Borrowed')
@@ -253,6 +234,34 @@
                             @endif
 
 
+                           <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-t-2 border-gray-300 pt-4" id="spacer" hidden>
+                            Item Specification </div>
+
+                            <div class="col-span-6 sm:col-span-3" id="cpuInput" hidden>
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">CPU</label>
+                                <input type="text" value="{{ $specs->cpu}}" name="item-cpu" id="item-serial-cpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="I7 - 12300">
+                            </div>
+
+
+                            <div class="col-span-6 sm:col-span-3" id="gpuInput" hidden>
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">GPU</label>
+                                <input type="text" value="{{ $specs->gpu}}" name="item-gpu" id="item-serial-gpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="GTX 3050">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3" id="ramInput" hidden>
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">RAM</label>
+                                <input type="text" value="{{ $specs->ram}}" name="item-ram" id="item-serial-ram" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="8x2 16GB DDR4">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3" id="storageInput" hidden>
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">STORAGE</label>
+                                <input type="text" value="{{ $specs->storage}}" name="item-storage" id="item-serial-storage" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="128GB SSD, 1TB HDD">
+                            </div>
+
+
+                          
+
+
                         </div>
 
 
@@ -262,7 +271,7 @@
                         <!-- Modal footer -->
                         <div class="flex space-x-2 border-t border-gray-200 rounded-b">
                             <div class=" w-full flex justify-end pt-4">
-                                <a onclick="removeItemWithAjax('{{ $dataitem->item_id }}')" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center mr-2">Delete</a>
+                                <button onclick="removeItemWithAjax('{{ $dataitem->item_id }}')" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center mr-2">Delete</button>
                                 <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Update</button>
                             </div>
                         </div>
@@ -363,6 +372,8 @@
                     const gpuInput = document.getElementById('gpuInput');
                     const ramInput = document.getElementById('ramInput');
                     const storageInput = document.getElementById('storageInput');
+                    const spacer = document.getElementById('spacer');
+                    
 
                     categorySelect.addEventListener('change', function() {
                         const selectedOption = categorySelect.options[categorySelect.selectedIndex];
@@ -375,11 +386,13 @@
                             gpuInput.style.display = 'block';
                             ramInput.style.display = 'block';
                             storageInput.style.display = 'block';
+                            spacer.style.display = 'block';
                         } else {
                             cpuInput.style.display = 'none';
                             gpuInput.style.display = 'none';
                             ramInput.style.display = 'none';
                             storageInput.style.display = 'none';
+                            spacer.style.display = 'none';
                         }
                     });
                 });
