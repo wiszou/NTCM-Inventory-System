@@ -25,25 +25,8 @@ class CatSuppController extends Controller
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $date = $dateTimeController->getDateTime(new Request());
-        $firstIteration = true;
         try {
-            // // Insert brand associations into m_supplierbrand table
-            // foreach ($selectedBrands as $brandName) {
-            //     if ($firstIteration) {
-            //         $firstIteration = false;
-            //         continue; // Skip the first iteration
-            //     }
 
-            //     DB::table('m_supplierbrand')->insert([
-            //         'supplier_id' => $id,
-            //         'brand_id' => $brandName,
-            //     ]);
-
-            //     // Your logic for subsequent iterations goes here
-            //     // $brandName contains the value for the current iteration
-            // }
-
-            // Insert supplier data into m_supplier table
             DB::table('m_supplier')->insert([
                 'supplier_id' => $id,
                 'name' => $name,
@@ -233,8 +216,9 @@ class CatSuppController extends Controller
     {
 
         $supplier = DB::table('m_supplier')->get();
+        $category = DB::table('m_category')->get();
 
-        return view('suppliers', ['suppliers' => $supplier]);
+        return view('suppliers', ['suppliers' => $supplier, 'categories' => $category]);
     }
 
     public function updateCateg()
@@ -303,5 +287,42 @@ class CatSuppController extends Controller
             ->get();
 
         return view('itemheader', ['brands' => $brands, 'category_id' => $categoryID]);
+    }
+
+    public function supplierToCategory(Request $request)
+    {
+        $supplier = $request->input('supplier');
+        $categories = $request->input('categories');
+        $firstIteration = true; // Initialize as true
+
+        try {
+            if ($supplier == 'null') { // Check if supplier is 'null' (a string)
+                return response()->json(['success' => false, 'message' => 'Supplier is required.']);
+            }
+
+            DB::table('m_suppliercategory')->where('supplier_id', $supplier)->delete();
+            foreach ($categories as $category) {
+                if (!$firstIteration) { // Change the condition
+                    DB::table('m_suppliercategory')->insert([
+                        'supplier_id' => $supplier,
+                        'category_id' => $category,
+                    ]);
+                }
+                $firstIteration = false; // Set it to false for subsequent iterations
+            }
+            return response()->json(['success' => true, 'message' => 'Supplier added successfully']);
+        } catch (\Exception $e) {
+            // Handle exceptions here and return an error response
+            return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
+        }
+    }
+
+    public function getCategoriesForSupplier($supplierId)
+    {
+        $selectedCategories = DB::table('m_suppliercategory')->where('supplier_id', $supplierId)
+            ->pluck('category_id')
+            ->toArray();
+
+        return response()->json($selectedCategories);
     }
 }

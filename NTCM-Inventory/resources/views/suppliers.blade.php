@@ -82,31 +82,37 @@
 
             <!-- Add Brands to Suppliers -->
             <div class="flex flex-wrap md:space-y-0 mb-2 ml-1 w-1/2">
-                <form id="supplier-to-brand" class="flex-1 bg-white p-4 shadow rounded-lg ">
+                <form id="supplier-to-category" class="flex-1 bg-white p-4 shadow rounded-lg ">
                     @csrf
                     <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Category to Suppliers</h2>
                     <div class="my-1"></div>
                     <div class="bg-ntccolor h-px mb-6"></div>
 
                     <div class="grid grid-cols-6 gap-6 px-2">
+                        @php
+                        $supplierID = "";
+                        $categoryID = "";
 
+                        @endphp
                         <div class="col-span-6 sm:col-span-3">
                             <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
                                 Supplier:</label>
-                            <select data-te-select-init data-te-select-placeholder="Example placeholder" name="brand-list[]" id="checkResult" multiple>
-                                <option selected hidden>Select Supplier</option>
-                                <option value=""></option>
+                            <select data-te-select-init data-te-select-filter="true" name="supplier" id="supplier" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                                <option selected hidden value="null">Select your option</option>
+                                @foreach ($suppliers as $item)
+                                <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
-                        
+
                         <div class="col-span-6 sm:col-span-3">
                             <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add Category:</label>
                             <div class="flex flex-row">
-                                <select data-te-select-init data-te-select-placeholder="Example placeholder" name="brand-list[]" id="checkResult" multiple>
-                                    <option selected hidden>Select Category</option>
-                                    <option value=""></option>
+                                <select data-te-select-init data-te-select-filter="true" name="categories[]" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
+                                    @foreach ($categories as $item)
+                                    <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
+                                    @endforeach
                                 </select>
-
                                 <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Add</button>
                             </div>
                         </div>

@@ -35,6 +35,8 @@ Route::post('/update-item',  [InventoryController::class, 'updateTab']);
 Route::post('/addSupplier', [CatSuppController::class, 'addSupplier']);
 Route::post('/addCategory', [CatSuppController::class, 'addCategory']);
 Route::post('/addBrand', [CatSuppController::class, 'addBrand']);
+Route::post('/SupplierCategory', [CatSuppController::class, 'supplierToCategory']);
+Route::get('//get-categories-for-supplier/{supplierId}', [CatSuppController::class, 'getCategoriesForSupplier']);
 Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
 Route::get('/remove-brand/{itemCode}', [CatSuppController::class, 'removeBrand']);
 Route::get('/remove-supplier/{itemCode}', [CatSuppController::class, 'removeSupplier']);
