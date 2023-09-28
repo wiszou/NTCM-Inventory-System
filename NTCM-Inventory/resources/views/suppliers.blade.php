@@ -120,8 +120,6 @@
                                     <option selected hidden>Select Brand</option>
                                     <option value=""></option>
                                 </select>
-                  
-
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add to a

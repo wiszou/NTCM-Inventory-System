@@ -45,38 +45,74 @@
             </div>
         </div>
 
+        <div class="flex flex-row">
+            <!-- BRANDS -->
 
-        <!-- BRANDS -->
-        <form id="brand-form" class="flex-1 bg-white p-4 shadow rounded-lg mb-2">
-            @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add New Brand</h2>
-            <div class="my-1"></div>
-            <div class="bg-ntccolor h-px mb-6"></div>
+            <div class="w-1/2 mr-1">
+                <form id="brand-form" class="flex-1 h-56 bg-white p-4 shadow rounded-lg mb-2">
+                    @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add New Brand</h2>
+                    <div class="my-1"></div>
+                    <div class="bg-ntccolor h-px mb-6"></div>
 
-            <div class="px-2 flex justify-center">
-                <div class="w-1/2">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Brand
-                        Name:</label>
-                    <input type="text" name="name" id="name"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
-                        placeholder="Brand Name">
-                </div>
+                    <div class="px-2 flex justify-center">
+                        <div class="w-1/2">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Brand
+                                Name:</label>
+                            <input type="text" name="name" id="name"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
+                                placeholder="Brand Name">
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <div class=" w-full flex justify-end pt-4">
+                            <button type="submit" id="submit-brand"
+                                class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="flex space-x-2">
-                <div class=" w-full flex justify-end pt-4">
-                    <button type="submit" id="submit-brand"
-                        class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
-                </div>
-            </div>
-        </form>
 
+
+            <div class="w-1/2 ml-1">
+                <form id="brand-form" class="flex-1 h-56 bg-white p-4 shadow rounded-lg mb-2">
+                    @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Brand to Category</h2>
+                    <div class="my-1"></div>
+                    <div class="bg-ntccolor h-px mb-6"></div>
+
+                    <div class="px-2 flex justify-center">
+                        <div class="w-1/2">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Category
+                                Name:</label>
+                            <select data-te-select-init data-te-select-placeholder="Example placeholder"
+                                name="brand-list[]" id="checkResult" multiple>
+                                <option selected hidden>Select Category</option>
+                                <option value=""></option>
+                            </select>
+
+                            <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
+                            </script>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <div class=" w-full flex justify-end pt-5">
+                            <button type="submit" id="submit-brand"
+                                class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 text-center">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
 
         <!--Card-->
         <div id='suppliers' class="p-8 lg:mt-0 rounded-lg shadow bg-white">
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead class="">
                     <tr>
-                        <th data-priority="1">Brand Name</th>
-                        <th data-priority="2">Action</th>
+                        <th data-priority="1">Laptop</th>
+                        <th data-priority="2">Desktop</th>
                     </tr>
                 </thead>
                 <tbody id="suppliers">
