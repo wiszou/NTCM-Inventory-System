@@ -318,14 +318,37 @@ class CatSuppController extends Controller
     //         return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
     //     }
     // }
+
     public function supplierToCategory(Request $request)
     {
         $supplier = $request->input('supplier');
         $categories = $request->input('categories');
         $categoryArray = array();
-        $firstIteration = true;
-
+        $firstIteration= true;
         try {
+            // Fetch all categories from the database
+            $allCategories = DB::table('m_category')->get();
+    
+            foreach ($allCategories as $category) {
+                $categoryId = $category->category_id;
+    
+                if (!in_array($categoryId, $categories)) {
+                    // Category is not in the $categories array, so we remove the supplier
+                    $supplierList = json_decode($category->supplier_list, true) ?? [];
+    
+                    if (in_array($supplier, $supplierList)) {
+                        // Supplier exists in the list, so remove it
+                        $supplierList = array_diff($supplierList, [$supplier]);
+    
+                        // Update the category's supplier_list
+                        DB::table('m_category')->where('category_id', $categoryId)
+                            ->update(['supplier_list' => json_encode(array_values($supplierList))]);
+    
+                        $categoryArray[] = ['category_id' => $categoryId];
+                    }
+                }
+            }
+
             foreach ($categories as $categoryId) {
                 if (!$firstIteration) {
                     // Fetch the category details for the current categoryId
@@ -346,14 +369,14 @@ class CatSuppController extends Controller
                         DB::table('m_category')->where('category_id', $categoryId)
                             ->update(['supplier_list' => json_encode($supplierList)]);
 
-                        $categoryArray[] = ['category_id' => $categoryId, 'supplier_list' => $supplierList];
+                        $categoryArray[] = ['category_id' => $categoryId];
                     }
                 } else {
                     $firstIteration = false;
                 }
             }
-
-            return response()->json(['success' => true, 'message' => 'Supplier added successfully', 'categoryArray' => $categoryArray]);
+    
+            return response()->json(['success' => true, 'message' => 'Supplier removed successfully', 'categoryArray' => $categoryArray]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
         }
@@ -361,43 +384,64 @@ class CatSuppController extends Controller
 
     public function categoryToBrand(Request $request)
     {
-        $supplier = $request->input('supplier');
-        $categories = $request->input('categories');
+        $supplier = $request->input('category');
+        $categories = $request->input('brands');
         $categoryArray = array();
-        $firstIteration = true;
-
+        $firstIteration= true;
         try {
+            // Fetch all categories from the database
+            $allCategories = DB::table('m_brand')->get();
+    
+            foreach ($allCategories as $category) {
+                $categoryId = $category->brand_id;
+    
+                if (!in_array($categoryId, $categories)) {
+                    // Category is not in the $categories array, so we remove the supplier
+                    $supplierList = json_decode($category->category_list, true) ?? [];
+    
+                    if (in_array($supplier, $supplierList)) {
+                        // Supplier exists in the list, so remove it
+                        $supplierList = array_diff($supplierList, [$supplier]);
+    
+                        // Update the category's supplier_list
+                        DB::table('m_brand')->where('brand_id', $categoryId)
+                            ->update(['category_list' => json_encode(array_values($supplierList))]);
+    
+                        $categoryArray[] = ['category_id' => $categoryId];
+                    }
+                }
+            }
+
             foreach ($categories as $categoryId) {
                 if (!$firstIteration) {
                     // Fetch the category details for the current categoryId
-                    $category = DB::table('m_category')->where('category_id', $categoryId)->first();
+                    $category = DB::table('m_brand')->where('brand_id', $categoryId)->first();
 
                     if (!$category) {
                         return response()->json(['success' => false, 'message' => 'Category not found.']);
                     }
 
                     // Decode the supplier_list and check for duplicates
-                    $supplierList = json_decode($category->supplier_list, true) ?? [];
+                    $supplierList = json_decode($category->brand_id, true) ?? [];
 
                     if (!in_array($supplier, $supplierList)) {
                         // Supplier is not already in the list, so add it
                         $supplierList[] = $supplier;
 
                         // Update the category's supplier_list
-                        DB::table('m_category')->where('category_id', $categoryId)
-                            ->update(['supplier_list' => json_encode($supplierList)]);
+                        DB::table('m_brand')->where('brand_id', $categoryId)
+                            ->update(['category_list' => json_encode($supplierList)]);
 
-                        $categoryArray[] = ['category_id' => $categoryId, 'supplier_list' => $supplierList];
+                        $categoryArray[] = ['category_id' => $categoryId];
                     }
                 } else {
                     $firstIteration = false;
                 }
             }
-
-            return response()->json(['success' => true, 'message' => 'Supplier added successfully', 'categoryArray' => $categoryArray]);
+    
+            return response()->json(['success' => true, 'message' => 'Supplier removed successfully', 'categoryArray' => $categoryArray]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
         }
     }
-
 }

@@ -71,7 +71,7 @@
 
 
             <div class="w-1/2 ml-1">
-                <form id="brand-form" class="flex-1 h-56 bg-white p-4 shadow rounded-lg mb-2">
+                <form id="brand-category" class="flex-1 h-56 bg-white p-4 shadow rounded-lg mb-2">
                     @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Brand to Category</h2>
                     <div class="my-1"></div>
                     <div class="bg-ntccolor h-px mb-6"></div>
@@ -94,7 +94,7 @@
                                 Brand:</label>
                             <select data-te-select-init data-te-select-filter="true" name="brands[]" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
                                 @foreach ($brands as $item)
-                                <option value="{{ $item->brand_id }}">{{ $item->name }}</option>
+                                <option value="{{ $item->brand_id }}" compare="{{ $item->category_list }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -198,12 +198,12 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const links = document.querySelectorAll('.supplier-delete-link');
+        const links = document.querySelectorAll('.brand-delete-link');
 
         links.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault(); // Prevent the default click behavior
-                const supplierId = this.getAttribute('data-supplier-id');
+                const supplierId = this.getAttribute('data-brand-id');
 
                 // Create a custom confirmation dialog
                 const confirmation = confirm(
@@ -247,6 +247,43 @@
             const formData = new FormData(form);
 
             fetch('/addBrand', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Handle a successful response (e.g., show success message)
+                        alert('Brand added successfully.');
+                        // You can also reset the form or redirect to another page
+                        location.reload();
+                    } else {
+                        // Handle errors (e.g., show error message)
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('brand-category');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Serialize form data
+            const formData = new FormData(form);
+
+            fetch('/CategoryBrand', {
                     method: 'POST',
                     body: formData,
                     headers: {
