@@ -236,16 +236,17 @@
                     </div>
 
                     <div class="mt-9 pr-3">
-                        <p class="font-bold text-left text-sm mb-3">Remarks:<span class="font-normal text-sm pl-1">For
+                        <p class="font-bold text-left text-sm mb-3">Purpose:<span class="font-normal text-sm pl-1">For
                                 Q.A. Audit
                                 Officer Use</span></p>
                         <table class="w-full table-fixed border text-sm">
                             <thead>
                                 <tr class="border border-black text-center text-sm">
-                                    <th class="border border-black w-54 pl-1 w-10">No.</th>
-                                    <th class="border border-black pl-1 w-28">Item Code:</th>
-                                    <th class="border pl-1 border-black w-32">Item Model:</th>
-                                    <th class="border pl-1 border-black w-48">Serial Number:</th>
+                                    <th class="border border-black w-54 px-1 w-10">No.</th>
+                                    <th class="border border-black px-1 w-24">Item Code:</th>
+                                    <th class="border px-1 border-black w-24">Item:</th>
+                                    <th class="border px-1 border-black w-28">Serial Number:</th>
+                                    <th class="border px-1 border-black w-32">Remarks:</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -254,18 +255,21 @@
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Laptop</td>
                                     <td class="border border-black">J34HG53L04J</td>
+                                    <td class="border border-black"></td>
                                 </tr>
                                 <tr class="text-center text-sm">
                                     <td class="border border-black">2</td>
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Mouse</td>
                                     <td class="border border-black">H2HG2H32L-KJ</td>
+                                    <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">3</td>
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Charger</td>
                                     <td class="border border-black">JH1GDS23FGGF</td>
+                                    <td class="border border-black"></td>
 
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
@@ -273,10 +277,11 @@
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Bag</td>
                                     <td class="border border-black"></td>
-
+                                    <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">5</td>
+                                    <td class="border border-black"></td>
                                     <td class="border border-black"></td>
                                     <td class="border border-black"></td>
                                     <td class="border border-black"></td>
