@@ -42,6 +42,8 @@ Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCate
 Route::get('/remove-brand/{itemCode}', [CatSuppController::class, 'removeBrand']);
 Route::get('/remove-supplier/{itemCode}', [CatSuppController::class, 'removeSupplier']);
 
+Route::post('/insert-custodian', [CustodianController::class, 'createCustodian']);
+
 Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
