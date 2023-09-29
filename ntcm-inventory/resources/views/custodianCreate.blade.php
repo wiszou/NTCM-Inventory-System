@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Custodian</title>
+    <title>Custodian Form</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -135,7 +135,7 @@ td {
 
                 <div class="p-8 my-2 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
                     <h2 class="text-2xl font-bold text-ntccolor">
-                        Custodian
+                        Custodian Form
                     </h2>
 
                     <div>
@@ -204,8 +204,8 @@ td {
 
             <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster"
                 style="background: rgba(0,0,0,.7);">
-                <div class="modal-container bg-white w-3/6 rounded-xl z-50">
-                    <div class="modal-content py-4 text-left px-6 max-h-screen overflow-y-auto">
+                <div class="modal-container bg-white w-1/2 h-4/6  relative rounded-xl z-50">
+                    <div class="modal-content py-4 text-left px-6 ">
                         <!--Title-->
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-xl font-semibold" name="title" id="title">Custodian Form</p>
@@ -218,33 +218,58 @@ td {
                                 </svg>
                             </div>
                         </div>
+
                         <!--Body-->
-                        <div class="flex justify-center">
-                            <div class="border rounded-lg w-full">
+                        <div class="flex justify-center  max-h-96 overflow-y-auto mt-4">
+                            <div class="rounded-lg w-full">
                                 <form action="/update-item" method="post" class="relative bg-white">
                                     @csrf
                                     <!-- Modal body -->
                                     <div class="p-6 space-y-6">
-                                        <div class="grid grid-cols-6 gap-6">
 
+                                        <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="custodian-name"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Custodian
-                                                    Name</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900">Employee</label>
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="item-category" id="item-category"
-                                                    class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5  editable-input"
+                                                    class="shadow-sm bg-custom-color block w-full p-2.5  editable-input"
                                                     required="">
                                                 </select>
                                             </div>
-
                                             <div class="col-span-6 sm:col-span-3">
-
+                                                <label for="custodian-name"
+                                                    class="block mb-2 text-sm font-medium text-gray-900">Custodian
+                                                    Type</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="item-category" id="item-category"
+                                                    class="shadow-sm bg-custom-color block w-full p-2.5  editable-input"
+                                                    required="">
+                                                </select>
                                             </div>
+                                        </div>
 
+
+                                        <div
+                                            class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
+                                            Items</div>
+
+                      
                                             <div class="col-span-6 sm:col-span-3" bind>
                                                 <label for="item1"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Item 1</label>
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
+                                                    1 - Serial
+                                                    Number:</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="supplier-name" id="supplier-name"
+                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
+                                                </select>
+                                      
+                                            <div class="col-span-6 sm:col-span-3 mt-3">
+                                                <label for="item1"
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
+                                                    2 - Serial
+                                                    Number:</label>
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
                                                     class="shadow-sm w-full p-2.5  editable-input" required="">
@@ -252,54 +277,90 @@ td {
                                                 </select>
                                             </div>
 
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="item2"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Type</label>
+                                            <div class="col-span-6 sm:col-span-3 mt-3" bind>
+                                                <label for="item1"
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
+                                                    3 - Serial
+                                                    Number:</label>
                                                 <select data-te-select-init data-te-select-filter="true"
                                                     name="supplier-name" id="supplier-name"
-                                                    class="shadow-sm w-full p-2.5  editable-input">
+                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
 
                                                 </select>
                                             </div>
 
-                                            <div class="col-span-6 sm:col-span-6">
-                                                <div>
-                                                    <button id="add-input-button"
-                                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                        Add Input
-                                                    </button>
-                                                </div>
+                                            <div class="col-span-6 sm:col-span-3 mt-3">
+                                                <label for="item1"
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
+                                                    4 - Serial
+                                                    Number:</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="supplier-name" id="supplier-name"
+                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
 
-                                                <div id="input-container">
-                                                    <div class="col-span-6 sm:col-span-3">
-                                                        <label for="item1"
-                                                            class="block mb-2 text-sm font-medium text-gray-900">Item</label>
-                                                        <select data-te-select-init data-te-select-filter="true"
-                                                        name="item-name" id="item-category-1"
-                                                            class="shadow-sm w-full p-2.5  editable-input" required="">
-
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-span-6 sm:col-span-3">
-                                                        <label for="item2"
-                                                            class="block mb-2 text-sm font-medium text-gray-900">Type</label>
-                                                        <select data-te-select-init data-te-select-filter="true"
-                                                        name="item-category" id="item-category-1"
-                                                            class="shadow-sm w-full p-2.5  editable-input">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                </select>
                                             </div>
-                                            <!-- Modal footer -->
 
-                                            <div class="flex space-x-2 border-t border-gray-200 rounded-b">
-                                                <div class=" w-full flex justify-end pt-4">
-                                                    <a class="mr-2 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
-                                                        id="/update-item">Create</a>
-                                                </div>
+                                            <div class="col-span-6 sm:col-span-3 mt-3" bind>
+                                                <label for="item1"
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
+                                                    5 - Serial
+                                                    Number:</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="supplier-name" id="supplier-name"
+                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
+
+                                                </select>
                                             </div>
+                                        </div>
+
+                                        
+                                        <div
+                                            class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
+                                           Persons Involved </div>
+
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-3" bind>
+                                                <label for="item1"
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Accepted/Received
+                                                    By:</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="supplier-name" id="supplier-name"
+                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
+
+                                                </select>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3" bind>
+                                                <label for="item1"
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Issued
+                                                    By:</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="supplier-name" id="supplier-name"
+                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
+
+                                                </select>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3" bind>
+                                                <label for="item1"
+                                                    class="block mb-2 text-sm font-normal text-gray-900">Noted
+                                                    By:</label>
+                                                <select data-te-select-init data-te-select-filter="true"
+                                                    name="supplier-name" id="supplier-name"
+                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal footer -->
+
+                                        <div
+                                            class="w-full justify-end flex space-x-2 border-t border-gray-200 rounded-b">
+                                            <a class="mt-4 mr-2 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+                                                id="/update-item">Create Form</a>
+                                        </div>
 
                                 </form>
                             </div>
@@ -353,6 +414,8 @@ td {
 
 
 
+            <!-- Tailwind Elements Script -->
+            <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
 
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -489,8 +552,6 @@ td {
     });
     </script>
 
-    <!-- Tailwind Elements Script -->
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
 
 
