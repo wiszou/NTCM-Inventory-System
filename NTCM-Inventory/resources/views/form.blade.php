@@ -59,7 +59,7 @@
                 Print Custodian Form
             </h2>
             <input type="button" onclick="printBothDivs(['printableArea1', 'printableArea2'])" value="Print"
-                class="bg-ntccolor rounded-3xl text-white font-medium px-7 hover:bg-[#014F62] cursor-pointer" />
+                class="bg-ntccolor rounded-3xl text-white font-medium px-7 hover:bg-[#014F62] cursor-pointer " />
         </div>
     </div>
 

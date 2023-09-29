@@ -144,7 +144,7 @@
                             <span>Create Form</span>
                         </button>
 
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Status <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Custodian Type <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg></button>
                         <!-- Dropdown menu -->
@@ -171,12 +171,12 @@
                     <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
                             <tr>
-                                <th data-priority="1">Inventory ID</th>
+                                <th data-priority="1">Custodian ID</th>
                                 <th data-priority="2">Current Holder</th>
-                                <th data-priority="3">Item Name</th>
-                                <th data-priority="4">Model</th>
-                                <th data-priority="5">Quantity</th>
-                                <th data-priority="6">Status</th>
+                                <th data-priority="3">Custodian Type</th>
+                                <th data-priority="4">Remarks</th>
+                                <th data-priority="5">Print</th>
+
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
