@@ -68,6 +68,11 @@ Route::group(['middleware' => ['session-checker']], function () {
         return view('equipment');
     })->name('equipment');
 
+    Route::get('/form', function () {
+        return view('form');
+    })->name('form');
+
+
 });
 
 

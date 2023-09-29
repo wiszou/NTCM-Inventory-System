@@ -217,6 +217,10 @@
                                 </ul>
                             </div>
 
+
+                            <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-t-2 border-gray-300 pt-4" id="spacer" hidden>
+                            Item Specification </div>
+
                             <div class="col-span-6 sm:col-span-3" id="cpuInput" hidden>
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">CPU</label>
                                 <input type="text" name="item-cpu" id="item-serial-cpu" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="I7 - 12300">
@@ -277,6 +281,7 @@
                 const gpuInput = document.getElementById('gpuInput');
                 const ramInput = document.getElementById('ramInput');
                 const storageInput = document.getElementById('storageInput');
+                const spacer = document.getElementById('spacer');
 
                 categorySelect.addEventListener('change', function() {
                     const selectedOption = categorySelect.options[categorySelect.selectedIndex];
@@ -289,11 +294,13 @@
                         gpuInput.removeAttribute('hidden');
                         ramInput.removeAttribute('hidden');
                         storageInput.removeAttribute('hidden');
+                        spacer.removeAttribute('hidden');
                     } else {
                         cpuInput.setAttribute('hidden', true);
                         gpuInput.setAttribute('hidden', true);
                         ramInput.setAttribute('hidden', true);
                         storageInput.setAttribute('hidden', true);
+                        spacer.removeAttribute('hidden', true);
                     }
                 });
             </script>
