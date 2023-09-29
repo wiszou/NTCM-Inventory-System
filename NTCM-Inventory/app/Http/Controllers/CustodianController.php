@@ -240,4 +240,13 @@ class CustodianController extends Controller
             }
         }
     }
+
+    public function toPrint($custodianID)
+    {
+        DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
+        DB::table('t_itemdetails')->get();
+        $inventory = DB::table('t_inventory')->get();
+
+        return view('custodianCreate', ['inventory', $inventory]);
+    }
 }

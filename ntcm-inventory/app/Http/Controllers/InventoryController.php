@@ -185,7 +185,8 @@ class InventoryController extends Controller
             'brand_id' => $brand,
             'user_created' => $user,
             'item_status' => $item_status,
-            'date_created' => $currentDate,
+            'user_change' => $user,
+            'date_change' => $currentDate,
         );
 
         $detailsData = array(
@@ -193,13 +194,13 @@ class InventoryController extends Controller
             'price' => $price,
             'serial_num' => $serialNum,
             'date_acquired' => $acquired,
-            'date_expiration' => $expire,
+            'date_end' => $expire,
             'cpu' => $cpu,
             'gpu' => $gpu,
             'ram' => $ram,
             'storage' => $storage,
-            'user_created' => $user,
-            'date_created' => $currentDate,
+            'user_change' => $user,
+            'date_change' => $currentDate,
         );
 
 

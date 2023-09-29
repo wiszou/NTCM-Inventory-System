@@ -170,17 +170,26 @@
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
                     <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
+
                             <tr>
                                 <th data-priority="1">Custodian ID</th>
                                 <th data-priority="2">Current Holder</th>
                                 <th data-priority="3">Custodian Type</th>
-                                <th data-priority="4">Remarks</th>
+                                <th data-priority="4">Purpose</th>
                                 <th data-priority="5">Print</th>
 
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
-
+                            @foreach ($custodian as $item)
+                            <tr>
+                                <td>{{ $item->custodian_id}}</td>
+                                <td>{{ $item->name}}</td>
+                                <td>{{ $item->type}}</td>
+                                <td>{{ $item->description}}</td>
+                                <td></td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
