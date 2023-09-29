@@ -210,7 +210,7 @@
                         <!--Body-->
                         <div class="flex justify-center  max-h-96 overflow-y-auto mt-4">
                             <div class="rounded-lg w-full">
-                                <form id="create-form" action="/insert-custodian" method="post" class="relative bg-white">
+                                <form id="create-form" method="post" class="relative bg-white">
                                     @csrf
                                     <!-- Modal body -->
                                     <div class="p-6 space-y-6">
@@ -228,7 +228,7 @@
                                                 <select data-te-select-init data-te-select-filter="true" name="type" id="type" class="shadow-sm bg-custom-color block w-full p-2.5  editable-input" required="">
                                                     <option value="none" selected hidden>Select your option</option>
                                                     <option value="Borrow">Borrow</option>
-                                                    <option value="Deploy">Deploy</option>
+                                                    <option value="Deploy   ">Deploy</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -484,7 +484,7 @@
         });
     </script>
 
-    <!-- <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('create-form');
 
@@ -518,7 +518,7 @@
                     });
             });
         });
-    </script> -->
+    </script>
 
 </body>
 
