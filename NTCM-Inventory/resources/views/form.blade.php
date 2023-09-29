@@ -49,21 +49,32 @@
 
 </head>
 
+
 <body class="h-screen w-full bg-gray-100 text-black">
-    <input type="button" onclick="printBothDivs(['printableArea1', 'printableArea2'])" value="Print"
-        class="bg-ntccolor px-3 py-4" />
+
+    <div class="w-full mb-5 sticky top-0">
+
+        <div class="py-5 px-10 lg:mt-0 rounded shadow bg-white flex flex-row justify-between">
+            <h2 class="text-2xl font-bold text-ntccolor">
+                Print Custodian Form
+            </h2>
+            <input type="button" onclick="printBothDivs(['printableArea1', 'printableArea2'])" value="Print"
+                class="bg-ntccolor rounded-3xl text-white font-medium px-7 hover:bg-[#014F62] cursor-pointer" />
+        </div>
+    </div>
+
 
 
 
     <div class="w-full flex flex-col items-center">
 
 
-        <div class="w-1/2 bg-white pt-10 px-10 mb-8 pb-16 flex">
+        <div class="w-1/2 bg-white pt-8 px-2 mb-8 pb-16 flex">
             <!-- PAPER 1 -->
 
             <!--PRINTABLE AREA 1 -->
-            <div class="w-full px-6" id="printableArea1">
-                <div class="mx-auto w-full bg-white mt-3">
+            <div class="w-full" id="printableArea1">
+                <div class="mx-auto w-full bg-white px-8">
                     <div class="flex justify-between">
                         <div>
                             <img src="/assets/Logosidebar.png" class="h-20" />
@@ -72,39 +83,40 @@
                         <div class="pt-6">
                             <p class="text-right text-xl font-medium">CUSTODIAN FORM</p>
                             <p class="text-right text-lg">IT Equipment</p>
-                            <p class="text-right text-2xl"><br /></p>
+                            <p class="text-right text-sm">IT-CSF-0001</p>
                         </div>
                     </div>
 
                     <div class="flex justify-between">
                         <div>
-                            <p class="underline underline-offset-4 py-4 mt-18">September 13, 2023</p>
+                            <p class="text-sm underline underline-offset-4 pb-4 pt-4">September 13, 2023</p>
 
                             <table class="table-auto mt-3">
                                 <tbody>
                                     <tr>
-                                        <td class="text-normal font-medium">Equipment Custodian:</td>
-                                        <td class="pl-3 underline underline-offset-4">Malcolm Lockyer</td>
+                                        <td class="text-sm font-medium">Equipment Custodian:</td>
+                                        <td class="text-sm pl-3 underline underline-offset-4">Malcolm Lockyer</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-normal font-medium">Position / Function:</td>
-                                        <td class="pl-3 underline underline-offset-4">Q.A. Audit Officer</td>
+                                        <td class="text-sm font-medium">Position / Function:</td>
+                                        <td class="pl-3 text-sm underline underline-offset-4">Q.A. Audit Officer</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-normal font-medium">Department:</td>
-                                        <td class="pl-3 underline underline-offset-4">Quality Assurance Department</td>
+                                        <td class="text-sm font-medium">Department:</td>
+                                        <td class="pl-3 text-sm underline underline-offset-4">Quality Assurance
+                                            Department</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <div class="mt-16 pr-4">
+                    <div class="mt-8 pr-4">
                         <p class="text-justify text-sm text-black font-medium">I agree & accept the following NMFPI
                             guidelines
                             governing the issuance of Information Technology equipment to me:</p>
 
-                        <p class="mt-2 pl-5 text-justify text-sm text-black">1. The said equipment(s) as detailed and
+                        <p class="mt-3 pl-5 text-justify text-sm text-black">1. The said equipment(s) as detailed and
                             defined by
                             Attachment A is not an employee benefit but a “tool of the trade” which means that because
                             of
@@ -114,19 +126,19 @@
                             the
                             job efficiently.</p>
 
-                        <p class="mt-1 pl-5 text-justify text-sm text-black">2. It is NMFPI Management’s sole
+                        <p class="mt-3 pl-5 text-justify text-sm text-black">2. It is NMFPI Management’s sole
                             prerogative,
                             through an authorized representative to replace, upgrade or in some instances, require the
                             return of
                             the said equipment as it deems necessary in relation to the function.</p>
 
-                        <p class="mt-1 pl-5 text-justify text-sm text-black">3. The employee commits to take care of the
+                        <p class="mt-3 pl-5 text-justify text-sm text-black">3. The employee commits to take care of the
                             item(s)
                             at all times and keep it safe to avoid damage or loss including but not limited to physical
                             state
                             and/or software content</p>
 
-                        <p class="mt-1 pl-5 text-justify text-sm text-black">4. When the item(s) become defective for
+                        <p class="mt-3 pl-5 text-justify text-sm text-black">4. When the item(s) become defective for
                             some
                             reason or another, the employee is obliged to report the said problem to the Information
                             Technology
@@ -140,14 +152,14 @@
                             be
                             under the discretion of the Finance and Corporate Services Manager.</p>
 
-                        <p class="mt-1 pl-5 text-justify text-sm text-black">5. In case of loss, it is the employee’s
+                        <p class="mt-3 pl-5 text-justify text-sm text-black">5. In case of loss, it is the employee’s
                             responsibility to reimburse NMFPI the full acquisition cost (including but not limited to
                             the
                             hardware, software and/or peripherals installed or attached) or replace the equipment with a
                             fully
                             functional one subject to the approval of the Corporate Services Manager.</p>
 
-                        <p class="mt-1 pl-5 text-justify text-sm text-black">6. In case of separation or sea service
+                        <p class="mt-3 pl-5 text-justify text-sm text-black">6. In case of separation or sea service
                             leave,
                             the
                             employee undertakes to surrender voluntarily to the Information Technology Team all of the
@@ -155,30 +167,40 @@
                             items in good working condition for clearance purposes.</p>
                     </div>
 
-                    <div class="mt-24 pr-4">
-                        <table class="w-full table-fixed border text-sm">
+                    <div class="mt-16 pr-4">
+                        <table class="w-full table-fixed text-sm">
                             <thead>
-                                <tr class="text-left border border-black">
-                                    <th class="border border-black w-54 pl-1">Accepted/Received By:</th>
-                                    <th class="border border-black pl-1">Issued By:</th>
-                                    <th class="border pl-1 border-black">Noted By:</th>
+                                <tr class="text-center border-black">
+                                    <th class=" border-black w-56 pl-1">Accepted/Received By:</th>
+                                    <th class=" border-black pl-1">Issued By:</th>
+                                    <th class="pl-1 border-black">Noted By:</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr">
-                                    <td class="border-x border-black pt-16"></td>
-                                    <td class="border-r  border-black pt-16"></td>
-                                    <td class="border-x pt-16 border-black"></td>
+                                    <td class=" border-black pt-8"></td>
+                                    <td class="  border-black pt-8"></td>
+                                    <td class=" pt-8 border-black"></td>
                                     </tr>
-                                    <tr>
-                                        <td class="border-x border-black pl-1">(Signature Over Printed Name)</td>
-                                        <td class="border-x border-black pl-1">IT Representative</td>
-                                        <td class="border-x border-black pl-1">Deputy Director</td>
+                                    <tr class="">
+                                        <td class="border-black text-center">
+                                            <span
+                                                class="flex pl-1.5">____________________________________</span>(Signature
+                                            Over Printed Name)
+                                        </td>
+                                        <td class=" border-black text-center">
+                                            <span class="flex pl-3">_______________________________</span>IT
+                                            Representative
+                                        </td>
+                                        <td class=" border-black text-center">
+                                            <span class="flex pl-2">_______________________________</span>Deputy
+                                            Director
+                                        </td>
                                     </tr>
-                                    <tr class="border border-black">
-                                        <td class="border border-black pl-1">Date:</td>
-                                        <td class="border border-black pl-1">Date:</td>
-                                        <td class="border border-black pl-1">Date:</td>
+                                    <tr class=" text-xs text-center border-black">
+                                        <td class=" border-black pl-1">September 22, 2023</td>
+                                        <td class=" border-black pl-1">September 22, 2023</td>
+                                        <td class=" border-black pl-1">September 22, 2023</td>
                                     </tr>
                             </tbody>
                         </table>
@@ -190,12 +212,12 @@
 
 
 
-        <div class="w-1/2 bg-white pt-10 py-10 px-10 mb-8 flex">
+        <div class="w-1/2 bg-white pt-10 py-10 px-10 mb-8 flex pb-96">
             <!-- PAPER 2 -->
 
             <!--PRINTABLE AREA 2 -->
             <div class="w-full px-6" id="printableArea2">
-                <div class="mx-auto w-full bg-white mt-3">
+                <div class="mx-auto w-full bg-white px-8">
                     <div class="flex justify-between">
                         <div>
                             <img src="/assets/Logosidebar.png" class="h-20" />
@@ -204,89 +226,101 @@
                         <div class="pt-6">
                             <p class="text-right text-xl font-medium">CUSTODIAN FORM</p>
                             <p class="text-right text-lg">IT Equipment</p>
-                            <p class="text-right text-2xl"><br /></p>
+                            <p class="text-right text-sm">IT-CSF-0001</p>
                         </div>
                     </div>
 
 
-                    <div>
+                    <div class="mt-9">
                         <p class="font-medium text-center">IT EQUIPMENT - ATTACHMENT A</p>
                     </div>
 
-                    <div class="mt-4 pr-3">
-                    <p class="font-bold text-left mb-3">Remarks:<span class="font-normal pl-1">For Q.A. Audit Officer Use</span></p>
+                    <div class="mt-9 pr-3">
+                        <p class="font-bold text-left text-sm mb-3">Remarks:<span class="font-normal text-sm pl-1">For
+                                Q.A. Audit
+                                Officer Use</span></p>
                         <table class="w-full table-fixed border text-sm">
                             <thead>
-                                <tr class="border border-black text-center">
+                                <tr class="border border-black text-center text-sm">
                                     <th class="border border-black w-54 pl-1 w-10">No.</th>
                                     <th class="border border-black pl-1 w-28">Item Code:</th>
-                                    <th class="border pl-1 border-black w-32">Item Name:</th>
+                                    <th class="border pl-1 border-black w-32">Item Model:</th>
                                     <th class="border pl-1 border-black w-48">Serial Number:</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border border-black text-center">
+                                <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">1</td>
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Laptop</td>
                                     <td class="border border-black">J34HG53L04J</td>
                                 </tr>
-                                <tr class="text-center">
+                                <tr class="text-center text-sm">
                                     <td class="border border-black">2</td>
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Mouse</td>
-                                    <td class="border border-black">H2HG2H34FK2L-KJ</td>
+                                    <td class="border border-black">H2HG2H32L-KJ</td>
                                 </tr>
-                                <tr class="border border-black text-center">
+                                <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">3</td>
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Charger</td>
                                     <td class="border border-black">JH1GDS23FGGF</td>
 
                                 </tr>
-                                <tr class="border border-black text-center">
+                                <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">4</td>
                                     <td class="border border-black">IT-0001</td>
                                     <td class="border border-black">Bag</td>
                                     <td class="border border-black"></td>
-     
+
                                 </tr>
-                                <tr class="border border-black text-center">
+                                <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">5</td>
                                     <td class="border border-black"></td>
                                     <td class="border border-black"></td>
                                     <td class="border border-black"></td>
-          
+
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
 
-                    <div class="mt-16  pr-4">
-                        <table class="w-full table-fixed border text-sm">
+                    <div class="mt-16 pr-4">
+                        <table class="w-full table-fixed text-sm">
                             <thead>
-                                <tr class="text-left border border-black">
-                                    <th class="border border-black w-54 pl-1">Accepted/Received By:</th>
-                                    <th class="border border-black pl-1">Issued By:</th>
-                                    <th class="border pl-1 border-black">Noted By:</th>
+                                <tr class="text-center border-black">
+                                    <th class=" border-black w-56 pl-1">Accepted/Received By:</th>
+                                    <th class=" border-black pl-1">Issued By:</th>
+                                    <th class="pl-1 border-black">Noted By:</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr">
-                                    <td class="border-x border-black pt-16"></td>
-                                    <td class="border-r  border-black pt-16"></td>
-                                    <td class="border-x pt-16 border-black"></td>
+                                    <td class=" border-black pt-8"></td>
+                                    <td class="  border-black pt-8"></td>
+                                    <td class=" pt-8 border-black"></td>
                                     </tr>
-                                    <tr>
-                                        <td class="border-x border-black pl-1">(Signature Over Printed Name)</td>
-                                        <td class="border-x border-black pl-1">IT Representative</td>
-                                        <td class="border-x border-black pl-1">Deputy Director</td>
+                                    <tr class="">
+                                        <td class="border-black text-center">
+                                            <span
+                                                class="flex pl-1.5">____________________________________</span>(Signature
+                                            Over Printed Name)
+                                        </td>
+                                        <td class=" border-black text-center">
+                                            <span class="flex pl-3">_______________________________</span>IT
+                                            Representative
+                                        </td>
+                                        <td class=" border-black text-center">
+                                            <span class="flex pl-2">_______________________________</span>Deputy
+                                            Director
+                                        </td>
                                     </tr>
-                                    <tr class="border border-black">
-                                        <td class="border border-black pl-1">Date:</td>
-                                        <td class="border border-black pl-1">Date:</td>
-                                        <td class="border border-black pl-1">Date:</td>
+                                    <tr class=" text-xs text-center border-black">
+                                        <td class=" border-black pl-1">September 22, 2023</td>
+                                        <td class=" border-black pl-1">September 22, 2023</td>
+                                        <td class=" border-black pl-1">September 22, 2023</td>
                                     </tr>
                             </tbody>
                         </table>
