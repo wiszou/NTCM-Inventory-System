@@ -300,7 +300,7 @@
                         gpuInput.setAttribute('hidden', true);
                         ramInput.setAttribute('hidden', true);
                         storageInput.setAttribute('hidden', true);
-                        spacer.removeAttribute('hidden', true);
+                        spacer.setAttribute('hidden', true);
                     }
                 });
             </script>
