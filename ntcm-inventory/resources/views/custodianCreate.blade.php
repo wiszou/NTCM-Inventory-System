@@ -513,10 +513,7 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            // Handle a successful response (e.g., show success message)
-                            alert('Item added successfully.');
-                            // You can also reset the form or redirect to another page
-                            location.reload();
+                            alert(data.message);
                         } else {
                             // Handle errors (e.g., show error message)
                             alert(data.message);

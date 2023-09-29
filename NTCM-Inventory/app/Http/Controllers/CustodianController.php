@@ -111,6 +111,7 @@ class CustodianController extends Controller
             $this->updateItem($item1, $item2, $item3, $item4, $item5, $type, $custodianID);
             $logController = new LogController();
             $logController->sendLog("Custodian Form " . $custodianID . " Succesfully added");
+            $this->toPrint($custodianID);
             return response()->json(['success' => true, 'message' => 'Item added successfully.']);
         } catch (\Exception $e) {
             // Log or report the actual error message
@@ -247,6 +248,7 @@ class CustodianController extends Controller
         DB::table('t_itemdetails')->get();
         $inventory = DB::table('t_inventory')->get();
 
-        return view('custodianCreate', ['inventory', $inventory]);
+        return view('form', ['inventory', $inventory]);
     }
+
 }
