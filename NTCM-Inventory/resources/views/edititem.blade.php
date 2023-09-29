@@ -198,7 +198,7 @@
                                 </select>
                             </div>
 
-                            
+
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
                                 <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
@@ -209,7 +209,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            
+
 
 
                             @if ($dataitem->item_status != 'Deployed' && $dataitem->item_status != 'Borrowed')
@@ -234,8 +234,8 @@
                             @endif
 
 
-                           <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-t-2 border-gray-300 pt-4" id="spacer" hidden>
-                            Item Specification </div>
+                            <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-t-2 border-gray-300 pt-4" id="spacer" hidden>
+                                Item Specification </div>
 
                             <div class="col-span-6 sm:col-span-3" id="cpuInput" hidden>
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">CPU</label>
@@ -259,7 +259,7 @@
                             </div>
 
 
-                          
+
 
 
                         </div>
@@ -373,12 +373,11 @@
                     const ramInput = document.getElementById('ramInput');
                     const storageInput = document.getElementById('storageInput');
                     const spacer = document.getElementById('spacer');
-                    
 
-                    categorySelect.addEventListener('change', function() {
+                    // Function to check the selected option periodically
+                    function checkSelectedOption() {
                         const selectedOption = categorySelect.options[categorySelect.selectedIndex];
                         const specsValue = selectedOption.getAttribute('data-specs');
-                        console.log(specsValue);
 
                         // Show or hide input fields based on specs value
                         if (specsValue === '1') {
@@ -394,7 +393,20 @@
                             storageInput.style.display = 'none';
                             spacer.style.display = 'none';
                         }
+                    }
+
+                    // Call the function initially
+                    checkSelectedOption();
+
+                    // Check for changes every 2 seconds (adjust the interval as needed)
+                    const interval = setInterval(checkSelectedOption, 2000);
+
+                    // Stop checking when the page is unloaded (optional)
+                    window.addEventListener('unload', function() {
+                        clearInterval(interval);
                     });
+
+                    categorySelect.addEventListener('change', checkSelectedOption);
                 });
             </script>
             <!-- Tailwind Elements Script -->

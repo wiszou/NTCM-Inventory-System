@@ -222,7 +222,7 @@
                 .then(data => {
                     if (data.success) {
                         // Handle a successful response (e.g., show success message)
-                        alert('Brand added successfully.');
+                        alert('Brand added successfully.123');
                         // You can also reset the form or redirect to another page
                         location.reload();
                     } else {
@@ -261,6 +261,7 @@
         });
     });
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('brand-form');

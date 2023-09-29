@@ -175,7 +175,7 @@
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Model</label>
                                 <input type="text" name="model" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="X250" required="">
                             </div>
-                            
+
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
                                 <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input" onchange="toggleCategorySelector()">
@@ -188,20 +188,20 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
-                                <select data-te-select-init data-te-select-filter="true" name="category" id="categorySelector" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input" disabled onchange="toggleBrandSelector()">
+                                <select data-te-select-init data-te-select-filter="true" name="category" id="categorySelector" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input" onchange="toggleBrandSelector()" disabled>
                                     <option selected hidden value="none">Select your option</option>
                                     @foreach ($categories as $item)
-                                    <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}" compare="{{ $item->supplier_list }}">{{ $item->category_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
-                                <select data-te-select-init data-te-select-filter="true" name="brand" id="brand" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input" disabled>
+                                <select data-te-select-init data-te-select-filter="true" name="brand" id="brands" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input" disabled>
                                     <option selected hidden value="none">Select your option</option>
                                     @foreach ($brand as $item)
-                                    <option value="{{ $item->brand_id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->brand_id }}" compare="{{ $item->category_list }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -219,7 +219,7 @@
 
 
                             <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-t-2 border-gray-300 pt-4" id="spacer" hidden>
-                            Item Specification </div>
+                                Item Specification </div>
 
                             <div class="col-span-6 sm:col-span-3" id="cpuInput" hidden>
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">CPU</label>
@@ -387,10 +387,10 @@
 
         if (supplierSelect.value === "none") {
             categorySelect.disabled = true;
-            console.log("test1");
+
         } else {
             categorySelect.disabled = false;
-            console.log("test1");
+
         }
 
     }
@@ -408,5 +408,71 @@
         }
     }
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const supplierSelect = document.getElementById("supplier-name");
+        const categorySelect = document.getElementById("categorySelector");
+
+        supplierSelect.addEventListener("change", function() {
+            const selectedSupplierId = supplierSelect.value;
+
+            for (const option of categorySelect.options) {
+                const supplierList = option.getAttribute("compare");
+                // console.log("Category List:", supplierList);
+                // console.log("Selected Supplier Id:", selectedSupplierId);
+
+                if (supplierList) {
+                    const compareValues = JSON.parse(supplierList); // Assuming supplierList is a JSON array
+                    if (compareValues.includes(selectedSupplierId) || selectedSupplierId === "none") {
+                        option.style.display = "block"; // Show the option
+                        option.removeAttribute("hidden"); // Enable the option
+                        // console.log("Enabled");
+                    } else {
+                        option.style.display = "none"; // Hide the option
+                        option.setAttribute("hidden", "hidden"); // Disable the option
+                        // console.log("Disabled");
+                    }
+                }
+            }
+
+            // Enable or disable the "Category" select element based on the selected supplier
+            categorySelect.disabled = (selectedSupplierId === "none");
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const supplierSelect = document.getElementById("categorySelector");
+        const categorySelect = document.getElementById("brands");
+        
+
+        supplierSelect.addEventListener("change", function() {
+            const selectedSupplierId = supplierSelect.value;
+            for (const option of categorySelect.options) {
+                const supplierList = option.getAttribute("compare");
+                // console.log("Category List:", supplierList);
+                // console.log("Selected Supplier Id:", selectedSupplierId);
+
+                if (supplierList) {
+                    const compareValues = JSON.parse(supplierList); // Assuming supplierList is a JSON array
+                    if (compareValues.includes(selectedSupplierId) || selectedSupplierId === "none") {
+                        option.style.display = "block"; // Show the option
+                        option.removeAttribute("hidden"); // Enable the option
+                        // console.log("Enabled");
+                    } else {
+                        option.style.display = "none"; // Hide the option
+                        option.setAttribute("hidden", "hidden"); // Disable the option
+                        // console.log("Disabled");
+                    }
+                }
+            }
+
+            // Enable or disable the "Category" select element based on the selected supplier
+            categorySelect.disabled = (selectedSupplierId === "none");
+        });
+    });
+</script>
+
 
 </html>

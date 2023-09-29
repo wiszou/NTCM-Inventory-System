@@ -192,7 +192,7 @@
 
 
                     <li>
-                        <a href="{{ route('updated-equipment') }}"
+                        <a href="{{ route('custodian2') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 class="flex-shrink-0 w-6 h-6 text-gray-500 "

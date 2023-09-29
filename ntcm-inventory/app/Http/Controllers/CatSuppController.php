@@ -291,34 +291,6 @@ class CatSuppController extends Controller
     }
 
 
-    // public function supplierToCategory(Request $request)
-    // {
-    //     $supplier = $request->input('supplier');
-    //     $categories = $request->input('categories');
-    //     $firstIteration = false; 
-
-    //     try {
-    //         if ($supplier == 'null') { 
-    //             return response()->json(['success' => false, 'message' => 'Supplier is required.']);
-    //         }
-
-    //         DB::table('m_suppliercategory')->where('supplier_id', $supplier)->delete();
-    //         foreach ($categories as $category) {
-    //             if ($firstIteration) { 
-    //                 DB::table('m_suppliercategory')->insert([
-    //                     'supplier_id' => $supplier,
-    //                     'category_id' => $category,
-    //                 ]);
-    //             }
-    //             $firstIteration = true; 
-    //         }
-    //         return response()->json(['success' => true, 'message' => 'Supplier added successfully']);
-    //     } catch (\Exception $e) {
-
-    //         return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
-    //     }
-    // }
-
     public function supplierToCategory(Request $request)
     {
         $supplier = $request->input('supplier');
@@ -381,75 +353,69 @@ class CatSuppController extends Controller
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
         }
     }
-
     public function categoryToBrand(Request $request)
     {
         $supplier = $request->input('category');
-        $categories = $request->input('brands');
-        $categoryArray = array();
+        $brands = $request->input('brands');
+        $brandArray = array();
         $firstIteration = true;
 
-        $user = session()->get('user_name');
-        $dateTimeController = new DateTimeController();
-        $date = $dateTimeController->getDateTime(new Request());
         try {
-            // Fetch all categories from the database
-            $allCategories = DB::table('m_brand')->get();
+            // Fetch all brands from the database
+            $allBrands = DB::table('m_brand')->get();
 
-            foreach ($allCategories as $category) {
-                $categoryId = $category->brand_id;
+            if (!empty($brands)) {
+                foreach ($allBrands as $brand) {
+                    $brandId = $brand->brand_id;
 
-                if (!in_array($categoryId, $categories)) {
-                    // Category is not in the $categories array, so we remove the supplier
-                    $supplierList = json_decode($category->category_list, true) ?? [];
+                    if (!in_array($brandId, $brands)) {
+                        // Brand is not in the $brands array, so we remove the supplier
+                        $brandList = json_decode($brand->category_list, true) ?? [];
 
-                    if (in_array($supplier, $supplierList)) {
-                        // Supplier exists in the list, so remove it
-                        $supplierList = array_diff($supplierList, [$supplier]);
+                        if (in_array($supplier, $brandList)) {
+                            // Supplier exists in the list, so remove it
+                            $brandList = array_diff($brandList, [$supplier]);
 
-                        // Update the category's supplier_list
-                        DB::table('m_brand')->where('brand_id', $categoryId)
-                            ->update(['category_list' => json_encode(array_values($supplierList))]);
+                            // Update the brand's brand_list
+                            DB::table('m_brand')->where('brand_id', $brandId)
+                                ->update(['category_list' => json_encode(array_values($brandList))]);
 
-                        $categoryArray[] = ['category_id' => $categoryId];
+                            $brandArray[] = ['brand_id' => $brandId];
+                        }
                     }
                 }
             }
 
-            foreach ($categories as $categoryId) {
-                if (!$firstIteration) {
-                    // Fetch the category details for the current categoryId
-                    $category = DB::table('m_brand')->where('brand_id', $categoryId)->first();
+            if (!empty($brands)) {
+                foreach ($brands as $brandId) {
+                    if (!$firstIteration) {
+                        // Fetch the brand details for the current brandId
+                        $brand = DB::table('m_brand')->where('brand_id', $brandId)->first();
 
-                    if (!$category) {
-                        return response()->json(['success' => false, 'message' => 'Category not found.']);
+                        if (!$brand) {
+                            return response()->json(['success' => false, 'message' => 'Brand not found.']);
+                        }
+
+                        // Decode the brand_list and check for duplicates
+                        $brandList = json_decode($brand->category_list, true) ?? [];
+
+                        if (!in_array($supplier, $brandList)) {
+                            // Supplier is not already in the list, so add it
+                            $brandList[] = $supplier;
+
+                            // Update the brand's brand_list
+                            DB::table('m_brand')->where('brand_id', $brandId)
+                                ->update(['category_list' => json_encode($brandList)]);
+
+                            $brandArray[] = ['brand_id' => $brandId];
+                        }
+                    } else {
+                        $firstIteration = false;
                     }
-
-                    // Decode the supplier_list and check for duplicates
-                    $supplierList = json_decode($category->brand_id, true) ?? [];
-
-                    if (!in_array($supplier, $supplierList)) {
-                        // Supplier is not already in the list, so add it
-                        $supplierList[] = $supplier;
-
-                        // Update the category's supplier_list
-                        DB::table('m_brand')->where('brand_id', $categoryId)
-                            ->update([
-                                'category_list' => json_encode($supplierList),
-                                'user_created' => $user,
-                                'date_created' => $date,
-                            ]);
-
-                        $categoryArray[] = ['category_id' => $categoryId];
-                    }
-                } else {
-                    $firstIteration = false;
                 }
             }
-            $logController = new LogController();
-            $logController->sendLog("Brand " . $supplier . " Succesfully Updated its Information");
 
-            return response()->json(['success' => true, 'message' => 'Supplier removed successfully', 'categoryArray' => $categoryArray]);
+            return response()->json(['success' => true, 'message' => 'Supplier removed/added successfully', 'brandArray' => $brandArray]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
         }
