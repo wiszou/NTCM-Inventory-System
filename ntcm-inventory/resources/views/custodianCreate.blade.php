@@ -188,6 +188,7 @@
                                 <td>{{ $item->type}}</td>
                                 <td>{{ $item->description}}</td>
                                 <td></td>
+                                
                             </tr>
                             @endforeach
                         </tbody>

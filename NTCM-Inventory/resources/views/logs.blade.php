@@ -156,12 +156,12 @@
                 <!--Card-->
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
                     <table id="logs" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                        <thead class="">
+                        <thead>
                             <tr>
-                                <th data-priority="1">Log ID</th>
-                                <th data-priority="2">Description</th>
-                                <th data-priority="3">User</th>
-                                <th data-priority="4">Date</th>
+                                <th data-priority="1" class="text-center">Log ID</th>
+                                <th data-priority="2" class="text-center">Description</th>
+                                <th data-priority="3" class="text-center">User</th>
+                                <th data-priority="4" class="text-center">Date</th>
 
 
                             </tr>
