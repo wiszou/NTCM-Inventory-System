@@ -395,8 +395,7 @@ td {
                                             Items</div>
                                         <div id="container12">
 
-                                            <select name="item1" id="item1" class="js-example-basic-single"
-                                                style="width: 100%; height: 50px;" required="">
+                                            <select name="item1" id="item1" class="js-example-basic-single" required="">
                                                 <option value="none" selected hidden>Select Item</option>
                                                 @foreach ($details as $item)
                                                 <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
