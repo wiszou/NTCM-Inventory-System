@@ -150,7 +150,7 @@
                                 <th data-priority="4">Stock Req.</th>
                                 <th data-priority="5">Stock Actual</th>
                                 <th data-priority="6">Date Added</th>
-                                <th data-priority="7">Last Date Modified</th> <!-- New Column 1 -->
+                                <th data-priority="7">Last Date Modified</th>
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
@@ -211,8 +211,6 @@
                     }).columns.adjust().responsive.recalc();
                 });
             </script>
-
-
         </div>
     </div>
     <script>
