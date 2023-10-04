@@ -74,11 +74,11 @@ class CustodianController extends Controller
         $item5 = ($item5 === 'none') ? null : $item5;
         $handlerName2 = ($handlerName2 === 'none') ? null : $handlerName2;
 
-        if ($type == "none"){
+        if ($type == "none") {
             return response()->json(['success' => false, 'message' => 'Please select proper custodian type']);
         };
 
-        if ($item1 == "none"){
+        if ($item1 == "none") {
             return response()->json(['success' => false, 'message' => 'Please select an item']);
         };
 
@@ -122,11 +122,11 @@ class CustodianController extends Controller
 
     function updateItem($item1, $item2, $item3, $item4, $item5, $type, $id)
     {
-        if ($type == "Deploy"){
+        if ($type == "Deploy") {
             $type == "Deployed";
         };
 
-        if ($type == "Borrow"){
+        if ($type == "Borrow") {
             $type == "Borrowed";
         };
 
@@ -152,7 +152,6 @@ class CustodianController extends Controller
                 );
                 DB::table('m_category')->where('category_id', $category_id)->update($category);
             } else {
-
             }
         }
 
@@ -174,7 +173,6 @@ class CustodianController extends Controller
                 );
                 DB::table('m_category')->where('category_id', $category_id)->update($category);
             } else {
-
             }
         }
 
@@ -195,7 +193,6 @@ class CustodianController extends Controller
                 );
                 DB::table('m_category')->where('category_id', $category_id)->update($category);
             } else {
-
             }
         }
 
@@ -216,7 +213,6 @@ class CustodianController extends Controller
                 );
                 DB::table('m_category')->where('category_id', $category_id)->update($category);
             } else {
-
             }
         }
 
@@ -237,18 +233,48 @@ class CustodianController extends Controller
                 );
                 DB::table('m_category')->where('category_id', $category_id)->update($category);
             } else {
-
             }
         }
     }
 
     public function toPrint($custodianID)
     {
-        DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
-        DB::table('t_itemdetails')->get();
+        $custodian = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
         $inventory = DB::table('t_inventory')->get();
 
-        return view('form', ['inventory', $inventory]);
-    }
 
+        $item1Value = $custodian->item1;
+        $item2Value = $custodian->item2;
+        $item3Value = $custodian->item3;
+        $item4Value = $custodian->item4;
+        $item5Value = $custodian->item5;
+
+
+        $detail1 = DB::table('t_itemdetails')->where('item_id', $item1Value)->first();
+        $detail2 = DB::table('t_itemdetails')->where('item_id', $item2Value)->first();
+        $detail3 = DB::table('t_itemdetails')->where('item_id', $item3Value)->first();
+        $detail4 = DB::table('t_itemdetails')->where('item_id', $item4Value)->first();
+        $detail5 = DB::table('t_itemdetails')->where('item_id', $item5Value)->first();
+
+        $item1 = DB::table('t_inventory')->where('item_id', $item1Value)->first();
+        $item2 = DB::table('t_inventory')->where('item_id', $item2Value)->first();
+        $item3 = DB::table('t_inventory')->where('item_id', $item3Value)->first();
+        $item4 = DB::table('t_inventory')->where('item_id', $item4Value)->first();
+        $item5 = DB::table('t_inventory')->where('item_id', $item5Value)->first();
+
+        return view('form', [
+            'inventory' => $inventory,
+            'inv1' => $item1,
+            'inv2' => $item2,
+            'inv3' => $item3,
+            'inv4' => $item4,
+            'inv5' => $item5,
+            'detail1' => $detail1,
+            'detail2' => $detail2, 
+            'detail3' => $detail3, 
+            'detail4' => $detail4, 
+            'detail5' => $detail5,  
+            'custodian' => $custodian
+        ]);
+    }
 }

@@ -182,7 +182,7 @@
                         </thead>
                         <tbody id="inventoryTableBody">
                             @foreach ($custodian as $item)
-                            <tr>
+                            <tr item-id="{{ $item->custodian_id }}">
                                 <td>{{ $item->custodian_id}}</td>
                                 <td>{{ $item->name}}</td>
                                 <td>{{ $item->type}}</td>
@@ -525,6 +525,24 @@
             });
         });
     </script>
+
+    <script>
+        function toPrint(custodianId) {
+            var url = "{{ route('print', ['custodianID' => '__toPrint__']) }}";
+            url = url.replace('__toPrint__', custodianId);
+
+            // Redirect to the URL
+            window.location.href = url;
+        }
+    </script>
+
+<script>
+    $('#example').on('click', 'tr', function() {
+        console.log('hi');
+        const custodianId = $(this).attr('item-id'); // Get the item_id from the item-id attribute
+        toPrint(custodianId);
+    });
+</script>
 
 </body>
 

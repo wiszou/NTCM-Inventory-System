@@ -19,32 +19,32 @@
 
 
     <script>
-    function printBothDivs(divIds) {
-        var printContents = '';
+        function printBothDivs(divIds) {
+            var printContents = '';
 
-        for (var i = 0; i < divIds.length; i++) {
-            var divId = divIds[i];
-            var divContent = document.getElementById(divId).innerHTML;
+            for (var i = 0; i < divIds.length; i++) {
+                var divId = divIds[i];
+                var divContent = document.getElementById(divId).innerHTML;
 
-            // Create a new page with the div's content
-            var page = '<html><head><title>Print</title></head><body>' + divContent + '</body></html>';
+                // Create a new page with the div's content
+                var page = '<html><head><title>Print</title></head><body>' + divContent + '</body></html>';
 
-            printContents += page;
+                printContents += page;
 
-            // Add a page break if it's not the last div
-            if (i < divIds.length - 1) {
-                printContents += '<div style="page-break-before: always;"></div>';
+                // Add a page break if it's not the last div
+                if (i < divIds.length - 1) {
+                    printContents += '<div style="page-break-before: always;"></div>';
+                }
             }
+
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            // Restore the original contents
+            document.body.innerHTML = originalContents;
         }
-
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        // Restore the original contents
-        document.body.innerHTML = originalContents;
-    }
     </script>
 
 </head>
@@ -58,8 +58,7 @@
             <h2 class="text-2xl font-bold text-ntccolor">
                 Print Custodian Form
             </h2>
-            <input type="button" onclick="printBothDivs(['printableArea1', 'printableArea2'])" value="Print"
-                class="bg-ntccolor rounded-3xl text-white font-medium px-7 hover:bg-[#014F62] cursor-pointer " />
+            <input type="button" onclick="printBothDivs(['printableArea1', 'printableArea2'])" value="Print" class="bg-ntccolor rounded-3xl text-white font-medium px-7 hover:bg-[#014F62] cursor-pointer " />
         </div>
     </div>
 
@@ -83,7 +82,7 @@
                         <div class="pt-6">
                             <p class="text-right text-xl font-medium">CUSTODIAN FORM</p>
                             <p class="text-right text-lg">IT Equipment</p>
-                            <p class="text-right text-sm">IT-CSF-0001</p>
+                            <p class="text-right text-sm">{{ $custodian->custodian_id}}</p>
                         </div>
                     </div>
 
@@ -95,7 +94,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="text-sm font-medium">Equipment Custodian:</td>
-                                        <td class="text-sm pl-3 underline underline-offset-4">Malcolm Lockyer</td>
+                                        <td class="text-sm pl-3 underline underline-offset-4">{{ $custodian->name}}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-sm font-medium">Position / Function:</td>
@@ -184,17 +183,13 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5">____________________________________</span>(Signature
-                                            Over Printed Name)
+                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->name}}</span>(Signature Over Printed Name)
                                         </td>
-                                        <td class=" border-black text-center">
-                                            <span class="flex pl-3">_______________________________</span>IT
-                                            Representative
+                                        <td class="border-black text-center">
+                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->issued}}</span>IT Representative
                                         </td>
-                                        <td class=" border-black text-center">
-                                            <span class="flex pl-2">_______________________________</span>Deputy
-                                            Director
+                                        <td class="border-black text-center">
+                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->noted}}</span>Deputy Director
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">
@@ -236,9 +231,7 @@
                     </div>
 
                     <div class="mt-9 pr-3">
-                        <p class="font-bold text-left text-sm mb-3">Purpose:<span class="font-normal text-sm pl-1">For
-                                Q.A. Audit
-                                Officer Use</span></p>
+                        <p class="font-bold text-left text-sm mb-3">Purpose:<span class="font-normal text-sm pl-1">{{ $custodian->description}}</span></p>
                         <table class="w-full table-fixed border text-sm">
                             <thead>
                                 <tr class="border border-black text-center text-sm">
@@ -252,38 +245,38 @@
                             <tbody>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">1</td>
-                                    <td class="border border-black">IT-0001</td>
-                                    <td class="border border-black">Laptop</td>
-                                    <td class="border border-black">J34HG53L04J</td>
+                                    <td class="border border-black">{{ $detail1->item_id}}</td>
+                                    <td class="border border-black">{{ $detail1->model}}</td>
+                                    <td class="border border-black">{{ $detail1->serial_num}} </td>
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="text-center text-sm">
                                     <td class="border border-black">2</td>
-                                    <td class="border border-black">IT-0001</td>
-                                    <td class="border border-black">Mouse</td>
-                                    <td class="border border-black">H2HG2H32L-KJ</td>
+                                    <td class="border border-black">    @if($detail2) {{ $detail2->item_id }}      @endif</td>
+                                    <td class="border border-black">    @if($detail2) {{ $detail2->model }}      @endif</td>
+                                    <td class="border border-black">    @if($detail2) {{ $detail2->serial_num }}      @endif</td>      
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">3</td>
-                                    <td class="border border-black">IT-0001</td>
-                                    <td class="border border-black">Charger</td>
-                                    <td class="border border-black">JH1GDS23FGGF</td>
+                                    <td class="border border-black">    @if($detail3) {{ $detail3->item_id }}      @endif</td>
+                                    <td class="border border-black">    @if($detail3) {{ $detail3->model }}      @endif</td>
+                                    <td class="border border-black">    @if($detail3) {{ $detail3->serial_num }}      @endif</td>     
                                     <td class="border border-black"></td>
 
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">4</td>
-                                    <td class="border border-black">IT-0001</td>
-                                    <td class="border border-black">Bag</td>
-                                    <td class="border border-black"></td>
+                                    <td class="border border-black">    @if($detail4) {{ $detail4->item_id }}      @endif</td>
+                                    <td class="border border-black">    @if($detail4) {{ $detail4->model }}      @endif</td>
+                                    <td class="border border-black">    @if($detail4) {{ $detail4->serial_num }}      @endif</td>     
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">5</td>
-                                    <td class="border border-black"></td>
-                                    <td class="border border-black"></td>
-                                    <td class="border border-black"></td>
+                                    <td class="border border-black">    @if($detail5) {{ $detail5->item_id }}      @endif</td>
+                                    <td class="border border-black">    @if($detail5) {{ $detail5->model }}      @endif</td>
+                                    <td class="border border-black">    @if($detail5) {{ $detail5->serial_num }}      @endif</td>     
                                     <td class="border border-black"></td>
 
                                 </tr>
@@ -309,8 +302,7 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5">____________________________________</span>(Signature
+                                            <span class="flex pl-1.5">____________________________________</span>(Signature
                                             Over Printed Name)
                                         </td>
                                         <td class=" border-black text-center">
