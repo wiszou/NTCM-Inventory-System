@@ -252,31 +252,31 @@
                                 </tr>
                                 <tr class="text-center text-sm">
                                     <td class="border border-black">2</td>
-                                    <td class="border border-black"> @if($detail2) {{ $detail2->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail2){{ $detail2->item_id }} @endif</td>
                                     <td class="border border-black"> @if($detail2){{  $brand2->name}} {{ $detail2->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail2) {{ $detail2->serial_num }} @endif</td>
+                                    <td class="border border-black"> @if($detail2){{ $detail2->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">3</td>
-                                    <td class="border border-black"> @if($detail3) {{ $detail3->item_id }} @endif</td>
-                                    <td class="border border-black"> @if($detail3) {{  $brand3->name}} {{ $detail3->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail3) {{ $detail3->serial_num }} @endif</td>
+                                    <td class="border border-black"> @if($detail3){{ $detail3->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail3){{  $brand3->name}} {{ $detail3->model }} @endif</td>
+                                    <td class="border border-black"> @if($detail3){{ $detail3->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
 
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">4</td>
-                                    <td class="border border-black"> @if($detail4) {{ $detail4->item_id }} @endif</td>
-                                    <td class="border border-black"> @if($detail4) {{  $brand4->name}} {{ $detail4->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail4) {{ $detail4->serial_num }} @endif</td>
+                                    <td class="border border-black"> @if($detail4){{ $detail4->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail4){{  $brand4->name}} {{ $detail4->model }} @endif</td>
+                                    <td class="border border-black"> @if($detail4){{ $detail4->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">5</td>
-                                    <td class="border border-black"> @if($detail5) {{ $detail5->item_id }} @endif</td>
-                                    <td class="border border-black"> @if($detail5) {{  $brand5->name}} {{ $detail5->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail5) {{ $detail5->serial_num }} @endif</td>
+                                    <td class="border border-black"> @if($detail5){{ $detail5->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail5){{  $brand5->name}} {{ $detail5->model }} @endif</td>
+                                    <td class="border border-black"> @if($detail5){{ $detail5->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
 
                                 </tr>
