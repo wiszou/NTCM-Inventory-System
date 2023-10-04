@@ -183,13 +183,13 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->name}}</span>(Signature Over Printed Name)
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->name}}</span>(Signature Over Printed Name)
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->issued}}</span>IT Representative
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->issued}}</span>IT Representative
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->noted}}</span>Deputy Director
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->noted}}</span>Deputy Director
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">
@@ -302,13 +302,13 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->name}}</span>(Signature Over Printed Name)
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->name}}</span>(Signature Over Printed Name)
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->issued}}</span>IT Representative
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->issued}}</span>IT Representative
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->noted}}</span>Deputy Director
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->noted}}</span>Deputy Director
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">
