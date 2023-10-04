@@ -243,43 +243,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($items as $item_id)
                                 <tr class="border border-black text-center text-sm">
-                                    <td class="border border-black">1</td>
-                                    <td class="border border-black">{{ $detail1->item_id}}</td>
-                                    <td class="border border-black">{{  $brand1->name}} {{ $detail1->model}}</td>
-                                    <td class="border border-black">{{ $detail1->serial_num}} </td>
                                     <td class="border border-black"></td>
-                                </tr>
-                                <tr class="text-center text-sm">
-                                    <td class="border border-black">2</td>
-                                    <td class="border border-black"> @if($detail2){{ $detail2->item_id }} @endif</td>
-                                    <td class="border border-black"> @if($detail2){{  $brand2->name}} {{ $detail2->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail2){{ $detail2->serial_num }} @endif</td>
-                                    <td class="border border-black"></td>
-                                </tr>
-                                <tr class="border border-black text-center text-sm">
-                                    <td class="border border-black">3</td>
-                                    <td class="border border-black"> @if($detail3){{ $detail3->item_id }} @endif</td>
-                                    <td class="border border-black"> @if($detail3){{  $brand3->name}} {{ $detail3->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail3){{ $detail3->serial_num }} @endif</td>
-                                    <td class="border border-black"></td>
+                                    <td class="border border-black">{{ $item_id }}</td>
+                                    <td class="border border-black">
+                                        @foreach ($details as $detail)
+                                        @if ($detail->item_id == $item_id)
+                                        {{ $detail->model }} <!-- Display the detail -->
+                                        @endif
+                                        @endforeach
+                                    </td>
 
-                                </tr>
-                                <tr class="border border-black text-center text-sm">
-                                    <td class="border border-black">4</td>
-                                    <td class="border border-black"> @if($detail4){{ $detail4->item_id }} @endif</td>
-                                    <td class="border border-black"> @if($detail4){{  $brand4->name}} {{ $detail4->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail4){{ $detail4->serial_num }} @endif</td>
+                                    <td class="border border-black">
+                                        @foreach ($details as $detail)
+                                        @if ($detail->item_id == $item_id)
+                                        {{ $detail->serial_num }} <!-- Display the detail -->
+                                        @endif
+                                        @endforeach
+                                    </td>
                                     <td class="border border-black"></td>
                                 </tr>
-                                <tr class="border border-black text-center text-sm">
-                                    <td class="border border-black">5</td>
-                                    <td class="border border-black"> @if($detail5){{ $detail5->item_id }} @endif</td>
-                                    <td class="border border-black"> @if($detail5){{  $brand5->name}} {{ $detail5->model }} @endif</td>
-                                    <td class="border border-black"> @if($detail5){{ $detail5->serial_num }} @endif</td>
-                                    <td class="border border-black"></td>
-
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

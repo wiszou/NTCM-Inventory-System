@@ -46,7 +46,7 @@ class CustodianController extends Controller
         return $candidateId;
     }
 
-    public function createCustodian(Request $request, $itemID)
+    public function createCustodian(Request $request)
     {
 
         $user = session()->get('user_name');
@@ -61,16 +61,15 @@ class CustodianController extends Controller
         $type = $request->input('type');
         $noted = $request->input('noted');
         $issued = $request->input('issued');
-        $item1 = $itemID;
+        $items = $request->input('itemArray');
 
-        $item1 = ($item1 === 'none') ? null : $item1;
         $handlerName2 = ($handlerName2 === 'none') ? null : $handlerName2;
 
         if ($type == "none") {
             return response()->json(['success' => false, 'message' => 'Please select proper custodian type']);
         };
 
-        if ($item1 == "none") {
+        if ($items == "none") {
             return response()->json(['success' => false, 'message' => 'Please select an item']);
         };
 
@@ -86,52 +85,53 @@ class CustodianController extends Controller
             'start_date' => $currentDate,
             'status' => 0,
             'type' => $type,
-            'item1' => $item1,
+            'items' => $items,
             'user_created' => $user,
             'date_created' => $date,
         );
 
 
-
-
         try {
+            $this->updateItem($items, $type, $custodianID);
             DB::table('t_custodian')->insert($custodianData);
-            $this->updateItem($item1, $type, $custodianID);
             $logController = new LogController();
             $logController->sendLog("Custodian Form " . $custodianID . " Succesfully added");
-            $this->toPrint($custodianID);
+            // $this->toPrint($custodianID);
             return response()->json(['success' => true, 'message' => 'Item added successfully.']);
         } catch (\Exception $e) {
-            // Log or report the actual error message
+            error_log(json_encode($items));
             Log::error($e->getMessage());
             return response()->json(['success' => false, 'message' => 'An error occurred while adding the item.']);
         }
     }
 
-    function updateItem($item1, $type, $id)
+    function updateItem($items, $type, $id)
     {
+
         if ($type == "Deploy") {
-            $type == "Deployed";
-        };
+            $type = "Deployed";  // Use = instead of ==
+        }
 
         if ($type == "Borrow") {
-            $type == "Borrowed";
-        };
+            $type = "Borrowed";  // Use = instead of ==
+        }
 
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $date = $dateTimeController->getDateTime(new Request());
 
-        if ($item1 !== null) {
-            $item1a = array(
+        $itemsArray = json_decode($items);
+        foreach ($itemsArray as $item) {
+
+            $itemData = array(
                 'item_status' => $type,
                 'user_change' => $user,
                 'date_change' => $date,
                 'custodian_id' => $id
             );
 
-            DB::table('t_inventory')->where('item_id', $item1)->update($item1a);
-            $result = DB::table('t_inventory')->where('item_id', $item1)->first();
+            DB::table('t_inventory')->where('item_id', $item)->update($itemData);
+            $result = DB::table('t_inventory')->where('item_id', $item)->first();
             if ($result) {
                 $category_id = $result->category_id;
                 $category = array(
@@ -140,8 +140,9 @@ class CustodianController extends Controller
                 );
                 DB::table('m_category')->where('category_id', $category_id)->update($category);
             } else {
+                return response()->json(['success' => false, 'message' => 'array aasd']);
             }
-        };
+        }
     }
 
     public function generateIDEmployee()
@@ -170,7 +171,7 @@ class CustodianController extends Controller
         $position = $request->input('position');
         $department = $request->input('department');
         $id = $this->generateIDEmployee();
-        
+
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
@@ -201,56 +202,28 @@ class CustodianController extends Controller
         $inventory = DB::table('t_inventory')->get();
 
 
-        $item1Value = $custodian->item1;
-        $item2Value = $custodian->item2;
-        $item3Value = $custodian->item3;
-        $item4Value = $custodian->item4;
-        $item5Value = $custodian->item5;
+        $itemArray = json_decode($custodian->items);
+        $items = [];
+        foreach ($itemArray as $item) {
+            // Check if 'items' key exists and 'item_id' key exists within it
+            if (isset($item['items']['item_id'])) {
+                $item_id = $item['items']['item_id'];
+
+                // Append the item_id to the $items array
+                $items[] = $item_id;
+            }
+        }
 
 
-        $detail1 = DB::table('t_itemdetails')->where('item_id', $item1Value)->first();
-        $detail2 = DB::table('t_itemdetails')->where('item_id', $item2Value)->first();
-        $detail3 = DB::table('t_itemdetails')->where('item_id', $item3Value)->first();
-        $detail4 = DB::table('t_itemdetails')->where('item_id', $item4Value)->first();
-        $detail5 = DB::table('t_itemdetails')->where('item_id', $item5Value)->first();
-
-        $item1 = DB::table('t_inventory')->where('item_id', $item1Value)->first();
-        $item2 = DB::table('t_inventory')->where('item_id', $item2Value)->first();
-        $item3 = DB::table('t_inventory')->where('item_id', $item3Value)->first();
-        $item4 = DB::table('t_inventory')->where('item_id', $item4Value)->first();
-        $item5 = DB::table('t_inventory')->where('item_id', $item5Value)->first();
-
-        $brandid1 = $item1->brand_id;
-        $brandid2 = $item2 ? $item2->brand_id : "";
-        $brandid3 = $item3 ? $item3->brand_id : "";
-        $brandid4 = $item4 ? $item4->brand_id : "";
-        $brandid5 = $item5 ? $item5->brand_id : "";
-
-
-        $brand1 = DB::table('m_brand')->where('brand_id', $brandid1)->first();
-        $brand2 = DB::table('m_brand')->where('brand_id', $brandid2)->first();
-        $brand3 = DB::table('m_brand')->where('brand_id', $brandid3)->first();
-        $brand4 = DB::table('m_brand')->where('brand_id', $brandid4)->first();
-        $brand5 = DB::table('m_brand')->where('brand_id', $brandid5)->first();
+        $detail1 = DB::table('t_itemdetails')->get();
+        $brand1 = DB::table('m_brand')->get();
 
         return view('form', [
+            'details' => $detail1,
             'inventory' => $inventory,
-            'inv1' => $item1,
-            'inv2' => $item2,
-            'inv3' => $item3,
-            'inv4' => $item4,
-            'inv5' => $item5,
-            'detail1' => $detail1,
-            'detail2' => $detail2,
-            'detail3' => $detail3,
-            'detail4' => $detail4,
-            'detail5' => $detail5,
-            'brand1' => $brand1,
-            'brand2' => $brand2,
-            'brand3' => $brand3,
-            'brand4' => $brand4,
-            'brand5' => $brand5,
-            'custodian' => $custodian
+            'items' => $itemArray,
+            'brands' =>  $brand1,
+            'custodian' => $custodian,
         ]);
     }
 }
