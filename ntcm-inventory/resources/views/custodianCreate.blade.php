@@ -20,108 +20,110 @@
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @vite('resources/css/app.css')
     <!-- Styles -->
 </head>
 
 <style>
-/*Overrides for Tailwind CSS */
+    /*Overrides for Tailwind CSS */
 
-/*Form fields*/
-.dataTables_wrapper select,
-.dataTables_wrapper .dataTables_filter input {
-    color: #4a5568;
-    /*text-gray-700*/
-    padding-left: 1rem;
-    /*pl-4*/
-    padding-right: 1rem;
-    /*pl-4*/
-    padding-top: .5rem;
-    /*pl-2*/
-    padding-bottom: .5rem;
-    /*pl-2*/
-    line-height: 1.25;
-    /*leading-tight*/
-    border-width: 1px;
-    /*border-2*/
-    border-radius: .25rem;
-    border-color: #4d4d4d;
-    /*border-gray-200*/
-    background-color: #ffffff;
-    /*bg-gray-200*/
-}
+    /*Form fields*/
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 1px;
+        /*border-2*/
+        border-radius: .25rem;
+        border-color: #4d4d4d;
+        /*border-gray-200*/
+        background-color: #ffffff;
+        /*bg-gray-200*/
+    }
 
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-    background-color: #4facb6;
-    /*bg-indigo-100*/
-    color: #ffffff;
-    font-weight: 400;
-}
-
-
-/*Pagination Buttons*/
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    font-weight: 500;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
-
-/*Pagination Buttons - Current selected */
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #5c5c5c !important;
-    /*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 200;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
-
-/*Pagination Buttons - Hover */
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #ffffff;
-    /*text-white*/
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 400;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px;
-    /*border border-transparent*/
-
-}
+    /*Row Hover*/
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #4facb6;
+        /*bg-indigo-100*/
+        color: #ffffff;
+        font-weight: 400;
+    }
 
 
-/*Change colour of responsive icon*/
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #4facb6 !important;
-    /*bg-indigo-500*/
-}
+    /*Pagination Buttons*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 500;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
+
+    /*Pagination Buttons - Current selected */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #5c5c5c !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 200;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
+
+    /*Pagination Buttons - Hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #ffffff;
+        /*text-white*/
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 400;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px;
+        /*border border-transparent*/
+
+    }
 
 
-th {
-    text-align: left;
-    /* Align header text to the left */
-}
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #4facb6 !important;
+        /*bg-indigo-500*/
+    }
 
-td {
-    text-align: left;
-    /* Align cell text to the left */
-}
+
+    th {
+        text-align: left;
+        /* Align header text to the left */
+    }
+
+    td {
+        text-align: left;
+        /* Align cell text to the left */
+    }
 </style>
 
 <body class="bg-gray-100 py-2">
@@ -139,19 +141,13 @@ td {
                     </h2>
 
                     <div>
-                        <button id="open-modal-button"
-                            class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
-                            type="button">
+                        <button id="open-modal-button" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
 
                             <span>Create Form</span>
                         </button>
 
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
-                            type="button">Custodian Type <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Custodian Type <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg></button>
                         <!-- Dropdown menu -->
                         <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl shadow w-44">
@@ -163,12 +159,10 @@ td {
                                     <a href="#" id="spareStatus" class="block px-4 py-2 hover:bg-gray-100 ">Spare</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="deployedStatus"
-                                        class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
+                                    <a href="#" id="deployedStatus" class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="borrowedStatus"
-                                        class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
+                                    <a href="#" id="borrowedStatus" class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
                                 </li>
                             </ul>
                         </div>
@@ -176,8 +170,7 @@ td {
                 </div>
                 <!--Card-->
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
-                    <table id="example" class="stripe hover"
-                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
 
                             <tr>
@@ -212,18 +205,15 @@ td {
             <!--/container-->
 
 
-            <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster"
-                style="background: rgba(0,0,0,.7);">
+            <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
                 <div class="modal-container bg-white w-1/2 h-4/6  relative rounded-xl z-50">
                     <div class="modal-content py-4 text-left px-6 ">
                         <!--Title-->
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-xl font-semibold" name="title" id="title">Custodian Form</p>
                             <div class="modal-close cursor-pointer z-50">
-                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg"
-                                    width="18" height="18" viewBox="0 0 18 18">
-                                    <path
-                                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
                                     </path>
                                 </svg>
                             </div>
@@ -239,23 +229,15 @@ td {
 
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="custodian-name"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Employee</label>
-                                                <select data-te-select-init data-te-select-filter="true"
-                                                    name="handlerName" id="handlerName"
-                                                    class="shadow-sm bg-custom-color block w-full p-2.5  editable-input"
-                                                    required="">
+                                                <label for="custodian-name" class="block mb-2 text-sm font-medium text-gray-900">Employee</label>
+                                                <select data-te-select-init data-te-select-filter="true" name="handlerName" id="handlerName" class="shadow-sm bg-custom-color block w-full p-2.5  editable-input" required="">
                                                     <option value="none" selected hidden>Select your option</option>
                                                 </select>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="custodian-name"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Custodian
+                                                <label for="custodian-name" class="block mb-2 text-sm font-medium text-gray-900">Custodian
                                                     Type</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="type"
-                                                    id="type"
-                                                    class="shadow-sm bg-custom-color block w-full p-2.5  editable-input"
-                                                    required="">
+                                                <select data-te-select-init data-te-select-filter="true" name="type" id="type" class="shadow-sm bg-custom-color block w-full p-2.5  editable-input" required="">
                                                     <option value="none" selected hidden>Select your option</option>
                                                     <option value="Borrow">Borrow</option>
                                                     <option value="Deploy   ">Deploy</option>
@@ -264,158 +246,119 @@ td {
                                         </div>
 
 
-                                        <div
-                                            class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
+                                        <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
                                             Items</div>
+                                        <div id="container12">
+                                            <div>
+                                                <select name="item1" id="item1" class="js-example-basic-single" required="">
+                                                    <option value="none" selected hidden>Select Item</option>
+                                                    @foreach ($details as $item)
+                                                    <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
+                                                        {{ $item->item_id }} - {{ $item->model }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
 
+                                        <div class="col-span-6 sm:col-span-3 mt-3">
+                                            <a class="w-6" href="#" id="appendButton">
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28">
+                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_iconCarrier">
+                                                        <path d="M12 6C12.5523 6 13 6.44772 13 7V11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H13V17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17V13H7C6.44772 13 6 12.5523 6 12C6 11.4477 6.44772 11 7 11H11V7C11 6.44772 11.4477 6 12 6Z" fill="#4FACB6"></path>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4.5C2 3.11929 3.11929 2 4.5 2H19.5C20.8807 2 22 3.11929 22 4.5V19.5C22 20.8807 20.8807 22 19.5 22H4.5C3.11929 22 2 20.8807 2 19.5V4.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5V19.5C4 19.7761 4.22386 20 4.5 20H19.5C19.7761 20 20 19.7761 20 19.5V4.5C20 4.22386 19.7761 4 19.5 4H4.5Z" fill="#4FACB6"></path>
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </div>
+
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                let counter = 1;
+
+                                                function addSelectInput() {
+                                                    counter++;
+                                                    console.log(counter);
+                                                    const container = document.getElementById('container12');
+
+                                                    const div = document.createElement('div');
+
+                                                    // Create a new select element
+                                                    const selectClone = document.createElement('select');
+                                                    selectClone.name = `item${counter}`;
+                                                    selectClone.id = `item${counter}`;
+                                                    selectClone.classList.add('js-example-basic-single');
+
+                                                    // Add an option for the "Select Item" placeholder
+                                                    const option = document.createElement('option');
+                                                    option.value = 'none';
+                                                    option.text = 'Select Item';
+                                                    option.selected = true;
+                                                    option.hidden = true;
+                                                    selectClone.appendChild(option);
+
+                                                    // Clone and add the options from the original select
+                                                    const originalSelect = document.getElementById('item1');
+                                                    for (const originalOption of originalSelect.options) {
+                                                        const cloneOption = document.createElement('option');
+                                                        cloneOption.value = originalOption.value;
+                                                        cloneOption.text = originalOption.text;
+                                                        selectClone.appendChild(cloneOption);
+                                                    }
+
+                                                    // Append the newly created select element to the div
+                                                    div.appendChild(selectClone);
+
+                                                    // Append the div to the container
+                                                    container.appendChild(div);
+
+                                                    // Initialize Select2 on the newly created select element
+                                                    $(selectClone).select2();
+                                                }
+
+                                                // Add an event listener to the button element with the ID "appendButton"
+                                                document.getElementById('appendButton').addEventListener('click', addSelectInput);
+                                            });
+                                        </script>
+                                    </div>
+
+
+                                    <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
+                                        Persons Involved </div>
+
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-3" bind>
+                                            <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Accepted/Received
+                                                By:</label>
+                                            <select data-te-select-init data-te-select-filter="true" name="handlerName2" id="handlerName2" class="shadow-sm w-full p-2.5  editable-input" required="">
+                                                <option value="none" selected hidden>Select your option</option>
+                                            </select>
+                                        </div>
 
                                         <div class="col-span-6 sm:col-span-3" bind>
-                                            <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Item
-                                                1 - Serial
-                                                Number:</label>
-                                            <select data-te-select-init data-te-select-filter="true" name="item1"
-                                                id="item1" class="shadow-sm w-full p-2.5  editable-input" required="">
+                                            <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Issued
+                                                By:</label>
+                                            <select data-te-select-init data-te-select-filter="true" name="issued" id="issued" class="shadow-sm w-full p-2.5 editable-input" required="">
                                                 <option value="none" selected hidden>Select your option</option>
-                                                @foreach ($details as $item)
-                                                <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
-                                                    {{ $item->item_id }} - {{ $item->model }}</option>
-                                                @endforeach
                                             </select>
-
-                                            <div class="col-span-6 sm:col-span-3 mt-3">
-                                                <label for="item1"
-                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
-                                                    2 - Serial
-                                                    Number:</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="item2"
-                                                    id="item2" class="shadow-sm w-full p-2.5  editable-input"
-                                                    required="">
-                                                    <option value="none" selected hidden>Select your option</option>
-                                                    @foreach ($details as $item)
-                                                    <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
-                                                        {{ $item->item_id }} - {{ $item->model }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
-                                            <div class="col-span-6 sm:col-span-3 mt-3" bind>
-                                                <label for="item1"
-                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
-                                                    3 - Serial
-                                                    Number:</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="item3"
-                                                    id="item3" class="shadow-sm w-full p-2.5  editable-input"
-                                                    required="">
-                                                    <option value="none" selected hidden>Select your option</option>
-                                                    @foreach ($details as $item)
-                                                    <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
-                                                        {{ $item->item_id }} - {{ $item->model }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
-                                            <div class="col-span-6 sm:col-span-3 mt-3">
-                                                <label for="item1"
-                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
-                                                    4 - Serial
-                                                    Number:</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="item4"
-                                                    id="item4" class="shadow-sm w-full p-2.5  editable-input"
-                                                    required="">
-                                                    <option value="none" selected hidden>Select your option</option>
-                                                    @foreach ($details as $item)
-                                                    <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
-                                                        {{ $item->item_id }} - {{ $item->model }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
-                                            <div class="col-span-6 sm:col-span-3 mt-3" bind>
-                                                <label for="item1"
-                                                    class="block mb-2 text-sm font-normal text-gray-900">Item
-                                                    5 - Serial
-                                                    Number:</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="item5"
-                                                    id="item5" class="shadow-sm w-full p-2.5  editable-input"
-                                                    required="">
-                                                    <option value="none" selected hidden>Select your option</option>
-                                                    @foreach ($details as $item)
-                                                    <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
-                                                        {{ $item->item_id }} - {{ $item->model }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
-
-                                            <div class="col-span-6 sm:col-span-3 mt-3">
-                                                <button class="w-6" type="submit" id="addfield">
-                                                    <svg viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                            stroke-linejoin="round"></g>
-                                                        <g id="SVGRepo_iconCarrier">
-                                                            <path
-                                                                d="M12 6C12.5523 6 13 6.44772 13 7V11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H13V17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17V13H7C6.44772 13 6 12.5523 6 12C6 11.4477 6.44772 11 7 11H11V7C11 6.44772 11.4477 6 12 6Z"
-                                                                fill="#4FACB6"></path>
-                                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                d="M2 4.5C2 3.11929 3.11929 2 4.5 2H19.5C20.8807 2 22 3.11929 22 4.5V19.5C22 20.8807 20.8807 22 19.5 22H4.5C3.11929 22 2 20.8807 2 19.5V4.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5V19.5C4 19.7761 4.22386 20 4.5 20H19.5C19.7761 20 20 19.7761 20 19.5V4.5C20 4.22386 19.7761 4 19.5 4H4.5Z"
-                                                                fill="#4FACB6"></path>
-                                                        </g>
-                                                    </svg>
-                                                </button>
-                                            </div>
-
                                         </div>
 
-
-                                        <div
-                                            class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
-                                            Persons Involved </div>
-
-                                        <div class="grid grid-cols-6 gap-6">
-                                            <div class="col-span-6 sm:col-span-3" bind>
-                                                <label for="item1"
-                                                    class="block mb-2 text-sm font-normal text-gray-900">Accepted/Received
-                                                    By:</label>
-                                                <select data-te-select-init data-te-select-filter="true"
-                                                    name="handlerName2" id="handlerName2"
-                                                    class="shadow-sm w-full p-2.5  editable-input" required="">
-                                                    <option value="none" selected hidden>Select your option</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-span-6 sm:col-span-3" bind>
-                                                <label for="item1"
-                                                    class="block mb-2 text-sm font-normal text-gray-900">Issued
-                                                    By:</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="issued"
-                                                    id="issued" class="shadow-sm w-full p-2.5 editable-input"
-                                                    required="">
-                                                    <option value="none" selected hidden>Select your option</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-span-6 sm:col-span-3" bind>
-                                                <label for="item1"
-                                                    class="block mb-2 text-sm font-normal text-gray-900">Noted
-                                                    By:</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="noted"
-                                                    id="noted" class="shadow-sm w-full p-2.5 editable-input"
-                                                    required="">
-                                                    <option value="none" selected hidden>Select your option</option>
-                                                </select>
-                                            </div>
+                                        <div class="col-span-6 sm:col-span-3" bind>
+                                            <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Noted
+                                                By:</label>
+                                            <select data-te-select-init data-te-select-filter="true" name="noted" id="noted" class="shadow-sm w-full p-2.5 editable-input" required="">
+                                                <option value="none" selected hidden>Select your option</option>
+                                            </select>
                                         </div>
+                                    </div>
 
-                                        <!-- Modal footer -->
+                                    <!-- Modal footer -->
 
-                                        <div
-                                            class="w-full justify-end flex space-x-2 border-t border-gray-200 rounded-b">
-                                            <button type="submit"
-                                                class="mt-4 mr-2 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
-                                                id="/update-item">Create Form</button>
-                                        </div>
+                                    <div class="w-full justify-end flex space-x-2 border-t border-gray-200 rounded-b">
+                                        <button type="submit" class="mt-4 mr-2 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="/update-item">Create Form</button>
+                                    </div>
 
                                 </form>
                             </div>
@@ -429,39 +372,39 @@ td {
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
             <script>
-            $(document).ready(function() {
-                // Initialize a counter to generate unique IDs
-                var divCount = 1;
+                $(document).ready(function() {
+                    // Initialize a counter to generate unique IDs
+                    var divCount = 1;
 
-                // When the "Add Input" button is clicked
-                $("#add-input-button").click(function() {
-                    // Clone the entire div with id="input-container"
-                    var clonedDiv = $("#input-container").clone();
+                    // When the "Add Input" button is clicked
+                    $("#add-input-button").click(function() {
+                        // Clone the entire div with id="input-container"
+                        var clonedDiv = $("#input-container").clone();
 
-                    // Generate unique IDs for the cloned elements
-                    clonedDiv.find('label[for^="item"]').each(function() {
-                        var originalFor = $(this).attr('for');
-                        var newFor = originalFor + '-' + divCount;
-                        $(this).attr('for', newFor);
+                        // Generate unique IDs for the cloned elements
+                        clonedDiv.find('label[for^="item"]').each(function() {
+                            var originalFor = $(this).attr('for');
+                            var newFor = originalFor + '-' + divCount;
+                            $(this).attr('for', newFor);
+                        });
+
+                        clonedDiv.find('select[name^="supplier-name"]').each(function() {
+                            var originalName = $(this).attr('name');
+                            var newName = originalName + '-' + divCount;
+                            $(this).attr('name', newName);
+
+                            var originalId = $(this).attr('id');
+                            var newId = originalId + '-' + divCount;
+                            $(this).attr('id', newId);
+                        });
+
+                        // Increment the counter
+                        divCount++;
+
+                        // Append the cloned div below the original one
+                        $("#input-container").after(clonedDiv);
                     });
-
-                    clonedDiv.find('select[name^="supplier-name"]').each(function() {
-                        var originalName = $(this).attr('name');
-                        var newName = originalName + '-' + divCount;
-                        $(this).attr('name', newName);
-
-                        var originalId = $(this).attr('id');
-                        var newId = originalId + '-' + divCount;
-                        $(this).attr('id', newId);
-                    });
-
-                    // Increment the counter
-                    divCount++;
-
-                    // Append the cloned div below the original one
-                    $("#input-container").after(clonedDiv);
                 });
-            });
             </script>
 
 
@@ -481,51 +424,51 @@ td {
             <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
             <script>
-            $(document).ready(function() {
+                $(document).ready(function() {
 
-                var table = $('#example').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
+                    var table = $('#example').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
+                });
             </script>
 
             <script>
-            const modal = document.querySelector('.main-modal');
-            const closeButton = document.querySelectorAll('.modal-close');
+                const modal = document.querySelector('.main-modal');
+                const closeButton = document.querySelectorAll('.modal-close');
 
-            const modalClose = () => {
-                modal.classList.remove('fadeIn');
-                modal.classList.add('fadeOut');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 1); // Adjust the delay as needed
-            };
+                const modalClose = () => {
+                    modal.classList.remove('fadeIn');
+                    modal.classList.add('fadeOut');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 1); // Adjust the delay as needed
+                };
 
-            const openModal = () => {
-                modal.classList.remove('fadeOut');
-                modal.classList.add('fadeIn');
-                modal.style.display = 'flex';
-            };
+                const openModal = () => {
+                    modal.classList.remove('fadeOut');
+                    modal.classList.add('fadeIn');
+                    modal.style.display = 'flex';
+                };
 
-            for (let i = 0; i < closeButton.length; i++) {
-                const element = closeButton[i];
-                element.onclick = (e) => modalClose();
-            }
+                for (let i = 0; i < closeButton.length; i++) {
+                    const element = closeButton[i];
+                    element.onclick = (e) => modalClose();
+                }
 
-            // Get the button element by its ID
-            const openModalButton = document.getElementById('open-modal-button');
-            if (openModalButton) {
-                openModalButton.addEventListener('click', () => openModal());
-            }
+                // Get the button element by its ID
+                const openModalButton = document.getElementById('open-modal-button');
+                if (openModalButton) {
+                    openModalButton.addEventListener('click', () => openModal());
+                }
 
-            // Initially hide the modal
-            modal.style.display = 'none';
+                // Initially hide the modal
+                modal.style.display = 'none';
 
-            window.onclick = function(event) {
-                if (event.target == modal) modalClose();
-            };
+                window.onclick = function(event) {
+                    if (event.target == modal) modalClose();
+                };
             </script>
 
 
@@ -534,90 +477,97 @@ td {
     </div>
 
     <script>
-    $(document).ready(function() {
-        // Function to show/hide rows based on the selected status
-        function filterInventoryTable(statusClass) {
-            $('#example tbody tr').hide(); // Hide all rows initially
-            if (statusClass === 'all') {
-                $('#example tbody tr').show(); // Show all rows for "All" option
-            } else {
-                $(`.${statusClass}`).show(); // Show rows with the selected status class
+        $(document).ready(function() {
+            // Function to show/hide rows based on the selected status
+            function filterInventoryTable(statusClass) {
+                $('#example tbody tr').hide(); // Hide all rows initially
+                if (statusClass === 'all') {
+                    $('#example tbody tr').show(); // Show all rows for "All" option
+                } else {
+                    $(`.${statusClass}`).show(); // Show rows with the selected status class
+                }
             }
-        }
 
-        // Initialize filtering with "All" status selected
-        filterInventoryTable('all');
-
-        // Handle status option clicks
-        $('#allStatus').click(function() {
+            // Initialize filtering with "All" status selected
             filterInventoryTable('all');
-        });
 
-        $('#spareStatus').click(function() {
-            filterInventoryTable('bg-green-500'); // Adjust the class as needed
-        });
+            // Handle status option clicks
+            $('#allStatus').click(function() {
+                filterInventoryTable('all');
+            });
 
-        $('#deployedStatus').click(function() {
-            filterInventoryTable('bg-blue-500'); // Adjust the class as needed
-        });
+            $('#spareStatus').click(function() {
+                filterInventoryTable('bg-green-500'); // Adjust the class as needed
+            });
 
-        $('#borrowedStatus').click(function() {
-            filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            $('#deployedStatus').click(function() {
+                filterInventoryTable('bg-blue-500'); // Adjust the class as needed
+            });
+
+            $('#borrowedStatus').click(function() {
+                filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            });
         });
-    });
     </script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('create-form');
+        document.addEventListener('DOMContentLoaded', function() {
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
+            const form = document.getElementById('create-form');
+            form.addEventListener('submit', function(e) {
 
-            // Serialize form data
-            const formData = new FormData(form);
+                e.preventDefault(); // Prevent the default form submission
+                // Serialize form data
 
-            fetch('/insert-custodian', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert(data.message);
-                    } else {
-                        // Handle errors (e.g., show error message)
-                        alert(data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                const formData = new FormData(form);
+                fetch('/insert-custodian', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                        } else {
+                            // Handle errors (e.g., show error message)
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+            });
+
         });
-    });
     </script>
 
     <script>
-    function toPrint(custodianId) {
-        var url = "{{ route('print', ['custodianID' => '__toPrint__']) }}";
-        url = url.replace('__toPrint__', custodianId);
+        function toPrint(custodianId) {
+            var url = "{{ route('print', ['custodianID' => '__toPrint__']) }}";
+            url = url.replace('__toPrint__', custodianId);
 
-        // Redirect to the URL
-        window.location.href = url;
-    }
+            // Redirect to the URL
+            window.location.href = url;
+        }
     </script>
 
     <script>
-    $('#example').on('click', 'tr', function() {
-        console.log('hi');
-        const custodianId = $(this).attr('item-id'); // Get the item_id from the item-id attribute
-        toPrint(custodianId);
-    });
+        $('#example').on('click', 'tr', function() {
+            console.log('hi');
+            const custodianId = $(this).attr('item-id'); // Get the item_id from the item-id attribute
+            toPrint(custodianId);
+        });
     </script>
-
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 
 
