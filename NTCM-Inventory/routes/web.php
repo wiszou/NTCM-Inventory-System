@@ -75,6 +75,11 @@ Route::group(['middleware' => ['session-checker']], function () {
         return view('form');
     })->name('form');
 
+    Route::get('/employee', function () {
+        return view('employee');
+    })->name('employee');
+
+
 
 });
 

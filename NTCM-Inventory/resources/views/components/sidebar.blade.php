@@ -21,8 +21,8 @@
             <li>
                 <a href="{{ route('dashboard') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 {{ Request::is('dashboard') ? 'active' : '' }}">
-                    <svg class="w-6 h-6 text-gray-500"
-                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                     </svg>
@@ -36,8 +36,8 @@
                 <button type="button"
                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 {{ Request::is('new-item','suppliers', 'brands', 'updated-category') ? 'active' : '' }}"
                     aria-controls="dropdown-maintenance" data-collapse-toggle="dropdown-maintenance">
-                    <svg class="flex-shrink-0 w-6 h-6 text-gray-500 "
-                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="flex-shrink-0 w-6 h-6 text-gray-500 " fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
                         </path>
@@ -57,8 +57,7 @@
                         <a href="{{ route('newitem') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8 {{ Request::is('newitem') ? 'active' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-plus-circle-fill"
-                                viewBox="0 0 16 16">
+                                class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                             </svg>
@@ -71,8 +70,7 @@
                         <a href="{{ route('categories') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-7">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
-                                fill="currentColor" viewBox="0 0 24 24"
-                                class="">
+                                fill="currentColor" viewBox="0 0 24 24" class="">
                                 <path
                                     d="M 0 3 L 0 21 L 20.53125 21 L 24 9 L 4 9 L 2 16 L 1.4375 15.3125 L 3.09375 8 L 21 8 L 21 6 L 9 6 L 7.21875 3 Z">
                                 </path>
@@ -86,8 +84,7 @@
                         <a href="{{ route('brands') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-7">
                             <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="">
+                                xmlns="http://www.w3.org/2000/svg" class="">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                 <g id="SVGRepo_iconCarrier">
@@ -133,6 +130,31 @@
                             <span class="text-gray-800 pl-2">Suppliers</span>
                         </a>
                     </li>
+
+
+                    <li>
+                        <a href="{{ route('employee') }}"
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-7">
+                            <svg width="16" height="16px" version="1.1" id="_x32_"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 512 512" xml:space="preserve" fill="currentColor">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <path class="st0"
+                                            d="M159.131,169.721c5.635,58.338,43.367,96.867,96.871,96.867c53.502,0,91.23-38.53,96.867-96.867l7.988-63.029 C365.812,44.768,315.281,0,256.002,0c-59.281,0-109.812,44.768-104.86,106.692L159.131,169.721z">
+                                        </path>
+                                        <path class="st0"
+                                            d="M463.213,422.569l-3.824-24.35c-3.203-20.417-16.035-38.042-34.475-47.361l-80.473-40.693 c-2.519-1.274-4.57-3.194-6.289-5.338c-23.297,24.632-51.6,39.12-82.15,39.12c-30.549,0-58.856-14.488-82.152-39.12 c-1.719,2.144-3.77,4.064-6.289,5.338l-80.472,40.693c-18.442,9.319-31.272,26.944-34.475,47.361l-3.826,24.35 c-1.363,8.692,0.436,21.448,8.222,27.825C67.42,458.907,105.875,512,256.002,512c150.125,0,188.578-53.093,198.988-61.606 C462.779,444.017,464.576,431.261,463.213,422.569z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="text-gray-800 pl-2">Employee</span>
+                        </a>
+                    </li>
+
 
                 </ul>
             </li>
@@ -190,13 +212,11 @@
                     </li>
 
 
-
                     <li>
                         <a href="{{ route('custodian2') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-8">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                class="flex-shrink-0 w-6 h-6 text-gray-500 "
-                                viewBox="0 0 20 20">
+                                class="flex-shrink-0 w-6 h-6 text-gray-500 " viewBox="0 0 20 20">
                                 <path
                                     d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1H4.98zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374L3.81.563zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z" />
                             </svg>
@@ -211,9 +231,8 @@
             <li>
                 <a href="{{ route('updated-custodian') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 {{ Request::is('updated-custodian') ? 'active' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
-                        class="text-gray-500" fill="currentColor"
-                        viewBox="0 0 30 30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" class="text-gray-500"
+                        fill="currentColor" viewBox="0 0 30 30">
                         <path
                             d="M24.707,8.793l-6.5-6.5C18.019,2.105,17.765,2,17.5,2H7C5.895,2,5,2.895,5,4v22c0,1.105,0.895,2,2,2h16c1.105,0,2-0.895,2-2 V9.5C25,9.235,24.895,8.981,24.707,8.793z M18,21h-8c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h8c0.552,0,1,0.448,1,1 C19,20.552,18.552,21,18,21z M20,17H10c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h10c0.552,0,1,0.448,1,1C21,16.552,20.552,17,20,17 z M18,10c-0.552,0-1-0.448-1-1V3.904L23.096,10H18z">
                         </path>
@@ -224,8 +243,8 @@
             <li>
                 <a href="{{ route('logs') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 {{ Request::is('logs') ? 'active' : '' }}">
-                    <svg class="flex-shrink-0 w-6 h-6 text-gray-500"
-                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="flex-shrink-0 w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z">
                         </path>

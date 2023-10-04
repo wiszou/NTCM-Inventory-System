@@ -77,7 +77,13 @@
                             Category Name
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            With Specs
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Action
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Date Created
                         </th>
                     </tr>
                 </thead>
@@ -89,6 +95,7 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $item->category_name }}
                         </th>
+                    <td class="px-6 py-3"><input type="checkbox" name="specs" id="specs" value="1" class="w-16 mt-3"></td>
                         <td class="px-6 py-4">
                             <a href="#" class="category-delete-link text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500" data-category-id="{{ $item->category_id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" fill="currentcolor" viewBox="0 0 16 16">
@@ -97,6 +104,7 @@
                                 </svg>
                             </a>
                         </td>
+                        <td></td>
                     </tr>
                     @endforeach
                 </tbody>

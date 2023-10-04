@@ -207,14 +207,9 @@
                             </div>
 
 
-                            <div class="col-span-6 sm:col-span-3" hidden>
-                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Status:</label>
-                                <ul class="grid grid-cols-5 gap-x-5 mt-2">
-                                    <li class="">
-                                        <input class="peer sr-only editable-input" type="radio" value="Stock" name="item-status" id="yes" hidden CHECKED />
-                                        <label class="text-xs flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-white focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-blue-500 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out" for="yes" hidden>Stock</label>
-                                    </li>
-                                </ul>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
+                                <textarea class="px-2 py-3 border w-full h-15 rounded-md"></textarea>
                             </div>
 
 
