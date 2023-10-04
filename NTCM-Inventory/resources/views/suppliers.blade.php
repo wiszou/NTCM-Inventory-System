@@ -48,7 +48,7 @@
         <div class="flex flex-row">
 
             <!-- Add Suppliers -->
-            <div class="flex flex-wrap space-x-0 space-y-2 md:space-x-2 md:space-y-0 mb-2 mr-1">
+            <div class="w-1/2 flex flex-wrap md:space-x-2 md:space-y-0 mb-2 mr-1">
                 <form id="supplier-form" class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
                     @csrf
                     <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Suppliers</h2>
@@ -57,23 +57,40 @@
 
                     <div class="grid grid-cols-6 gap-6 px-2">
 
-                        <div class="col-span-6 sm:col-span-3">
+                        <div class="col-span-6 sm:col-span-3 ">
                             <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Supplier
                                 Name:</label>
-                            <input type="text" name="supplier-name" id="supplier-name" class="shadow-sm mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5" placeholder="Supplier Name" required>
+                            <input type="text" name="supplier-name" id="supplier-name"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
+                                placeholder="Supplier Name" required>
                             <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
                             </script>
 
                         </div>
+
                         <div class="col-span-6 sm:col-span-3">
                             <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Contact
                                 Number:</label>
                             <div class="flex flex-row">
-
-                                <input type="telephone" name="contact" id="contact" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5 mr-6" placeholder="Contact Number" required>
-
-                                <button type="submit" class="text-white w-32 bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-1 text-center">Add</button>
+                                <input type="telephone" name="contact" id="contact"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
+                                    placeholder="Contact Number" required>
                             </div>
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-3 ">
+                            <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Address:</label>
+                            <input type="text" name="supplier-name" id="supplier-name"
+                                class="shadow-sm mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
+                                placeholder="Address" required>
+                            <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
+                            </script>
+                        </div>
+
+
+                        <div class="col-span-6 sm:col-span-3 flex items-center">
+                            <button type="submit"
+                                class="text-white w-32 mt-2 bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center">Add</button>
                         </div>
                     </div>
                 </form>
@@ -92,7 +109,8 @@
                         <div class="col-span-6 sm:col-span-3">
                             <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
                                 Supplier:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="supplier" id="supplier" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
+                            <select data-te-select-init data-te-select-filter="true" name="supplier" id="supplier"
+                                class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
                                 <option selected hidden value="null">Select your option</option>
                                 @foreach ($suppliers as $item)
                                 <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
@@ -101,14 +119,19 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add Category:</label>
+                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add
+                                Category:</label>
                             <div class="flex flex-row">
-                                <select data-te-select-init data-te-select-filter="true" name="categories[]" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
+                                <select data-te-select-init data-te-select-filter="true" name="categories[]"
+                                    class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input"
+                                    multiple>
                                     @foreach ($categories as $item)
-                                    <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">
+                                        {{ $item->category_name }}</option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Add</button>
+                                <button type="submit"
+                                    class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Add</button>
                             </div>
                         </div>
                         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
@@ -131,6 +154,7 @@
                         <th data-priority="1">Item Code</th>
                         <th data-priority="2">Supplier Name</th>
                         <th data-priority="3">Contact Number</th>
+                        <th data-priority="2">Address</th>
                         <th data-priority="4">Action</th>
                     </tr>
                 </thead>
@@ -140,10 +164,32 @@
                         <td class="text-center">{{ $item->supplier_id }}</td>
                         <td class="text-center">{{ $item->name }}</td>
                         <td class="text-center">{{ $item->contact }}</td>
-                        <td class="text-center">
-                            <a href="#" data-supplier-id="{{ $item->supplier_id }}" class="supplier-delete-link text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" fill="currentcolor" viewBox="0 0 16 16">
-                                    <path d="M 6.496094 1 C 5.675781 1 5 1.675781 5 2.496094 L 5 3 L 2 3 L 2 4 L 3 4 L 3 12.5 C 3 13.328125 3.671875 14 4.5 14 L 10.5 14 C 11.328125 14 12 13.328125 12 12.5 L 12 4 L 13 4 L 13 3 L 10 3 L 10 2.496094 C 10 1.675781 9.324219 1 8.503906 1 Z M 6.496094 2 L 8.503906 2 C 8.785156 2 9 2.214844 9 2.496094 L 9 3 L 6 3 L 6 2.496094 C 6 2.214844 6.214844 2 6.496094 2 Z M 5 5 L 6 5 L 6 12 L 5 12 Z M 7 5 L 8 5 L 8 12 L 7 12 Z M 9 5 L 10 5 L 10 12 L 9 12 Z">
+                        <td class="text-center">Address</td>
+                        <td class="text-center items-center flex justify-center">
+                        <button data-item-id=""
+                                class="mr-1 btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium text-sm p-1.5 text-center inline-flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" class="w-5"
+                                    fill="currentcolor">
+                                    <path
+                                        d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z">
+                                    </path>
+                                </svg></button>
+                            <label
+                                class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer"
+                                onclick="">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="eye" width="24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z">
+                                    </path>
+                                </svg>
+                            </label>
+                            <a href="#" data-brand-id="{{ $item->supplier_id }}"
+                                class="brand-delete-link text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2   text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-4"
+                                    fill="currentcolor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M 6.496094 1 C 5.675781 1 5 1.675781 5 2.496094 L 5 3 L 2 3 L 2 4 L 3 4 L 3 12.5 C 3 13.328125 3.671875 14 4.5 14 L 10.5 14 C 11.328125 14 12 13.328125 12 12.5 L 12 4 L 13 4 L 13 3 L 10 3 L 10 2.496094 C 10 1.675781 9.324219 1 8.503906 1 Z M 6.496094 2 L 8.503906 2 C 8.785156 2 9 2.214844 9 2.496094 L 9 3 L 6 3 L 6 2.496094 C 6 2.214844 6.214844 2 6.496094 2 Z M 5 5 L 6 5 L 6 12 L 5 12 Z M 7 5 L 8 5 L 8 12 L 7 12 Z M 9 5 L 10 5 L 10 12 L 9 12 Z">
                                     </path>
                                 </svg>
                             </a>
@@ -162,154 +208,154 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
 
-            var table = $('#example').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
+        var table = $('#example').DataTable({
+                responsive: true
+            })
+            .columns.adjust()
+            .responsive.recalc();
+    });
     </script>
 
 </body>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const links = document.querySelectorAll('.supplier-delete-link');
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.supplier-delete-link');
 
-        links.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent the default click behavior
-                const supplierId = this.getAttribute('data-supplier-id');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default click behavior
+            const supplierId = this.getAttribute('data-supplier-id');
 
-                // Create a custom confirmation dialog
-                const confirmation = confirm(
-                    `Are you sure you want to delete this supplier?\n\nClick "OK" to delete or "Cancel" to cancel.`
-                );
+            // Create a custom confirmation dialog
+            const confirmation = confirm(
+                `Are you sure you want to delete this supplier?\n\nClick "OK" to delete or "Cancel" to cancel.`
+            );
 
-                if (confirmation) {
-                    fetch(`/remove-supplier/${supplierId}`, {
-                            method: 'GET', // Change to 'POST' if necessary
-                            headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                            },
-                        })
-                        .then(response => {
-                            if (response.ok) {
-                                // Handle success (e.g., show a success message)
-                                alert('Supplier removed successfully.');
-                                // You can also reload the page or update the UI as needed
-                                location.reload();
-                            } else {
-                                // Handle errors (e.g., show an error message)
-                                alert('Error: Unable to remove supplier.');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                }
-            });
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('supplier-form');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            // Serialize form data
-            const formData = new FormData(form);
-
-            fetch('/addSupplier', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Handle a successful response (e.g., show success message)
-                        alert('Supplier added successfully.');
-                        // You can also reset the form or redirect to another page
-                        location.reload();
-                    } else {
-                        // Handle errors (e.g., show error message)
-                        alert(data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('supplier-to-category');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            // Serialize form data
-            const formData = new FormData(form);
-
-            fetch('/SupplierCategory', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Handle a successful response (e.g., show success message)
-                        alert('Supplier added successfully.');
-                        // You can also reset the form or redirect to another page
-                        location.reload();
-                    } else {
-                        // Handle errors (e.g., show error message)
-                        alert(data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const supplierSelect = document.getElementById("supplier");
-        const categoriesSelect = document.querySelector("select[name='categories[]']");
-
-        supplierSelect.addEventListener("change", function() {
-            const selectedSupplierId = supplierSelect.value;
-
-            for (const option of categoriesSelect.options) {
-                const supplierList = option.getAttribute("compare");
-                console.log("Supplier List:", supplierList);
-                console.log("Selected Supplier Id:", selectedSupplierId);
-
-                if (supplierList && supplierList.includes(selectedSupplierId)) {
-                    option.setAttribute("selected", "selected");
-                    console.log("Selected");
-                } else {
-                    option.removeAttribute("selected");
-                    console.log("Not Selected");
-                }
+            if (confirmation) {
+                fetch(`/remove-supplier/${supplierId}`, {
+                        method: 'GET', // Change to 'POST' if necessary
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                        },
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Handle success (e.g., show a success message)
+                            alert('Supplier removed successfully.');
+                            // You can also reload the page or update the UI as needed
+                            location.reload();
+                        } else {
+                            // Handle errors (e.g., show an error message)
+                            alert('Error: Unable to remove supplier.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             }
         });
     });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('supplier-form');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Serialize form data
+        const formData = new FormData(form);
+
+        fetch('/addSupplier', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Handle a successful response (e.g., show success message)
+                    alert('Supplier added successfully.');
+                    // You can also reset the form or redirect to another page
+                    location.reload();
+                } else {
+                    // Handle errors (e.g., show error message)
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('supplier-to-category');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Serialize form data
+        const formData = new FormData(form);
+
+        fetch('/SupplierCategory', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Handle a successful response (e.g., show success message)
+                    alert('Supplier added successfully.');
+                    // You can also reset the form or redirect to another page
+                    location.reload();
+                } else {
+                    // Handle errors (e.g., show error message)
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const supplierSelect = document.getElementById("supplier");
+    const categoriesSelect = document.querySelector("select[name='categories[]']");
+
+    supplierSelect.addEventListener("change", function() {
+        const selectedSupplierId = supplierSelect.value;
+
+        for (const option of categoriesSelect.options) {
+            const supplierList = option.getAttribute("compare");
+            console.log("Supplier List:", supplierList);
+            console.log("Selected Supplier Id:", selectedSupplierId);
+
+            if (supplierList && supplierList.includes(selectedSupplierId)) {
+                option.setAttribute("selected", "selected");
+                console.log("Selected");
+            } else {
+                option.removeAttribute("selected");
+                console.log("Not Selected");
+            }
+        }
+    });
+});
 </script>
 
 </html>
