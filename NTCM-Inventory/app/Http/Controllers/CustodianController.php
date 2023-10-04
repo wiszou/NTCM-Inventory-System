@@ -237,6 +237,57 @@ class CustodianController extends Controller
         }
     }
 
+    public function generateIDEmployee()
+    {
+        $rowCount = DB::table('m_employee')->count();
+
+        $rowCount++;
+        $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+        $candidateId = "Employee" . "-" . $formattedRowCount;
+
+        $existingCategory = DB::table('m_employee')->where('employee_id', $candidateId)->first();
+
+        while ($existingCategory) {
+            $rowCount++;
+            $formattedRowCount = str_pad($rowCount, 4, '0', STR_PAD_LEFT);
+            $candidateId = "Employee" . "-" . $formattedRowCount;
+            $existingCategory = DB::table('m_employee')->where('employee_id', $candidateId)->first();
+        }
+
+        return $candidateId;
+    }
+
+    public function addEmployee(Request $request)
+    {
+        $name = $request->input('name');
+        $position = $request->input('position');
+        $department = $request->input('department');
+        $id = $this->generateIDEmployee();
+        
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+
+        $data = array(
+            'name' => $name,
+            'position' => $position,
+            'department' => $department,
+            "employee_id" => $id,
+            'user_created' => $user,
+            'date_created' => $currentDate,
+        );
+
+        try {
+            DB::table('m_employee')->insert($data);
+            $logController = new LogController();
+            $logController->sendLog("Employee " . $id . " Succesfully added");
+            return response()->json(['success' => true, 'message' => 'Employee added successfully.']);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => 'An error occurred while adding the item.']);
+        }
+    }
+
     public function toPrint($custodianID)
     {
         $custodian = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
