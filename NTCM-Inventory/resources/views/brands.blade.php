@@ -104,8 +104,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
-                        </script>
+
                     </div>
                     <div class="flex justify-end mt-6 mr-2">
                         <button type="submit"
@@ -125,7 +124,7 @@
                 <thead class="">
                     <tr>
                         <th data-priority="1">Item Code</th>
-                        <th data-priority="2">Supplier Name</th>
+                        <th data-priority="2">Brand Name</th>
                         <th data-priority="3">Action</th>
                     </tr>
                 </thead>
@@ -135,17 +134,9 @@
                         <td class="text-center">{{ $item->brand_id }}</td>
                         <td class="text-center">{{ $item->name }}</td>
                         <td class="text-center items-center flex justify-center">
-                            <button data-item-id=""
-                                class="mr-1 btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium text-sm p-1.5 text-center inline-flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" class="w-5"
-                                    fill="currentcolor">
-                                    <path
-                                        d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z">
-                                    </path>
-                                </svg></button>
                             <label
                                 class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer"
-                                onclick="">
+                                onclick="openModal()">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="eye" width="24"
                                     fill="currentColor">
                                     <path
@@ -155,8 +146,8 @@
                             </label>
                             <a href="#" data-brand-id="{{ $item->brand_id }}"
                                 class="brand-delete-link text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2   text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-4"
-                                    fill="currentcolor" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-4" fill="currentcolor"
+                                    viewBox="0 0 16 16">
                                     <path
                                         d="M 6.496094 1 C 5.675781 1 5 1.675781 5 2.496094 L 5 3 L 2 3 L 2 4 L 3 4 L 3 12.5 C 3 13.328125 3.671875 14 4.5 14 L 10.5 14 C 11.328125 14 12 13.328125 12 12.5 L 12 4 L 13 4 L 13 3 L 10 3 L 10 2.496094 C 10 1.675781 9.324219 1 8.503906 1 Z M 6.496094 2 L 8.503906 2 C 8.785156 2 9 2.214844 9 2.496094 L 9 3 L 6 3 L 6 2.496094 C 6 2.214844 6.214844 2 6.496094 2 Z M 5 5 L 6 5 L 6 12 L 5 12 Z M 7 5 L 8 5 L 8 12 L 7 12 Z M 9 5 L 10 5 L 10 12 L 9 12 Z">
                                     </path>
@@ -172,6 +163,64 @@
 
 
     </div>
+
+
+    <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster"
+        style="background: rgba(0,0,0,.7);">
+        <div class="modal-container bg-white w-3/6 rounded-xl z-50">
+            <div class="modal-content py-4 text-left px-6 max-h-screen overflow-y-auto">
+                <!--Title-->
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-xl font-semibold text-gray-700 mb-2" name="title" id="title">Brand Details</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg"
+                            width="18" height="18" viewBox="0 0 18 18">
+                            <path
+                                d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <!--Body-->
+                <form id="employee-form" class="relative rounded-md bg-white" method="post">
+
+                    <!--  body -->
+                    <div class="p-6 space-y-6">
+                        <div class="grid grid-cols-6 gap-6">
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Brand
+                                    Name:
+                                </label>
+                                <input type="text" name="name" id="item-serial"
+                                    class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                    placeholder="Juan Dela Cruz" required="">
+                            </div>
+
+
+                            <div class="col-span-6 sm:col-span-3">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-6">
+                                <label for="last-name"
+                                    class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
+                                <select data-te-select-init data-te-select-filter="true" name="categories[]"
+                                    class="shadow-sm bg-custom-color block p-2.5 editable-input" multiple>
+                                    @foreach ($categories as $item)
+                                    <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">
+                                        {{ $item->category_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
+    </script>
+
 
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -348,6 +397,51 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+</script>
+
+<script>
+// Define the modal and closeButton variables
+const modal = document.querySelector('.main-modal');
+const closeButton = document.querySelectorAll('.modal-close');
+
+// Function to close the modal
+const modalClose = () => {
+    modal.classList.remove('fadeIn');
+    modal.classList.add('fadeOut');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 10); // Adjust the delay as needed
+};
+
+// Function to open the modal
+const openModal = () => {
+    // Show the modal - no need to redefine 'modal' here
+    modal.classList.remove('fadeOut');
+    modal.classList.add('fadeIn');
+    modal.style.display = 'flex';
+};
+
+// Attach click event listeners to close buttons
+for (let i = 0; i < closeButton.length; i++) {
+    const element = closeButton[i];
+    element.onclick = () => modalClose();
+}
+
+// Get the button element by its ID
+const openModalButton = document.getElementById('open-modal-button');
+if (openModalButton) {
+    openModalButton.addEventListener('click', () => openModal());
+}
+
+// Initially hide the modal
+modal.style.display = 'none';
+
+// Click outside the modal to close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modalClose();
+    }
+};
 </script>
 
 </html>
