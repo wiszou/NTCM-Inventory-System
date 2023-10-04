@@ -88,7 +88,7 @@
 
                     <div class="flex justify-between">
                         <div>
-                            <p class="text-sm underline underline-offset-4 pb-4 pt-4">September 13, 2023</p>
+                            <p class="text-sm underline underline-offset-4 pb-4 pt-4">{{ $custodian->start_date}}</p>
 
                             <table class="table-auto mt-3">
                                 <tbody>
@@ -193,9 +193,9 @@
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">
-                                        <td class=" border-black pl-1">September 22, 2023</td>
-                                        <td class=" border-black pl-1">September 22, 2023</td>
-                                        <td class=" border-black pl-1">September 22, 2023</td>
+                                        <td class=" border-black pl-1">{{ $custodian->start_date}}</td>
+                                        <td class=" border-black pl-1">{{ $custodian->start_date}}</td>
+                                        <td class=" border-black pl-1">{{ $custodian->start_date}}</td>
                                     </tr>
                             </tbody>
                         </table>
@@ -246,37 +246,37 @@
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">1</td>
                                     <td class="border border-black">{{ $detail1->item_id}}</td>
-                                    <td class="border border-black">{{ $detail1->model}}</td>
+                                    <td class="border border-black">{{  $brand1->name}} {{ $detail1->model}}</td>
                                     <td class="border border-black">{{ $detail1->serial_num}} </td>
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="text-center text-sm">
                                     <td class="border border-black">2</td>
-                                    <td class="border border-black">    @if($detail2) {{ $detail2->item_id }}      @endif</td>
-                                    <td class="border border-black">    @if($detail2) {{ $detail2->model }}      @endif</td>
-                                    <td class="border border-black">    @if($detail2) {{ $detail2->serial_num }}      @endif</td>      
+                                    <td class="border border-black"> @if($detail2) {{ $detail2->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail2){{  $brand2->name}} {{ $detail2->model }} @endif</td>
+                                    <td class="border border-black"> @if($detail2) {{ $detail2->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">3</td>
-                                    <td class="border border-black">    @if($detail3) {{ $detail3->item_id }}      @endif</td>
-                                    <td class="border border-black">    @if($detail3) {{ $detail3->model }}      @endif</td>
-                                    <td class="border border-black">    @if($detail3) {{ $detail3->serial_num }}      @endif</td>     
+                                    <td class="border border-black"> @if($detail3) {{ $detail3->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail3) {{  $brand3->name}} {{ $detail3->model }} @endif</td>
+                                    <td class="border border-black"> @if($detail3) {{ $detail3->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
 
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">4</td>
-                                    <td class="border border-black">    @if($detail4) {{ $detail4->item_id }}      @endif</td>
-                                    <td class="border border-black">    @if($detail4) {{ $detail4->model }}      @endif</td>
-                                    <td class="border border-black">    @if($detail4) {{ $detail4->serial_num }}      @endif</td>     
+                                    <td class="border border-black"> @if($detail4) {{ $detail4->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail4) {{  $brand4->name}} {{ $detail4->model }} @endif</td>
+                                    <td class="border border-black"> @if($detail4) {{ $detail4->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
                                 </tr>
                                 <tr class="border border-black text-center text-sm">
                                     <td class="border border-black">5</td>
-                                    <td class="border border-black">    @if($detail5) {{ $detail5->item_id }}      @endif</td>
-                                    <td class="border border-black">    @if($detail5) {{ $detail5->model }}      @endif</td>
-                                    <td class="border border-black">    @if($detail5) {{ $detail5->serial_num }}      @endif</td>     
+                                    <td class="border border-black"> @if($detail5) {{ $detail5->item_id }} @endif</td>
+                                    <td class="border border-black"> @if($detail5) {{  $brand5->name}} {{ $detail5->model }} @endif</td>
+                                    <td class="border border-black"> @if($detail5) {{ $detail5->serial_num }} @endif</td>
                                     <td class="border border-black"></td>
 
                                 </tr>
@@ -302,22 +302,19 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5">____________________________________</span>(Signature
-                                            Over Printed Name)
+                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->name}}</span>(Signature Over Printed Name)
                                         </td>
-                                        <td class=" border-black text-center">
-                                            <span class="flex pl-3">_______________________________</span>IT
-                                            Representative
+                                        <td class="border-black text-center">
+                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->issued}}</span>IT Representative
                                         </td>
-                                        <td class=" border-black text-center">
-                                            <span class="flex pl-2">_______________________________</span>Deputy
-                                            Director
+                                        <td class="border-black text-center">
+                                            <span class="flex pl-1.5 border-b border-black">{{ $custodian->noted}}</span>Deputy Director
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">
-                                        <td class=" border-black pl-1">September 22, 2023</td>
-                                        <td class=" border-black pl-1">September 22, 2023</td>
-                                        <td class=" border-black pl-1">September 22, 2023</td>
+                                        <td class=" border-black pl-1">{{ $custodian->start_date}}</td>
+                                        <td class=" border-black pl-1">{{ $custodian->start_date}}</td>
+                                        <td class=" border-black pl-1">{{ $custodian->start_date}}</td>
                                     </tr>
                             </tbody>
                         </table>

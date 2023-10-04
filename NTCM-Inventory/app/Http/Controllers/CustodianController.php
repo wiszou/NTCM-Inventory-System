@@ -53,7 +53,7 @@ class CustodianController extends Controller
         $dateTimeController = new DateTimeController();
         $date = $dateTimeController->getDateTime(new Request());
 
-        $currentDate = date('Y-m-d');
+        $currentDate = date('D-M-Y');
         $custodianID = $this->generateID();
         $handlerName = $request->input('handlerName');
         $handlerName2 = $request->input('handlerName2');
@@ -262,6 +262,19 @@ class CustodianController extends Controller
         $item4 = DB::table('t_inventory')->where('item_id', $item4Value)->first();
         $item5 = DB::table('t_inventory')->where('item_id', $item5Value)->first();
 
+        $brandid1 = $item1->brand_id;
+        $brandid2 = $item2 ? $item2->brand_id : "";
+        $brandid3 = $item3 ? $item3->brand_id : "";
+        $brandid4 = $item4 ? $item4->brand_id : "";
+        $brandid5 = $item5 ? $item5->brand_id : "";
+
+
+        $brand1 = DB::table('m_brand')->where('brand_id', $brandid1)->first();
+        $brand2 = DB::table('m_brand')->where('brand_id', $brandid2)->first();
+        $brand3 = DB::table('m_brand')->where('brand_id', $brandid3)->first();
+        $brand4 = DB::table('m_brand')->where('brand_id', $brandid4)->first();
+        $brand5 = DB::table('m_brand')->where('brand_id', $brandid5)->first();
+
         return view('form', [
             'inventory' => $inventory,
             'inv1' => $item1,
@@ -270,10 +283,15 @@ class CustodianController extends Controller
             'inv4' => $item4,
             'inv5' => $item5,
             'detail1' => $detail1,
-            'detail2' => $detail2, 
-            'detail3' => $detail3, 
-            'detail4' => $detail4, 
-            'detail5' => $detail5,  
+            'detail2' => $detail2,
+            'detail3' => $detail3,
+            'detail4' => $detail4,
+            'detail5' => $detail5,
+            'brand1' => $brand1,
+            'brand2' => $brand2,
+            'brand3' => $brand3,
+            'brand4' => $brand4,
+            'brand5' => $brand5,
             'custodian' => $custodian
         ]);
     }
