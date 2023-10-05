@@ -27,6 +27,94 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
+<style>
+/*Overrides for Tailwind CSS */
+
+/*Form fields*/
+.dataTables_wrapper select,
+.dataTables_wrapper .dataTables_filter input {
+    color: #4a5568;
+    /*text-gray-700*/
+    padding-left: 1rem;
+    /*pl-4*/
+    padding-right: 1rem;
+    /*pl-4*/
+    padding-top: .5rem;
+    /*pl-2*/
+    padding-bottom: .5rem;
+    /*pl-2*/
+    line-height: 1.25;
+    /*leading-tight*/
+    border-width: 1px;
+    /*border-2*/
+    border-radius: .25rem;
+    border-color: #4d4d4d;
+    /*border-gray-200*/
+    background-color: #ffffff;
+    /*bg-gray-200*/
+}
+
+
+/*Pagination Buttons*/
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    font-weight: 500;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    border: 1px solid transparent;
+    /*border border-transparent*/
+}
+
+/*Pagination Buttons - Current selected */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: #5c5c5c !important;
+    /*text-white*/
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    /*shadow*/
+    font-weight: 200;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    background: #d6d6d6 !important;
+    /*bg-indigo-500*/
+    border: 1px solid transparent;
+    /*border border-transparent*/
+}
+
+/*Pagination Buttons - Hover */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: #ffffff;
+    /*text-white*/
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    /*shadow*/
+    font-weight: 400;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    background: #d6d6d6 !important;
+    /*bg-indigo-500*/
+    border: 1px;
+    /*border border-transparent*/
+
+}
+
+
+/*Change colour of responsive icon*/
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+    background-color: #4facb6 !important;
+    /*bg-indigo-500*/
+}
+
+
+
+input[disabled] {
+    background-color: #E9ECEF;
+    /* Change the text color to gray */
+
+}
+</style>
+
 
 <body class="bg-gray-100 py-2">
     @include('components.sidebar')
