@@ -41,7 +41,7 @@ Route::get('//get-categories-for-supplier/{supplierId}', [CatSuppController::cla
 Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
 Route::get('/remove-brand/{itemCode}', [CatSuppController::class, 'removeBrand']);
 Route::get('/remove-supplier/{itemCode}', [CatSuppController::class, 'removeSupplier']);
-
+Route::get('/remove-employee/{id}', [CatSuppController::class, 'removeEmployee']);
 Route::post('/insert-custodian', [CustodianController::class, 'createCustodian']);
 
 Route::group(['middleware' => ['session-checker']], function () {

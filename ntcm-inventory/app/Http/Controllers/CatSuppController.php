@@ -266,6 +266,18 @@ class CatSuppController extends Controller
         }
     }
 
+    public function removeEmployee($id)
+    {
+        try {
+            DB::table('m_employee')->where('employee_id', $id)->delete();
+            $logController = new LogController();
+            $logController->sendLog("Employee " . $id . " Succesfully Deleted");
+            return response()->json(['success' => true, 'message' => 'Employee removed succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant remove Employee']);
+        }
+    }
+
     public function removeBrand($itemCode)
     {
         try {
@@ -442,4 +454,6 @@ class CatSuppController extends Controller
 
         return view('employee', ['employee' => $data]);
     }
+
+    
 }

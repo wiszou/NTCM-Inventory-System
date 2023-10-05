@@ -184,7 +184,7 @@
 
                         <div class="col-span-6 sm:col-span-6">
                             <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="categories2[]" class="shadow-sm bg-custom-color block p-2.5 editable-input" multiple>
+                            <select id="categorySelect" data-te-select-init data-te-select-filter="true" name="categories2[]" class="shadow-sm bg-custom-color block p-2.5 editable-input" multiple disabled>
                                 @foreach ($categories as $item)
                                 <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">
                                     {{ $item->category_name }}
@@ -406,11 +406,15 @@
             success: function(response) {
                 // Update the modal content with the data received from PHP
                 document.getElementById('nameBrand').value = response.name;
-                var selectElement = document.querySelector('select[name="categories2[]"]');
 
+                // Select the <select> element by its ID
+                var selectElement = document.getElementById('categorySelect');
+                var categoryList = JSON.parse(response.category_list);
                 console.log(response.category_list);
 
-                if (selectElement && Array.isArray(response.category_list)) {
+
+                
+                if (selectElement && Array.isArray(categoryList)) {
                     // Iterate through the <option> elements in the select
                     var options = selectElement.querySelectorAll('option');
                     options.forEach(function(option) {
@@ -418,7 +422,7 @@
                         // Check if the option's value is in the response.category_list
                         if (response.category_list.includes(option.value)) {
                             // Set the option as selected
-                            option.selected = true;
+                            option.setAttribute("selected", "selected");
                         }
                     });
                 }
