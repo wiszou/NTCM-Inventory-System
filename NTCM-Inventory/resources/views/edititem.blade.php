@@ -225,6 +225,12 @@
                             </div>
 
 
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
+                                <textarea class="px-2 py-3 border w-full h-15 rounded-md" name="remarks"></textarea>
+                            </div>
+
+
 
                             <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-t-2 border-gray-300 pt-4" id="spacer" hidden>
                                 Item Specification </div>
