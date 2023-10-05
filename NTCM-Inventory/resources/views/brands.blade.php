@@ -203,15 +203,8 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-6">
-<<<<<<< Updated upstream
                             <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
                             <select id="categorySelect" data-te-select-init data-te-select-filter="true" name="categories2[]" class="shadow-sm bg-custom-color block p-2.5 editable-input" multiple disabled>
-=======
-                            <label for="last-name"
-                                class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="categories2[]"
-                                class="shadow-sm bg-custom-color block p-2.5 editable-input" multiple>
->>>>>>> Stashed changes
                                 @foreach ($categories as $item)
                                 <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">
                                     {{ $item->category_name }}
@@ -262,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 `Are you sure you want to delete this supplier?\n\nClick "OK" to delete or "Cancel" to cancel.`
             );
 
-<<<<<<< Updated upstream
                 if (confirmation) {
                     fetch(`/remove-brand/${supplierId}`, {
                             method: 'GET', // Change to 'POST' if necessary
@@ -281,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 alert('Error: Unable to remove supplier.');
                             }
                         })
-                        .catch(error => {
+                        .catch(error => {   
                             console.error('Error:', error);
                         });
                 }
@@ -456,24 +448,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (response.category_list.includes(option.value)) {
                             // Set the option as selected
                             option.setAttribute("selected", "selected");
-=======
-            if (confirmation) {
-                fetch(`/remove-brand/${supplierId}`, {
-                        method: 'GET', // Change to 'POST' if necessary
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                        },
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Handle success (e.g., show a success message)
-                            alert('Supplier removed successfully.');
-                            // You can also reload the page or update the UI as needed
-                            location.reload();
-                        } else {
-                            // Handle errors (e.g., show an error message)
-                            alert('Error: Unable to remove supplier.');
->>>>>>> Stashed changes
                         }
                     })
                     .catch(error => {
