@@ -85,6 +85,7 @@ class CustodianController extends Controller
             'description' => $description,
             'start_date' => $currentDate,
             'status' => 0,
+            'deleted' => "false",
             'type' => $type,
             'items' => $items,
             'user_created' => $user,

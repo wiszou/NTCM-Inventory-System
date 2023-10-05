@@ -33,6 +33,7 @@ class CatSuppController extends Controller
                 'name' => $name,
                 'contact' => $contact,
                 'address' => $address,
+                'deleted' => "false",
                 'user_created' => $user,
                 'date_created' => $date,
             ]);
@@ -94,6 +95,7 @@ class CatSuppController extends Controller
             'stock_req' => $stock,
             'quantity' => 0,
             'specs' => $specs,
+            'deleted' => "false",
             'category_name' => $name,
             'user_created' => $user,
             'date_created' => $date,
@@ -130,6 +132,7 @@ class CatSuppController extends Controller
         $categoryData = array(
             'brand_id' => $brand_id,
             'name' => $name,
+            'deleted' => "false",
             'user_created' => $user,
             'date_created' => $date,
         );
@@ -230,6 +233,7 @@ class CatSuppController extends Controller
 
         return view('categories', ['category' => $category]);
     }
+
 
     public function updateAdd()
     {

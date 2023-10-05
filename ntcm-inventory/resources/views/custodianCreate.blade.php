@@ -308,6 +308,7 @@
                         </thead>
                         <tbody id="inventoryTableBody">
                             @foreach ($custodian as $item)
+                            @if ($item->deleted == "false")
                             <tr item-id="{{ $item->custodian_id }}">
                                 <td>{{ $item->custodian_id}}</td>
                                 @foreach ($employees as $itemE)
@@ -319,6 +320,7 @@
                                 <td>{{ $item->description}}</td>
                                 <td></td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -360,7 +362,9 @@
                                                 <select data-te-select-init data-te-select-filter="true" name="handlerName" id="handlerName" class="shadow-sm bg-custom-color block w-full p-2.5  editable-input" required="">
                                                     <option value="none" selected hidden>Select your option</option>
                                                     @foreach ($employees as $employee)
+                                                    @if ($employee->deleted == "false")
                                                     <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -383,9 +387,11 @@
                                             <select name="item1" id="item1" class="js-example-basic-single" required="">
                                                 <option value="none" selected hidden>Select Item</option>
                                                 @foreach ($details as $item)
+                                                @if ($item->deleted == "false")
                                                 <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
                                                     {{ $item->item_id }} - {{ $item->model }}
                                                 </option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                             <input type="text" name="itemArray" id="itemArray" hidden>
@@ -416,7 +422,9 @@
                                             <select data-te-select-init data-te-select-filter="true" name="handlerName2" id="handlerName2" class="shadow-sm w-full p-2.5  editable-input" required="">
                                                 <option value="none" selected hidden>Select your option</option>
                                                 @foreach ($employees as $employee)
+                                                @if ($employee->deleted == "false")
                                                 <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -427,7 +435,9 @@
                                             <select data-te-select-init data-te-select-filter="true" name="issued" id="issued" class="shadow-sm w-full p-2.5 editable-input" required="">
                                                 <option value="none" selected hidden>Select your option</option>
                                                 @foreach ($employees as $employee)
+                                                @if ($employee->deleted == "false")
                                                 <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -438,7 +448,9 @@
                                             <select data-te-select-init data-te-select-filter="true" name="noted" id="noted" class="shadow-sm w-full p-2.5 editable-input" required="">
                                                 <option value="none" selected hidden>Select your option</option>
                                                 @foreach ($employees as $employee)
+                                                @if ($employee->deleted == "false")
                                                 <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                         </div>
