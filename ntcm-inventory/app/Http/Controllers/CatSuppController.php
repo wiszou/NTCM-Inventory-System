@@ -247,11 +247,19 @@ class CatSuppController extends Controller
 
     public function removeCategory($itemCode)
     {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
         try {
-            DB::table('m_category')->where('category_id', $itemCode)->delete();
+            $data = array(
+                'deleted' => "true",
+                'user_change' => $user,
+                'date_change' => $currentDate,
+            );
+            DB::table('m_category')->where('category_id', $itemCode)->update($data);
             $logController = new LogController();
             $logController->sendLog("Category " . $itemCode . " Succesfully Deleted");
-            return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
+            return response()->json(['success' => true, 'message' => 'Category removed succesfully']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Cant remove item']);
         }
@@ -259,9 +267,16 @@ class CatSuppController extends Controller
 
     public function removeSupplier($itemCode)
     {
-
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
         try {
-            DB::table('m_supplier')->where('supplier_id', $itemCode)->delete();
+            $data = array(
+                'deleted' => "true",
+                'user_change' => $user,
+                'date_change' => $currentDate,
+            );
+            DB::table('m_supplier')->where('supplier_id', $itemCode)->update($data);
             $logController = new LogController();
             $logController->sendLog("Supplier " . $itemCode . " Succesfully Deleted");
             return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
@@ -272,8 +287,16 @@ class CatSuppController extends Controller
 
     public function removeEmployee($id)
     {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
         try {
-            DB::table('m_employee')->where('employee_id', $id)->delete();
+            $data = array(
+                'deleted' => "true",
+                'user_change' => $user,
+                'date_change' => $currentDate,
+            );
+            DB::table('m_employee')->where('employee_id', $id)->update($data);
             $logController = new LogController();
             $logController->sendLog("Employee " . $id . " Succesfully Deleted");
             return response()->json(['success' => true, 'message' => 'Employee removed succesfully']);
@@ -284,8 +307,16 @@ class CatSuppController extends Controller
 
     public function removeBrand($itemCode)
     {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
         try {
-            DB::table('m_brand')->where('brand_id', $itemCode)->delete();
+            $data = array(
+                'deleted' => "true",
+                'user_change' => $user,
+                'date_change' => $currentDate,
+            );
+            DB::table('m_brand')->where('brand_id', $itemCode)->update($data);
             $logController = new LogController();
             $logController->sendLog("Brand " . $itemCode . " Succesfully Deleted");
             return response()->json(['success' => true, 'message' => 'Item removed succesfully']);
@@ -440,9 +471,10 @@ class CatSuppController extends Controller
     }
 
 
-    public function getBrandDetail($id) {
+    public function getBrandDetail($id)
+    {
         $data = DB::table('m_brand')->where('brand_id', $id)->first();
-    
+
         // Check if the data was found
         if ($data) {
             // Return the entire data object as JSON
@@ -453,11 +485,10 @@ class CatSuppController extends Controller
         }
     }
 
-    public function employeePage(){
+    public function employeePage()
+    {
         $data = DB::table('m_employee')->get();
 
         return view('employee', ['employee' => $data]);
     }
-
-    
 }

@@ -159,6 +159,7 @@
                 </thead>
                 <tbody id="suppliers">
                     @foreach ($suppliers as $item)
+                    @if ($item->deleted == "false")
                     <tr>
                         <td class="text-center">{{ $item->supplier_id }}</td>
                         <td class="text-center">{{ $item->name }}</td>
@@ -186,6 +187,7 @@
                             </a>
                         </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>

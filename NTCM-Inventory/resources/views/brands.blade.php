@@ -132,6 +132,7 @@
                 </thead>
                 <tbody id="suppliers">
                     @foreach ($brands as $item)
+                    @if ($item->deleted == "false")
                     <tr>
                         <td class="text-center">{{ $item->brand_id }}</td>
                         <td class="text-center">{{ $item->name }}</td>
@@ -158,6 +159,7 @@
                             </a>
                         </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>
@@ -401,62 +403,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-</script>
-
-<script>
-    // Define the modal and closeButton variables
-    const modal = document.querySelector('.main-modal');
-    const closeButton = document.querySelectorAll('.modal-close');
-
-    // Function to close the modal
-    const modalClose = () => {
-        modal.classList.remove('fadeIn');
-        modal.classList.add('fadeOut');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 10); // Adjust the delay as needed
-    };
-
-    // Function to open the modal with AJAX request
-    const openModal = (brandId) => {
-        // Show the modal - no need to redefine 'modal' here
-        modal.classList.remove('fadeOut');
-        modal.classList.add('fadeIn');
-        modal.style.display = 'flex';
-
-        // Make an AJAX request to your PHP script
-        $.ajax({
-            type: 'GET', // Use GET to retrieve data
-            url: `/BrandInfo/${brandId}`, // Use the correct URL
-            success: function(response) {
-                // Update the modal content with the data received from PHP
-                document.getElementById('nameBrand').value = response.name;
-
-                // Select the <select> element by its ID
-                var selectElement = document.getElementById('categorySelect');
-                var categoryList = JSON.parse(response.category_list);
-                console.log(response.category_list);
-
-
-                
-                if (selectElement && Array.isArray(categoryList)) {
-                    // Iterate through the <option> elements in the select
-                    var options = selectElement.querySelectorAll('option');
-                    options.forEach(function(option) {
-                        console.log("Option value: " + option.value);
-                        // Check if the option's value is in the response.category_list
-                        if (response.category_list.includes(option.value)) {
-                            // Set the option as selected
-                            option.setAttribute("selected", "selected");
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            }
-        });
-    });
-});
 </script>
 
 <script>

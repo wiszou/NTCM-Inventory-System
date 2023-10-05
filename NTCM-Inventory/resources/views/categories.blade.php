@@ -108,6 +108,7 @@
                 <tbody id="inventoryTableBody">
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         @foreach ($category as $item)
+                        @if ($item->deleted == "false")
                         <td>{{ $item->category_id }}</td>
                         <td>{{ $item->category_name }}</td>
                         <td>{{ $item->stock_req }}</td>
@@ -136,6 +137,7 @@
                             </a>
                         </td>
                         <td>{{ $item->date_created }}</td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
