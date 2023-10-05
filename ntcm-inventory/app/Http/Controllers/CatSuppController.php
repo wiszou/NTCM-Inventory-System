@@ -436,4 +436,10 @@ class CatSuppController extends Controller
             return response()->json(['error' => 'Brand not found'], 404);
         }
     }
+
+    public function employeePage(){
+        $data = DB::table('m_employee')->get();
+
+        return view('employee', ['employee' => $data]);
+    }
 }

@@ -77,9 +77,7 @@ Route::group(['middleware' => ['session-checker']], function () {
         return view('form');
     })->name('form');
 
-    Route::get('/employee', function () {
-        return view('employee');
-    })->name('employee');
+    Route::get('/employee', [CatSuppController::class, 'employeePage'])->name('employee');
 
 
 
