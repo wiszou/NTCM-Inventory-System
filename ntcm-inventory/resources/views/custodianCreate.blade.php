@@ -310,7 +310,11 @@
                             @foreach ($custodian as $item)
                             <tr item-id="{{ $item->custodian_id }}">
                                 <td>{{ $item->custodian_id}}</td>
-                                <td>{{ $item->name}}</td>
+                                @foreach ($employees as $itemE)
+                                @if ($itemE->employee_id == $item->name)
+                                <td>{{ $itemE->name }}</td>
+                                @endif
+                                @endforeach
                                 <td>{{ $item->type}}</td>
                                 <td>{{ $item->description}}</td>
                                 <td></td>

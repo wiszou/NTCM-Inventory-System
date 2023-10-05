@@ -54,7 +54,7 @@ class CustodianController extends Controller
         $dateTimeController = new DateTimeController();
         $date = $dateTimeController->getDateTime(new Request());
 
-        $currentDate = date('dd-MMMM-Y');
+        $currentDate = date('d-F-Y');
         $custodianID = $this->generateID();
         $handlerName = $request->input('handlerName');
         $handlerName2 = $request->input('handlerName2');
