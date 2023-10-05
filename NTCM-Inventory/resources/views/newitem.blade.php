@@ -211,7 +211,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Remarks:</label>
-                                <textarea class="px-2 py-3 border w-full h-15 rounded-md"></textarea>
+                                <textarea class="px-2 py-3 border w-full h-15 rounded-md" name="remarks"></textarea>
                             </div>
 
 

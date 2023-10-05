@@ -23,7 +23,8 @@ class CustodianController extends Controller
         $supplier = DB::table('m_supplier')->get();
         $category = DB::table('m_category')->get();
         $custodian = DB::table('t_custodian')->get();
-        return view('custodianCreate', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier, 'details' => $itemdetails, 'custodian' => $custodian]);
+        $employee = DB::table('m_employee')->get();
+        return view('custodianCreate', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier, 'details' => $itemdetails, 'custodian' => $custodian, 'employees' => $employee]);
     }
 
     public function generateID()
@@ -53,7 +54,7 @@ class CustodianController extends Controller
         $dateTimeController = new DateTimeController();
         $date = $dateTimeController->getDateTime(new Request());
 
-        $currentDate = date('D-M-Y');
+        $currentDate = date('dd-MMMM-Y');
         $custodianID = $this->generateID();
         $handlerName = $request->input('handlerName');
         $handlerName2 = $request->input('handlerName2');
@@ -201,6 +202,25 @@ class CustodianController extends Controller
         $custodian = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
         $inventory = DB::table('t_inventory')->get();
 
+        $notedid = "";
+        $issuedid = "";
+        $employeeid = "";
+        $employee2id = "";
+
+        if ($custodian) {
+            $notedid = $custodian->noted;
+            $issuedid = $custodian->issued;
+            $employeeid = $custodian->name;
+            $employee2id = $custodian->name2;
+        } else {
+            // Handle the case where no record is found
+            $brandName = null; // Or any other default value or error handling
+        }
+
+        $noted = DB::table('m_employee')->where('employee_id', $notedid)->first();
+        $issued = DB::table('m_employee')->where('employee_id', $issuedid)->first();
+        $employee = DB::table('m_employee')->where('employee_id', $employeeid)->first();
+        $employee2 = DB::table('m_employee')->where('employee_id', $employee2id)->first();
 
         $itemArray = json_decode($custodian->items);
         $items = [];
@@ -224,6 +244,10 @@ class CustodianController extends Controller
             'items' => $itemArray,
             'brands' =>  $brand1,
             'custodian' => $custodian,
+            'noted' => $noted,
+            'issued' => $issued,
+            'employee' => $employee,
+            'employee2' => $employee2,
         ]);
     }
 }

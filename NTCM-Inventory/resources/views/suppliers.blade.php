@@ -81,7 +81,7 @@
                         <div class="col-span-6 sm:col-span-5 ">
                             <label for="first-name"
                                 class="block mb-2 text-sm font-medium text-gray-900 ">Address:</label>
-                            <input type="text" name="supplier-name" id="supplier-name"
+                            <input type="text" name="address" id="address"
                                 class="shadow-sm mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5"
                                 placeholder="Address" required>
                             <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
@@ -163,7 +163,7 @@
                         <td class="text-center">{{ $item->supplier_id }}</td>
                         <td class="text-center">{{ $item->name }}</td>
                         <td class="text-center">{{ $item->contact }}</td>
-                        <td class="text-center">Address</td>
+                        <td class="text-center">{{ $item->address }}</td>
                         <td class="text-center items-center flex justify-center">
                             <label onclick="openModal()"
                                 class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer"

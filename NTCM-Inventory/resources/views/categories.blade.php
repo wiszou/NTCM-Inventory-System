@@ -1,12 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <style>
     .w-16 {
-    width: 20px; /* Adjust the width as needed */
-    height: 20px; /* Adjust the height as needed */
-}
+        width: 20px;
+        /* Adjust the width as needed */
+        height: 20px;
+        /* Adjust the height as needed */
+    }
 </style>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -95,7 +97,9 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $item->category_name }}
                         </th>
-                    <td class="px-6 py-3"><input type="checkbox" name="specs" id="specs" value="1" class="w-16 mt-3"></td>
+                        <td class="px-6 py-3">
+                            <input type="checkbox" name="specs" id="specs" value="1" class="w-16 mt-3" {{ $item->specs == 1 ? 'checked' : '' }} disabled>
+                        </td>
                         <td class="px-6 py-4">
                             <a href="#" class="category-delete-link text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500" data-category-id="{{ $item->category_id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" fill="currentcolor" viewBox="0 0 16 16">
@@ -104,7 +108,7 @@
                                 </svg>
                             </a>
                         </td>
-                        <td></td>
+                        <td>{{ $item->date_created }}</td>
                     </tr>
                     @endforeach
                 </tbody>

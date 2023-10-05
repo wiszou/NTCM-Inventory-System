@@ -345,7 +345,7 @@
                         <!--Body-->
                         <div class="flex justify-center  max-h-96 overflow-y-auto mt-4">
                             <div class="rounded-lg w-full">
-                                <form id="create-form"method="post" class="relative bg-white">
+                                <form id="create-form" method="post" class="relative bg-white">
                                     @csrf
                                     <!-- Modal body -->
                                     <div class="p-6 space-y-6">
@@ -355,6 +355,9 @@
                                                 <label for="custodian-name" class="block mb-2 text-sm font-medium text-gray-900">Employee</label>
                                                 <select data-te-select-init data-te-select-filter="true" name="handlerName" id="handlerName" class="shadow-sm bg-custom-color block w-full p-2.5  editable-input" required="">
                                                     <option value="none" selected hidden>Select your option</option>
+                                                    @foreach ($employees as $employee)
+                                                    <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
@@ -408,6 +411,9 @@
                                                 By:</label>
                                             <select data-te-select-init data-te-select-filter="true" name="handlerName2" id="handlerName2" class="shadow-sm w-full p-2.5  editable-input" required="">
                                                 <option value="none" selected hidden>Select your option</option>
+                                                @foreach ($employees as $employee)
+                                                <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -416,6 +422,9 @@
                                                 By:</label>
                                             <select data-te-select-init data-te-select-filter="true" name="issued" id="issued" class="shadow-sm w-full p-2.5 editable-input" required="">
                                                 <option value="none" selected hidden>Select your option</option>
+                                                @foreach ($employees as $employee)
+                                                <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -424,6 +433,9 @@
                                                 By:</label>
                                             <select data-te-select-init data-te-select-filter="true" name="noted" id="noted" class="shadow-sm w-full p-2.5 editable-input" required="">
                                                 <option value="none" selected hidden>Select your option</option>
+                                                @foreach ($employees as $employee)
+                                                <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -665,6 +677,7 @@
                     .then(data => {
                         if (data.success) {
                             alert(data.message);
+                            location.reload();
                         } else {
                             // Handle errors (e.g., show error message)
                             alert(data.message);

@@ -11,6 +11,7 @@ class CatSuppController extends Controller
     {
         $name = $request->input('supplier-name');
         $contact = $request->input('contact');
+        $address = $request->input('address');
         // Check if a supplier with the same name already exists
         $existingSupplier = DB::table('m_supplier')
             ->where('name', $name)
@@ -31,6 +32,7 @@ class CatSuppController extends Controller
                 'supplier_id' => $id,
                 'name' => $name,
                 'contact' => $contact,
+                'address' => $address,
                 'user_created' => $user,
                 'date_created' => $date,
             ]);
@@ -418,6 +420,20 @@ class CatSuppController extends Controller
             return response()->json(['success' => true, 'message' => 'Supplier removed/added successfully', 'brandArray' => $brandArray]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again later.']);
+        }
+    }
+
+
+    public function getBrandDetail($id) {
+        $data = DB::table('m_brand')->where('brand_id', $id)->first();
+    
+        // Check if the data was found
+        if ($data) {
+            // Return the entire data object as JSON
+            return response()->json($data);
+        } else {
+            // If the data was not found, return an error response or handle it as needed
+            return response()->json(['error' => 'Brand not found'], 404);
         }
     }
 }

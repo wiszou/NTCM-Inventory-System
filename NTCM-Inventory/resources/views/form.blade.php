@@ -94,16 +94,16 @@
                                 <tbody>
                                     <tr>
                                         <td class="text-sm font-medium">Equipment Custodian:</td>
-                                        <td class="text-sm pl-3 underline underline-offset-4">{{ $custodian->name}}</td>
+                                        <td class="text-sm pl-3 underline underline-offset-4">{{ $employee->name }}</td>
+
                                     </tr>
                                     <tr>
                                         <td class="text-sm font-medium">Position / Function:</td>
-                                        <td class="pl-3 text-sm underline underline-offset-4">Q.A. Audit Officer</td>
+                                        <td class="pl-3 text-sm underline underline-offset-4">{{ $employee->position }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-sm font-medium">Department:</td>
-                                        <td class="pl-3 text-sm underline underline-offset-4">Quality Assurance
-                                            Department</td>
+                                        <td class="pl-3 text-sm underline underline-offset-4">{{ $employee->department }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -183,13 +183,13 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->name}}</span>(Signature Over Printed Name)
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $employee->name}}</span>(Signature Over Printed Name)
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->issued}}</span>IT Representative
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $issued->name}}</span>{{ $issued->position}}
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->noted}}</span>Deputy Director
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $noted->name}}</span>{{ $noted->position}}
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">
@@ -287,13 +287,14 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->name}}</span>(Signature Over Printed Name)
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $employee->name}}</span>(Signature Over Printed Name)
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->issued}}</span>IT Representative
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $issued->name}}</span>{{ $issued->position}}
                                         </td>
                                         <td class="border-black text-center">
-                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $custodian->noted}}</span>Deputy Director
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $noted->name}}</span>{{ $noted->position}}
+                                        </td>
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">

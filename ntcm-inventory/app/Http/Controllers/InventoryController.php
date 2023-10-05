@@ -37,11 +37,15 @@ class InventoryController extends Controller
         $acquired = $request->input('item-acquired');
         $expire = $request->input('item-expired');
         $item_status = $request->input('item-status');
+        $remarks = $request->input('remarks');
         $uniqueID = $this->generateItemCode();
-
+        $itemName = $this->itemName($model, $brand);
         if ($item_status === null) {
             $item_status = "Spare";
         }
+
+
+
 
         $inventoryData = array(
             'item_id' => $uniqueID,
@@ -55,6 +59,7 @@ class InventoryController extends Controller
 
         $detailsData = array(
             'item_id' => $uniqueID,
+            'name' => $itemName,
             'model' => $model,
             'price' => $price,
             'serial_num' => $serialNum,
@@ -62,6 +67,7 @@ class InventoryController extends Controller
             'gpu' => $gpu,
             'ram' => $ram,
             'storage' => $storage,
+            'remarks' => $remarks,
             'date_acquired' => $acquired,
             'date_end' => $expire,
             'user_created' => $user,
@@ -80,6 +86,23 @@ class InventoryController extends Controller
             Log::error($e->getMessage());
             return response()->json(['success' => false, 'message' => 'An error occurred while adding the item.']);
         }
+    }
+
+    public function itemName($model, $brandID)
+    {
+        $brandData = DB::table('m_brand')->where('brand_id', $brandID)->first();
+
+        $brandName = "";
+        if ($brandData) {
+            $brandName = $brandData->name;
+            // Access the 'name' column
+        } else {
+            // Handle the case where no record is found
+            $brandName = null; // Or any other default value or error handling
+        }
+
+        $itemName = $brandName . " " . $model;
+        return $itemName;
     }
 
     public function generateItemCode()
@@ -148,12 +171,12 @@ class InventoryController extends Controller
     }
 
     public function getItemSpecs($itemID)
-    {       
+    {
         $items = DB::table('t_itemdetails')
             ->where('item_id', $itemID)
             ->first(); // Get all matching items
 
-            return response()->json(['success' => true, 'specs' => $items]);
+        return response()->json(['success' => true, 'specs' => $items]);
     }
 
 
@@ -177,6 +200,7 @@ class InventoryController extends Controller
         $storage = $request->input('item-storage');
         $acquired = $request->input('item-acquired');
         $expire = $request->input('item-expired');
+        $itemName = $this->itemName($model, $brand);
 
         $inventoryData = array(
             'item_id' => $id,
@@ -191,6 +215,7 @@ class InventoryController extends Controller
 
         $detailsData = array(
             'model' => $model,
+            'name' => $itemName,
             'price' => $price,
             'serial_num' => $serialNum,
             'date_acquired' => $acquired,
