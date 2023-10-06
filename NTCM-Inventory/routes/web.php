@@ -37,6 +37,8 @@ Route::post('/addCategory', [CatSuppController::class, 'addCategory']);
 Route::post('/addBrand', [CatSuppController::class, 'addBrand']);
 Route::post('/SupplierCategory', [CatSuppController::class, 'supplierToCategory']);
 Route::post('/CategoryBrand', [CatSuppController::class, 'categoryToBrand']);
+Route::post('/updateCategoryInfo', [CatSuppController::class, 'updateCategoryDetail']);
+
 Route::get('//get-categories-for-supplier/{supplierId}', [CatSuppController::class, 'getCategoriesForSupplier']);
 Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
 Route::get('/remove-brand/{itemCode}', [CatSuppController::class, 'removeBrand']);
@@ -61,6 +63,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/logs', [LogController::class, 'updateLogTable'])->name('logs');
     Route::get('/print/{custodianID}', [CustodianController::class, 'toPrint'])->name('print');
     Route::get('/BrandInfo/{id}', [CatSuppController::class, 'getBrandDetail']);
+    Route::get('/CategoryInfo/{id}', [CatSuppController::class, 'getCategoryDetail']);
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');

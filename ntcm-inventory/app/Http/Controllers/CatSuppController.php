@@ -234,6 +234,38 @@ class CatSuppController extends Controller
         return view('categories', ['category' => $category]);
     }
 
+    public function updateCategoryDetail(Request $request)
+    {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+
+        $name =  $request->input('name');
+        $stock =  $request->input('stock');
+        $specs = $request->input('specx');
+        $id = $request->input("id");
+
+        
+
+        $data = array(
+            'category_name' => $name,
+            'stock_req' => $stock,
+            'specs' => $specs,
+            'user_change' => $user,
+            'date_change' => $currentDate,
+        );
+
+        try {
+            DB::table('m_category')->where('category_id', $id)->update($data);
+            $logController = new LogController();
+            $logController->sendLog("Category " . $id . " Succesfully updated");
+            return response()->json(['success' => true, 'message' => 'Caegory updated succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant update category']);
+        }
+        
+    }
+
 
     public function updateAdd()
     {
@@ -482,6 +514,20 @@ class CatSuppController extends Controller
         } else {
             // If the data was not found, return an error response or handle it as needed
             return response()->json(['error' => 'Brand not found'], 404);
+        }
+    }
+
+    public function getCategoryDetail($id)
+    {
+        $data = DB::table('m_category')->where('category_id', $id)->first();
+
+        // Check if the data was found
+        if ($data) {
+            // Return the entire data object as JSON
+            return response()->json($data);
+        } else {
+            // If the data was not found, return an error response or handle it as needed
+            return response()->json(['error' => 'Category not found'], 404);
         }
     }
 
