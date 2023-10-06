@@ -71,8 +71,12 @@ class CatSuppController extends Controller
     {
         $name = $request->input('name');
         $stock = $request->input('stock');
-        $specs = 0;
+
         $specs = $request->input('specs');
+
+        if ($specs == null) {
+            $specs = "0";
+        }
         // Check if a category with the same name already exists
         $existingCategory = DB::table('m_category')
             ->where('category_name', $name)
@@ -239,14 +243,16 @@ class CatSuppController extends Controller
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
-
         $name =  $request->input('name');
         $stock =  $request->input('stock');
         $specs = $request->input('specx');
+
+        if ($specs == null) {
+            $specs = "0";
+        }
+
+
         $id = $request->input("id");
-
-        
-
         $data = array(
             'category_name' => $name,
             'stock_req' => $stock,
@@ -259,11 +265,10 @@ class CatSuppController extends Controller
             DB::table('m_category')->where('category_id', $id)->update($data);
             $logController = new LogController();
             $logController->sendLog("Category " . $id . " Succesfully updated");
-            return response()->json(['success' => true, 'message' => 'Caegory updated succesfully']);
+            return response()->json(['success' => true, 'message' => 'Category updated succesfully']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Cant update category']);
         }
-        
     }
 
 

@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <!--Body-->
-                <form id="category-update-form" class="relative rounded-md bg-white" method="post">
+                <form id="category-update-form" action="/updateCategoryInfo" class="relative rounded-md bg-white" method="post">
                     @csrf
                     <!--  body -->
                     <div class="p-6 w-full">
@@ -191,7 +191,7 @@
 
 </body>
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('category-update-form');
 
@@ -225,7 +225,7 @@
                 });
         });
     });
-</script>
+</script> -->
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
