@@ -129,8 +129,9 @@ input[disabled] {
 
         <div class="flex flex-row h-3/5 mb-1 mt-1 mr-1">
             <!-- LEFT CONTAINER -->
-            <div class="w-1/2 mb-2 mr-1 bg-white rounded-md py-3 px-5">
-                <h1 class="mb-5 mt-1 text-lg font-bold text-gray">Items near retirement</h1>
+            <div class="w-1/2 mb-1 mr-1 bg-white rounded-md py-3 px-5">
+                <h1 class="mb-3 mt-1 text-lg font-bold text-gray-700 pt-1">Items near retirement:</h1>
+                <div class="bg-ntccolor h-px mb-0"></div>
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead class="">
                         <tr>
@@ -161,7 +162,7 @@ input[disabled] {
                             <td class="text-center">2023-10-13</td>
 
                         </tr>
-                        
+
                         <tr>
                             <td class="text-center">IT-2023-0007</td>
                             <td class="text-center">Asus</td>
@@ -196,24 +197,203 @@ input[disabled] {
             <!-- End LEFT CONTAINER -->
 
             <!-- RIGHT CONTAINER -->
-            <div class="flex flex-wrap mb-2 ml-1 w-1/2 bg-white rounded-md">
+            <div class="w-1/2 mb-1 mr-2 ml-1 bg-white rounded-md py-3 px-5">
+                <h1 class="mb-3 mt-1 text-lg font-bold text-gray-700 pt-1">Low Stocks:</h1>
+                <div class="bg-ntccolor h-px mb-0"></div>
+                <table id="lowstocks" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <thead class="">
+                        <tr>
+                            <th data-priority="1">Inventory Code</th>
+                            <th data-priority="2">Item Category</th>
+                            <th data-priority="3">Stock Actual</th>
+                            <th data-priority="4">Stock Req</th>
+                        </tr>
+                    </thead>
+                    <tbody id="suppliers">
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
 
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">IT-Desktop-0002</td>
+                            <td class="text-center">Desktop</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">10</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <!-- End RIGHT CONTAINER -->
         </div>
 
-        <div class="flex flex-row h-80 mr-1">
+        <div class="flex flex-row h-3/4 mr-1 pb-1">
             <!-- Add Suppliers -->
-            <div class="w-1/2 flex flex-wrap mb-2 mr-1 bg-white rounded-md">
+            <div class="w-full px-4 pt-2 mb-2 mr-1 bg-white rounded-md">
+                <h1 class="mb-3 mt-1 text-lg font-bold text-gray-700 pt-1">Recent Logs:</h1>
+                <div class="bg-ntccolor h-px mb-0"></div>
+                <table id="retirement" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <thead class="">
+                        <tr>
+                            <th data-priority="1">Log ID</th>
+                            <th data-priority="2">Module</th>
+                            <th data-priority="3">Description</th>
+                            <th data-priority="4">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="suppliers">
 
+                        <tr>
+                            <td class="text-center">ID-Logs-0001</td>
+                            <td class="text-center">Add Item</td>
+                            <td class="text-center">Added - Laptop Lenovo / IT-2023-0006</td>
+                            <td class="text-center">2023-09-22 09:57:37</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">IT-2023-0005</td>
+                            <td class="text-center">Asus</td>
+                            <td class="text-center">2023-10-14</td>
+                            <td class="text-center">2023-10-15</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
             <!-- End Suppliers -->
 
-            <!-- Add Brands to Suppliers -->
-            <div class="flex flex-wrap  mb-2 ml-1 w-1/2 bg-white rounded-md">
-
-            </div>
-            <!-- End Suppliers -->
         </div>
 
 
@@ -239,18 +419,53 @@ input[disabled] {
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
     $(document).ready(function() {
-    var table = $('#example').DataTable({
-        responsive: true,
-        pageLength: 6,
-        lengthMenu: [6], // Restrict to one option for 5 rows per page
-        bLengthChange: false, // Disable the page length menu
-        order: [[2, 'asc']],
-        searching: false
-    })
-    .columns.adjust()
-    .responsive.recalc();
-});
+        var table = $('#example').DataTable({
+                responsive: true,
+                pageLength: 6,
+                lengthMenu: [6], // Restrict to one option for 5 rows per page
+                bLengthChange: false, // Disable the page length menu
+                order: [
+                    [2, 'asc']
+                ],
+                searching: false
+            })
+            .columns.adjust()
+            .responsive.recalc();
+    });
+    </script>
 
+    <script>
+    $(document).ready(function() {
+        var table = $('#lowstocks').DataTable({
+                responsive: true,
+                pageLength: 6,
+                lengthMenu: [6], // Restrict to one option for 5 rows per page
+                bLengthChange: false, // Disable the page length menu
+                order: [
+                    [2, 'asc']
+                ],
+                searching: false
+            })
+            .columns.adjust()
+            .responsive.recalc();
+    });
+    </script>
+
+<script>
+    $(document).ready(function() {
+        var table = $('#retirement').DataTable({
+                responsive: true,
+                pageLength: 9,
+                lengthMenu: [9], // Restrict to one option for 5 rows per page
+                bLengthChange: false, // Disable the page length menu
+                order: [
+                    [2, 'asc']
+                ],
+                searching: false
+            })
+            .columns.adjust()
+            .responsive.recalc();
+    });
     </script>
 
     <script>

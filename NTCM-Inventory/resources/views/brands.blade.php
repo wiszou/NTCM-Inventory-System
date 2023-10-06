@@ -182,7 +182,7 @@
             <div class="modal-content py-4 text-left px-6 max-h-screen overflow-y-auto">
                 <!--Title-->
                 <div class="flex justify-between items-center">
-                    <p class="text-xl font-semibold text-gray-700 mb-2" name="title" id="title">Brand Details</p>
+                    <p class="text-xl font-semibold text-gray-700 mb-2" name="title" id="title">Edit Brand:</p>
                     <div class="modal-close cursor-pointer z-50">
                         <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                             <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
@@ -208,11 +208,10 @@
 
                         <div class="col-span-6 sm:col-span-6">
                             <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
-                            <select id="categorySelect" data-te-select-init data-te-select-filter="true" name="categories2[]" class="shadow-sm bg-custom-color block p-2.5 editable-input" multiple disabled>
+                            <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
+                                <option selected hidden value="null">Select category</option>
                                 @foreach ($categories as $item)
-                                <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">
-                                    {{ $item->category_name }}
-                                </option>
+                                <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
                                 @endforeach
                             </select>
                         </div>
