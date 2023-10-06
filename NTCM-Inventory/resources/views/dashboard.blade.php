@@ -132,7 +132,7 @@ input[disabled] {
             <div class="w-1/2 mb-1 mr-1 bg-white rounded-md py-3 px-5">
                 <h1 class="mb-3 mt-1 text-lg font-bold text-gray-700 pt-1">Items near retirement:</h1>
                 <div class="bg-ntccolor h-px mb-0"></div>
-                <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <table id="retire" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead class="">
                         <tr>
                             <th data-priority="1">Item Code</th>
@@ -282,7 +282,7 @@ input[disabled] {
             <div class="w-full px-4 pt-2 mb-2 mr-1 bg-white rounded-md">
                 <h1 class="mb-3 mt-1 text-lg font-bold text-gray-700 pt-1">Recent Logs:</h1>
                 <div class="bg-ntccolor h-px mb-0"></div>
-                <table id="retirement" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <table id="logs" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead class="">
                         <tr>
                             <th data-priority="1">Log ID</th>
@@ -419,7 +419,7 @@ input[disabled] {
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
     $(document).ready(function() {
-        var table = $('#example').DataTable({
+        var table = $('#retire').DataTable({
                 responsive: true,
                 pageLength: 6,
                 lengthMenu: [6], // Restrict to one option for 5 rows per page
@@ -453,13 +453,13 @@ input[disabled] {
 
 <script>
     $(document).ready(function() {
-        var table = $('#retirement').DataTable({
+        var table = $('#logs').DataTable({
                 responsive: true,
                 pageLength: 9,
                 lengthMenu: [9], // Restrict to one option for 5 rows per page
                 bLengthChange: false, // Disable the page length menu
                 order: [
-                    [2, 'asc']
+                    [3, 'asc']
                 ],
                 searching: false
             })
