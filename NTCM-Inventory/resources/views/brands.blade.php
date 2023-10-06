@@ -192,35 +192,39 @@
                 </div>
                 <!--Body-->
                 <!--  body -->
-                <div class="p-6 space-y-6">
-                    <div class="grid grid-cols-6 gap-6">
+                <form id="edit-brand-form" action="/updateBrandInfox" method="post">
+                    @csrf
+                    <div class="p-6 space-y-6">
+                        <div class="grid grid-cols-6 gap-6">
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="nameBrand" class="block mb-2 text-sm font-medium text-gray-900">Brand
+                                    Name:
+                                </label>
+                                <input type="text" name="nameBrand" id="nameBrand" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="brandName-display" required="">
+                            </div>
+                            <div hidden>
+                                <input name="idValue" id="idValue" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input">
+                            </div>
 
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="nameBrand" class="block mb-2 text-sm font-medium text-gray-900">Brand
-                                Name:
-                            </label>
-                            <input type="text" name="nameBrand" id="nameBrand" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="brandName-display" required="">
+                            <div class="col-span-6 sm:col-span-3">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-6">
+                                <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
+                                <select data-te-select-init data-te-select-filter="true" name="category[]" id="category[]" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
+                                    @foreach ($categories as $item)
+                                    <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
 
-
-                        <div class="col-span-6 sm:col-span-3">
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-6">
-                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
-                                <option selected hidden value="null">Select category</option>
-                                @foreach ($categories as $item)
-                                <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
-                                @endforeach
-                            </select>
+                        <div class="flex justify-end mt-6 mr-2">
+                            <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Update</button>
                         </div>
                     </div>
-
-                    <div class="flex justify-end mt-6 mr-2">
-                        <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Update</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -388,6 +392,7 @@
     const modalClose = () => {
         modal.classList.remove('fadeIn');
         modal.classList.add('fadeOut');
+        restartSelect();
         setTimeout(() => {
             modal.style.display = 'none';
         }, 10); // Adjust the delay as needed
@@ -402,24 +407,21 @@
 
         // Make an AJAX request to your PHP script
         $.ajax({
-            type: 'GET', // Use GET to retrieve data
-            url: `/BrandInfo/${brandId}`, // Use the correct URL
+            type: 'GET',
+            url: `/BrandInfo/${brandId}`,
             success: function(response) {
                 // Update the modal content with the data received from PHP
                 document.getElementById('nameBrand').value = response.name;
-                var selectElement = document.querySelector('select[name="categories2[]"]');
-
-                console.log(response.category_list);
-
-                if (selectElement && Array.isArray(response.category_list)) {
+                document.getElementById('idValue').value = response.brand_id;
+                var selectElement = document.querySelector('select[name="category[]"]');
+                var catList = JSON.parse(response.category_list)
+                if (selectElement && Array.isArray(catList)) {
                     // Iterate through the <option> elements in the select
                     var options = selectElement.querySelectorAll('option');
+
                     options.forEach(function(option) {
-                        console.log("Option value: " + option.value);
-                        // Check if the option's value is in the response.category_list
-                        if (response.category_list.includes(option.value)) {
-                            // Set the option as selected
-                            option.selected = true;
+                        if (catList.includes(option.value)) {
+                            option.setAttribute("selected", "selected");
                         }
                     });
                 }
@@ -429,11 +431,14 @@
                 console.error(error);
             }
         });
+
     };
     // Attach click event listeners to close buttons
     for (let i = 0; i < closeButton.length; i++) {
         const element = closeButton[i];
         element.onclick = () => modalClose();
+        restartSelect();
+
     }
 
     // Get the button element by its ID
@@ -448,9 +453,20 @@
     // Click outside the modal to close it
     window.onclick = function(event) {
         if (event.target === modal) {
+            restartSelect();
             modalClose();
         }
     };
+
+    function restartSelect() {
+        var selectElement = document.querySelector('select[name="category[]"]');
+        var options = selectElement.querySelectorAll('option');
+
+        options.forEach(function(option) {
+            option.removeAttribute("selected");
+            selectElement.selectedIndex = -1; // Clear the selected property
+        });
+    }
 </script>
 
 

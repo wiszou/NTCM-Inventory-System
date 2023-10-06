@@ -271,6 +271,19 @@ class CatSuppController extends Controller
         }
     }
 
+    public function updateBrandDetail(Request $request)
+    {
+
+        $name = $request->input('nameBrand');
+        $categories = $request->input('category');
+        $id = $request->input('idValue');
+        $data = array(
+            'name' => $name,
+            'category_list' => json_encode(array_values($categories)),
+        );
+
+        DB::table('m_brand')->where('brand_id', $id)->update($data);
+    }
 
     public function updateAdd()
     {
