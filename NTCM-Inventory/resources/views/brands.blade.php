@@ -192,7 +192,7 @@
                 </div>
                 <!--Body-->
                 <!--  body -->
-                <form id="edit-brand-form" action="/updateBrandInfox" method="post">
+                <form id="brand-update-form" action="/updateBrandInfox" method="post">
                     @csrf
                     <div class="p-6 space-y-6">
                         <div class="grid grid-cols-6 gap-6">
@@ -420,6 +420,7 @@
                     var options = selectElement.querySelectorAll('option');
 
                     options.forEach(function(option) {
+                        console.log(option.value);
                         if (catList.includes(option.value)) {
                             option.setAttribute("selected", "selected");
                         }
@@ -468,6 +469,43 @@
         });
     }
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('brand-update-form');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Serialize form data
+            const formData = new FormData(form);
+
+            fetch('/updateBrandInfox', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Handle a successful response (e.g., show success message)
+                        alert('Brand updated successfully.');
+                        // You can also reset the form or redirect to another page
+                        location.reload();
+                    } else {
+                        // Handle errors (e.g., show error message)
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+
 
 
 
