@@ -23,110 +23,110 @@
 </head>
 
 <style>
-/*Overrides for Tailwind CSS */
+    /*Overrides for Tailwind CSS */
 
-/*Form fields*/
+    /*Form fields*/
 
-.dataTables_wrapper select,
-.dataTables_wrapper .dataTables_filter input {
-    color: #4a5568;
-    /*text-gray-700*/
-    padding-left: 1rem;
-    /*pl-4*/
-    padding-right: 1rem;
-    /*pl-4*/
-    padding-top: .5rem;
-    /*pl-2*/
-    padding-bottom: .5rem;
-    /*pl-2*/
-    line-height: 1.25;
-    /*leading-tight*/
-    border-width: 1px;
-    /*border-2*/
-    border-radius: .25rem;
-    border-color: #4d4d4d;
-    /*border-gray-200*/
-    background-color: #ffffff;
-    /*bg-gray-200*/
-}
-
-
-/*Pagination Buttons*/
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-
-    font-weight: 500;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-
-}
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 1px;
+        /*border-2*/
+        border-radius: .25rem;
+        border-color: #4d4d4d;
+        /*border-gray-200*/
+        background-color: #ffffff;
+        /*bg-gray-200*/
+    }
 
 
-/*Pagination Buttons - Current selected */
+    /*Pagination Buttons*/
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #5c5c5c !important;
-    /*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 200;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
 
-}
+        font-weight: 500;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+
+    }
 
 
-/*Pagination Buttons - Hover */
+    /*Pagination Buttons - Current selected */
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #ffffff;
-    /*text-white*/
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 400;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px;
-    /*border border-transparent*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #5c5c5c !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 200;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
 
-}
-
-
-/*Change colour of responsive icon*/
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #4facb6 !important;
-    /*bg-indigo-500*/
-}
+    }
 
 
-th {
-    text-align: center;
-    /* Align header text to the left */
-}
+    /*Pagination Buttons - Hover */
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #ffffff;
+        /*text-white*/
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 400;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px;
+        /*border border-transparent*/
+
+    }
 
 
-td {
-    text-align: center;
-    /* Align cell text to the left */
-}
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #4facb6 !important;
+        /*bg-indigo-500*/
+    }
 
 
-input[disabled] {
-    background-color: #E9ECEF;
-    /* Change the text color to gray */
-}
+    th {
+        text-align: center;
+        /* Align header text to the left */
+    }
+
+
+    td {
+        text-align: center;
+        /* Align cell text to the left */
+    }
+
+
+    input[disabled] {
+        background-color: #E9ECEF;
+        /* Change the text color to gray */
+    }
 </style>
 
 <body class="bg-gray-100 py-2">
@@ -143,8 +143,7 @@ input[disabled] {
 
                 <!--Card-->
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
-                    <table id="example" class="stripe hover"
-                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
                             <tr>
                                 <th data-priority="1">Item Code</th>
@@ -156,6 +155,7 @@ input[disabled] {
 
                         <tbody id="inventoryTableBody">
                             @foreach ($brands as $item)
+                            @if ($item->deleted == "false")
                             @php
                             $quantity = DB::table('t_inventory')
                             ->where('category_id', $category_id)
@@ -167,20 +167,16 @@ input[disabled] {
                                 <td class="text-center">{{ $item->brand_id }}</td>
                                 <td class="text-center">{{ $item->name }}</td>
                                 <td class="text-center">{{ $quantity }}</td>
-                                <td
-                                    class="flex justify-center underline underline-offset-1 text-blue-500 hover:text-white">
-                                    <label
-                                        class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center cursor-pointer"
-                                        onclick="openModal('{{ $item->brand_id }}', '{{ $category_id }}')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="eye" width="24"
-                                            fill="currentColor">
-                                            <path
-                                                d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z">
+                                <td class="flex justify-center underline underline-offset-1 text-blue-500 hover:text-white">
+                                    <label class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center cursor-pointer" onclick="openModal('{{ $item->brand_id }}', '{{ $category_id }}')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="eye" width="24" fill="currentColor">
+                                            <path d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z">
                                             </path>
                                         </svg>
                                     </label>
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -192,18 +188,15 @@ input[disabled] {
             </div>
             <!--/container-->
 
-            <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster"
-                style="background: rgba(0,0,0,.7);">
+            <div class="main-modal fixed w-full h-100  inset-0 z-50 flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
                 <div class="modal-container bg-white w-3/6 rounded-xl z-50">
                     <div class="modal-content py-4 text-left px-6 max-h-screen overflow-y-auto">
                         <!--Title-->
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-xl font-semibold text-gray-700 mb-2" name="title" id="title">Brand: Name</p>
                             <div class="modal-close cursor-pointer z-50">
-                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg"
-                                    width="18" height="18" viewBox="0 0 18 18">
-                                    <path
-                                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
                                     </path>
                                 </svg>
                             </div>
@@ -211,8 +204,7 @@ input[disabled] {
                         <!--Body-->
                         <div class="flex justify-center">
                             <div class="rounded-lg w-full">
-                                <table id="modalTable" class="stripe hover"
-                                    style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                                <table id="modalTable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                                     <thead class="">
                                         <tr>
                                             <th data-priority="1">Item Code</th>
@@ -241,186 +233,186 @@ input[disabled] {
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
             <script>
-            $(document).ready(function() {
-                var table = $('#example').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
+                $(document).ready(function() {
+                    var table = $('#example').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
+                });
             </script>
 
             <script>
-            $(document).ready(function() {
-                var table = $('#modalTable').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
+                $(document).ready(function() {
+                    var table = $('#modalTable').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
 
-            });
+                });
             </script>
 
             <script>
-            // Define the modal and closeButton variables
-            const modal = document.querySelector('.main-modal');
-            const closeButton = document.querySelectorAll('.modal-close');
+                // Define the modal and closeButton variables
+                const modal = document.querySelector('.main-modal');
+                const closeButton = document.querySelectorAll('.modal-close');
 
-            // Function to close the modal
-            const modalClose = () => {
-                modal.classList.remove('fadeIn');
-                modal.classList.add('fadeOut');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 500); // Adjust the delay as needed
-            };
+                // Function to close the modal
+                const modalClose = () => {
+                    modal.classList.remove('fadeIn');
+                    modal.classList.add('fadeOut');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 500); // Adjust the delay as needed
+                };
 
-            // Function to open the modal
-            const openModal = (brand_id, category_id) => {
-                fetch(`/getItemDetails/${brand_id}/${category_id}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success && data.items.length > 0) {
-                            const modalTable = $('#modalTable').DataTable(); // Initialize DataTable
-                            // Clear existing rows and redraw the table
-                            modalTable.clear().draw();
+                // Function to open the modal
+                const openModal = (brand_id, category_id) => {
+                    fetch(`/getItemDetails/${brand_id}/${category_id}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success && data.items.length > 0) {
+                                const modalTable = $('#modalTable').DataTable(); // Initialize DataTable
+                                // Clear existing rows and redraw the table
+                                modalTable.clear().draw();
 
-                            // Create an array of item spec promises
-                            const itemSpecPromises = data.items.map(item => {
-                                const item_id = item.item_id;
-                                const custodianId = item.custodian_id ? item.custodian_id : 'Empty';
-                                return fetch(`/getItemSpecs/${item_id}`)
-                                    .then(specsResponse => specsResponse.json())
-                                    .then(specsData => {
-                                        if (specsData.success) {
-                                            const itemModel = specsData.specs.model;
-                                            const itemSerialNum = specsData.specs.serial_num;
-                                            return [
-                                                item.item_id,
-                                                itemModel,
-                                                itemSerialNum,
-                                                custodianId,
-                                                item.item_status,
-                                                `<button data-item-id="${item.item_id}" class="btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center">
+                                // Create an array of item spec promises
+                                const itemSpecPromises = data.items.map(item => {
+                                    const item_id = item.item_id;
+                                    const custodianId = item.custodian_id ? item.custodian_id : 'Empty';
+                                    return fetch(`/getItemSpecs/${item_id}`)
+                                        .then(specsResponse => specsResponse.json())
+                                        .then(specsData => {
+                                            if (specsData.success) {
+                                                const itemModel = specsData.specs.model;
+                                                const itemSerialNum = specsData.specs.serial_num;
+                                                return [
+                                                    item.item_id,
+                                                    itemModel,
+                                                    itemSerialNum,
+                                                    custodianId,
+                                                    item.item_status,
+                                                    `<button data-item-id="${item.item_id}" class="btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" class="w-5"  fill="currentcolor">
                                                 <path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"></path></svg></button>`,
-                                                
 
-                                            ];
-                                        } else {
-                                            // Handle error if item specs cannot be fetched
-                                            console.error('Error fetching item specs.');
-                                            return null;
-                                        }
-                                    });
-                            });
 
-                            // Wait for all item spec requests to complete
-                            Promise.all(itemSpecPromises)
-                                .then(itemSpecs => {
-                                    // Filter out any items with null specs (error cases)
-                                    const validItemSpecs = itemSpecs.filter(specs => specs !== null);
-                                    // Add valid item specs to the DataTable
-                                    modalTable.rows.add(validItemSpecs).draw();
-
-                                    // Show the modal - no need to redefine 'modal' here
-                                    modal.classList.remove('fadeOut');
-                                    modal.classList.add('fadeIn');
-                                    modal.style.display = 'flex';
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching item specs:', error);
+                                                ];
+                                            } else {
+                                                // Handle error if item specs cannot be fetched
+                                                console.error('Error fetching item specs.');
+                                                return null;
+                                            }
+                                        });
                                 });
-                        } else {
-                            // Handle error if item details cannot be fetched or if the array is empty
-                            console.error('Error fetching item details.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching item details:', error);
-                    });
-            };
 
-            // Attach click event listeners to close buttons
-            for (let i = 0; i < closeButton.length; i++) {
-                const element = closeButton[i];
-                element.onclick = () => modalClose();
-            }
+                                // Wait for all item spec requests to complete
+                                Promise.all(itemSpecPromises)
+                                    .then(itemSpecs => {
+                                        // Filter out any items with null specs (error cases)
+                                        const validItemSpecs = itemSpecs.filter(specs => specs !== null);
+                                        // Add valid item specs to the DataTable
+                                        modalTable.rows.add(validItemSpecs).draw();
 
-            // Get the button element by its ID
-            const openModalButton = document.getElementById('open-modal-button');
-            if (openModalButton) {
-                openModalButton.addEventListener('click', () => openModal());
-            }
+                                        // Show the modal - no need to redefine 'modal' here
+                                        modal.classList.remove('fadeOut');
+                                        modal.classList.add('fadeIn');
+                                        modal.style.display = 'flex';
+                                    })
+                                    .catch(error => {
+                                        console.error('Error fetching item specs:', error);
+                                    });
+                            } else {
+                                // Handle error if item details cannot be fetched or if the array is empty
+                                console.error('Error fetching item details.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching item details:', error);
+                        });
+                };
 
-            // Initially hide the modal
-            modal.style.display = 'none';
-
-            // Click outside the modal to close it
-            window.onclick = function(event) {
-                if (event.target === modal) {
-                    modalClose();
+                // Attach click event listeners to close buttons
+                for (let i = 0; i < closeButton.length; i++) {
+                    const element = closeButton[i];
+                    element.onclick = () => modalClose();
                 }
-            };
+
+                // Get the button element by its ID
+                const openModalButton = document.getElementById('open-modal-button');
+                if (openModalButton) {
+                    openModalButton.addEventListener('click', () => openModal());
+                }
+
+                // Initially hide the modal
+                modal.style.display = 'none';
+
+                // Click outside the modal to close it
+                window.onclick = function(event) {
+                    if (event.target === modal) {
+                        modalClose();
+                    }
+                };
             </script>
 
 
             <script>
-            function redirectToEdit(itemID) {
+                function redirectToEdit(itemID) {
 
-                // Generate the URL using Laravel's route helper with the 'itemID' parameter
-                var url = "{{ route('editItem', ['itemID' => '__itemID__']) }}";
+                    // Generate the URL using Laravel's route helper with the 'itemID' parameter
+                    var url = "{{ route('editItem', ['itemID' => '__itemID__']) }}";
 
-                // Replace the '__itemID__' placeholder in the URL with the actual 'itemID' value
-                url = url.replace('__itemID__', itemID);
+                    // Replace the '__itemID__' placeholder in the URL with the actual 'itemID' value
+                    url = url.replace('__itemID__', itemID);
 
-                // Redirect to the URL
-                window.location.href = url;
-            }
+                    // Redirect to the URL
+                    window.location.href = url;
+                }
             </script>
 
             <script>
-            $('#modalTable').on('click', 'button', function() {
-                const itemID = $(this).data('item-id'); // Get the item_id from the data attribute
-                redirectToEdit(itemID);
-            });
+                $('#modalTable').on('click', 'button', function() {
+                    const itemID = $(this).data('item-id'); // Get the item_id from the data attribute
+                    redirectToEdit(itemID);
+                });
             </script>
         </div>
     </div>
 
     <script>
-    $(document).ready(function() {
-        // Function to show/hide rows based on the selected status
-        function filterInventoryTable(statusClass) {
-            $('#example tbody tr').hide(); // Hide all rows initially
-            if (statusClass === 'all') {
-                $('#example tbody tr').show(); // Show all rows for "All" option
-            } else {
-                $(`.${statusClass}`).show(); // Show rows with the selected status class
+        $(document).ready(function() {
+            // Function to show/hide rows based on the selected status
+            function filterInventoryTable(statusClass) {
+                $('#example tbody tr').hide(); // Hide all rows initially
+                if (statusClass === 'all') {
+                    $('#example tbody tr').show(); // Show all rows for "All" option
+                } else {
+                    $(`.${statusClass}`).show(); // Show rows with the selected status class
+                }
             }
-        }
 
 
-        // Initialize filtering with "All" status selected
-        filterInventoryTable('all');
-
-        // Handle status option clicks
-        $('#allStatus').click(function() {
+            // Initialize filtering with "All" status selected
             filterInventoryTable('all');
-        });
 
-        $('#spareStatus').click(function() {
-            filterInventoryTable('bg-green-500'); // Adjust the class as needed
-        });
+            // Handle status option clicks
+            $('#allStatus').click(function() {
+                filterInventoryTable('all');
+            });
 
-        $('#deployedStatus').click(function() {
-            filterInventoryTable('bg-blue-500'); // Adjust the class as needed
-        });
+            $('#spareStatus').click(function() {
+                filterInventoryTable('bg-green-500'); // Adjust the class as needed
+            });
 
-        $('#borrowedStatus').click(function() {
-            filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            $('#deployedStatus').click(function() {
+                filterInventoryTable('bg-blue-500'); // Adjust the class as needed
+            });
+
+            $('#borrowedStatus').click(function() {
+                filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            });
         });
-    });
     </script>
 
     <!-- Tailwind Elements Script -->

@@ -333,7 +333,7 @@
                 .then(data => {
                     if (data.success) {
                         // Handle a successful response (e.g., show success message)
-                        alert('Brand added successfully.123');
+                        alert('Brand added successfully.');
                         // You can also reset the form or redirect to another page
                         location.reload();
                     } else {

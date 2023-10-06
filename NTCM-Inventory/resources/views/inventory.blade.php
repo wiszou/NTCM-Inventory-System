@@ -155,7 +155,7 @@
                         </thead>
                         <tbody id="inventoryTableBody">
                             @foreach ($categories as $item)
-
+                            @if ($item->deleted == "false")
                             @php
                             $stock_actual1 = DB::table('t_inventory')
                             ->where('category_id', $item->category_id)
@@ -184,6 +184,7 @@
                                     <td class="text-center">{{ $item->date_created }}</td>
                                     <td>{{ $item->date_change }}</td>
                                 </tr>
+                                @endif
                                 @endforeach
                         </tbody>
                     </table>

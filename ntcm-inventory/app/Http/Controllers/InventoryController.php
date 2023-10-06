@@ -52,6 +52,7 @@ class InventoryController extends Controller
             'supplier_id' => $supplier_name,
             'category_id' =>  $item_category,
             'brand_id' => $brand,
+            'deleted' => "false",
             'item_status' => $item_status,
             'user_created' => $user,
             'date_created' => $currentDate,
@@ -68,6 +69,7 @@ class InventoryController extends Controller
             'ram' => $ram,
             'storage' => $storage,
             'remarks' => $remarks,
+            'deleted' => "false",
             'date_acquired' => $acquired,
             'date_end' => $expire,
             'user_created' => $user,
@@ -155,6 +157,7 @@ class InventoryController extends Controller
             $items = DB::table('t_inventory')
                 ->where('brand_id', $brandID)
                 ->where('category_id', $categoryID)
+                ->where('deleted', 'false')
                 ->get(); // Get all matching items
 
             if ($items->isEmpty()) {
