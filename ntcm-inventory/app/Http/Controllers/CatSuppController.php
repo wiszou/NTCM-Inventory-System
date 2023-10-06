@@ -273,16 +273,27 @@ class CatSuppController extends Controller
 
     public function updateBrandDetail(Request $request)
     {
-
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
         $name = $request->input('nameBrand');
         $categories = $request->input('category');
         $id = $request->input('idValue');
         $data = array(
             'name' => $name,
             'category_list' => json_encode(array_values($categories)),
+            'user_change' => $user,
+            'date_change' => $currentDate,
         );
 
-        DB::table('m_brand')->where('brand_id', $id)->update($data);
+        try {
+            DB::table('m_brand')->where('brand_id', $id)->update($data);
+            $logController = new LogController();
+            $logController->sendLog("Brand " . $id . " Succesfully updated");
+            return response()->json(['success' => true, 'message' => 'Brand updated succesfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Cant update brand']);
+        }
     }
 
     public function updateAdd()
