@@ -114,7 +114,7 @@ class CatSuppController extends Controller
     public function addBrand(Request $request)
     {
         $name = $request->input('name');
-        // Check if a category with the same name already exists
+        // Check if a category with the same name already exists //d q
         $existingCategory = DB::table('m_brand')
             ->where('name', $name)
             ->first();
