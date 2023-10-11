@@ -106,25 +106,14 @@
                     <li>
                         <a href="{{ route('suppliers') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-7">
-                            <svg width="16" height="16px" viewBox="0 0 20 20" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                fill="currentColor" class="">
+                            <svg fill="currentColor" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" width="20"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                 <g id="SVGRepo_iconCarrier">
-                                    <title>cart [#1168]</title>
-                                    <desc>Created with Sketch.</desc>
-                                    <defs> </defs>
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="Dribbble-Light-Preview" transform="translate(-100.000000, -2999.000000)"
-                                            fill="currentColor">
-                                            <g id="icons" transform="translate(56.000000, 160.000000)">
-                                                <path
-                                                    d="M58.980012,2857 C58.4293424,2857 57.9806116,2856.551 57.9806116,2856 C57.9806116,2855.449 58.4293424,2855 58.980012,2855 C59.5306816,2855 59.9794124,2855.449 59.9794124,2856 C59.9794124,2856.551 59.5306816,2857 58.980012,2857 L58.980012,2857 Z M46.9872077,2857 C46.4365381,2857 45.9878073,2856.551 45.9878073,2856 C45.9878073,2855.449 46.4365381,2855 46.9872077,2855 C47.5378773,2855 47.986608,2855.449 47.986608,2856 C47.986608,2856.551 47.5378773,2857 46.9872077,2857 L46.9872077,2857 Z M60.0023986,2841 L64,2841 L64,2839 L58.0035978,2839 L58.0035978,2843 L46.0107935,2843 L46.0107935,2853.184 C45.0113932,2853.597 44,2854.696 44,2856 C44,2857.657 45.3371977,2859 46.9932041,2859 C48.6492105,2859 49.9994004,2857.657 49.9994004,2856 C49.9994004,2854.696 49.0089946,2853.597 48.0095942,2853.184 L48.0095942,2853 L58.0035978,2853 L58.0035978,2853.184 C57.0041975,2853.597 55.9928043,2854.696 55.9928043,2856 C55.9928043,2857.657 57.330002,2859 58.9860084,2859 C60.6420148,2859 61.9922047,2857.657 61.9922047,2856 C61.9922047,2854.696 61.0017989,2853.597 60.0023986,2853.184 L60.0023986,2853 L60.0023986,2841 Z"
-                                                    id="cart-[#1168]"> </path>
-                                            </g>
-                                        </g>
-                                    </g>
+                                    <path
+                                        d="M2.84375 13C1.273438 13 0 14.277344 0 15.84375L0 42C0 43.566406 1.429688 45 3 45L7.09375 45C7.570313 47.835938 10.03125 50 13 50C15.96875 50 18.429688 47.835938 18.90625 45L28.15625 45C29.722656 45 31 43.722656 31 42.15625L31 15.90625C31 14.304688 29.738281 13 28.1875 13 Z M 33 20L33 45C33.480469 47.832031 36.03125 50 39 50C41.96875 50 44.429688 47.832031 44.90625 45L47 45C48.570313 45 50 43.570313 50 42L50 32.375C50 30.363281 48.550781 28.308594 48.375 28.0625L44.21875 22.5C43.265625 21.351563 41.769531 20 40 20 Z M 38 25L43.59375 25L46.78125 29.25C47.121094 29.730469 48 31.203125 48 32.375L48 33L38 33C37 33 36 32 36 31L36 27C36 25.894531 37 25 38 25 Z M 13 40C15.207031 40 17 41.792969 17 44C17 46.207031 15.207031 48 13 48C10.792969 48 9 46.207031 9 44C9 41.792969 10.792969 40 13 40 Z M 39 40C41.207031 40 43 41.792969 43 44C43 46.207031 41.207031 48 39 48C36.792969 48 35 46.207031 35 44C35 41.792969 36.792969 40 39 40Z">
+                                    </path>
                                 </g>
                             </svg>
                             <span class="text-gray-800 pl-2">Suppliers</span>
@@ -135,9 +124,9 @@
                     <li>
                         <a href="{{ route('employee') }}"
                             class="flex items-center w-full p-2 text-base font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 pl-7">
-                            <svg width="16" height="16px" version="1.1" id="_x32_"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                viewBox="0 0 512 512" xml:space="preserve" fill="currentColor">
+                            <svg width="16" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"
+                                fill="currentColor">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                 <g id="SVGRepo_iconCarrier">
