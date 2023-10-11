@@ -652,8 +652,9 @@
             var url = "{{ route('print', ['custodianID' => '__toPrint__']) }}";
             url = url.replace('__toPrint__', custodianId);
 
-            // Redirect to the URL
-            window.location.href = url;
+            // // Redirect to the URL
+            // window.location.href = url;
+            window.open(url, '_blank');
         }
     </script>
 
