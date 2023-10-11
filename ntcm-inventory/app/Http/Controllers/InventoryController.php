@@ -19,6 +19,7 @@ class InventoryController extends Controller
 
         $existingRecord = DB::table('t_itemdetails')
             ->where('serial_num', $serialNum)
+            ->where('deleted', "false")
             ->first();
 
         if ($existingRecord) {
@@ -172,7 +173,7 @@ class InventoryController extends Controller
                 $data = DB::table('t_itemdetails')
                     ->where('item_id', $item_id)
                     ->first();
-            
+
                 if ($data) {
                     $item->serial_num = $data->serial_num;
                     $item->model = $data->model;
@@ -194,7 +195,6 @@ class InventoryController extends Controller
             ->first(); // Get all matching items
 
         return response()->json(['success' => true, 'specs' => $items]);
-
     }
 
 
@@ -219,6 +219,15 @@ class InventoryController extends Controller
         $acquired = $request->input('item-acquired');
         $expire = $request->input('item-expired');
         $itemName = $this->itemName($model, $brand);
+
+        $existingRecord = DB::table('t_itemdetails')
+            ->where('serial_num', $serialNum)
+            ->where('deleted', "false")
+            ->first();
+
+        if ($existingRecord) {
+            return response()->json(['success' => false, 'message' => 'A similar item or serial number already exists.']);
+        }
 
         $inventoryData = array(
             'item_id' => $id,

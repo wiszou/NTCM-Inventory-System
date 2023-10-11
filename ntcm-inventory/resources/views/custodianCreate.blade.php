@@ -155,6 +155,7 @@
 <body class="bg-gray-100 py-2">
 
     @include('components.sidebar')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="ml-auto px-2 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] h-full">
         <div class="my-auto flex justify-start">
@@ -223,7 +224,7 @@
                                 <td class="text-center">{{ $item->description}}</td>
                                 <td></td>
                                 <td class="text-center items-center flex justify-center">
-                                    <label class=" text-green-500 border border-green-500 hover:bg-green-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
+                                    <label onclick="toReturn('{{ $item->custodian_id}}')" class=" text-green-500 border border-green-500 hover:bg-green-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
                                         <svg fill="ntccolor" viewBox="-9.6 -9.6 51.20 51.20" version="1.1" width="24px" xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -245,7 +246,7 @@
                                     </label>
 
                                 </td>
-                                
+
                             </tr>
                             @endif
                             @endforeach
@@ -658,6 +659,31 @@
             // // Redirect to the URL
             // window.location.href = url;
             window.open(url, '_blank');
+        }
+    </script>
+
+    <script>
+        function toReturn(custodianID) {
+            fetch(`/UpdateCustodianForm/${custodianID}`, {
+                    method: 'GET', // Change to 'POST' if necessary
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                    },
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Handle success (e.g., show a success message)
+                        alert('Custodian form updated successfully.');
+                        // You can also reload the page or update the UI as needed
+                        location.reload();
+                    } else {
+                        // Handle errors (e.g., show an error message)
+                        alert('Error: Unable to update custodian.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
     </script>
 

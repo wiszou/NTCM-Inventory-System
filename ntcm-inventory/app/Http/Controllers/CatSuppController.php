@@ -15,6 +15,7 @@ class CatSuppController extends Controller
         // Check if a supplier with the same name already exists
         $existingSupplier = DB::table('m_supplier')
             ->where('name', $name)
+            ->where('deleted', false)
             ->first();
 
         if ($existingSupplier) {
@@ -80,6 +81,7 @@ class CatSuppController extends Controller
         // Check if a category with the same name already exists
         $existingCategory = DB::table('m_category')
             ->where('category_name', $name)
+            ->where('deleted', false)
             ->first();
 
         if ($existingCategory) {
@@ -121,6 +123,7 @@ class CatSuppController extends Controller
         // Check if a category with the same name already exists //d q
         $existingCategory = DB::table('m_brand')
             ->where('name', $name)
+            ->where('deleted', false)
             ->first();
 
         if ($existingCategory) {
@@ -251,6 +254,15 @@ class CatSuppController extends Controller
             $specs = "0";
         }
 
+        $existingSupplier = DB::table('m_category')
+            ->where('category_name', $name)
+            ->where('deleted', false)
+            ->first();
+
+        if ($existingSupplier) {
+            // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+            return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
+        }
 
         $id = $request->input("id");
         $data = array(
@@ -279,6 +291,16 @@ class CatSuppController extends Controller
         $name = $request->input('nameBrand');
         $categories = $request->input('category');
         $id = $request->input('idValue');
+
+        $existingSupplier = DB::table('m_brand')
+            ->where('name', $name)
+            ->where('deleted', false)
+            ->first();
+
+        if ($existingSupplier) {
+            // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+            return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
+        }
         $data = array(
             'name' => $name,
             'category_list' => json_encode(array_values($categories)),
@@ -417,6 +439,16 @@ class CatSuppController extends Controller
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
+
+        $existingSupplier = DB::table('m_supplier')
+        ->where('name', $supplierName)
+        ->where('deleted', false)
+        ->first();
+
+    if ($existingSupplier) {
+        // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+        return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
+    }
 
         $data = array(
             'name' => $supplierName,
@@ -603,6 +635,4 @@ class CatSuppController extends Controller
 
         return view('employee', ['employee' => $data]);
     }
-
-
 }

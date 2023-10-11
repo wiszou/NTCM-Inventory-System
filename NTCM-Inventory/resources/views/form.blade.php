@@ -19,32 +19,32 @@
 
 
     <script>
-    function printBothDivs(divIds) {
-        var printContents = '';
+        function printBothDivs(divIds) {
+            var printContents = '';
 
-        for (var i = 0; i < divIds.length; i++) {
-            var divId = divIds[i];
-            var divContent = document.getElementById(divId).innerHTML;
+            for (var i = 0; i < divIds.length; i++) {
+                var divId = divIds[i];
+                var divContent = document.getElementById(divId).innerHTML;
 
-            // Create a new page with the div's content
-            var page = '<html><head><title>Print</title></head><body>' + divContent + '</body></html>';
+                // Create a new page with the div's content
+                var page = '<html><head><title>Print</title></head><body>' + divContent + '</body></html>';
 
-            printContents += page;
+                printContents += page;
 
-            // Add a page break if it's not the last div
-            if (i < divIds.length - 1) {
-                printContents += '<div style="page-break-before: always;"></div>';
+                // Add a page break if it's not the last div
+                if (i < divIds.length - 1) {
+                    printContents += '<div style="page-break-before: always;"></div>';
+                }
             }
+
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            // Restore the original contents
+            document.body.innerHTML = originalContents;
         }
-
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        // Restore the original contents
-        document.body.innerHTML = originalContents;
-    }
     </script>
 
 </head>
@@ -58,8 +58,7 @@
             <h2 class="text-2xl font-bold text-ntccolor">
                 Print Custodian Form
             </h2>
-            <input type="button" onclick="printBothDivs(['printableArea1', 'printableArea2'])" value="Print"
-                class="bg-ntccolor rounded-3xl text-white font-medium px-7 hover:bg-[#014F62] cursor-pointer " />
+            <input type="button" onclick="printBothDivs(['printableArea1', 'printableArea2'])" value="Print" class="bg-ntccolor rounded-3xl text-white font-medium px-7 hover:bg-[#014F62] cursor-pointer " />
         </div>
     </div>
 
@@ -74,11 +73,13 @@
 
             <!--PRINTABLE AREA 1 -->
             <div class="w-full" id="printableArea1">
+                @if ($custodian->status == 1)
                 <div class="absolute mt-96 ml-20">
                     <img src="/assets/returned.png" class="h-full w-full" alt="returned" />
                     <h5 class="w- full text-4xl text-red-600 font-bold flex justify-center">DATE: 20-October-2023
                     </h5>
                 </div>
+                @endif
                 <div class="mx-auto w-full bg-white px-8">
                     <div class="flex justify-between">
                         <div>
@@ -111,7 +112,8 @@
                                     <tr>
                                         <td class="text-sm font-medium">Department:</td>
                                         <td class="pl-3 text-sm underline underline-offset-4">
-                                            {{ $employee->department }}</td>
+                                            {{ $employee->department }}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -191,17 +193,14 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $employee->name}}</span>(Signature
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $employee->name}}</span>(Signature
                                             Over Printed Name)
                                         </td>
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $issued->name}}</span>{{ $issued->position}}
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $issued->name}}</span>{{ $issued->position}}
                                         </td>
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $noted->name}}</span>{{ $noted->position}}
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $noted->name}}</span>{{ $noted->position}}
                                         </td>
                                     </tr>
                                     <tr class=" text-xs text-center border-black">
@@ -224,11 +223,13 @@
 
             <!--PRINTABLE AREA 2 -->
             <div class="w-full px-6" id="printableArea2">
+                @if ($custodian->status == 1)
                 <div class="absolute mt-72 ml-16">
                     <img src="/assets/returned.png" class="h-full w-full" alt="returned" />
                     <h5 class="w- full text-4xl text-red-600 font-bold flex justify-center">DATE: 20-October-2023
                     </h5>
                 </div>
+                @endif
                 <div class="mx-auto w-full bg-white px-8">
                     <div class="flex justify-between">
                         <div>
@@ -248,8 +249,7 @@
                     </div>
 
                     <div class="mt-9 pr-3">
-                        <p class="font-bold text-left text-sm mb-3">Purpose:<span
-                                class="font-normal text-sm pl-1">{{ $custodian->description}}</span></p>
+                        <p class="font-bold text-left text-sm mb-3">Purpose:<span class="font-normal text-sm pl-1">{{ $custodian->description}}</span></p>
                         <table class="w-full table-auto border text-sm">
                             <thead>
                                 <tr class="border border-black text-center text-sm">
@@ -307,17 +307,14 @@
                                     </tr>
                                     <tr class="">
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $employee->name}}</span>(Signature
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $employee->name}}</span>(Signature
                                             Over Printed Name)
                                         </td>
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $issued->name}}</span>{{ $issued->position}}
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $issued->name}}</span>{{ $issued->position}}
                                         </td>
                                         <td class="border-black text-center">
-                                            <span
-                                                class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $noted->name}}</span>{{ $noted->position}}
+                                            <span class="flex pl-1.5 mx-3 border-b border-black justify-center">{{ $noted->name}}</span>{{ $noted->position}}
                                         </td>
                                         </td>
                                     </tr>

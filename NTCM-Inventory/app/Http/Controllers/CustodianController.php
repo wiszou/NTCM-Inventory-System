@@ -77,7 +77,7 @@ class CustodianController extends Controller
         $filterArray = array_values($filterArray);
 
         $items = json_encode($filterArray, true);
-        
+
 
 
         if ($type == "none") {
@@ -119,7 +119,7 @@ class CustodianController extends Controller
             DB::table('t_custodian')->insert($custodianData);
             $logController = new LogController();
             $logController->sendLog("Custodian Form " . $custodianID . " Succesfully added");
-            // $this->toPrint($custodianID);
+            $this->toPrint($custodianID);
             return response()->json(['success' => true, 'message' => 'Item added successfully.']);
         } catch (\Exception $e) {
             error_log(json_encode($items));
@@ -272,5 +272,41 @@ class CustodianController extends Controller
             'employee' => $employee,
             'employee2' => $employee2,
         ]);
+    }
+
+    public function returnItems($custodianID)
+    {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+
+        $data = array(
+            'status' => 1,
+            'user_created' => $user,
+            'date_created' => $currentDate,
+        );
+
+
+        try {
+
+
+            $custodianDetail = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
+
+
+            while ($custodianDetail) {
+                $items = json_decode($custodianDetail->items);
+                $this->updateItem($items, "Spare", " ");
+            }
+
+            DB::table('t_custodian')->where('custodian_id', $custodianID)->update($data);
+
+
+            $logController = new LogController();
+            $logController->sendLog("Custodian Form " . $custodianID . " Succesfully marked as returned");
+            return response()->json(['success' => true, 'message' => 'Custodian form updated successfully.']);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => 'An error occurred while adding the Custodian.']);
+        }
     }
 }

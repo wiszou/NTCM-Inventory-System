@@ -40,6 +40,8 @@ Route::post('/CategoryBrand', [CatSuppController::class, 'categoryToBrand']);
 Route::post('/updateCategoryInfo', [CatSuppController::class, 'updateCategoryDetail']);
 Route::post('/updateBrandInfox', [CatSuppController::class, 'updateBrandDetail']);
 
+Route::get('/UpdateCustodianForm/{custodianID}', [CustodianController::class, 'returnItems'])->name('UpdateCustodianForm');
+
 Route::get('//get-categories-for-supplier/{supplierId}', [CatSuppController::class, 'getCategoriesForSupplier']);
 Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
 Route::get('/remove-brand/{itemCode}', [CatSuppController::class, 'removeBrand']);
