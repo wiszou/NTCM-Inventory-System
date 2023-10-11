@@ -27,104 +27,6 @@
 </head>
 
 <style>
-/*Overrides for Tailwind CSS */
-
-/*Form fields*/
-.dataTables_wrapper select,
-.dataTables_wrapper .dataTables_filter input {
-    color: #4a5568;
-    /*text-gray-700*/
-    padding-left: 1rem;
-    /*pl-4*/
-    padding-right: 1rem;
-    /*pl-4*/
-    padding-top: .5rem;
-    /*pl-2*/
-    padding-bottom: .5rem;
-    /*pl-2*/
-    line-height: 1.25;
-    /*leading-tight*/
-    border-width: 1px;
-    /*border-2*/
-    border-radius: .25rem;
-    border-color: #4d4d4d;
-    /*border-gray-200*/
-    background-color: #ffffff;
-    /*bg-gray-200*/
-}
-
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-    background-color: #4facb6;
-    /*bg-indigo-100*/
-    color: #ffffff;
-    font-weight: 400;
-}
-
-
-/*Pagination Buttons*/
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    font-weight: 500;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
-
-/*Pagination Buttons - Current selected */
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #5c5c5c !important;
-    /*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 200;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
-
-/*Pagination Buttons - Hover */
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #ffffff;
-    /*text-white*/
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 400;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px;
-    /*border border-transparent*/
-
-}
-
-
-/*Change colour of responsive icon*/
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #4facb6 !important;
-    /*bg-indigo-500*/
-}
-
-
-th {
-    text-align: left;
-    /* Align header text to the left */
-}
-
-td {
-    text-align: left;
-    /* Align cell text to the left */
-}
-
 /* select 2 css */
 
 .form-control:focus {
@@ -304,14 +206,14 @@ td {
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
                     <table id="example" class="stripe hover"
                         style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                        <thead class="">
+                        <thead>
 
                             <tr>
-                                <th data-priority="1">Custodian ID</th>
-                                <th data-priority="2">Current Holder</th>
-                                <th data-priority="3">Custodian Type</th>
-                                <th data-priority="4">Purpose</th>
-                                <th data-priority="5">Print</th>
+                                <th class="text-center" data-priority="1">Custodian ID</th>
+                                <th class="text-center" data-priority="2">Current Holder</th>
+                                <th class="text-center" data-priority="3">Custodian Type</th>
+                                <th class="text-center" data-priority="4">Purpose</th>
+                                <th class="text-center" data-priority="5">Action</th>
 
                             </tr>
                         </thead>
@@ -319,15 +221,46 @@ td {
                             @foreach ($custodian as $item)
                             @if ($item->deleted == "false")
                             <tr item-id="{{ $item->custodian_id }}">
-                                <td>{{ $item->custodian_id}}</td>
+                                <td class="text-center">{{ $item->custodian_id}}</td>
                                 @foreach ($employees as $itemE)
                                 @if ($itemE->employee_id == $item->name)
-                                <td>{{ $itemE->name }}</td>
+                                <td class="text-center">{{ $itemE->name }}</td>
                                 @endif
                                 @endforeach
-                                <td>{{ $item->type}}</td>
-                                <td>{{ $item->description}}</td>
-                                <td></td>
+                                <td class="text-center">{{ $item->type}}</td>
+                                <td class="text-center">{{ $item->description}}</td>
+                                <td class="text-center items-center flex justify-center">
+                                    <label
+                                        class=" text-green-500 border border-green-500 hover:bg-green-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
+                                        <svg fill="ntccolor" viewBox="-9.6 -9.6 51.20 51.20" version="1.1" width="24px"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <title>return</title>
+                                                <path fill="currentColor"
+                                                    d="M0 21.984q0.032-0.8 0.608-1.376l4-4q0.448-0.48 1.056-0.576t1.12 0.128 0.864 0.736 0.352 1.12v1.984h18.016q0.8 0 1.408-0.576t0.576-1.408v-8q0-0.832-0.576-1.408t-1.408-0.608h-16q-0.736 0-1.248-0.416t-0.64-0.992 0-1.152 0.64-1.024 1.248-0.416h16q2.464 0 4.224 1.76t1.76 4.256v8q0 2.496-1.76 4.224t-4.224 1.76h-18.016v2.016q0 0.64-0.352 1.152t-0.896 0.704-1.12 0.096-1.024-0.544l-4-4q-0.64-0.608-0.608-1.44z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </label>
+                                    <label
+                                        class=" text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
+                                        <svg viewBox="-2.64 -2.64 29.28 29.28" fill="ntccolor" width="24px"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"
+                                                    d="M17 7H7V6h10v1zm0 12H7v-6h10v6zm2-12V3H5v4H1v8.996C1 17.103 1.897 18 3.004 18H5v3h14v-3h1.996A2.004 2.004 0 0 0 23 15.996V7h-4z"
+                                                    fill="#000000"></path>
+                                            </g>
+                                        </svg>
+                                    </label>
+
+                                </td>
                             </tr>
                             @endif
                             @endforeach
