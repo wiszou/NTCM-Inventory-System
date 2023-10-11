@@ -209,7 +209,9 @@ td {
                                     onchange="toggleCategorySelector()">
                                     <option selected hidden value="none">Select your option</option>
                                     @foreach ($suppliers as $item)
+                                    @if ($item->deleted == "false")
                                     <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -224,8 +226,10 @@ td {
                                     onchange="toggleBrandSelector()" disabled>
                                     <option selected hidden value="none">Select your option</option>
                                     @foreach ($categories as $item)
+                                    @if ($item->deleted == "false")
                                     <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}"
                                         compare="{{ $item->supplier_list }}">{{ $item->category_name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -237,8 +241,10 @@ td {
                                     class="shadow-sm bg-custom-color block w-full p-2.5 editable-input" disabled>
                                     <option selected hidden value="none">Select your option</option>
                                     @foreach ($brand as $item)
+                                    @if ($item->deleted == "false")
                                     <option value="{{ $item->brand_id }}" compare="{{ $item->category_list }}">
                                         {{ $item->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

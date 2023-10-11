@@ -151,9 +151,11 @@
                                 <label for="item-brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
                                 <select data-te-select-init data-te-select-filter="true" name="item-brand" id="category" class="shadow-sm  bg-custom-color block w-full p-2.5 editable-input">
                                     @foreach ($brands as $brand)
+                                    @if ($brand->deleted == "false")
                                     <option value="{{ $brand->brand_id }}" {{ $dataitem->brand_id == $brand->brand_id ? 'selected' : '' }}>
                                         {{ $brand->name }}
                                     </option>
+                                    @endif
                                     @endforeach
 
                                 </select>
@@ -192,9 +194,11 @@
                                 <select data-te-select-init data-te-select-filter="true" name="item-category" id="categorySelector" class="shadow-sm bg-custom-color block w-full p-2.5 editable-input">
                                     <option selected hidden>Select your option</option>
                                     @foreach ($categories as $category)
+                                    @if ($category->deleted == "false")
                                     <option data-specs="{{ $category->specs }}" value="{{ $category->category_id }}" {{ $dataitem->category_id == $category->category_id ? 'selected' : '' }}>
                                         {{ $category->category_name }}
                                     </option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -204,9 +208,11 @@
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Supplier</label>
                                 <select data-te-select-init data-te-select-filter="true" name="supplier-name" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
                                     @foreach ($suppliers as $supplier)
+                                    @if ($supplier->deleted == "false")
                                     <option value="{{ $supplier->supplier_id }}" {{ $dataitem->supplier_id == $supplier->supplier_id ? 'selected' : '' }}>
                                         {{ $supplier->name }}
                                     </option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>

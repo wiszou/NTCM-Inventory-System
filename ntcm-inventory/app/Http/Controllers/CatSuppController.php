@@ -388,6 +388,7 @@ class CatSuppController extends Controller
         }
     }
 
+
     public function checkBrand($categoryID)
     {
 
@@ -602,4 +603,6 @@ class CatSuppController extends Controller
 
         return view('employee', ['employee' => $data]);
     }
+
+
 }

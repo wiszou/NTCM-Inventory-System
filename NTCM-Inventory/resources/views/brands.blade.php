@@ -170,7 +170,9 @@
                                 <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
                                 <select data-te-select-init data-te-select-filter="true" name="category[]" id="category[]" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
                                     @foreach ($categories as $item)
+                                    @if ($item->deleted == "false")
                                     <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>

@@ -119,7 +119,7 @@
                                     </path>
                                 </svg>
                             </label>
-                            <a href="#" data-brand-id="{{ $item->supplier_id }}" class="brand-delete-link text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2   text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500">
+                            <a href="#" data-supplier-id="{{ $item->supplier_id }}" class="supplier-delete-link text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-medium rounded-full text-sm p-2   text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:hover:bg-red-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-4" fill="currentcolor" viewBox="0 0 16 16">
                                     <path d="M 6.496094 1 C 5.675781 1 5 1.675781 5 2.496094 L 5 3 L 2 3 L 2 4 L 3 4 L 3 12.5 C 3 13.328125 3.671875 14 4.5 14 L 10.5 14 C 11.328125 14 12 13.328125 12 12.5 L 12 4 L 13 4 L 13 3 L 10 3 L 10 2.496094 C 10 1.675781 9.324219 1 8.503906 1 Z M 6.496094 2 L 8.503906 2 C 8.785156 2 9 2.214844 9 2.496094 L 9 3 L 6 3 L 6 2.496094 C 6 2.214844 6.214844 2 6.496094 2 Z M 5 5 L 6 5 L 6 12 L 5 12 Z M 7 5 L 8 5 L 8 12 L 7 12 Z M 9 5 L 10 5 L 10 12 L 9 12 Z">
                                     </path>
@@ -193,9 +193,11 @@
                                 <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
                                 <select data-te-select-init data-te-select-filter="true" name="categories[]" class="shadow-sm bg-red-500 bg-custom-color block p-2.5 editable-input" multiple>
                                     @foreach ($categories as $item)
+                                    @if ($item->deleted == "false")
                                     <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">
                                         {{ $item->category_name }}
                                     </option>
+                                    @endif
                                     @endforeach
                                 </select>
 
@@ -240,7 +242,7 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault(); // Prevent the default click behavior
                 const supplierId = this.getAttribute('data-supplier-id');
-
+                console.log(supplierId);
                 // Create a custom confirmation dialog
                 const confirmation = confirm(
                     `Are you sure you want to delete this supplier?\n\nClick "OK" to delete or "Cancel" to cancel.`
