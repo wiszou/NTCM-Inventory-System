@@ -64,6 +64,22 @@ class CustodianController extends Controller
         $items = $request->input('itemArray');
 
 
+        $filterArray = json_decode($items, true); // Ensure that the JSON is decoded into an associative array
+
+        foreach ($filterArray as $key => $value) {
+            if ($value === 'none') {
+                unset($filterArray[$key]);
+            }
+        }
+
+        $filterArray = array_unique($filterArray);
+        // If you want to re-index the array after removing elements, you can use array_values function
+        $filterArray = array_values($filterArray);
+
+        $items = json_encode($filterArray, true);
+        
+
+
         if ($type == "none") {
             return response()->json(['success' => false, 'message' => 'Please select proper custodian type']);
         };
@@ -80,7 +96,7 @@ class CustodianController extends Controller
         if ($handlerName == "none") {
             return response()->json(['success' => false, 'message' => 'Please select an item']);
         };
-        
+
 
         $custodianData = array(
             'custodian_id' => $custodianID,
