@@ -188,7 +188,7 @@
                 @foreach ($employee as $item)
                 @if ($item->deleted == "false")
                 <tr>
-                    <td class="text-center">IT-0001</td>
+                    <td class="text-center">{{ $item->employee_id }}</td>
                     <td class="text-center">{{ $item->name }}</td>
                     <td class="text-center">{{ $item->department }}</td>
                     <td class="text-center">{{ $item->position }}</td>

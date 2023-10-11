@@ -232,10 +232,10 @@
 
                     <div class="mt-9 pr-3">
                         <p class="font-bold text-left text-sm mb-3">Purpose:<span class="font-normal text-sm pl-1">{{ $custodian->description}}</span></p>
-                        <table class="w-full table-fixed border text-sm">
+                        <table class="w-full table-auto border text-sm">
                             <thead>
                                 <tr class="border border-black text-center text-sm">
-                                    <th class="border border-black w-54 px-1 w-10">No.</th>
+                                    <th class="border border-black px-1 w-10">No.</th>
                                     <th class="border border-black px-1 w-24">Item Code:</th>
                                     <th class="border px-1 border-black w-24">Item:</th>
                                     <th class="border px-1 border-black w-28">Serial Number:</th>
