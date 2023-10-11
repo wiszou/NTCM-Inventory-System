@@ -186,6 +186,7 @@
             </thead>
             <tbody id="suppliers">
                 @foreach ($employee as $item)
+                @if ($item->deleted == "false")
                 <tr>
                     <td class="text-center">IT-0001</td>
                     <td class="text-center">{{ $item->name }}</td>
@@ -205,6 +206,7 @@
                         </a>
                     </td>
                 </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>
@@ -306,6 +308,7 @@
                     .then(data => {
                         if (data.success) {
                             alert(data.message);
+                            location.reload();
                         } else {
                             // Handle errors (e.g., show error message)
                             alert(data.message);
