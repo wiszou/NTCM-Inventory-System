@@ -22,120 +22,120 @@
 
 </head>
 <style>
-    /*Overrides for Tailwind CSS */
+/*Overrides for Tailwind CSS */
 
-    /*Form fields*/
+/*Form fields*/
 
-    .dataTables_wrapper select,
-    .dataTables_wrapper .dataTables_filter input {
-        color: #4a5568;
-        /*text-gray-700*/
-        padding-left: 1rem;
-        /*pl-4*/
-        padding-right: 1rem;
-        /*pl-4*/
-        padding-top: .5rem;
-        /*pl-2*/
-        padding-bottom: .5rem;
-        /*pl-2*/
-        line-height: 1.25;
-        /*leading-tight*/
-        border-width: 1px;
-        /*border-2*/
-        border-radius: .25rem;
-        border-color: #4d4d4d;
-        /*border-gray-200*/
-        background-color: #ffffff;
-        /*bg-gray-200*/
-    }
-
-
-    /*Row Hover*/
-    table.dataTable.hover tbody tr:hover,
-    table.dataTable.display tbody tr:hover {
-        background-color: #4facb6;
-        /*bg-indigo-100*/
-        color: #ffffff;
-        font-weight: 400;
-    }
+.dataTables_wrapper select,
+.dataTables_wrapper .dataTables_filter input {
+    color: #4a5568;
+    /*text-gray-700*/
+    padding-left: 1rem;
+    /*pl-4*/
+    padding-right: 1rem;
+    /*pl-4*/
+    padding-top: .5rem;
+    /*pl-2*/
+    padding-bottom: .5rem;
+    /*pl-2*/
+    line-height: 1.25;
+    /*leading-tight*/
+    border-width: 1px;
+    /*border-2*/
+    border-radius: .25rem;
+    border-color: #4d4d4d;
+    /*border-gray-200*/
+    background-color: #ffffff;
+    /*bg-gray-200*/
+}
 
 
-    /*Pagination Buttons*/
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-
-        font-weight: 500;
-        /*font-bold*/
-        border-radius: .25rem;
-        /*rounded*/
-        border: 1px solid transparent;
-        /*border border-transparent*/
-
-    }
+/*Row Hover*/
+table.dataTable.hover tbody tr:hover,
+table.dataTable.display tbody tr:hover {
+    background-color: #4facb6;
+    /*bg-indigo-100*/
+    color: #ffffff;
+    font-weight: 400;
+}
 
 
-    /*Pagination Buttons - Current selected */
+/*Pagination Buttons*/
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-        color: #5c5c5c !important;
-        /*text-white*/
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-        /*shadow*/
-        font-weight: 200;
-        /*font-bold*/
-        border-radius: .25rem;
-        /*rounded*/
-        background: #d6d6d6 !important;
-        /*bg-indigo-500*/
-        border: 1px solid transparent;
-        /*border border-transparent*/
+.dataTables_wrapper .dataTables_paginate .paginate_button {
 
-    }
+    font-weight: 500;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    border: 1px solid transparent;
+    /*border border-transparent*/
+
+}
 
 
-    /*Pagination Buttons - Hover */
+/*Pagination Buttons - Current selected */
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        color: #ffffff;
-        /*text-white*/
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-        /*shadow*/
-        font-weight: 400;
-        /*font-bold*/
-        border-radius: .25rem;
-        /*rounded*/
-        background: #d6d6d6 !important;
-        /*bg-indigo-500*/
-        border: 1px;
-        /*border border-transparent*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: #5c5c5c !important;
+    /*text-white*/
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    /*shadow*/
+    font-weight: 200;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    background: #d6d6d6 !important;
+    /*bg-indigo-500*/
+    border: 1px solid transparent;
+    /*border border-transparent*/
 
-    }
-
-
-    /*Change colour of responsive icon*/
-    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-        background-color: #4facb6 !important;
-        /*bg-indigo-500*/
-    }
+}
 
 
-    th {
-        text-align: left;
-        /* Align header text to the left */
-    }
+/*Pagination Buttons - Hover */
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: #ffffff;
+    /*text-white*/
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    /*shadow*/
+    font-weight: 400;
+    /*font-bold*/
+    border-radius: .25rem;
+    /*rounded*/
+    background: #d6d6d6 !important;
+    /*bg-indigo-500*/
+    border: 1px;
+    /*border border-transparent*/
+
+}
 
 
-    td {
-        text-align: left;
-        /* Align cell text to the left */
-    }
+/*Change colour of responsive icon*/
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+    background-color: #4facb6 !important;
+    /*bg-indigo-500*/
+}
 
 
-    input[disabled] {
-        background-color: #E9ECEF;
-        /* Change the text color to gray */
-    }
+th {
+    text-align: left;
+    /* Align header text to the left */
+}
+
+
+td {
+    text-align: left;
+    /* Align cell text to the left */
+}
+
+
+input[disabled] {
+    background-color: #E9ECEF;
+    /* Change the text color to gray */
+}
 </style>
 
 
@@ -195,11 +195,14 @@
             <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
             <script>
-                $(document).ready(function() {
-                    var table = $('#logs').DataTable({
-                        responsive: true
-                    }).columns.adjust().responsive.recalc();
-                });
+            $(document).ready(function() {
+                var table = $('#logs').DataTable({
+                    responsive: true,
+                    order: [
+                        [4, 'desc']
+                    ]
+                }).columns.adjust().responsive.recalc();
+            });
             </script>
 
 
