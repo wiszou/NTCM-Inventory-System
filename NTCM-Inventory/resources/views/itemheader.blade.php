@@ -146,7 +146,7 @@
                     <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
                             <tr>
-                                <th data-priority="1">Item Code</th>
+                                <th data-priority="1">Brand Code</th>
                                 <th data-priority="2">Brand</th>
                                 <th data-priority="3">Quantity</th>
                                 <th data-priority="4">View Items</th>
@@ -211,7 +211,7 @@
                                             <th data-priority="1">Item Code</th>
                                             <th data-priority="2">Model</th>
                                             <th data-priority="3">Serial Number</th>
-                                            <th data-priority="4">Responsibility</th>
+                                            <th data-priority="4">Custodian ID</th>
                                             <th data-priority="5">Status</th>
                                             <th data-priority="5">Action</th>
                                         </tr>
@@ -265,7 +265,7 @@
                     modal.classList.add('fadeOut');
                     setTimeout(() => {
                         modal.style.display = 'none';
-                    }, 500); // Adjust the delay as needed
+                    }, 0); // Adjust the delay as needed
                 };
 
                 // Function to open the modal
