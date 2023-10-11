@@ -64,6 +64,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/logs', [LogController::class, 'updateLogTable'])->name('logs');
     Route::get('/print/{custodianID}', [CustodianController::class, 'toPrint'])->name('print');
     Route::get('/BrandInfo/{id}', [CatSuppController::class, 'getBrandDetail']);
+    Route::get('/SupplierInfo/{id}', [CatSuppController::class, 'getSupplierDetail']);
     Route::get('/CategoryInfo/{id}', [CatSuppController::class, 'getCategoryDetail']);
     Route::get('/inventory', function () {
         return view('inventory');

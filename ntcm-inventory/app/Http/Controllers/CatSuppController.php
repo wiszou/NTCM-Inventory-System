@@ -296,6 +296,8 @@ class CatSuppController extends Controller
         }
     }
 
+
+
     public function updateAdd()
     {
         $supplier = DB::table('m_supplier')->get();
@@ -407,6 +409,23 @@ class CatSuppController extends Controller
         $categories = $request->input('categories');
         $categoryArray = array();
         $firstIteration = true;
+        $supplierName = $request->input('name');
+        $contact = $request->input('contact');
+        $address = $request->input('address');
+
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+
+        $data = array(
+            'name' => $supplierName,
+            'contact' => $contact,
+            'address' => $address,
+            'user_change' => $user,
+            'date_change' => $currentDate,
+
+        );
+        DB::table('m_supplier')->where('supplier_id', $supplier)->update($data);
         try {
             // Fetch all categories from the database
             $allCategories = DB::table('m_category')->get();
@@ -457,6 +476,9 @@ class CatSuppController extends Controller
                     $firstIteration = false;
                 }
             }
+
+            $logController = new LogController();
+            $logController->sendLog("Brand " . $supplier . " Succesfully updated");
 
             return response()->json(['success' => true, 'message' => 'Supplier removed successfully', 'categoryArray' => $categoryArray]);
         } catch (\Exception $e) {
@@ -557,6 +579,20 @@ class CatSuppController extends Controller
         } else {
             // If the data was not found, return an error response or handle it as needed
             return response()->json(['error' => 'Category not found'], 404);
+        }
+    }
+
+    public function getSupplierDetail($id)
+    {
+        $data = DB::table('m_supplier')->where('supplier_id', $id)->first();
+
+        // Check if the data was found
+        if ($data) {
+            // Return the entire data object as JSON
+            return response()->json($data);
+        } else {
+            // If the data was not found, return an error response or handle it as needed
+            return response()->json(['error' => 'Supplier not found'], 404);
         }
     }
 

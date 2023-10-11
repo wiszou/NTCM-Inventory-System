@@ -90,8 +90,8 @@
             </div>
             <!-- End Suppliers -->
 
-            <!-- Add Brands to Suppliers -->
-            <div class="flex flex-wrap md:space-y-0 mb-2 ml-1 w-1/2">
+            Add Brands to Suppliers
+            <!-- <div class="flex flex-wrap md:space-y-0 mb-2 ml-1 w-1/2">
                 <form id="supplier-to-category" class="flex-1 bg-white p-4 shadow rounded-lg ">
                     @csrf
                     <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Category to Suppliers</h2>
@@ -129,7 +129,7 @@
 
                     </div>
                 </form>
-            </div>
+            </div> -->
             <!-- End Suppliers -->
         </div>
 
@@ -156,7 +156,7 @@
                         <td class="text-center">{{ $item->contact }}</td>
                         <td class="text-center">{{ $item->address }}</td>
                         <td class="text-center items-center flex justify-center">
-                            <label onclick="openModal()" class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer" onclick="">
+                            <label onclick="openModal('{{ $item->supplier_id }}')" class=" text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer" onclick="">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" width="23" fill="currentcolor">
                                     <path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z">
                                     </path>
@@ -196,7 +196,7 @@
                     </div>
                 </div>
                 <!--Body-->
-                <form id="employee-form" class="relative rounded-md bg-white" method="post">
+                <form id="supplier-to-category" class="relative rounded-md bg-white" method="post">
 
                     <!--  body -->
                     <div class="p-6 space-y-6">
@@ -205,18 +205,30 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Supplier
                                     Name:</label>
-                                <input type="text" name="name" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Juan Dela Cruz" required="">
+                                <input type="text" name="name" id="nameSupplier" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Juan Dela Cruz" required="">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">ID
+                                    :</label>
+                                <input type="text" name="supplier" id="idValue" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" disabled>
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3" hidden>
+                                <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">ID
+                                    :</label>
+                                <input type="text" name="supplier" id="idValue2" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Contact
                                     Number:</label>
-                                <input type="text" name="department" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="09355039007" required="">
+                                <input type="text" name="contact" id="contactSupplier" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="09355039007" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Address:</label>
-                                <input type="text" name="position" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="45 A St. Peter Ave. Balubaran Valenzuela">
+                                <input type="text" name="address" id="addressSupplier" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="45 A St. Peter Ave. Balubaran Valenzuela">
                             </div>
 
 
@@ -361,7 +373,7 @@
                 .then(data => {
                     if (data.success) {
                         // Handle a successful response (e.g., show success message)
-                        alert('Supplier added successfully.');
+                        alert('Supplier Updated successfully.');
                         // You can also reset the form or redirect to another page
                         location.reload();
                     } else {
@@ -377,28 +389,7 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const supplierSelect = document.getElementById("supplier");
-        const categoriesSelect = document.querySelector("select[name='categories[]']");
 
-        supplierSelect.addEventListener("change", function() {
-            const selectedSupplierId = supplierSelect.value;
-
-            for (const option of categoriesSelect.options) {
-                const supplierList = option.getAttribute("compare");
-                console.log("Supplier List:", supplierList);
-                console.log("Selected Supplier Id:", selectedSupplierId);
-
-                if (supplierList && supplierList.includes(selectedSupplierId)) {
-                    option.setAttribute("selected", "selected");
-                    console.log("Selected");
-                } else {
-                    option.removeAttribute("selected");
-                    console.log("Not Selected");
-                }
-            }
-        });
-    });
 </script>
 
 <script>
@@ -416,11 +407,45 @@
     };
 
     // Function to open the modal
-    const openModal = () => {
+    const openModal = (supplierID) => {
         // Show the modal - no need to redefine 'modal' here
         modal.classList.remove('fadeOut');
         modal.classList.add('fadeIn');
         modal.style.display = 'flex';
+        console.log(supplierID);
+
+        const categoriesSelect = document.querySelector("select[name='categories[]']");
+
+
+        const selectedSupplierId = supplierID;
+
+        for (const option of categoriesSelect.options) {
+            const supplierList = option.getAttribute("compare");
+
+            if (supplierList && supplierList.includes(selectedSupplierId)) {
+                option.setAttribute("selected", "selected");
+        
+            } else {
+                option.removeAttribute("selected");
+            }
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: `/SupplierInfo/${supplierID}`,
+            success: function(response) {
+                // Update the modal content with the data received from PHP
+                document.getElementById('nameSupplier').value = response.name;
+                document.getElementById('idValue2').value = response.supplier_id;
+                document.getElementById('idValue').value = response.supplier_id;
+                document.getElementById('contactSupplier').value = response.contact;
+                document.getElementById('addressSupplier').value = response.address;
+            },
+            error: function(error) {
+                // Handle error
+                console.error(error);
+            }
+        });
     };
 
     // Attach click event listeners to close buttons
