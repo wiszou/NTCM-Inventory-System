@@ -48,14 +48,14 @@
         <div class="flex flex-row">
             <!-- BRANDS -->
 
-            <div class="w-1/3 mr-1">
+            <div class="w-full mr-1">
                 <form id="brand-form" class="flex-1 h-56 bg-white p-4 shadow rounded-lg mb-2">
                     @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add New Brand</h2>
                     <div class="my-1"></div>
                     <div class="bg-ntccolor h-px mb-6"></div>
 
                     <div class="px-2 flex justify-center">
-                        <div class="w-full ">
+                        <div class="w-1/2 ">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Brand
                                 Name:</label>
                             <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5" placeholder="Brand Name">
@@ -68,49 +68,6 @@
                     </div>
                 </form>
             </div>
-
-
-            <div class="w-3/4 ml-1">
-                <form id="brand-category" class="flex-1 h-56 bg-white p-4 shadow rounded-lg mb-2">
-                    @csrf <h2 class="text-gray-700 text-md font-semibold pb-1 px-3">Add Brand to Category</h2>
-                    <div class="my-1"></div>
-                    <div class="bg-ntccolor h-px mb-6"></div>
-
-
-                    <div class="grid grid-cols-6 gap-6 px-2">
-                        <div class="col-span-6 sm:col-span-2">
-                            <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
-                                Category:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="category" id="category" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
-                                <option selected hidden value="null">Select your option</option>
-                                @foreach ($categories as $item)
-                                <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-4">
-                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add
-                                Brand:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="brands[]" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input" multiple>
-                                @foreach ($brands as $item)
-                                <option value="{{ $item->brand_id }}" compare="{{ $item->category_list }}">
-                                    {{ $item->name }}
-                                </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="flex justify-end mt-6 mr-2">
-                        <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center ml-3">Add</button>
-                    </div>
-
-                </form>
-            </div>
-
-
-
         </div>
 
         <!--Card-->

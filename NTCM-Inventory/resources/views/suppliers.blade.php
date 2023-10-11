@@ -48,7 +48,7 @@
         <div class="flex flex-row">
 
             <!-- Add Suppliers -->
-            <div class="w-1/2 flex flex-wrap md:space-x-2 md:space-y-0 mb-2 mr-1">
+            <div class="w-full flex flex-wrap md:space-x-2 md:space-y-0 mb-2 mr-1">
                 <form id="supplier-form" class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
                     @csrf
                     <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Suppliers</h2>
@@ -88,49 +88,6 @@
                     </div>
                 </form>
             </div>
-            <!-- End Suppliers -->
-
-            Add Brands to Suppliers
-            <!-- <div class="flex flex-wrap md:space-y-0 mb-2 ml-1 w-1/2">
-                <form id="supplier-to-category" class="flex-1 bg-white p-4 shadow rounded-lg ">
-                    @csrf
-                    <h2 class="text-gray-900 text-md font-semibold pb-1 px-3">Add Category to Suppliers</h2>
-                    <div class="my-1"></div>
-                    <div class="bg-ntccolor h-px mb-6"></div>
-
-                    <div class="grid grid-cols-6 gap-6 px-2">
-                        <div class="col-span-6 sm:col-span-6">
-                            <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 ">Select
-                                Supplier:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="supplier" id="supplier" class="shadow-sm bg-red-500 bg-custom-color block w-full p-2.5 editable-input">
-                                <option selected hidden value="null">Select your option</option>
-                                @foreach ($suppliers as $item)
-                                <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-5 ">
-                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Add
-                                Category:</label>
-                            <select data-te-select-init data-te-select-filter="true" name="categories[]" class="shadow-sm bg-red-500 bg-custom-color block p-2.5 editable-input" multiple>
-                                @foreach ($categories as $item)
-                                <option value="{{ $item->category_id }}" compare="{{ $item->supplier_list }}">
-                                    {{ $item->category_name }}
-                                </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-
-                        <div class="col-span-6 sm:col-span-1 flex items-end ">
-                            <button type="submit" class="text-white bg-ntccolor hovers:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-7 py-2 text-center">Add</button>
-                        </div>
-
-                    </div>
-                </form>
-            </div> -->
-            <!-- End Suppliers -->
         </div>
 
 
@@ -140,7 +97,7 @@
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead class="">
                     <tr>
-                        <th data-priority="1">Item Code</th>
+                        <th data-priority="1">Supplier Code</th>
                         <th data-priority="2">Supplier Name</th>
                         <th data-priority="3">Contact Number</th>
                         <th data-priority="2">Address</th>
@@ -228,11 +185,11 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Address:</label>
-                                <input type="text" name="address" id="addressSupplier" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="45 A St. Peter Ave. Balubaran Valenzuela">
+                                <input type="text" name="address" id="addressSupplier" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Address">
                             </div>
 
 
-                            <div class="col-span-6 sm:col-span-3">
+                            <div class="col-span-6 sm:col-span-6">
                                 <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900">Categories:</label>
                                 <select data-te-select-init data-te-select-filter="true" name="categories[]" class="shadow-sm bg-red-500 bg-custom-color block p-2.5 editable-input" multiple>
                                     @foreach ($categories as $item)
