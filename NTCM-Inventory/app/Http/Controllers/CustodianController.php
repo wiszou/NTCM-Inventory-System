@@ -57,14 +57,12 @@ class CustodianController extends Controller
         $currentDate = date('d-F-Y');
         $custodianID = $this->generateID();
         $handlerName = $request->input('handlerName');
-        $handlerName2 = $request->input('handlerName2');
-        $description = $request->input('description');
+        $description = $request->input('remarks');
         $type = $request->input('type');
         $noted = $request->input('noted');
         $issued = $request->input('issued');
         $items = $request->input('itemArray');
 
-        $handlerName2 = ($handlerName2 === 'none') ? null : $handlerName2;
 
         if ($type == "none") {
             return response()->json(['success' => false, 'message' => 'Please select proper custodian type']);
@@ -73,13 +71,20 @@ class CustodianController extends Controller
         if ($items == "none") {
             return response()->json(['success' => false, 'message' => 'Please select an item']);
         };
-
-        $description = "hahah";
+        if ($noted == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select an item']);
+        };
+        if ($issued == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select an item']);
+        };
+        if ($handlerName == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select an item']);
+        };
+        
 
         $custodianData = array(
             'custodian_id' => $custodianID,
             'name' => $handlerName,
-            'name2' => $handlerName2,
             'noted' => $noted,
             'issued' => $issued,
             'description' => $description,

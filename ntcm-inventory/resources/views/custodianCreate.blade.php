@@ -27,129 +27,129 @@
 </head>
 
 <style>
-/* select 2 css */
+    /* select 2 css */
 
-.form-control:focus {
-    border: 1px solid #34495e;
-}
+    .form-control:focus {
+        border: 1px solid #34495e;
+    }
 
-.select2.select2-container {
-    width: 100% !important;
-}
+    .select2.select2-container {
+        width: 100% !important;
+    }
 
-.select2.select2-container .select2-selection {
-    border: 1px solid #ccc;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    height: 34px;
-    margin-bottom: 15px;
-    outline: none !important;
-    transition: all .15s ease-in-out;
-}
+    .select2.select2-container .select2-selection {
+        border: 1px solid #ccc;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        height: 34px;
+        margin-bottom: 15px;
+        outline: none !important;
+        transition: all .15s ease-in-out;
+    }
 
-.select2.select2-container .select2-selection .select2-selection__rendered {
-    color: #333;
-    line-height: 32px;
-    padding-right: 33px;
-}
+    .select2.select2-container .select2-selection .select2-selection__rendered {
+        color: #333;
+        line-height: 32px;
+        padding-right: 33px;
+    }
 
-.select2.select2-container .select2-selection .select2-selection__arrow {
-    background: #f8f8f8;
-    border-left: 1px solid #ccc;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-    height: 32px;
-    width: 33px;
-}
+    .select2.select2-container .select2-selection .select2-selection__arrow {
+        background: #f8f8f8;
+        border-left: 1px solid #ccc;
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;
+        height: 32px;
+        width: 33px;
+    }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
-    background: #f8f8f8;
-}
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
+        background: #f8f8f8;
+    }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
-    -webkit-border-radius: 0 3px 0 0;
-    -moz-border-radius: 0 3px 0 0;
-    border-radius: 0 3px 0 0;
-}
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
+        -webkit-border-radius: 0 3px 0 0;
+        -moz-border-radius: 0 3px 0 0;
+        border-radius: 0 3px 0 0;
+    }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
-    border: 1px solid #34495e;
-}
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
+        border: 1px solid #34495e;
+    }
 
-.select2.select2-container .select2-selection--multiple {
-    height: auto;
-    min-height: 34px;
-}
+    .select2.select2-container .select2-selection--multiple {
+        height: auto;
+        min-height: 34px;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
-    margin-top: 0;
-    height: 32px;
-}
+    .select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
+        margin-top: 0;
+        height: 32px;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__rendered {
-    display: block;
-    padding: 0 4px;
-    line-height: 29px;
-}
+    .select2.select2-container .select2-selection--multiple .select2-selection__rendered {
+        display: block;
+        padding: 0 4px;
+        line-height: 29px;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__choice {
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    margin: 4px 4px 0 0;
-    padding: 0 6px 0 22px;
-    height: 24px;
-    line-height: 24px;
-    font-size: 12px;
-    position: relative;
-}
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice {
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        margin: 4px 4px 0 0;
+        padding: 0 6px 0 22px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        position: relative;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 22px;
-    width: 22px;
-    margin: 0;
-    text-align: center;
-    color: #e74c3c;
-    font-weight: bold;
-    font-size: 16px;
-}
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        margin: 0;
+        text-align: center;
+        color: #e74c3c;
+        font-weight: bold;
+        font-size: 16px;
+    }
 
-.select2-container .select2-dropdown {
-    background: transparent;
-    border: none;
-    margin-top: -5px;
-}
+    .select2-container .select2-dropdown {
+        background: transparent;
+        border: none;
+        margin-top: -5px;
+    }
 
-.select2-container .select2-dropdown .select2-search {
-    padding: 0;
-}
+    .select2-container .select2-dropdown .select2-search {
+        padding: 0;
+    }
 
-.select2-container .select2-dropdown .select2-search input {
-    outline: none !important;
-    border: 1px solid #34495e !important;
-    border-bottom: none !important;
-    padding: 4px 6px !important;
-}
+    .select2-container .select2-dropdown .select2-search input {
+        outline: none !important;
+        border: 1px solid #34495e !important;
+        border-bottom: none !important;
+        padding: 4px 6px !important;
+    }
 
-.select2-container .select2-dropdown .select2-results {
-    padding: 0;
-}
+    .select2-container .select2-dropdown .select2-results {
+        padding: 0;
+    }
 
-.select2-container .select2-dropdown .select2-results ul {
-    background: #fff;
-    border: 1px solid #34495e;
-}
+    .select2-container .select2-dropdown .select2-results ul {
+        background: #fff;
+        border: 1px solid #34495e;
+    }
 
-.select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
-    background-color: #3498db;
-}
+    .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
+        background-color: #3498db;
+    }
 </style>
 
 <body class="bg-gray-100 py-2">
@@ -167,19 +167,13 @@
                     </h2>
 
                     <div>
-                        <button id="open-modal-button"
-                            class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
-                            type="button">
+                        <button id="open-modal-button" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
 
                             <span>Create Form</span>
                         </button>
 
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center"
-                            type="button">Custodian Type <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-teal-500 hover:bg-teal-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Custodian Type <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg></button>
                         <!-- Dropdown menu -->
                         <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl shadow w-44">
@@ -191,12 +185,10 @@
                                     <a href="#" id="spareStatus" class="block px-4 py-2 hover:bg-gray-100 ">Spare</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="deployedStatus"
-                                        class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
+                                    <a href="#" id="deployedStatus" class="block px-4 py-2 hover:bg-gray-100">Deployed</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="borrowedStatus"
-                                        class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
+                                    <a href="#" id="borrowedStatus" class="block px-4 py-2 hover:bg-gray-100">Borrowed</a>
                                 </li>
                             </ul>
                         </div>
@@ -204,8 +196,7 @@
                 </div>
                 <!--Card-->
                 <div id='recipients' class="p-8 lg:mt-0 rounded shadow bg-white">
-                    <table id="example" class="stripe hover"
-                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead>
 
                             <tr>
@@ -230,32 +221,23 @@
                                 <td class="text-center">{{ $item->type}}</td>
                                 <td class="text-center">{{ $item->description}}</td>
                                 <td class="text-center items-center flex justify-center">
-                                    <label
-                                        class=" text-green-500 border border-green-500 hover:bg-green-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
-                                        <svg fill="ntccolor" viewBox="-9.6 -9.6 51.20 51.20" version="1.1" width="24px"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                    <label class=" text-green-500 border border-green-500 hover:bg-green-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
+                                        <svg fill="ntccolor" viewBox="-9.6 -9.6 51.20 51.20" version="1.1" width="24px" xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <title>return</title>
-                                                <path fill="currentColor"
-                                                    d="M0 21.984q0.032-0.8 0.608-1.376l4-4q0.448-0.48 1.056-0.576t1.12 0.128 0.864 0.736 0.352 1.12v1.984h18.016q0.8 0 1.408-0.576t0.576-1.408v-8q0-0.832-0.576-1.408t-1.408-0.608h-16q-0.736 0-1.248-0.416t-0.64-0.992 0-1.152 0.64-1.024 1.248-0.416h16q2.464 0 4.224 1.76t1.76 4.256v8q0 2.496-1.76 4.224t-4.224 1.76h-18.016v2.016q0 0.64-0.352 1.152t-0.896 0.704-1.12 0.096-1.024-0.544l-4-4q-0.64-0.608-0.608-1.44z">
+                                                <path fill="currentColor" d="M0 21.984q0.032-0.8 0.608-1.376l4-4q0.448-0.48 1.056-0.576t1.12 0.128 0.864 0.736 0.352 1.12v1.984h18.016q0.8 0 1.408-0.576t0.576-1.408v-8q0-0.832-0.576-1.408t-1.408-0.608h-16q-0.736 0-1.248-0.416t-0.64-0.992 0-1.152 0.64-1.024 1.248-0.416h16q2.464 0 4.224 1.76t1.76 4.256v8q0 2.496-1.76 4.224t-4.224 1.76h-18.016v2.016q0 0.64-0.352 1.152t-0.896 0.704-1.12 0.096-1.024-0.544l-4-4q-0.64-0.608-0.608-1.44z">
                                                 </path>
                                             </g>
                                         </svg>
                                     </label>
-                                    <label
-                                        class=" text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
-                                        <svg viewBox="-2.64 -2.64 29.28 29.28" fill="ntccolor" width="24px"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                    <label onclick="toPrint('{{ $item->custodian_id}}')" class=" text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
+                                        <svg viewBox="-2.64 -2.64 29.28 29.28" fill="ntccolor" width="24px" xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                             <g id="SVGRepo_iconCarrier">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"
-                                                    d="M17 7H7V6h10v1zm0 12H7v-6h10v6zm2-12V3H5v4H1v8.996C1 17.103 1.897 18 3.004 18H5v3h14v-3h1.996A2.004 2.004 0 0 0 23 15.996V7h-4z"
-                                                    fill="#000000"></path>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M17 7H7V6h10v1zm0 12H7v-6h10v6zm2-12V3H5v4H1v8.996C1 17.103 1.897 18 3.004 18H5v3h14v-3h1.996A2.004 2.004 0 0 0 23 15.996V7h-4z" fill="#000000"></path>
                                             </g>
                                         </svg>
                                     </label>
@@ -276,18 +258,15 @@
             <!--/container-->
 
 
-            <div class="main-modal fixed w-full h-150px inset-0 z-50 flex justify-center items-center animated fadeIn faster"
-                style="background: rgba(0,0,0,.7);">
+            <div class="main-modal fixed w-full h-150px inset-0 z-50 flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
                 <div class="modal-container bg-white w-1/2 h-4/6  relative rounded-xl z-50">
                     <div class="modal-content py-4 text-left px-6 ">
                         <!--Title-->
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-xl font-semibold" name="title" id="title">Custodian Form</p>
                             <div class="modal-close cursor-pointer z-50">
-                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg"
-                                    width="18" height="18" viewBox="0 0 18 18">
-                                    <path
-                                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                <svg class="fill-current text-black" id="exitButton" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
                                     </path>
                                 </svg>
                             </div>
@@ -302,12 +281,8 @@
                                     <div class="p-6 space-y-6">
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="custodian-name"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Employee</label>
-                                                <select data-te-select-init data-te-select-filter="true"
-                                                    name="handlerName" id="handlerName"
-                                                    class="shadow-sm bg-custom-color block w-full p-2.5  editable-input"
-                                                    required="">
+                                                <label for="custodian-name" class="block mb-2 text-sm font-medium text-gray-900">Employee</label>
+                                                <select data-te-select-init data-te-select-filter="true" name="handlerName" id="handlerName" class="shadow-sm bg-custom-color block w-full p-2.5  editable-input" required="">
                                                     <option value="none" selected hidden>Select your option</option>
                                                     @foreach ($employees as $employee)
                                                     @if ($employee->deleted == "false")
@@ -318,13 +293,9 @@
                                                 </select>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="custodian-name"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">Custodian
+                                                <label for="custodian-name" class="block mb-2 text-sm font-medium text-gray-900">Custodian
                                                     Type</label>
-                                                <select data-te-select-init data-te-select-filter="true" name="type"
-                                                    id="type"
-                                                    class="shadow-sm bg-custom-color block w-full p-2.5  editable-input"
-                                                    required="">
+                                                <select data-te-select-init data-te-select-filter="true" name="type" id="type" class="shadow-sm bg-custom-color block w-full p-2.5  editable-input" required="">
                                                     <option value="none" selected hidden>Select your option</option>
                                                     <option value="Borrow">Borrow</option>
                                                     <option value="Deploy   ">Deploy</option>
@@ -334,13 +305,10 @@
 
 
                                         <div class="">
-                                            <label for="status"
-                                                class="block mb-2 text-sm font-medium text-gray-900 ">Purpose:</label>
-                                            <textarea class="px-2 py-3 border w-full h-14 rounded-md"
-                                                name="remarks"></textarea>
+                                            <label for="status" class="block mb-2 text-sm font-medium text-gray-900 ">Purpose:</label>
+                                            <textarea class="px-2 py-3 border w-full h-14 rounded-md" name="remarks"></textarea>
                                         </div>
-                                        <div
-                                            class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
+                                        <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
                                             Items</div>
                                         <div id="container12">
 
@@ -359,18 +327,12 @@
 
                                         <div class="flex justify-end">
                                             <a class="w-6" href="#" id="appendButton">
-                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                    width="28">
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28">
                                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                        stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                                     <g id="SVGRepo_iconCarrier">
-                                                        <path
-                                                            d="M12 6C12.5523 6 13 6.44772 13 7V11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H13V17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17V13H7C6.44772 13 6 12.5523 6 12C6 11.4477 6.44772 11 7 11H11V7C11 6.44772 11.4477 6 12 6Z"
-                                                            fill="#4FACB6"></path>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M2 4.5C2 3.11929 3.11929 2 4.5 2H19.5C20.8807 2 22 3.11929 22 4.5V19.5C22 20.8807 20.8807 22 19.5 22H4.5C3.11929 22 2 20.8807 2 19.5V4.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5V19.5C4 19.7761 4.22386 20 4.5 20H19.5C19.7761 20 20 19.7761 20 19.5V4.5C20 4.22386 19.7761 4 19.5 4H4.5Z"
-                                                            fill="#4FACB6"></path>
+                                                        <path d="M12 6C12.5523 6 13 6.44772 13 7V11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H13V17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17V13H7C6.44772 13 6 12.5523 6 12C6 11.4477 6.44772 11 7 11H11V7C11 6.44772 11.4477 6 12 6Z" fill="#4FACB6"></path>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4.5C2 3.11929 3.11929 2 4.5 2H19.5C20.8807 2 22 3.11929 22 4.5V19.5C22 20.8807 20.8807 22 19.5 22H4.5C3.11929 22 2 20.8807 2 19.5V4.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5V19.5C4 19.7761 4.22386 20 4.5 20H19.5C19.7761 20 20 19.7761 20 19.5V4.5C20 4.22386 19.7761 4 19.5 4H4.5Z" fill="#4FACB6"></path>
                                                     </g>
                                                 </svg>
                                             </a>
@@ -378,18 +340,14 @@
                                     </div>
 
 
-                                    <div
-                                        class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
+                                    <div class="mt-3 col-span-6 sm:col-span-6 text-medium text-center font-medium border-dashed border-b-2 border-t-2 border-gray-300 py-2">
                                         Persons Involved </div>
 
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3 mt-3" bind>
-                                            <label for="item1"
-                                                class="block mb-2 text-sm font-normal text-gray-900">Accepted/Received
+                                            <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Accepted/Received
                                                 By:</label>
-                                            <select data-te-select-init data-te-select-filter="true" name="handlerName2"
-                                                id="handlerName2" class="shadow-sm w-full p-2.5  editable-input"
-                                                required="">
+                                            <select data-te-select-init data-te-select-filter="true" name="handlerName2" id="handlerName2" class="shadow-sm w-full p-2.5  editable-input" required>
                                                 <option value="none" selected hidden>Select your option</option>
                                                 @foreach ($employees as $employee)
                                                 @if ($employee->deleted == "false")
@@ -401,11 +359,9 @@
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-3 mt-3" bind>
-                                            <label for="item1"
-                                                class="block mb-2 text-sm font-normal text-gray-900">Issued
+                                            <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Issued
                                                 By:</label>
-                                            <select data-te-select-init data-te-select-filter="true" name="issued"
-                                                id="issued" class="shadow-sm w-full p-2.5 editable-input" required="">
+                                            <select data-te-select-init data-te-select-filter="true" name="issued" id="issued" class="shadow-sm w-full p-2.5 editable-input" required>
                                                 <option value="none" selected hidden>Select your option</option>
                                                 @foreach ($employees as $employee)
                                                 @if ($employee->deleted == "false")
@@ -417,11 +373,9 @@
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-3" bind>
-                                            <label for="item1"
-                                                class="block mb-2 text-sm font-normal text-gray-900">Noted
+                                            <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Noted
                                                 By:</label>
-                                            <select data-te-select-init data-te-select-filter="true" name="noted"
-                                                id="noted" class="shadow-sm w-full p-2.5 editable-input" required="">
+                                            <select data-te-select-init data-te-select-filter="true" name="noted" id="noted" class="shadow-sm w-full p-2.5 editable-input" required>
                                                 <option value="none" selected hidden>Select your option</option>
                                                 @foreach ($employees as $employee)
                                                 @if ($employee->deleted == "false")
@@ -436,9 +390,7 @@
                                     <!-- Modal footer -->
 
                                     <div class="w-full justify-end flex space-x-2 border-gray-200 rounded-b">
-                                        <button type="submit"
-                                            class="mt-4 mr-2 w-32 text-white bg-ntccolor  hover:bg-teal-600  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
-                                            id="/update-item">Create Form</button>
+                                        <button type="submit" class="mt-4 mr-2 w-32 text-white bg-ntccolor  hover:bg-teal-600  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" id="/update-item">Create Form</button>
                                     </div>
 
                                 </form>
@@ -453,39 +405,39 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
             <script>
-            $(document).ready(function() {
-                // Initialize a counter to generate unique IDs
-                var divCount = 1;
+                $(document).ready(function() {
+                    // Initialize a counter to generate unique IDs
+                    var divCount = 1;
 
-                // When the "Add Input" button is clicked
-                $("#add-input-button").click(function() {
-                    // Clone the entire div with id="input-container"
-                    var clonedDiv = $("#input-container").clone();
+                    // When the "Add Input" button is clicked
+                    $("#add-input-button").click(function() {
+                        // Clone the entire div with id="input-container"
+                        var clonedDiv = $("#input-container").clone();
 
-                    // Generate unique IDs for the cloned elements
-                    clonedDiv.find('label[for^="item"]').each(function() {
-                        var originalFor = $(this).attr('for');
-                        var newFor = originalFor + '-' + divCount;
-                        $(this).attr('for', newFor);
+                        // Generate unique IDs for the cloned elements
+                        clonedDiv.find('label[for^="item"]').each(function() {
+                            var originalFor = $(this).attr('for');
+                            var newFor = originalFor + '-' + divCount;
+                            $(this).attr('for', newFor);
+                        });
+
+                        clonedDiv.find('select[name^="supplier-name"]').each(function() {
+                            var originalName = $(this).attr('name');
+                            var newName = originalName + '-' + divCount;
+                            $(this).attr('name', newName);
+
+                            var originalId = $(this).attr('id');
+                            var newId = originalId + '-' + divCount;
+                            $(this).attr('id', newId);
+                        });
+
+                        // Increment the counter
+                        divCount++;
+
+                        // Append the cloned div below the original one
+                        $("#input-container").after(clonedDiv);
                     });
-
-                    clonedDiv.find('select[name^="supplier-name"]').each(function() {
-                        var originalName = $(this).attr('name');
-                        var newName = originalName + '-' + divCount;
-                        $(this).attr('name', newName);
-
-                        var originalId = $(this).attr('id');
-                        var newId = originalId + '-' + divCount;
-                        $(this).attr('id', newId);
-                    });
-
-                    // Increment the counter
-                    divCount++;
-
-                    // Append the cloned div below the original one
-                    $("#input-container").after(clonedDiv);
                 });
-            });
             </script>
 
 
@@ -505,112 +457,112 @@
             <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                let counter = 1;
+                document.addEventListener('DOMContentLoaded', function() {
+                    let counter = 1;
 
-                function addSelectInput() {
-                    counter++;
-                    console.log(counter);
-                    const container = document.getElementById('container12');
+                    function addSelectInput() {
+                        counter++;
+                        console.log(counter);
+                        const container = document.getElementById('container12');
 
-                    const div = document.createElement('div');
+                        const div = document.createElement('div');
 
-                    // Create a new select element
-                    const selectClone = document.createElement('select');
-                    selectClone.name = `item${counter}`;
-                    selectClone.id = `item${counter}`;
-                    selectClone.classList.add('js-example-basic-single');
+                        // Create a new select element
+                        const selectClone = document.createElement('select');
+                        selectClone.name = `item${counter}`;
+                        selectClone.id = `item${counter}`;
+                        selectClone.classList.add('js-example-basic-single');
 
-                    // Clone and add the options from the original select
-                    const originalSelect = document.getElementById('item1');
-                    for (const originalOption of originalSelect.options) {
-                        const cloneOption = document.createElement('option');
-                        cloneOption.value = originalOption.value;
-                        cloneOption.text = originalOption.text;
-                        selectClone.appendChild(cloneOption);
+                        // Clone and add the options from the original select
+                        const originalSelect = document.getElementById('item1');
+                        for (const originalOption of originalSelect.options) {
+                            const cloneOption = document.createElement('option');
+                            cloneOption.value = originalOption.value;
+                            cloneOption.text = originalOption.text;
+                            selectClone.appendChild(cloneOption);
+                        }
+
+                        // Append the newly created select element to the div
+                        div.appendChild(selectClone);
+
+                        // Append the div to the container
+                        container.appendChild(div);
+
+                        // Initialize Select2 on the newly created select element
+                        $(selectClone).select2();
                     }
 
-                    // Append the newly created select element to the div
-                    div.appendChild(selectClone);
+                    // Add an event listener to the button element with the ID "appendButton"
+                    document.getElementById('appendButton').addEventListener('click', addSelectInput);
 
-                    // Append the div to the container
-                    container.appendChild(div);
+                    // Add an event listener to the form to collect select values when the form is submitted
+                    const form = document.getElementById(
+                        'create-form'); // Replace 'yourFormId' with the actual form ID
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault(); // Prevent the form from actually submitting
 
-                    // Initialize Select2 on the newly created select element
-                    $(selectClone).select2();
+                        // Collect and process the select values here
+                        const selectValues = [];
+                        for (let i = 1; i <= counter; i++) {
+                            const selectId = `item${i}`;
+                            const selectElement = document.getElementById(selectId);
+                            if (selectElement) {
+                                selectValues.push(selectElement.value);
+                            }
+                        }
+                        console.log(selectValues);
+                        // Set the value of the hidden input field "itemArray" to the collected values
+                        const itemArrayInput = document.getElementById('itemArray');
+                        itemArrayInput.value = JSON.stringify(selectValues); // Convert to JSON if needed
+                    });
+                });
+            </script>
+            <script>
+                $(document).ready(function() {
+
+                    var table = $('#example').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
+                });
+            </script>
+
+            <script>
+                const modal = document.querySelector('.main-modal');
+                const closeButton = document.querySelectorAll('.modal-close');
+
+                const modalClose = () => {
+                    modal.classList.remove('fadeIn');
+                    modal.classList.add('fadeOut');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 1); // Adjust the delay as needed
+                };
+
+                const openModal = () => {
+                    modal.classList.remove('fadeOut');
+                    modal.classList.add('fadeIn');
+                    modal.style.display = 'flex';
+                };
+
+                for (let i = 0; i < closeButton.length; i++) {
+                    const element = closeButton[i];
+                    element.onclick = (e) => modalClose();
                 }
 
-                // Add an event listener to the button element with the ID "appendButton"
-                document.getElementById('appendButton').addEventListener('click', addSelectInput);
+                // Get the button element by its ID
+                const openModalButton = document.getElementById('open-modal-button');
+                if (openModalButton) {
+                    openModalButton.addEventListener('click', () => openModal());
+                }
 
-                // Add an event listener to the form to collect select values when the form is submitted
-                const form = document.getElementById(
-                    'create-form'); // Replace 'yourFormId' with the actual form ID
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Prevent the form from actually submitting
+                // Initially hide the modal
+                modal.style.display = 'none';
 
-                    // Collect and process the select values here
-                    const selectValues = [];
-                    for (let i = 1; i <= counter; i++) {
-                        const selectId = `item${i}`;
-                        const selectElement = document.getElementById(selectId);
-                        if (selectElement) {
-                            selectValues.push(selectElement.value);
-                        }
-                    }
-                    console.log(selectValues);
-                    // Set the value of the hidden input field "itemArray" to the collected values
-                    const itemArrayInput = document.getElementById('itemArray');
-                    itemArrayInput.value = JSON.stringify(selectValues); // Convert to JSON if needed
-                });
-            });
-            </script>
-            <script>
-            $(document).ready(function() {
-
-                var table = $('#example').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
-            </script>
-
-            <script>
-            const modal = document.querySelector('.main-modal');
-            const closeButton = document.querySelectorAll('.modal-close');
-
-            const modalClose = () => {
-                modal.classList.remove('fadeIn');
-                modal.classList.add('fadeOut');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 1); // Adjust the delay as needed
-            };
-
-            const openModal = () => {
-                modal.classList.remove('fadeOut');
-                modal.classList.add('fadeIn');
-                modal.style.display = 'flex';
-            };
-
-            for (let i = 0; i < closeButton.length; i++) {
-                const element = closeButton[i];
-                element.onclick = (e) => modalClose();
-            }
-
-            // Get the button element by its ID
-            const openModalButton = document.getElementById('open-modal-button');
-            if (openModalButton) {
-                openModalButton.addEventListener('click', () => openModal());
-            }
-
-            // Initially hide the modal
-            modal.style.display = 'none';
-
-            window.onclick = function(event) {
-                if (event.target == modal) modalClose();
-            };
+                window.onclick = function(event) {
+                    if (event.target == modal) modalClose();
+                };
             </script>
 
 
@@ -619,101 +571,94 @@
     </div>
 
     <script>
-    $(document).ready(function() {
-        // Function to show/hide rows based on the selected status
-        function filterInventoryTable(statusClass) {
-            $('#example tbody tr').hide(); // Hide all rows initially
-            if (statusClass === 'all') {
-                $('#example tbody tr').show(); // Show all rows for "All" option
-            } else {
-                $(`.${statusClass}`).show(); // Show rows with the selected status class
+        $(document).ready(function() {
+            // Function to show/hide rows based on the selected status
+            function filterInventoryTable(statusClass) {
+                $('#example tbody tr').hide(); // Hide all rows initially
+                if (statusClass === 'all') {
+                    $('#example tbody tr').show(); // Show all rows for "All" option
+                } else {
+                    $(`.${statusClass}`).show(); // Show rows with the selected status class
+                }
             }
-        }
 
-        // Initialize filtering with "All" status selected
-        filterInventoryTable('all');
-
-        // Handle status option clicks
-        $('#allStatus').click(function() {
+            // Initialize filtering with "All" status selected
             filterInventoryTable('all');
-        });
 
-        $('#spareStatus').click(function() {
-            filterInventoryTable('bg-green-500'); // Adjust the class as needed
-        });
+            // Handle status option clicks
+            $('#allStatus').click(function() {
+                filterInventoryTable('all');
+            });
 
-        $('#deployedStatus').click(function() {
-            filterInventoryTable('bg-blue-500'); // Adjust the class as needed
-        });
+            $('#spareStatus').click(function() {
+                filterInventoryTable('bg-green-500'); // Adjust the class as needed
+            });
 
-        $('#borrowedStatus').click(function() {
-            filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            $('#deployedStatus').click(function() {
+                filterInventoryTable('bg-blue-500'); // Adjust the class as needed
+            });
+
+            $('#borrowedStatus').click(function() {
+                filterInventoryTable('bg-orange-500'); // Adjust the class as needed
+            });
         });
-    });
     </script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
 
-        const form = document.getElementById('create-form');
-        form.addEventListener('submit', function(e) {
+            const form = document.getElementById('create-form');
+            form.addEventListener('submit', function(e) {
 
-            e.preventDefault(); // Prevent the default form submission
-            // Serialize form data
+                e.preventDefault(); // Prevent the default form submission
+                // Serialize form data
 
-            const formData = new FormData(form);
-            fetch('/insert-custodian', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert(data.message);
-                        location.reload();
-                    } else {
-                        // Handle errors (e.g., show error message)
-                        alert(data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                const formData = new FormData(form);
+                fetch('/insert-custodian', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                            location.reload();
+                        } else {
+                            // Handle errors (e.g., show error message)
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+            });
 
         });
-
-    });
     </script>
 
     <script>
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2();
-    });
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
     </script>
 
 
     <script>
-    function toPrint(custodianId) {
-        var url = "{{ route('print', ['custodianID' => '__toPrint__']) }}";
-        url = url.replace('__toPrint__', custodianId);
+        function toPrint(custodianId) {
+            var url = "{{ route('print', ['custodianID' => '__toPrint__']) }}";
+            url = url.replace('__toPrint__', custodianId);
 
-        // Redirect to the URL
-        window.location.href = url;
-    }
+            // Redirect to the URL
+            window.location.href = url;
+        }
     </script>
 
-    <script>
-    $('#example').on('click', 'tr', function() {
-        console.log('hi');
-        const custodianId = $(this).attr('item-id'); // Get the item_id from the item-id attribute
-        toPrint(custodianId);
-    });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+
 </body>
 
 

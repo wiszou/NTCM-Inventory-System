@@ -160,17 +160,22 @@
                             $stock_actual1 = DB::table('t_inventory')
                             ->where('category_id', $item->category_id)
                             ->where('item_status', "Stock")
+                            ->where('deleted', "false")
                             ->count();
 
                             $stock_actual2 = DB::table('t_inventory')
                             ->where('category_id', $item->category_id)
                             ->where('item_status', "Spare")
+                            ->where('deleted', "false")
                             ->count();
 
                             $stock_actual = $stock_actual1 + $stock_actual2;
-                            if ($stock_actual >= $item->stock_req) {
-                            $statusClass = 'text-green-500 font-bold';
-                            } else if ($stock_actual <= $item->stock_req) {
+                            if ($stock_actual == $item->stock_req) {
+                            $statusClass = 'text-yellow-500 font-bold';
+                            } else if ($stock_actual >= $item->stock_req) {
+                                $statusClass = 'text-green-500 font-bold';
+                                }
+                            else if ($stock_actual <= $item->stock_req) {
                                 $statusClass = 'text-red-500 font-bold';
                                 }
 

@@ -160,6 +160,7 @@
                             $quantity = DB::table('t_inventory')
                             ->where('category_id', $category_id)
                             ->where('brand_id', $item->brand_id)
+                            ->where('deleted', "false")
                             ->count();
 
                             @endphp
