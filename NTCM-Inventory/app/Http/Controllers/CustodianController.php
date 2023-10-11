@@ -183,6 +183,7 @@ class CustodianController extends Controller
             'position' => $position,
             'department' => $department,
             "employee_id" => $id,
+            "deleted" => "false",
             'user_created' => $user,
             'date_created' => $currentDate,
         );
