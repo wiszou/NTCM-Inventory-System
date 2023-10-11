@@ -165,6 +165,20 @@ class InventoryController extends Controller
                 return response()->json(['success' => false, 'message' => 'Items not found'], 404);
             }
 
+
+            foreach ($items as $item) {
+                $item_id = $item->item_id;
+
+                $data = DB::table('t_itemdetails')
+                    ->where('item_id', $item_id)
+                    ->first();
+            
+                if ($data) {
+                    $item->serial_num = $data->serial_num;
+                    $item->model = $data->model;
+                }
+            }
+
             // Return the item details as JSON response
             return response()->json(['success' => true, 'items' => $items]);
         } catch (\Exception $e) {
@@ -180,6 +194,7 @@ class InventoryController extends Controller
             ->first(); // Get all matching items
 
         return response()->json(['success' => true, 'specs' => $items]);
+
     }
 
 

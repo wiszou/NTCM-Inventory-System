@@ -278,52 +278,34 @@
                                 // Clear existing rows and redraw the table
                                 modalTable.clear().draw();
 
-                                // Create an array of item spec promises
-                                const itemSpecPromises = data.items.map(item => {
-                                    const item_id = item.item_id;
+                                // Process and add items to the DataTable
+                                const itemRows = data.items.map(item => {
                                     const custodianId = item.custodian_id ? item.custodian_id : 'Empty';
-                                    return fetch(`/getItemSpecs/${item_id}`)
-                                        .then(specsResponse => specsResponse.json())
-                                        .then(specsData => {
-                                            if (specsData.success) {
-                                                const itemModel = specsData.specs.model;
-                                                const itemSerialNum = specsData.specs.serial_num;
-                                                return [
-                                                    item.item_id,
-                                                    itemModel,
-                                                    itemSerialNum,
-                                                    custodianId,
-                                                    item.item_status,
-                                                    `<button data-item-id="${item.item_id}" class="btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" class="w-5"  fill="currentcolor">
-                                                <path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"></path></svg></button>`,
 
+                                    const itemModel = item.model; // Use item.model from getItemDetails
+                                    const itemSerialNum = item.serial_num; // Use item.serial_num from getItemDetails
 
-                                                ];
-                                            } else {
-                                                // Handle error if item specs cannot be fetched
-                                                console.error('Error fetching item specs.');
-                                                return null;
-                                            }
-                                        });
+                                    return [
+                                        item.item_id,
+                                        itemModel,
+                                        itemSerialNum,
+                                        custodianId,
+                                        item.item_status,
+                                        `<button data-item-id="${item.item_id}" class="btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium rounded-full text-sm p-1 text-center inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" class="w-5" fill="currentcolor">
+                                <path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"></path>
+                            </svg>
+                        </button>`,
+                                    ];
                                 });
 
-                                // Wait for all item spec requests to complete
-                                Promise.all(itemSpecPromises)
-                                    .then(itemSpecs => {
-                                        // Filter out any items with null specs (error cases)
-                                        const validItemSpecs = itemSpecs.filter(specs => specs !== null);
-                                        // Add valid item specs to the DataTable
-                                        modalTable.rows.add(validItemSpecs).draw();
+                                // Add the item rows to the DataTable
+                                modalTable.rows.add(itemRows).draw();
 
-                                        // Show the modal - no need to redefine 'modal' here
-                                        modal.classList.remove('fadeOut');
-                                        modal.classList.add('fadeIn');
-                                        modal.style.display = 'flex';
-                                    })
-                                    .catch(error => {
-                                        console.error('Error fetching item specs:', error);
-                                    });
+                                // Show the modal - no need to redefine 'modal' here
+                                modal.classList.remove('fadeOut');
+                                modal.classList.add('fadeIn');
+                                modal.style.display = 'flex';
                             } else {
                                 // Handle error if item details cannot be fetched or if the array is empty
                                 console.error('Error fetching item details.');
