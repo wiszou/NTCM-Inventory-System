@@ -204,7 +204,8 @@
                                 <th class="text-center" data-priority="2">Current Holder</th>
                                 <th class="text-center" data-priority="3">Custodian Type</th>
                                 <th class="text-center" data-priority="4">Purpose</th>
-                                <th class="text-center" data-priority="5">Action</th>
+                                <th class="text-center" data-priority="5">Date Created</th>
+                                <th class="text-center" data-priority="6">Action</th>
 
                             </tr>
                         </thead>
@@ -220,6 +221,7 @@
                                 @endforeach
                                 <td class="text-center">{{ $item->type}}</td>
                                 <td class="text-center">{{ $item->description}}</td>
+                                <td></td>
                                 <td class="text-center items-center flex justify-center">
                                     <label class=" text-green-500 border border-green-500 hover:bg-green-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
                                         <svg fill="ntccolor" viewBox="-9.6 -9.6 51.20 51.20" version="1.1" width="24px" xmlns="http://www.w3.org/2000/svg">
@@ -243,6 +245,7 @@
                                     </label>
 
                                 </td>
+                                
                             </tr>
                             @endif
                             @endforeach

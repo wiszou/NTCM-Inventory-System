@@ -50,15 +50,6 @@
     /*bg-gray-200*/
 }
 
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-    background-color: #4facb6;
-    /*bg-indigo-100*/
-    color: #ffffff;
-    font-weight: 400;
-}
-
 
 /*Pagination Buttons*/
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -174,16 +165,36 @@ input[disabled] {
                         style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead class="">
                             <tr>
-                                <th data-priority="1">Item Code</th>
-                                <th data-priority="2">Item Name</th>
-                                <th data-priority="3">Brand</th>
-                                <th data-priority="4">Model</th>
-                                <th data-priority="5">Quantity</th>
-                                <th data-priority="6">Status</th>
+                                <th class="text-center" data-priority="1">Custodian</th>
+                                <th class="text-center" data-priority="2">Holder</th>
+                                <th class="text-center" data-priority="3">Custodian Type</th>
+                                <th class="text-center" data-priority="4">Purpose</th>
+                                <th class="text-center" data-priority="5">Date Returned</th>
+                                <th class="text-center" data-priority="6">Action</th>
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody">
-                         
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center">
+                                <label
+                                    class=" text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white font-medium rounded-full text-sm p-1 mr-1 text-center inline-flex items-center cursor-pointer">
+                                    <svg viewBox="-2.64 -2.64 29.28 29.28" fill="ntccolor" width="24px"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"
+                                                d="M17 7H7V6h10v1zm0 12H7v-6h10v6zm2-12V3H5v4H1v8.996C1 17.103 1.897 18 3.004 18H5v3h14v-3h1.996A2.004 2.004 0 0 0 23 15.996V7h-4z"
+                                                fill="#000000"></path>
+                                        </g>
+                                    </svg>
+                                </label>
+                            </td>
                         </tbody>
                     </table>
 
