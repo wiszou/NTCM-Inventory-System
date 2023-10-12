@@ -96,10 +96,12 @@
                             @if (!is_null($categoryIdsArray))
                             @foreach ($categoryIdsArray as $categoryId)
                             @foreach ($categories as $category)
+                            @if ($category->deleted == "false")
                             @if ($categoryId == $category->category_id)
                             @php
                             $categoryNames[] = $category->category_name;
                             @endphp
+                            @endif
                             @endif
                             @endforeach
                             @endforeach

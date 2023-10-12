@@ -193,7 +193,7 @@
                     <td class="text-center">{{ $item->department }}</td>
                     <td class="text-center">{{ $item->position }}</td>
                     <td class="text-center items-center flex justify-center">
-                        <button data-item-id="" onclick="openModal()" class="mr-1 btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium text-sm p-1.5 text-center inline-flex items-center">
+                        <button data-item-id="" onclick="openModal('{{ $item->employee_id }}')" class="mr-1 btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium text-sm p-1.5 text-center inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="edit" class="w-5" fill="currentcolor">
                                 <path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z">
                                 </path>
@@ -228,35 +228,35 @@
                     </div>
                 </div>
                 <!--Body-->
-                <form id="employee-form" class="relative rounded-md bg-white" method="post">
-
+                <form id="employee-update-form" class="relative rounded-md bg-white" method="post">
+                    @csrf
                     <!--  body -->
                     <div class="p-6 space-y-6">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Employee
                                     Name:</label>
-                                <input type="text" name="name" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Juan Dela Cruz" required="">
+                                <input type="text" name="name" id="name1" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Juan Dela Cruz" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="supplier-name" class="block mb-2 text-sm font-medium text-gray-900">Department:</label>
-                                <input type="text" name="department" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="IT Department" required="">
+                                <input type="text" name="department" id="department1" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="IT Department" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Position:</label>
-                                <input type="text" name="position" id="item-model" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="IT Staff" required="">
+                                <input type="text" name="position" id="position1" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="IT Staff" required="">
+                            </div>
+                            <div class="col-span-6 sm:col-span-3" hidden>
+                                <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">ID:</label>
+                                <input type="text" name="id" id="id1" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="IT Staff" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3 flex justify-end items-center mt-5 mr-2">
                                 <button type="submit" class="text-white bg-ntccolor hover:bg-teal-600 font-medium rounded-full px-5 h-10 mt-3 mb-3 text-sm text-center">Update</button>
                             </div>
-
-
-
                         </div>
-
                 </form>
             </div>
         </div>
@@ -321,6 +321,40 @@
         });
     </script>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('employee-update-form');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                // Serialize form data
+                const formData = new FormData(form);
+
+                fetch('/updateEmployee', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                            location.reload();
+                        } else {
+                            // Handle errors (e.g., show error message)
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    </script>
+
     <script>
         // Define the modal and closeButton variables
         const modal = document.querySelector('.main-modal');
@@ -336,11 +370,27 @@
         };
 
         // Function to open the modal
-        const openModal = () => {
+        const openModal = (employeeID) => {
             // Show the modal - no need to redefine 'modal' here
             modal.classList.remove('fadeOut');
             modal.classList.add('fadeIn');
             modal.style.display = 'flex';
+
+            $.ajax({
+                type: 'GET',
+                url: `/getEmployeeDetail/${employeeID}`,
+                success: function(response) {
+                    // Update the modal content with the data received from PHP
+                    document.getElementById('name1').value = response.name;
+                    document.getElementById('department1').value = response.department;
+                    document.getElementById('position1').value = response.position;
+                    document.getElementById('id1').value = response.employee_id;
+                },
+                error: function(error) {
+                    // Handle error
+                    console.error(error);
+                }
+            });
         };
 
         // Attach click event listeners to close buttons

@@ -249,22 +249,30 @@ class CatSuppController extends Controller
         $name =  $request->input('name');
         $stock =  $request->input('stock');
         $specs = $request->input('specx');
-
+        $id = $request->input("id");
         if ($specs == null) {
             $specs = "0";
         }
 
+<<<<<<< Updated upstream
         // $existingSupplier = DB::table('m_category')
         //     ->where('category_name', $name)
         //     // ->where('deleted', false)
         //     ->first();
+=======
+        $existingSupplier = DB::table('m_category')
+            ->where('category_name', $name)
+            ->where('deleted', false)
+            ->where('category_id', '!=', $id)
+            ->first();
+>>>>>>> Stashed changes
 
         // if ($existingSupplier) {
         //     // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
         //     return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
         // }
 
-        $id = $request->input("id");
+
         $data = array(
             'category_name' => $name,
             'stock_req' => $stock,
@@ -292,10 +300,18 @@ class CatSuppController extends Controller
         $categories = $request->input('category');
         $id = $request->input('idValue');
 
+<<<<<<< Updated upstream
         // $existingSupplier = DB::table('m_brand')
         //     ->where('name', $name)
         //     // ->where('deleted', false)
         //     ->first();
+=======
+        $existingSupplier = DB::table('m_brand')
+            ->where('name', $name)
+            ->where('deleted', false)
+            ->where('brand_id', '!=', $id)
+            ->first();
+>>>>>>> Stashed changes
 
         // if ($existingSupplier) {
         //     // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
@@ -440,6 +456,7 @@ class CatSuppController extends Controller
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
 
+<<<<<<< Updated upstream
     //     $existingSupplier = DB::table('m_supplier')
     //     ->where('name', $supplierName)
     //     // ->where('deleted', false)
@@ -449,6 +466,18 @@ class CatSuppController extends Controller
     //     // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
     //     return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
     // }
+=======
+        $existingSupplier = DB::table('m_supplier')
+            ->where('name', $supplierName)
+            ->where('deleted', false)
+            ->where('supplier_id', '!=', $supplier)
+            ->first();
+
+        if ($existingSupplier) {
+            // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+            return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
+        }
+>>>>>>> Stashed changes
 
         $data = array(
             'name' => $supplierName,

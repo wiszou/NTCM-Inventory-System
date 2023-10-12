@@ -220,6 +220,48 @@ class CustodianController extends Controller
         }
     }
 
+    public function updateEmployee(Request $request)
+    {
+        $name = $request->input('name');
+        $position = $request->input('position');
+        $department = $request->input('department');
+        $id = $request->input('id');
+
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+
+        $data = array(
+            'name' => $name,
+            'position' => $position,
+            'department' => $department,
+            'user_change' => $user,
+            'date_change' => $currentDate,
+        );
+
+        
+        $existingSupplier = DB::table('m_employee')
+            ->where('name', $name)
+            ->where('deleted', false)
+            ->where('employee_id', '!=', $id)
+            ->first();
+
+        if ($existingSupplier) {
+            // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+            return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
+        }
+
+        try {
+            DB::table('m_employee')->where('employee_id', $id)->update($data);
+            $logController = new LogController();
+            $logController->sendLog("Employee " . $id . " Succesfully updated");
+            return response()->json(['success' => true, 'message' => 'Employee updated successfully.']);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => 'An error occurred while updated the information.']);
+        }
+    }
+
     public function toPrint($custodianID)
     {
         $custodian = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
@@ -309,4 +351,20 @@ class CustodianController extends Controller
             return response()->json(['success' => false, 'message' => 'An error occurred while adding the Custodian.']);
         }
     }
+
+    public function getEmployeeDetails($id)
+    {
+        $data = DB::table('m_employee')->where('employee_id', $id)->first();
+
+        // Check if the data was found
+        if ($data) {
+            // Return the entire data object as JSON
+            return response()->json($data);
+        } else {
+            // If the data was not found, return an error response or handle it as needed
+            return response()->json(['error' => 'Brand not found'], 404);
+        }
+    }
+
+    
 }

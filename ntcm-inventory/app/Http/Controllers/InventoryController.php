@@ -222,7 +222,8 @@ class InventoryController extends Controller
 
         $existingRecord = DB::table('t_itemdetails')
             ->where('serial_num', $serialNum)
-            ->where('deleted', "false")
+            ->where('deleted', 'false')
+            ->where('item_id', '!=', $id)
             ->first();
 
         if ($existingRecord) {

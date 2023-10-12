@@ -30,6 +30,7 @@ Route::post('/insert-item', [InventoryController::class, 'addItem'])->name('inse
 Route::get('/remove-item/{removeItem}', [InventoryController::class, 'removeItem'])->name('remove');
 Route::get('/getItemDetails/{brandID}/{categoryID}', [InventoryController::class, 'getItemDetails']);
 Route::get('/getItemSpecs/{itemID}', [InventoryController::class, 'getItemSpecs']);
+Route::get('/getEmployeeDetail/{employeeID}', [CustodianController::class, 'getEmployeeDetails']);
 Route::post('/update-item',  [InventoryController::class, 'updateTab']);
 
 Route::post('/addSupplier', [CatSuppController::class, 'addSupplier']);
@@ -58,6 +59,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/create-custodianform', [CustodianController::class, 'getUpdatedCustodian1'])->name('custodian2');
     Route::get('/editItems/{itemID}', [InventoryController::class, 'editItem'])->name('editItem');
     Route::post('/addEmployee', [CustodianController::class, 'addEmployee']);
+    Route::post('/updateEmployee', [CustodianController::class, 'updateEmployee']);
     Route::get('/supplier', [CatSuppController::class, 'updateTable2'])->name('suppliers');
     Route::get('/brands', [CatSuppController::class, 'updateTable1'])->name('brands');
     Route::get('/updated-category', [CatSuppController::class, 'updateCateg'])->name('categories');
