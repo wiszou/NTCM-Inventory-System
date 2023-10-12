@@ -41,7 +41,9 @@ Route::post('/CategoryBrand', [CatSuppController::class, 'categoryToBrand']);
 Route::post('/updateCategoryInfo', [CatSuppController::class, 'updateCategoryDetail']);
 Route::post('/updateBrandInfox', [CatSuppController::class, 'updateBrandDetail']);
 
-Route::get('/UpdateCustodianForm/{custodianID}', [CustodianController::class, 'returnItems'])->name('UpdateCustodianForm');
+Route::get('/UpdateCustodianForm/{custodianID}/{status}', [CustodianController::class, 'returnItems'])->name('UpdateCustodianForm');
+Route::get('/markCustodianForm/{ID}', [CustodianController::class, 'markCustodian']);
+
 
 Route::get('//get-categories-for-supplier/{supplierId}', [CatSuppController::class, 'getCategoriesForSupplier']);
 Route::get('/remove-category/{itemCode}', [CatSuppController::class, 'removeCategory']);
@@ -54,7 +56,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/updated-custodian', [CustodianController::class, 'getUpdatedCustodian'])->name('updated-custodian');
+    Route::get('/updated-custodian', [CustodianController::class, 'getUpdatedCustodian2'])->name('updated-custodian');
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
     Route::get('/create-custodianform', [CustodianController::class, 'getUpdatedCustodian1'])->name('custodian2');
     Route::get('/editItems/{itemID}', [InventoryController::class, 'editItem'])->name('editItem');
@@ -70,6 +72,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::get('/BrandInfo/{id}', [CatSuppController::class, 'getBrandDetail']);
     Route::get('/SupplierInfo/{id}', [CatSuppController::class, 'getSupplierDetail']);
     Route::get('/CategoryInfo/{id}', [CatSuppController::class, 'getCategoryDetail']);
+    Route::get('/CustodianInfo2/{id}', [CustodianController::class, 'getCustodian']);
     Route::get('/inventory', function () {
         return view('inventory');
     })->name('inventory');

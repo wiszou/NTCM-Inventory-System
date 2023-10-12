@@ -20,11 +20,42 @@ class CustodianController extends Controller
     {
         $inventory = DB::table('t_inventory')->get();
         $itemdetails = DB::table('t_itemdetails')->get();
+
+        foreach ($itemdetails as $item) {
+            $id = $item->item_id;
+            $data1 = DB::table('t_inventory')->where('item_id', $id)->first();
+            if ($data1)
+            {
+                $item->item_status = $data1->item_status;
+            }
+        }
+
         $supplier = DB::table('m_supplier')->get();
         $category = DB::table('m_category')->get();
-        $custodian = DB::table('t_custodian')->get();
+        $custodian = DB::table('t_custodian')->where("status", 0)->get();
         $employee = DB::table('m_employee')->get();
         return view('custodianCreate', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier, 'details' => $itemdetails, 'custodian' => $custodian, 'employees' => $employee]);
+    }
+
+    public function getUpdatedCustodian2()
+    {
+        $inventory = DB::table('t_inventory')->get();
+        $itemdetails = DB::table('t_itemdetails')->get();
+
+        foreach ($itemdetails as $item) {
+            $id = $item->item_id;
+            $data1 = DB::table('t_inventory')->where('item_id', $id)->first();
+            if ($data1)
+            {
+                $item->item_status = $data1->item_status;
+            }
+        }
+
+        $supplier = DB::table('m_supplier')->get();
+        $category = DB::table('m_category')->get();
+        $custodian = DB::table('t_custodian')->where("status", 1)->get();
+        $employee = DB::table('m_employee')->get();
+        return view('custodian', ['inventory' => $inventory, 'categories' => $category, 'suppliers' => $supplier, 'details' => $itemdetails, 'custodian' => $custodian, 'employees' => $employee]);
     }
 
     public function generateID()
@@ -65,6 +96,26 @@ class CustodianController extends Controller
 
 
         $filterArray = json_decode($items, true); // Ensure that the JSON is decoded into an associative array
+        $length = count($filterArray);
+
+        $statusArray = array();
+
+        for ($i = 0; $i < $length; $i++) {
+
+
+            if ($type == "Deploy") {
+                $typeItem = "Deployed";  // Use = instead of ==
+            }
+
+            if ($type == "Borrow") {
+                $typeItem = "Borrowed";  // Use = instead of ==
+            }
+
+
+            $statusArray[] = $typeItem;
+        }
+        $itemStatuses = json_encode($statusArray, true);
+
 
         foreach ($filterArray as $key => $value) {
             if ($value === 'none') {
@@ -109,6 +160,7 @@ class CustodianController extends Controller
             'deleted' => "false",
             'type' => $type,
             'items' => $items,
+            'itemStatus' => $itemStatuses,
             'user_created' => $user,
             'date_created' => $date,
         );
@@ -239,7 +291,7 @@ class CustodianController extends Controller
             'date_change' => $currentDate,
         );
 
-        
+
         $existingSupplier = DB::table('m_employee')
             ->where('name', $name)
             ->where('deleted', false)
@@ -316,42 +368,6 @@ class CustodianController extends Controller
         ]);
     }
 
-    public function returnItems($custodianID)
-    {
-        $user = session()->get('user_name');
-        $dateTimeController = new DateTimeController();
-        $currentDate = $dateTimeController->getDateTime(new Request());
-
-        $data = array(
-            'status' => 1,
-            'user_created' => $user,
-            'date_created' => $currentDate,
-        );
-
-
-        try {
-
-
-            $custodianDetail = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
-
-
-            while ($custodianDetail) {
-                $items = json_decode($custodianDetail->items);
-                $this->updateItem($items, "Spare", " ");
-            }
-
-            DB::table('t_custodian')->where('custodian_id', $custodianID)->update($data);
-
-
-            $logController = new LogController();
-            $logController->sendLog("Custodian Form " . $custodianID . " Succesfully marked as returned");
-            return response()->json(['success' => true, 'message' => 'Custodian form updated successfully.']);
-        } catch (\Exception $e) {
-            Log::error($e->getMessage());
-            return response()->json(['success' => false, 'message' => 'An error occurred while adding the Custodian.']);
-        }
-    }
-
     public function getEmployeeDetails($id)
     {
         $data = DB::table('m_employee')->where('employee_id', $id)->first();
@@ -366,5 +382,115 @@ class CustodianController extends Controller
         }
     }
 
+    public function getCustodian($custodianID)
+    {
+        $data = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
+        $itemsdata = [];
     
+        if ($data) {
+            $itemsArray = json_decode($data->items, true);
+    
+            foreach ($itemsArray as $item) {
+                $result = DB::table('t_itemdetails')->where('item_id', $item)->first();
+                $result2 = DB::table('t_inventory')->where('item_id', $item)->first();
+    
+                if ($result) {
+                    // Add the 'item_status' from $result2 to $result
+                    if ($result2) {
+                        $result->item_status = $result2->item_status;
+                        $result->custodian_id = $result2->custodian_id;
+                        $result->current_custodianID = $data->custodian_id; // Fixed the typo
+
+
+                        if ($data->type == "Deploy") {
+                            $type = "Deployed";  // Use = instead of ==
+                        }
+                
+                        if ($data->type == "Borrow") {
+                            $type = "Borrowed";  // Use = instead of ==
+                        }
+                        $result->item_currentStatus = $type;
+
+                    } else {
+                        // If $result2 is not found, set a default value for 'item_status'
+                        $result->item_status = 'Not found'; // or any other appropriate default value
+                    }
+                    $itemsdata[] = $result;
+                } else {
+                    // Handle the case when item details are not found for a particular item
+                    // You might log an error or take appropriate action
+                }
+            }
+    
+            return response()->json($itemsdata);
+        } else {
+            // If the custodian data is not found, return an error response
+            return response()->json(['error' => 'Custodian not found'], 404);
+        }
+    }
+    
+
+
+    public function returnItems($itemID, $status)
+    {
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+
+        try {
+
+            if ($status == 'Defect' || $status == 'Missing') {
+                $data1 = array(
+                    'item_status' => $status,
+                    'user_change' => $user,
+                    'date_change' => $currentDate,
+                );
+            
+                // Assuming you've imported the DB facade
+                DB::table('t_inventory')->where('item_id', $itemID)->update($data1);
+            }
+
+            if ($status == 'Spare') {
+                $data1 = array(
+                    'item_status' => $status,
+                    'user_change' => $user,
+                    'custodian_id' => ' ',
+                    'date_change' => $currentDate,
+                );
+            
+                // Assuming you've imported the DB facade
+                DB::table('t_inventory')->where('item_id', $itemID)->update($data1);
+            }
+
+
+
+            $logController = new LogController();
+            $logController->sendLog("Item " . $itemID . " Succesfully marked as " . $status);
+            return response()->json(['success' => true, 'message' => 'Custodian form updated successfully.']);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => 'An error occurred while updating the item.']);
+        }
+    }
+
+    public function markCustodian($custodianID){
+        $update = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+        $end = date('d-F-Y');
+        if ($update){
+            $data = array(
+                'status' => 1,
+                'end_date' => $end,
+                'user_change' => $user,
+                'date_change' => $currentDate,
+            );
+            DB::table('t_custodian')->where('custodian_id', $custodianID)->update($data);
+            $logController = new LogController();
+            $logController->sendLog("Custodian Form " . $custodianID . " Succesfully marked as done" . $custodianID);
+            return response()->json(['success' => true, 'message' => 'Custodian form updated successfully.']);
+        }
+
+    }
 }

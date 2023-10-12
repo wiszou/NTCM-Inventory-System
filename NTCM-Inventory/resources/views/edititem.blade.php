@@ -217,18 +217,17 @@
                                 </select>
                             </div>
 
-
-
-
+                            @unless ($dataitem->item_status == "Borrowed" || $dataitem->item_status == "Deployed")
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status:</label>
-                                <select data-te-select-init data-te-select="true" name="item-status" id="supplier-name" class="shadow-sm w-full p-2.5  editable-input">
+                                <label for="item-status" class="block mb-2 text-sm font-medium text-gray-900">Status:</label>
+                                <select data-te-select-init data-te-select="true" name="item-status" id="item-status" class="shadow-sm w-full p-2.5 editable-input">
                                     <option value="Stock" {{ $dataitem->item_status == "Stock" ? 'selected' : '' }}>Stock</option>
                                     <option value="Spare" {{ $dataitem->item_status == "Spare" ? 'selected' : '' }}>Spare</option>
-                                    <option value="Borrowed" {{ $dataitem->item_status == "Borrowed" ? 'selected' : '' }}>Borrowed</option>
-                                    <option value="Deployed" {{ $dataitem->item_status == "Deployed" ? 'selected' : '' }}>Deployed</option>
+                                    <option value="Missing" {{ $dataitem->item_status == "Missing" ? 'selected' : '' }}>Missing</option>
+                                    <option value="Defective" {{ $dataitem->item_status == "Defective" ? 'selected' : '' }}>Defective</option>
                                 </select>
                             </div>
+                            @endunless
 
 
                             <div class="col-span-6 sm:col-span-3">

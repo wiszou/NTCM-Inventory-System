@@ -76,7 +76,7 @@
                 @if ($custodian->status == 1)
                 <div class="absolute mt-96 ml-20">
                     <img src="/assets/returned.png" class="h-full w-full" alt="returned" />
-                    <h5 class="w- full text-4xl text-red-600 font-bold flex justify-center">DATE: 20-October-2023
+                    <h5 class="w- full text-4xl text-red-600 font-bold flex justify-center">DATE: {{ $custodian->end_date}}
                     </h5>
                 </div>
                 @endif
@@ -226,7 +226,7 @@
                 @if ($custodian->status == 1)
                 <div class="absolute mt-72 ml-16">
                     <img src="/assets/returned.png" class="h-full w-full" alt="returned" />
-                    <h5 class="w- full text-4xl text-red-600 font-bold flex justify-center">DATE: 20-October-2023
+                    <h5 class="w- full text-4xl text-red-600 font-bold flex justify-center">DATE: {{ $custodian->end_date}}
                     </h5>
                 </div>
                 @endif
