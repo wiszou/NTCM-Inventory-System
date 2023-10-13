@@ -7,9 +7,6 @@
 		margin: 0px;
 		padding: 0px;
 	}
-	p{
-		padding: 5px;
-	}
 	.note{
 		color: #FFF;
 	    background-color: rgba(98, 163, 207, 0.9);
@@ -24,12 +21,6 @@
 		padding: 15px;
 		text-align: center;
 	}
-	.ntcLogo{
-		padding: 10px 10px 20px 10px;
-		border-right: 1px solid black;
-		width: 130px;
-		height: 30px;
-	}
 	hr{
 		color: #c0c0c0;
 	}
@@ -41,44 +32,55 @@
 	<tr>
 		<td>
 			<div class="ntcLogo" style="display: inline-block;">
-				<img src="http://www.ntcmanila.com.ph/ntc-apps/assets/images/ntc-logo.png" width="120" height="40">
+				<img src="https://i.imgur.com/UkxXm0p.png" width="250">
 			</div>
 		</td>
+  </tr>
+  <tr>
 		<td>
-			<h4 style="display:inline-block;text-transform: uppercase;padding-left: 20px;margin-top: -20px;">License, Permit and Certificate Monitoring Notification</h4>
+			<h4 style="display:inline-block;text-transform: uppercase; padding-left: 2px; margin-top: 12px;">IT Inventory System Notification</h4>
 		</td>
 	</tr>
 </table>
 
 <p>Good day!</p>
-<p>This is to inform you that Custodian Form is now created.<br/>Details are as follow:</p>
-<br/>
-<table style="margin-bottom:5px;">
+<p>We are pleased to inform you that your Custodian Form has been successfully created. <br/>Below are the details for your reference:</p>
+
+<table style="margin-bottom:1px;">
 	<tr>
-		<td>Title:</td>
+    <td> <span style="font-weight: bold;">Form ID: </span>IT-CSF-0001</td>
+	</tr>
+  <tr>
+    <td> <span style="font-weight: bold;">Date Created: </span>11-October-2023</td>
+	</tr>
+  <tr>
+    <td> <span style="font-weight: bold;">Purpose: </span>Replacement</td>
+	</tr>
+  <tr>
+    <td> <span style="font-weight: bold;">Item/s:</td>
+	</tr>
+  
+  </table>
+  <br/>
+  <table>
+    <tr>
+    <td> IT-2023-0001 | Lenovo - T14</td>
+	</tr>
+      <tr>
+    <td> IT-2023-0002 | Mouse</td>
+	</tr>
+      <tr>
+    <td > IT-2023-0003 | Bag</td>
+	</tr>
+      <tr>
+    <td> IT-2023-0004 | Charger</td>
 	</tr>
 </table>
-<table>
-	<tr>
-		<td>Monitoring No.:</td>
-		<td style="padding-left:20px;">Date Created:</td>
-	</tr>
-	<tr>
-		<td>Reference No.:</td>
-		<td style="padding-left:20px;">Date Issued:</td>
-	</tr>
-	<tr>
-		<td>Agency:</td>
-		<td style="padding-left:20px;">Expiration Date:</td>
-	</tr>
-	<tr>
-		<td>Department:	</td>
-		<td style="padding-left:20px;">Originator:</td>
-	</tr>
-</table>
+ <br/>
+
 <br/>
-<p><i>To view complete details, please login to <a href="ntcmanila.com.ph/ntcappsbeta">ntcmanila.com.ph/ntcappsbeta</a>.</i></p>
+<p><i>To view complete details, please login to <a href="">ntcmanila.com.ph/ntcappsbeta</a>.</i></p>
 <hr />
-<small><i><b>This is an auto generated email, please do not reply.</b></i></small>
+<small><i><b>This is an automated email. Kindly refrain from responding to this message.</b></i></small>
 </body>
 </html>
