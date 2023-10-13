@@ -251,10 +251,13 @@ td {
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-price"
-                                    class="block mb-2 text-sm font-medium text-gray-900 ">Quantity:</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Multiple:</label>
+                                    <div class="flex flex-row">
+                                <input type="checkbox" name="specs" id="specs" value="1" class="w-10 my-2.5 mr-2">
                                 <input type="Number" name="price" id="item-price"
                                     class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
                                     placeholder="Quantity" required="">
+                                    </div>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
@@ -317,6 +320,7 @@ td {
 
             </div>
             <!--/container-->
+            
             <!--currency-->
             <script>
             const itemPriceInput = document.getElementById("item-price");
@@ -331,7 +335,7 @@ td {
                     inputValue = inputValue.replace(/^₱+/, "");
 
                     // Add ₱ symbol at the start
-                    inputValue = "₱" + Number(inputValue).toLocaleString("en-US");
+                    inputValue = Number(inputValue).toLocaleString("en-US");
                 }
 
                 // Update the input value
