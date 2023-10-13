@@ -245,6 +245,7 @@ class CustodianController extends Controller
         $name = $request->input('name');
         $position = $request->input('position');
         $department = $request->input('department');
+        $email = $request->input('email');
         $id = $this->generateIDEmployee();
 
         $user = session()->get('user_name');
@@ -253,6 +254,7 @@ class CustodianController extends Controller
 
         $data = array(
             'name' => $name,
+            'email' => $email,
             'position' => $position,
             'department' => $department,
             "employee_id" => $id,
@@ -278,6 +280,7 @@ class CustodianController extends Controller
         $position = $request->input('position');
         $department = $request->input('department');
         $id = $request->input('id');
+        $email = $request->input('email');
 
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
@@ -286,6 +289,7 @@ class CustodianController extends Controller
         $data = array(
             'name' => $name,
             'position' => $position,
+            'email' => $email,
             'department' => $department,
             'user_change' => $user,
             'date_change' => $currentDate,

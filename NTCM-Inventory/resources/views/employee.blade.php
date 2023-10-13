@@ -167,7 +167,7 @@ input[disabled] {
 
                         <div class="col-span-6 sm:col-span-2">
                             <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Email:</label>
-                            <input type="email" name="position" id="item-model"
+                            <input type="email" name="email" id="item-model"
                                 class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
                                 placeholder="Email" required="">
                         </div>
@@ -209,7 +209,7 @@ input[disabled] {
                     <td class="text-center">{{ $item->name }}</td>
                     <td class="text-center">{{ $item->department }}</td>
                     <td class="text-center">{{ $item->position }}</td>
-                    <td class="text-center">norwegian@ntcm.com.ph</td>
+                    <td class="text-center">{{ $item->email }}</td>
                     <td class="text-center items-center flex justify-center">
                         <button data-item-id="" onclick="openModal('{{ $item->employee_id }}')"
                             class="mr-1 btn btn-primary rounded-3xl text-ntccolor border border-ntccolor hover:bg-ntccolor hover:text-white font-medium text-sm p-1.5 text-center inline-flex items-center">
@@ -287,9 +287,9 @@ input[disabled] {
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model"
                                     class="block mb-2 text-sm font-medium text-gray-900">Email:</label>
-                                <input type="email" name="position" id="position1"
+                                <input type="email" name="email" id="email1"
                                     class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="IT Staff" required="">
+                                    placeholder="juan_delacruz@ntcm.com.ph" required="">
                             </div>
 
                         </div>
@@ -426,6 +426,7 @@ input[disabled] {
                 document.getElementById('department1').value = response.department;
                 document.getElementById('position1').value = response.position;
                 document.getElementById('id1').value = response.employee_id;
+                document.getElementById('email1').value = response.email;
             },
             error: function(error) {
                 // Handle error
