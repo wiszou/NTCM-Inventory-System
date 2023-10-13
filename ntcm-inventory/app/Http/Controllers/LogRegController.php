@@ -37,6 +37,7 @@ class LogRegController extends Controller
                     'userID' => $uniqueId,
                     'user_created' => "admin",
                     'user_change' => 'admin',
+                    'deleted' => 'false',
                     'date_created' => $currentDate,
                     'date_change' => $currentDate
                 );

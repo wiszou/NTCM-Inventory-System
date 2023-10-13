@@ -185,9 +185,9 @@ td {
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-price"
                                     class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
-                                <input type="Number" name="price" id="item-price"
-                                    class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="40,000" required="">
+                                <input type="text" name="price" id="item-price"
+                                    class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                    placeholder="₱00,000" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
@@ -229,7 +229,7 @@ td {
                                     @if ($item->deleted == "false")
                                     <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}"
                                         compare="{{ $item->supplier_list }}">{{ $item->category_name }}</option>
-                                        @endif
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -244,11 +244,18 @@ td {
                                     @if ($item->deleted == "false")
                                     <option value="{{ $item->brand_id }}" compare="{{ $item->category_list }}">
                                         {{ $item->name }}</option>
-                                        @endif
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
 
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="item-price"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Quantity:</label>
+                                <input type="Number" name="price" id="item-price"
+                                    class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
+                                    placeholder="Quantity" required="">
+                            </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="status"
@@ -310,6 +317,29 @@ td {
 
             </div>
             <!--/container-->
+            <!--currency-->
+            <script>
+            const itemPriceInput = document.getElementById("item-price");
+
+            itemPriceInput.addEventListener("input", function() {
+                // Get the input value and remove any non-digit characters (except ₱)
+                let inputValue = itemPriceInput.value.replace(/[^0-9₱]/g, "");
+
+                // Format the value with the ₱ symbol and commas
+                if (inputValue.length > 0) {
+                    // Remove any leading ₱ symbols
+                    inputValue = inputValue.replace(/^₱+/, "");
+
+                    // Add ₱ symbol at the start
+                    inputValue = "₱" + Number(inputValue).toLocaleString("en-US");
+                }
+
+                // Update the input value
+                itemPriceInput.value = inputValue;
+            });
+            </script>
+
+
 
             <!-- jQuery -->
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
