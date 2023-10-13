@@ -48,13 +48,13 @@
 
 <table style="margin-bottom:1px;">
 	<tr>
-    <td> <span style="font-weight: bold;">Form ID: </span>IT-CSF-0001</td>
+    <td> <span style="font-weight: bold;">Form ID: </span>{{ $data->custodian_id }}</td>
 	</tr>
   <tr>
-    <td> <span style="font-weight: bold;">Date Created: </span>11-October-2023</td>
+    <td> <span style="font-weight: bold;">Date Created: </span>{{ $data->start_date }}</td>
 	</tr>
   <tr>
-    <td> <span style="font-weight: bold;">Purpose: </span>Replacement</td>
+    <td> <span style="font-weight: bold;">Purpose: </span>{{ $data->description }}</td>
 	</tr>
   <tr>
     <td> <span style="font-weight: bold;">Item/s:</td>
@@ -63,18 +63,11 @@
   </table>
   <br/>
   <table>
+	@foreach ($data2 as $data1)
     <tr>
-    <td> IT-2023-0001 | Lenovo - T14</td>
+    <td>{{ $data1->item_id }} - {{ $data1->name }}</td>
 	</tr>
-      <tr>
-    <td> IT-2023-0002 | Mouse</td>
-	</tr>
-      <tr>
-    <td > IT-2023-0003 | Bag</td>
-	</tr>
-      <tr>
-    <td> IT-2023-0004 | Charger</td>
-	</tr>
+	@endforeach
 </table>
  <br/>
 

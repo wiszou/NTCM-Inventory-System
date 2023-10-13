@@ -11,12 +11,12 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
-class OutlookEmail extends Mailable
+class ReturnCustodian extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
-    public $data2;
+    public $custodian1;
+    public $itemData;
 
     /**
      * Create a new message instance.
@@ -25,8 +25,8 @@ class OutlookEmail extends Mailable
      */
     public function __construct($dataFromDatabase,$itemArray)
     {
-        $this->data = $dataFromDatabase;
-        $this->data2 = $itemArray;
+        $this->custodian1 = $dataFromDatabase;
+        $this->itemData = $itemArray;
     }
 
     /**
@@ -36,7 +36,7 @@ class OutlookEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.custodianCreation')
-                ->subject('Creation of Custodian Form');
+        return $this->view('email.markCustodian')
+                ->subject('Returning of items in Custodian Form');
     }
 }

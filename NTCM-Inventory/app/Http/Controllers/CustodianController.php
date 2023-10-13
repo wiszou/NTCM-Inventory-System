@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB; // Import the DB facade
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OutlookEmail;
+use App\Mail\ReturnCustodian;
 
 class CustodianController extends Controller
 {
@@ -94,118 +95,99 @@ class CustodianController extends Controller
         $issued = $request->input('issued');
         $items = $request->input('itemArray');
 
-        $email = $this->fetchEmployeeEmail($handlerName);
-        $this->sendEmail($custodianID, $email);
+
+        $filterArray = json_decode($items, true); // Ensure that the JSON is decoded into an associative array
+        $length = count($filterArray);
+
+        $statusArray = array();
+
+        for ($i = 0; $i < $length; $i++) {
+
+
+            if ($type == "Deploy") {
+                $typeItem = "Deployed";  // Use = instead of ==
+            }
+
+            if ($type == "Borrow") {
+                $typeItem = "Borrowed";  // Use = instead of ==
+            }
+
+
+            $statusArray[] = $typeItem;
+        }
+        $itemStatuses = json_encode($statusArray, true);
+
+
+        foreach ($filterArray as $key => $value) {
+            if ($value === 'none') {
+                unset($filterArray[$key]);
+            }
+        }
+
+        $filterArray = array_unique($filterArray);
+        // If you want to re-index the array after removing elements, you can use array_values function
+        $filterArray = array_values($filterArray);
+
+        $items = json_encode($filterArray, true);
+
+
+
+        if ($type == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select proper custodian type']);
+        };
+
+        if ($items == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select an item']);
+        };
+        if ($noted == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select an item']);
+        };
+        if ($issued == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select an item']);
+        };
+        if ($handlerName == "none") {
+            return response()->json(['success' => false, 'message' => 'Please select an item']);
+        };
+
+
+        $custodianData = array(
+            'custodian_id' => $custodianID,
+            'name' => $handlerName,
+            'noted' => $noted,
+            'issued' => $issued,
+            'description' => $description,
+            'start_date' => $currentDate,
+            'status' => 0,
+            'deleted' => "false",
+            'type' => $type,
+            'items' => $items,
+            'itemStatus' => $itemStatuses,
+            'user_created' => $user,
+            'date_created' => $date,
+        );
+
+
+        try {
+            $this->updateItem($items, $type, $custodianID);
+            DB::table('t_custodian')->insert($custodianData);
+            $email = $this->fetchEmployeeEmail($handlerName);
+            $this->sendEmail($custodianID, $email);
+            $logController = new LogController();
+            $logController->sendLog("Custodian Form " . $custodianID . " Succesfully added");
+            $this->toPrint($custodianID);
+            return response()->json(['success' => true, 'message' => 'Item added successfully.']);
+        } catch (\Exception $e) {
+            error_log(json_encode($items));
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => 'An error occurred while adding the item.']);
+        }
     }
 
-    // public function createCustodian(Request $request)
-    // {
-
-    //     $user = session()->get('user_name');
-    //     $dateTimeController = new DateTimeController();
-    //     $date = $dateTimeController->getDateTime(new Request());
-
-    //     $currentDate = date('d-F-Y');
-    //     $custodianID = $this->generateID();
-    //     $handlerName = $request->input('handlerName');
-    //     $description = $request->input('remarks');
-    //     $type = $request->input('type');
-    //     $noted = $request->input('noted');
-    //     $issued = $request->input('issued');
-    //     $items = $request->input('itemArray');
-
-
-    //     $filterArray = json_decode($items, true); // Ensure that the JSON is decoded into an associative array
-    //     $length = count($filterArray);
-
-    //     $statusArray = array();
-
-    //     for ($i = 0; $i < $length; $i++) {
-
-
-    //         if ($type == "Deploy") {
-    //             $typeItem = "Deployed";  // Use = instead of ==
-    //         }
-
-    //         if ($type == "Borrow") {
-    //             $typeItem = "Borrowed";  // Use = instead of ==
-    //         }
-
-
-    //         $statusArray[] = $typeItem;
-    //     }
-    //     $itemStatuses = json_encode($statusArray, true);
-
-
-    //     foreach ($filterArray as $key => $value) {
-    //         if ($value === 'none') {
-    //             unset($filterArray[$key]);
-    //         }
-    //     }
-
-    //     $filterArray = array_unique($filterArray);
-    //     // If you want to re-index the array after removing elements, you can use array_values function
-    //     $filterArray = array_values($filterArray);
-
-    //     $items = json_encode($filterArray, true);
-
-
-
-    //     if ($type == "none") {
-    //         return response()->json(['success' => false, 'message' => 'Please select proper custodian type']);
-    //     };
-
-    //     if ($items == "none") {
-    //         return response()->json(['success' => false, 'message' => 'Please select an item']);
-    //     };
-    //     if ($noted == "none") {
-    //         return response()->json(['success' => false, 'message' => 'Please select an item']);
-    //     };
-    //     if ($issued == "none") {
-    //         return response()->json(['success' => false, 'message' => 'Please select an item']);
-    //     };
-    //     if ($handlerName == "none") {
-    //         return response()->json(['success' => false, 'message' => 'Please select an item']);
-    //     };
-
-
-    //     $custodianData = array(
-    //         'custodian_id' => $custodianID,
-    //         'name' => $handlerName,
-    //         'noted' => $noted,
-    //         'issued' => $issued,
-    //         'description' => $description,
-    //         'start_date' => $currentDate,
-    //         'status' => 0,
-    //         'deleted' => "false",
-    //         'type' => $type,
-    //         'items' => $items,
-    //         'itemStatus' => $itemStatuses,
-    //         'user_created' => $user,
-    //         'date_created' => $date,
-    //     );
-
-
-    //     try {
-    //         $this->updateItem($items, $type, $custodianID);
-    //         DB::table('t_custodian')->insert($custodianData);
-    //         $email = $this->fetchEmployeeEmail($handlerName);
-    //         $this->sendEmail($custodianID, $email);
-    //         $logController = new LogController();
-    //         $logController->sendLog("Custodian Form " . $custodianID . " Succesfully added");
-    //         $this->toPrint($custodianID);
-    //         return response()->json(['success' => true, 'message' => 'Item added successfully.']);
-    //     } catch (\Exception $e) {
-    //         error_log(json_encode($items));
-    //         Log::error($e->getMessage());
-    //         return response()->json(['success' => false, 'message' => 'An error occurred while adding the item.']);
-    //     }
-    // }
-
-    function fetchEmployeeEmail($id){
+    function fetchEmployeeEmail($id)
+    {
         $data = DB::table('m_employee')->where('employee_id', $id)->first();
-        
-        if ($data){
+
+        if ($data) {
             $email = $data->email;
             return $email;
         }
@@ -510,6 +492,12 @@ class CustodianController extends Controller
     public function markCustodian($custodianID)
     {
         $update = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
+        $handlerName = "";
+        if ($update)
+        {
+            $handlerName = $update->name;
+        }
+
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
@@ -522,20 +510,57 @@ class CustodianController extends Controller
                 'date_change' => $currentDate,
             );
             DB::table('t_custodian')->where('custodian_id', $custodianID)->update($data);
+            $email = $this->fetchEmployeeEmail($handlerName);
+            $this->sendEmail2($custodianID, $email);
             $logController = new LogController();
             $logController->sendLog("Custodian Form " . $custodianID . " Succesfully marked as done" . $custodianID);
             return response()->json(['success' => true, 'message' => 'Custodian form updated successfully.']);
         }
     }
 
-    public function sendEmail($id,$email)
+    public function sendEmail($id, $email)
     {
         $dataFromDatabase = DB::table('t_custodian')->where('custodian_id', $id)->first();
-    
+        $itemArray = array();
+        if ($dataFromDatabase) {
+            $items = $dataFromDatabase->items;
+            $items = json_decode($items, true);
+            foreach ($items as $item) {
+
+                $itemInfo = DB::table('t_itemdetails')->where('item_id', $item)->first();
+                // Check if $itemInfo is not null before pushing it into $itemArray
+                if ($itemInfo) {
+                    $itemArray[] = $itemInfo;
+                }
+            }
+        }
         // Create an instance of the OutlookEmail Mailable class
-        $outlookEmail = new OutlookEmail($dataFromDatabase);
-    
-        // Send the email using the Mailable class
-        Mail::to("kyle.delapena@ntcm.com.ph")->send($outlookEmail);
+            $outlookEmail = new OutlookEmail($dataFromDatabase, $itemArray);
+
+            // Send the email using the Mailable class
+            Mail::to($email)->send($outlookEmail);
+    }
+
+    public function sendEmail2($id, $email)
+    {
+        $dataFromDatabase = DB::table('t_custodian')->where('custodian_id', $id)->first();
+        $itemArray = array();
+        if ($dataFromDatabase) {
+            $items = $dataFromDatabase->items;
+            $items = json_decode($items, true);
+            foreach ($items as $item) {
+
+                $itemInfo = DB::table('t_itemdetails')->where('item_id', $item)->first();
+                // Check if $itemInfo is not null before pushing it into $itemArray
+                if ($itemInfo) {
+                    $itemArray[] = $itemInfo;
+                }
+            }
+        }
+        // Create an instance of the OutlookEmail Mailable class
+            $outlookEmail = new ReturnCustodian($dataFromDatabase, $itemArray);
+
+            // Send the email using the Mailable class
+            Mail::to($email)->send($outlookEmail);
     }
 }
