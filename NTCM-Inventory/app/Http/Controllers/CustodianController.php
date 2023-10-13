@@ -493,7 +493,7 @@ class CustodianController extends Controller
     {
         $update = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
         $handlerName = "";
-        if ($update)
+        if ($update)    
         {
             $handlerName = $update->name;
         }
@@ -513,7 +513,7 @@ class CustodianController extends Controller
             $email = $this->fetchEmployeeEmail($handlerName);
             $this->sendEmail2($custodianID, $email);
             $logController = new LogController();
-            $logController->sendLog("Custodian Form " . $custodianID . " Succesfully marked as done" . $custodianID);
+            $logController->sendLog("Custodian Form " . $custodianID . " Succesfully marked as done");
             return response()->json(['success' => true, 'message' => 'Custodian form updated successfully.']);
         }
     }
