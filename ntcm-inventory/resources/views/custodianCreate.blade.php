@@ -477,7 +477,7 @@
                     // Append the cloned div below the original one
                     $("#input-container").after(clonedDiv);
                 });
-                
+
             });
         </script>
 
@@ -772,13 +772,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-
             const form = document.getElementById('create-form');
+            const loadingOverlay = createLoadingOverlay();
+
             form.addEventListener('submit', function(e) {
-
                 e.preventDefault(); // Prevent the default form submission
-                // Serialize form data
 
+                // Show the loading overlay
+                document.body.appendChild(loadingOverlay);
+
+                // Serialize form data
                 const formData = new FormData(form);
                 fetch('/insert-custodian', {
                         method: 'POST',
@@ -799,11 +802,46 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
+                    })
+                    .finally(() => {
+                        // Hide the loading overlay after the request is complete
+                        document.body.removeChild(loadingOverlay);
                     });
-
             });
-
         });
+
+        // Function to create a loading overlay with a spinner
+        function createLoadingOverlay() {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // White background
+            overlay.style.zIndex = '9999';
+
+            const loadingDiv = document.createElement('div');
+            loadingDiv.style.position = 'fixed';
+            loadingDiv.style.top = '50%';
+            loadingDiv.style.left = '50%';
+            loadingDiv.style.transform = 'translate(-50%, -50%)';
+            loadingDiv.style.zIndex = '10000';
+
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner'; // Add a CSS class for the spinner
+            spinner.style.border = '4px solid #f3f3f3'; /* Light gray */
+            spinner.style.borderTop = '4px solid #3498db'; /* Blue */
+            spinner.style.borderRadius = '50%';
+            spinner.style.width = '40px';
+            spinner.style.height = '40px';
+            spinner.style.animation = 'spin 2s linear infinite'; // Add CSS animation for spinning
+
+            loadingDiv.appendChild(spinner);
+            overlay.appendChild(loadingDiv);
+
+            return overlay;
+        }
     </script>
 
     <script>
@@ -862,9 +900,8 @@
         // Get the button element by its ID
         var button = document.getElementById("buttonReturn");
 
-
         // Add a click event listener to the button
-        button.addEventListener("click", function() {
+        button.addEventListener("click", async function() {
             var custodianId = button.getAttribute("custodian-id");
             console.log(custodianId);
 
@@ -873,30 +910,67 @@
             );
 
             if (confirmation) {
-                fetch(`/markCustodianForm/${custodianId}`, {
+                // Create a full-page loading overlay with a white background
+                var overlay = document.createElement('div');
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // White background
+                overlay.style.zIndex = '9999';
+
+                // Create a loading message div with a spinning loading animation
+                var loadingDiv = document.createElement('div');
+                loadingDiv.style.position = 'fixed';
+                loadingDiv.style.top = '50%';
+                loadingDiv.style.left = '50%';
+                loadingDiv.style.transform = 'translate(-50%, -50%)';
+                loadingDiv.style.zIndex = '10000';
+
+                // Add a spinning loading animation (e.g., a spinner icon)
+                var spinner = document.createElement('div');
+                spinner.className = 'spinner'; // Add a CSS class for the spinner
+                spinner.style.border = '4px solid #f3f3f3'; /* Light gray */
+                spinner.style.borderTop = '4px solid #3498db'; /* Blue */
+                spinner.style.borderRadius = '50%';
+                spinner.style.width = '40px';
+                spinner.style.height = '40px';
+                spinner.style.animation = 'spin 2s linear infinite'; // Add CSS animation for spinning
+                loadingDiv.appendChild(spinner);
+
+                overlay.appendChild(loadingDiv);
+                document.body.appendChild(overlay);
+
+                try {
+                    const response = await fetch(`/markCustodianForm/${custodianId}`, {
                         method: 'GET', // Change to 'POST' if necessary
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
                         },
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Handle success (e.g., show a success message)
-                            alert('Custodian updated successfully.');
-                            // You can also reload the page or update the UI as needed
-                            location.reload();
-                        } else {
-                            // Handle errors (e.g., show an error message)
-                            alert('Error: Unable to update custodian.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
                     });
-            }
 
+                    if (response.ok) {
+                        // Wait for the update and then show the success message
+                        await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
+                        alert('Custodian updated successfully.');
+                        // You can also reload the page or update the UI as needed
+                        location.reload();
+                    } else {
+                        // Handle errors (e.g., show an error message)
+                        alert('Error: Unable to update custodian.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                } finally {
+                    // Remove the loading overlay
+                    document.body.removeChild(overlay);
+                }
+            }
         });
     </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </body>
