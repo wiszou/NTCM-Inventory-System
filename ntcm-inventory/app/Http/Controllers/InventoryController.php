@@ -31,7 +31,7 @@ class InventoryController extends Controller
         $remarks = $request->input('remarks');
         $multiple = $request->input('quantityCheck');
         $multipleStatus = 0;
-        $itemName = $request->input('item-name');
+        $itemName = $this->itemName($model, $brand);
 
         $categoryStatus = DB::table('m_category')
             ->where('category_id', $item_category)->first();

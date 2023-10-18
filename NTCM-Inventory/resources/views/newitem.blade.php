@@ -148,12 +148,6 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-name" class="block mb-2 text-sm font-medium text-gray-900">Item
-                                    Name:</label>
-                                <input type="text" name="item-name" id="item-name" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Item Name" required="">
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
                                     Number:</label>
                                 <input type="text" name="item-serial" id="serialCheck" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
