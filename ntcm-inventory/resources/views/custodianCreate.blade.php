@@ -362,7 +362,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-span-6 sm:col-span-3" bind>
+                                        <div class="col-span-6 sm:col-span-3 mt-3" bind>
                                             <label for="item1" class="block mb-2 text-sm font-normal text-gray-900">Noted
                                                 By:</label>
                                             <select data-te-select-init data-te-select-filter="true" name="noted" id="noted" class="shadow-sm w-full p-2.5 editable-input" required>
