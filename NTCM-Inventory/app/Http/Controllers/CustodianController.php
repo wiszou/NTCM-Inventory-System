@@ -282,7 +282,7 @@ class CustodianController extends Controller
             return response()->json(['success' => false, 'message' => 'A similar Name/Email already exists.']);
         }
 
-        if ($existingSupplier) {
+        if ($existingSupplier1) {
             // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
             return response()->json(['success' => false, 'message' => 'A similar Name/Email already exists.']);
         }
@@ -336,7 +336,19 @@ class CustodianController extends Controller
             ->where('employee_id', '!=', $id)
             ->first();
 
+            $existingSupplier1 = DB::table('m_employee')
+            ->where('email', $email)
+            ->where('deleted', false)
+            ->where('employee_id', '!=', $id)
+            ->first();
+
         if ($existingSupplier) {
+            // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+            return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
+        }
+
+        
+        if ($existingSupplier1) {
             // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
             return response()->json(['success' => false, 'message' => 'A similar Name already exists.']);
         }
