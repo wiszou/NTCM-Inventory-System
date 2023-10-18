@@ -149,7 +149,7 @@
                         $oneMonthAgo = $currentDate->copy()->subMonth();
 
                         if (
-                        ($dateEnd->isSameDay($currentDate) || $dateEnd <= $currentDate || $dateEnd>= $currentDate)
+                        ($dateEnd->isSameDay($currentDate) || $dateEnd <= $currentDate)
                             || ($dateEnd > $oneMonthAgo && $dateEnd < $oneMonthLater) ) { @endphp <tr  onclick="redirectToEdit('{{ $item->item_id }}')" class="cursor-pointer">
                                 <td class="text-center">{{ $item->item_id }}</td>
                                 <td class="text-center">{{ $item->model }}</td>
@@ -312,51 +312,19 @@
         $(document).ready(function() {
             var table = $('#logs').DataTable({
                     responsive: true,
-                    pageLength: 10, // Set the page length to 10
-                    lengthMenu: [10], // Restrict to one option for 10 rows per page
+                    pageLength: 8, // Set the page length to 10
+                    lengthMenu: [8], // Restrict to one option for 10 rows per page
                     bLengthChange: false, // Disable the page length menu
                     order: [
-                        [3, 'asc']
+                        [3, 'desc']
                     ],
-                    searching: false
+                    searching: false,
+                    paging: false,
                 })
                 .columns.adjust()
                 .responsive.recalc();
         });
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('employee-form');
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault(); // Prevent the default form submission
-
-                // Serialize form data
-                const formData = new FormData(form);
-
-                fetch('/addEmployee', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert(data.message);
-                        } else {
-                            // Handle errors (e.g., show error message)
-                            alert(data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            });
-        });
-    </script>
-
     <script>
         // Define the modal and closeButton variables
         const modal = document.querySelector('.main-modal');

@@ -57,12 +57,12 @@ class LogRegController extends Controller
             if (Hash::check($password, $user->password)) {
                 Session::put('user_id', $user->userID);
                 Session::put('user_name', $user->username);
-                return redirect()->route('dashboard');
+                return response()->json(['success' => true, 'message' => 'Log in successfully.']);
             } else {
-                return redirect()->route('welcome');
+                return response()->json(['success' => false, 'message' => 'Wrong username or password.']);
             }
         } else {
-            return redirect()->route('welcome');
+            return response()->json(['success' => false, 'message' => 'Wrong username or password.']);
         }
     }
 

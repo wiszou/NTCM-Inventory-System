@@ -207,7 +207,10 @@ class InventoryController extends Controller
             }
         }
 
-        $logs = DB::table('m_logs')->get();
+        $logs = DB::table('m_logs')
+            ->orderBy('date_added', 'desc')
+            ->take(8)
+            ->get();
 
         return view('dashboard', [
             'categories' => $category,
