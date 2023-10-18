@@ -254,6 +254,7 @@ class CatSuppController extends Controller
         $name =  $request->input('name');
         $stock =  $request->input('stock');
         $specs = $request->input('specx');
+        $consumable = $request->input("quantity");
         $id = $request->input("id");
         if ($specs == null) {
             $specs = "0";
@@ -276,6 +277,7 @@ class CatSuppController extends Controller
             'category_name' => $name,
             'stock_req' => $stock,
             'specs' => $specs,
+            'consumable' => $consumable,
             'user_change' => $user,
             'date_change' => $currentDate,
         );
@@ -443,11 +445,9 @@ class CatSuppController extends Controller
         $supplierName = $request->input('name');
         $contact = $request->input('contact');
         $address = $request->input('address');
-
         $user = session()->get('user_name');
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
-
         $existingSupplier = DB::table('m_supplier')
             ->where('name', $supplierName)
             ->where('deleted', false)

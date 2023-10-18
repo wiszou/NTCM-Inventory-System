@@ -209,6 +209,11 @@
                                 <input type="checkbox" name="specx" id="specx" value="1" class="w-16 mt-3">
 
                             </div>
+                            <div class="col-span-6 sm:col-span-1">
+                                <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Consumable</label>
+                                <input type="checkbox" name="quantity" id="quantity" value="1" class="w-16 mt-3">
+
+                            </div>
                             <div class="col-span-6 sm:col-span-1" hidden>
                                 <input type="text" name="id" id="idxx"
                                     class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input">
@@ -249,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.success) {
                     // Handle a successful response (e.g., show success message)
-                    alert('Category added successfully.');
+                    alert('Category updated successfully.');
                     // You can also reset the form or redirect to another page
                     location.reload();
                 } else {

@@ -186,7 +186,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
-                                <input type="Number" name="item-price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $specs->price }}" placeholder="40,000" required="">
+                                <input type="Number" name="item-price" id="item-price" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $specs->price }}" placeholder="₱00,000 (Optional)">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
