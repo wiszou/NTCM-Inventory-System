@@ -31,6 +31,7 @@ class InventoryController extends Controller
         $remarks = $request->input('remarks');
         $multiple = $request->input('quantityCheck');
         $multipleStatus = 0;
+        $itemName = $request->input('item-name');
 
         $categoryStatus = DB::table('m_category')
             ->where('category_id', $item_category)->first();
@@ -60,7 +61,6 @@ class InventoryController extends Controller
 
                 for ($i = 1; $i <= $multiple; $i++) {
                     $uniqueID = $this->generateItemCode();
-                    $itemName = $this->itemName($model, $brand);
 
                     $inventoryData = array(
                         'item_id' => $uniqueID,
