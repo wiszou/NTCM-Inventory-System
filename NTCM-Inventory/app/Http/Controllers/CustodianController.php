@@ -265,6 +265,27 @@ class CustodianController extends Controller
         $dateTimeController = new DateTimeController();
         $currentDate = $dateTimeController->getDateTime(new Request());
 
+        $existingSupplier = DB::table('m_employee')
+            ->where('name', $name)
+            ->where('deleted', false)
+            ->where('employee_id', '!=', $id)
+            ->first();
+
+        $existingSupplier1 = DB::table('m_employee')
+            ->where('email', $email)
+            ->where('deleted', false)
+            ->where('employee_id', '!=', $id)
+            ->first();
+
+        if ($existingSupplier) {
+            // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+            return response()->json(['success' => false, 'message' => 'A similar Name/Email already exists.']);
+        }
+
+        if ($existingSupplier) {
+            // A supplier with the same name already exists, handle accordingly (e.g., show an error message).
+            return response()->json(['success' => false, 'message' => 'A similar Name/Email already exists.']);
+        }
         $data = array(
             'name' => $name,
             'email' => $email,
@@ -493,8 +514,7 @@ class CustodianController extends Controller
     {
         $update = DB::table('t_custodian')->where('custodian_id', $custodianID)->first();
         $handlerName = "";
-        if ($update)    
-        {
+        if ($update) {
             $handlerName = $update->name;
         }
 
@@ -535,10 +555,10 @@ class CustodianController extends Controller
             }
         }
         // Create an instance of the OutlookEmail Mailable class
-            $outlookEmail = new OutlookEmail($dataFromDatabase, $itemArray);
+        $outlookEmail = new OutlookEmail($dataFromDatabase, $itemArray);
 
-            // Send the email using the Mailable class
-            Mail::to($email)->send($outlookEmail);
+        // Send the email using the Mailable class
+        Mail::to($email)->send($outlookEmail);
     }
 
     public function sendEmail2($id, $email)
@@ -558,9 +578,9 @@ class CustodianController extends Controller
             }
         }
         // Create an instance of the OutlookEmail Mailable class
-            $outlookEmail = new ReturnCustodian($dataFromDatabase, $itemArray);
+        $outlookEmail = new ReturnCustodian($dataFromDatabase, $itemArray);
 
-            // Send the email using the Mailable class
-            Mail::to($email)->send($outlookEmail);
+        // Send the email using the Mailable class
+        Mail::to($email)->send($outlookEmail);
     }
 }
