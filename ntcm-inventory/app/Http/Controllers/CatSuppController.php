@@ -72,11 +72,15 @@ class CatSuppController extends Controller
     {
         $name = $request->input('name');
         $stock = $request->input('stock');
-
+        $consumable = $request->input('consumable');
         $specs = $request->input('specs');
 
         if ($specs == null) {
             $specs = "0";
+        }
+
+        if ($consumable == null) {
+            $consumable = "0";
         }
         // Check if a category with the same name already exists
         $existingCategory = DB::table('m_category')
@@ -101,6 +105,7 @@ class CatSuppController extends Controller
             'stock_req' => $stock,
             'quantity' => 0,
             'specs' => $specs,
+            'consumable' => $consumable,
             'deleted' => "false",
             'category_name' => $name,
             'user_created' => $user,

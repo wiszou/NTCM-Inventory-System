@@ -25,90 +25,90 @@
 </head>
 
 <style>
-/*Overrides for Tailwind CSS */
+    /*Overrides for Tailwind CSS */
 
-/*Form fields*/
-.dataTables_wrapper select,
-.dataTables_wrapper .dataTables_filter input {
-    color: #4a5568;
-    /*text-gray-700*/
-    padding-left: 1rem;
-    /*pl-4*/
-    padding-right: 1rem;
-    /*pl-4*/
-    padding-top: .5rem;
-    /*pl-2*/
-    padding-bottom: .5rem;
-    /*pl-2*/
-    line-height: 1.25;
-    /*leading-tight*/
-    border-width: 1px;
-    /*border-2*/
-    border-radius: .25rem;
-    border-color: #4d4d4d;
-    /*border-gray-200*/
-    background-color: #ffffff;
-    /*bg-gray-200*/
-}
+    /*Form fields*/
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 1px;
+        /*border-2*/
+        border-radius: .25rem;
+        border-color: #4d4d4d;
+        /*border-gray-200*/
+        background-color: #ffffff;
+        /*bg-gray-200*/
+    }
 
-/*Pagination Buttons*/
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    font-weight: 500;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
+    /*Pagination Buttons*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 500;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
 
-/*Pagination Buttons - Current selected */
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #5c5c5c !important;
-    /*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 200;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px solid transparent;
-    /*border border-transparent*/
-}
+    /*Pagination Buttons - Current selected */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #5c5c5c !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 200;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
 
-/*Pagination Buttons - Hover */
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #ffffff;
-    /*text-white*/
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    /*shadow*/
-    font-weight: 400;
-    /*font-bold*/
-    border-radius: .25rem;
-    /*rounded*/
-    background: #d6d6d6 !important;
-    /*bg-indigo-500*/
-    border: 1px;
-    /*border border-transparent*/
+    /*Pagination Buttons - Hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #ffffff;
+        /*text-white*/
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 400;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #d6d6d6 !important;
+        /*bg-indigo-500*/
+        border: 1px;
+        /*border border-transparent*/
 
-}
-
-
-/*Change colour of responsive icon*/
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #4facb6 !important;
-    /*bg-indigo-500*/
-}
+    }
 
 
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #4facb6 !important;
+        /*bg-indigo-500*/
+    }
 
-input[disabled] {
-    background-color: #E9ECEF;
-    /* Change the text color to gray */
 
-}
+
+    input[disabled] {
+        background-color: #E9ECEF;
+        /* Change the text color to gray */
+
+    }
 </style>
 
 <body class="bg-gray-100 py-2 h-screen">
@@ -141,54 +141,24 @@ input[disabled] {
                         </tr>
                     </thead>
                     <tbody id="suppliers">
+                        @foreach ($details as $item)
+                        @php
+                        $dateEnd = \Carbon\Carbon::createFromFormat('Y-m-d', $item->date_end, 'Asia/Manila'); // Make sure to specify the correct timezone
+                        $currentDate = now('Asia/Manila')->startOfDay(); // Start of the current day in the specified timezone
+                        $oneMonthLater = $currentDate->copy()->addMonth();
+                        $oneMonthAgo = $currentDate->copy()->subMonth();
 
-                        <tr>
-                            <td class="text-center">IT-2023-0004</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0006</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-13</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0007</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-12</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0008</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-11</td>
-
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-2023-0009</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-10</td>
-
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-2023-0010</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-10</td>
-
-                        </tr>
-
+                        if (
+                        ($dateEnd->isSameDay($currentDate) || $dateEnd <= $currentDate || $dateEnd>= $currentDate)
+                            || ($dateEnd > $oneMonthAgo && $dateEnd < $oneMonthLater) ) { @endphp <tr  onclick="redirectToEdit('{{ $item->item_id }}')" class="cursor-pointer">
+                                <td class="text-center">{{ $item->item_id }}</td>
+                                <td class="text-center">{{ $item->model }}</td>
+                                <td class="text-center">{{ $item->date_end }}</td>
+                                </tr>
+                                @php
+                                }
+                                @endphp
+                                @endforeach
                     </tbody>
                 </table>
             </div>
@@ -205,72 +175,47 @@ input[disabled] {
                         <tr>
                             <th data-priority="1">Inventory Code</th>
                             <th data-priority="2">Item Category</th>
-                            <th data-priority="3">Stock Actual</th>
-                            <th data-priority="4">Stock Req</th>
+                            <th data-priority="3">Stock Required</th>
+                            <th data-priority="4">Stock Actual</th>
                         </tr>
                     </thead>
                     <tbody id="suppliers">
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
+                        @foreach ($categories as $item)
+                        @if ($item->deleted == "false")
+                        @php
+                        $stock_actual1 = DB::table('t_inventory')
+                        ->where('category_id', $item->category_id)
+                        ->where('item_status', "Stock")
+                        ->where('deleted', "false")
+                        ->count();
 
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">IT-Desktop-0002</td>
-                            <td class="text-center">Desktop</td>
-                            <td class="text-center">2</td>
-                            <td class="text-center">10</td>
-                        </tr>
+                        $stock_actual2 = DB::table('t_inventory')
+                        ->where('category_id', $item->category_id)
+                        ->where('item_status', "Spare")
+                        ->where('deleted', "false")
+                        ->count();
+
+                        $stock_actual = $stock_actual1 + $stock_actual2;
+
+                        $statusClass = 'text-red-500 font-bold'; // Default to red
+
+                        if ($stock_actual == $item->stock_req) {
+                        $statusClass = 'text-yellow-500 font-bold';
+                        } else if ($stock_actual >= $item->stock_req) {
+                        $statusClass = 'text-green-500 font-bold';
+                        }
+                        @endphp
+
+                        @if ($stock_actual <= $item->stock_req) <!-- Only display rows when stock_actual is less than or equal to stock_req -->
+                            <tr class="text-center">
+                                <td class="text-center">{{ $item->inventory_id }}</td>
+                                <td class="text-center">{{ $item->category_name }}</td>
+                                <td class="text-center">{{ $item->stock_req }}</td>
+                                <td class='{{ $statusClass }}'>{{ $stock_actual }}</td>
+                            </tr>
+                            @endif
+                            @endif
+                            @endforeach
                     </tbody>
                 </table>
             </div>
@@ -286,108 +231,20 @@ input[disabled] {
                     <thead class="">
                         <tr>
                             <th data-priority="1">Log ID</th>
-                            <th data-priority="2">Module</th>
-                            <th data-priority="3">Description</th>
+                            <th data-priority="2">Description</th>
+                            <th data-priority="3">User</th>
                             <th data-priority="4">Date</th>
                         </tr>
                     </thead>
                     <tbody id="suppliers">
-
-                        <tr>
-                            <td class="text-center">ID-Logs-0001</td>
-                            <td class="text-center">Add Item</td>
-                            <td class="text-center">Added - Laptop Lenovo / IT-2023-0006</td>
-                            <td class="text-center">2023-09-22 09:57:37</td>
-
+                        @foreach ($logs as $log)
+                        <tr class="text-center">
+                            <td class="text-center">{{ $log->log_id }}</td>
+                            <td class="text-center">{{ $log->description }}</td>
+                            <td class="text-center">{{ $log->user }}</td>
+                            <td class="text-center">{{ $log->date_added }}</td>
                         </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="text-center">IT-2023-0005</td>
-                            <td class="text-center">Asus</td>
-                            <td class="text-center">2023-10-14</td>
-                            <td class="text-center">2023-10-15</td>
-
-                        </tr>
+                        @endforeach
 
                     </tbody>
                 </table>
@@ -418,132 +275,145 @@ input[disabled] {
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-    $(document).ready(function() {
-        var table = $('#retire').DataTable({
-                responsive: true,
-                pageLength: 6,
-                lengthMenu: [6], // Restrict to one option for 5 rows per page
-                bLengthChange: false, // Disable the page length menu
-                order: [
-                    [2, 'asc']
-                ],
-                searching: false
-            })
-            .columns.adjust()
-            .responsive.recalc();
-    });
-    </script>
-
-    <script>
-    $(document).ready(function() {
-        var table = $('#lowstocks').DataTable({
-                responsive: true,
-                pageLength: 6,
-                lengthMenu: [6], // Restrict to one option for 5 rows per page
-                bLengthChange: false, // Disable the page length menu
-                order: [
-                    [2, 'asc']
-                ],
-                searching: false
-            })
-            .columns.adjust()
-            .responsive.recalc();
-    });
-    </script>
-
-<script>
-    $(document).ready(function() {
-        var table = $('#logs').DataTable({
-                responsive: true,
-                pageLength: 9,
-                lengthMenu: [9], // Restrict to one option for 5 rows per page
-                bLengthChange: false, // Disable the page length menu
-                order: [
-                    [3, 'asc']
-                ],
-                searching: false
-            })
-            .columns.adjust()
-            .responsive.recalc();
-    });
-    </script>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('employee-form');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            // Serialize form data
-            const formData = new FormData(form);
-
-            fetch('/addEmployee', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
-                    },
+        $(document).ready(function() {
+            var table = $('#retire').DataTable({
+                    responsive: true,
+                    pageLength: 6,
+                    lengthMenu: [6], // Restrict to one option for 5 rows per page
+                    bLengthChange: false, // Disable the page length menu
+                    order: [
+                        [2, 'asc']
+                    ],
+                    searching: false
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert(data.message);
-                    } else {
-                        // Handle errors (e.g., show error message)
-                        alert(data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                .columns.adjust()
+                .responsive.recalc();
         });
-    });
     </script>
 
     <script>
-    // Define the modal and closeButton variables
-    const modal = document.querySelector('.main-modal');
-    const closeButton = document.querySelectorAll('.modal-close');
+        $(document).ready(function() {
+            var table = $('#lowstocks').DataTable({
+                    responsive: true,
+                    pageLength: 6,
+                    lengthMenu: [6], // Restrict to one option for 5 rows per page
+                    bLengthChange: false, // Disable the page length menu
+                    order: [
+                        [3, 'asc']
+                    ],
+                    searching: false
+                })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+    </script>
 
-    // Function to close the modal
-    const modalClose = () => {
-        modal.classList.remove('fadeIn');
-        modal.classList.add('fadeOut');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 10); // Adjust the delay as needed
-    };
+    <script>
+        $(document).ready(function() {
+            var table = $('#logs').DataTable({
+                    responsive: true,
+                    pageLength: 10, // Set the page length to 10
+                    lengthMenu: [10], // Restrict to one option for 10 rows per page
+                    bLengthChange: false, // Disable the page length menu
+                    order: [
+                        [3, 'asc']
+                    ],
+                    searching: false
+                })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('employee-form');
 
-    // Function to open the modal
-    const openModal = () => {
-        // Show the modal - no need to redefine 'modal' here
-        modal.classList.remove('fadeOut');
-        modal.classList.add('fadeIn');
-        modal.style.display = 'flex';
-    };
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent the default form submission
 
-    // Attach click event listeners to close buttons
-    for (let i = 0; i < closeButton.length; i++) {
-        const element = closeButton[i];
-        element.onclick = () => modalClose();
-    }
+                // Serialize form data
+                const formData = new FormData(form);
 
-    // Get the button element by its ID
-    const openModalButton = document.getElementById('open-modal-button');
-    if (openModalButton) {
-        openModalButton.addEventListener('click', () => openModal());
-    }
+                fetch('/addEmployee', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add your CSRF token here
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                        } else {
+                            // Handle errors (e.g., show error message)
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    </script>
 
-    // Initially hide the modal
-    modal.style.display = 'none';
+    <script>
+        // Define the modal and closeButton variables
+        const modal = document.querySelector('.main-modal');
+        const closeButton = document.querySelectorAll('.modal-close');
 
-    // Click outside the modal to close it
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modalClose();
+        // Function to close the modal
+        const modalClose = () => {
+            modal.classList.remove('fadeIn');
+            modal.classList.add('fadeOut');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 10); // Adjust the delay as needed
+        };
+
+        // Function to open the modal
+        const openModal = () => {
+            // Show the modal - no need to redefine 'modal' here
+            modal.classList.remove('fadeOut');
+            modal.classList.add('fadeIn');
+            modal.style.display = 'flex';
+        };
+
+        // Attach click event listeners to close buttons
+        for (let i = 0; i < closeButton.length; i++) {
+            const element = closeButton[i];
+            element.onclick = () => modalClose();
         }
-    };
+
+        // Get the button element by its ID
+        const openModalButton = document.getElementById('open-modal-button');
+        if (openModalButton) {
+            openModalButton.addEventListener('click', () => openModal());
+        }
+
+        // Initially hide the modal
+        modal.style.display = 'none';
+
+        // Click outside the modal to close it
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modalClose();
+            }
+        };
+    </script>
+
+    <script>
+        function redirectToEdit(itemID) {
+
+            // Generate the URL using Laravel's route helper with the 'itemID' parameter
+            var url = "{{ route('editItem', ['itemID' => '__itemID__']) }}";
+
+            // Replace the '__itemID__' placeholder in the URL with the actual 'itemID' value
+            url = url.replace('__itemID__', itemID);
+
+            // Redirect to the URL
+            window.location.href = url;
+        }
     </script>
 
 

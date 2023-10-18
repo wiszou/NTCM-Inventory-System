@@ -204,7 +204,7 @@
                                     <option selected hidden value="none">Select your option</option>
                                     @foreach ($categories as $item)
                                     @if ($item->deleted == "false")
-                                    <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}" compare="{{ $item->supplier_list }}">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->category_id }}" data-specs="{{ $item->specs }}" data-consumable="{{ $item->consumable }}" compare="{{ $item->supplier_list }}">{{ $item->category_name }}</option>
                                     @endif
                                     @endforeach
                                 </select>
@@ -225,11 +225,11 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Multiple:</label>
+
                                 <div class="flex flex-row">
-                                    <input type="checkbox" name="checkbox" id="checkbox" value="1" class="w-10 my-2.5 mr-2" onclick="toggleTextInput(this)">
                                     <div id="hideDiv" hidden>
-                                    <input type="Number" name="quantityCheck" id="quantityCheck" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Quantity" required="" disabled>
+                                    <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Multiple:</label>
+                                        <input type="Number" name="quantityCheck" id="quantityCheck" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Quantity" required="" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -301,23 +301,6 @@
                     itemPriceInput.value = inputValue;
                 });
             </script>
-            <script>
-                function toggleTextInput(checkbox) {
-                    var input = document.getElementById("serialCheck");
-                    var div = document.getElementById("hideDiv");
-                    var quantity = document.getElementById("quantityCheck");
-                    if (checkbox.checked) {
-                        input.disabled = true;
-                        input.value = "";
-                        div.hidden = false;
-                        quantity.disabled= false;
-                    } else {
-                        input.disabled = false;
-                        div.hidden = true;
-                        quantity.disabled= true;
-                    }
-                }
-            </script>
 
 
 
@@ -346,9 +329,14 @@
                 const storageInput = document.getElementById('storageInput');
                 const spacer = document.getElementById('spacer');
 
+                var input = document.getElementById("serialCheck");
+                var div = document.getElementById("hideDiv");
+                var quantity = document.getElementById("quantityCheck");
+
                 categorySelect.addEventListener('change', function() {
                     const selectedOption = categorySelect.options[categorySelect.selectedIndex];
                     const specsValue = selectedOption.getAttribute('data-specs');
+                    const consumableValue = selectedOption.getAttribute('data-consumable');
                     console.log(specsValue);
 
                     // Show or hide input fields based on specs value
@@ -364,6 +352,17 @@
                         ramInput.setAttribute('hidden', true);
                         storageInput.setAttribute('hidden', true);
                         spacer.setAttribute('hidden', true);
+                    }
+
+                    if (consumableValue === '1') {
+                        input.disabled = true;
+                        input.value = "";
+                        div.hidden = false;
+                        quantity.disabled = false;
+                    } else {
+                        input.disabled = false;
+                        div.hidden = true;
+                        quantity.disabled = true;
                     }
                 });
             </script>
@@ -480,17 +479,18 @@
 
         supplierSelect.addEventListener("change", function() {
             const selectedSupplierId = supplierSelect.value;
-
+        
             for (const option of categorySelect.options) {
                 const supplierList = option.getAttribute("compare");
-                // console.log("Category List:", supplierList);
-                // console.log("Selected Supplier Id:", selectedSupplierId);
-
+                console.log("Category List:", supplierList);
+                console.log("Selected Supplier Id:", selectedSupplierId);
                 if (supplierList) {
                     const compareValues = JSON.parse(supplierList); // Assuming supplierList is a JSON array
+                    console.log(compareValues);
                     if (compareValues.includes(selectedSupplierId) || selectedSupplierId === "none") {
                         option.style.display = "block"; // Show the option
                         option.removeAttribute("hidden"); // Enable the option
+                        // console.log(option);
                         // console.log("Enabled");
                     } else {
                         option.style.display = "none"; // Hide the option
@@ -531,7 +531,6 @@
                     }
                 }
             }
-
             // Enable or disable the "Category" select element based on the selected supplier
             categorySelect.disabled = (selectedSupplierId === "none");
         });

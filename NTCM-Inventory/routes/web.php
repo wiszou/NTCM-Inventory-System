@@ -53,9 +53,6 @@ Route::get('/remove-employee/{id}', [CatSuppController::class, 'removeEmployee']
 Route::post('/insert-custodian', [CustodianController::class, 'createCustodian']);
 
 Route::group(['middleware' => ['session-checker']], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
     Route::get('/updated-custodian', [CustodianController::class, 'getUpdatedCustodian2'])->name('updated-custodian');
     Route::get('/updated-inventory', [InventoryController::class, 'getUpdatedInventory'])->name('updated-inventory');
     Route::get('/create-custodianform', [CustodianController::class, 'getUpdatedCustodian1'])->name('custodian2');
@@ -64,6 +61,7 @@ Route::group(['middleware' => ['session-checker']], function () {
     Route::post('/updateEmployee', [CustodianController::class, 'updateEmployee']);
     Route::get('/supplier', [CatSuppController::class, 'updateTable2'])->name('suppliers');
     Route::get('/brands', [CatSuppController::class, 'updateTable1'])->name('brands');
+    Route::get('/dashboard', [InventoryController::class, 'getDashboard'])->name('dashboard');
     Route::get('/updated-category', [CatSuppController::class, 'updateCateg'])->name('categories');
     Route::get('/check-brand/{categoryID}', [CatSuppController::class, 'checkBrand']);
     Route::get('/new-item', [CatSuppController::class, 'updateAdd'])->name('newitem');

@@ -159,7 +159,6 @@ input[disabled] {
                         <thead>
                             <tr>
                                 <th data-priority="1" class="text-center">Log ID</th>
-                                <th data-priority="2" class="text-center">Module</th>
                                 <th data-priority="3" class="text-center">Description</th>
                                 <th data-priority="4" class="text-center">User</th>
                                 <th data-priority="5" class="text-center">Date</th>
@@ -170,7 +169,6 @@ input[disabled] {
                         <tbody id="inventoryTableBody">
                             @foreach ($logs as $log)
                             <tr class="text-center">
-                                <td class="text-center">{{ $log->log_id }}</td>
                                 <td class="text-center">{{ $log->log_id }}</td>
                                 <td class="text-center">{{ $log->description }}</td>
                                 <td class="text-center">{{ $log->user }}</td>

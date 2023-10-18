@@ -70,8 +70,8 @@
                 </div>
 
                 <div class="w-24">
-                    <label for="specs" class="block mb-2 text-sm font-medium text-gray-900 ">Multiple:</label>
-                    <input type="checkbox" name="specs" id="specs" value="1" class="w-6 h-10 ml-3">
+                    <label for="specs" class="block mb-2 text-sm font-medium text-gray-900 ">Consumable:</label>
+                    <input type="checkbox" name="consumable" id="consumable" value="1" class="w-6 h-10 ml-3">
                 </div>
             </div>
             <div class="flex space-x-2">
@@ -102,6 +102,9 @@
                         <th data-priority="4">
                             With Specs
                         </th>
+                        <th data-priority="4">
+                            Consumable
+                        </th>
                         <th data-priority="5">
                             Action
                         </th>
@@ -123,6 +126,10 @@
                         <td class="px-6 py-3">
                             <input type="checkbox" name="specs" id="specs" value="1" class="w-16 mt-3"
                                 {{ $item->specs == 1 ? 'checked' : '' }} disabled>
+                        </td>
+                        <td class="px-6 py-3">
+                            <input type="checkbox" name="specs" id="specs" value="1" class="w-16 mt-3"
+                                {{ $item->consumable == 1 ? 'checked' : '' }} disabled>
                         </td>
                         <td class="px-6 py-4 items-center flex justify-center">
                             <button data-item-id="" onclick="openModal('{{ $item->category_id }}')"

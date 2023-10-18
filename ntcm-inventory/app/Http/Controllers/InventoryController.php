@@ -5,90 +5,143 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // Import the DB facade
 use Illuminate\Support\Facades\Log;
+use Psy\Readline\Hoa\Console;
 use View;
 
 class InventoryController extends Controller
 {
     public function addItem(Request $request)
     {
-        // $user = session()->get('user_name');
-        // $dateTimeController = new DateTimeController();
-        // $currentDate = $dateTimeController->getDateTime(new Request());
+        $user = session()->get('user_name');
+        $dateTimeController = new DateTimeController();
+        $currentDate = $dateTimeController->getDateTime(new Request());
+        $serialNum = $request->input('item-serial');
+        $supplier_name = $request->input('supplier-name');
+        $item_category = $request->input('category');
+        $brand = $request->input('brand');
+        $model = $request->input('model');
+        $price = $request->input('price');
+        $cpu = $request->input('item-cpu');
+        $gpu = $request->input('item-gpu');
+        $ram = $request->input('item-ram');
+        $storage = $request->input('item-storage');
+        $acquired = $request->input('item-acquired');
+        $expire = $request->input('item-expired');
+        $item_status = $request->input('item-status');
+        $remarks = $request->input('remarks');
+        $multiple = $request->input('quantityCheck');
+        $multipleStatus = 0;
 
-        // $serialNum = $request->input('item-serial');
+        $categoryStatus = DB::table('m_category')
+            ->where('category_id', $item_category)->first();
 
-        // $existingRecord = DB::table('t_itemdetails')
-        //     ->where('serial_num', $serialNum)
-        //     ->where('deleted', "false")
-        //     ->first();
+        if ($categoryStatus->consumable === "1") {
+            $serialNum = "N/A";
+            $multipleStatus = 1;
+        } else {
+            $existingRecord = DB::table('t_itemdetails')
+                ->where('serial_num', $serialNum)
+                ->where('deleted', "false")
+                ->first();
 
-        // if ($existingRecord) {
-        //     return response()->json(['success' => false, 'message' => 'A similar item or serial number already exists.']);
-        // }
-
-        // $supplier_name = $request->input('supplier-name');
-        // $item_category = $request->input('category');
-        // $brand = $request->input('brand');
-        // $model = $request->input('model');
-        // $price = $request->input('price');
-        // $cpu = $request->input('item-cpu');
-        // $gpu = $request->input('item-gpu');
-        // $ram = $request->input('item-ram');
-        // $storage = $request->input('item-storage');
-        // $acquired = $request->input('item-acquired');
-        // $expire = $request->input('item-expired');
-        // $item_status = $request->input('item-status');
-        // $remarks = $request->input('remarks');
-        // $uniqueID = $this->generateItemCode();
-        // $itemName = $this->itemName($model, $brand);
-        // if ($item_status === null) {
-        //     $item_status = "Spare";
-        // }
+            if ($existingRecord) {
+                return response()->json(['success' => false, 'message' => 'A similar item or serial number already exists.']);
+            }
+        }
 
 
 
+        if ($item_status === null) {
+            $item_status = "Spare";
+        }
 
-        // $inventoryData = array(
-        //     'item_id' => $uniqueID,
-        //     'supplier_id' => $supplier_name,
-        //     'category_id' =>  $item_category,
-        //     'brand_id' => $brand,
-        //     'deleted' => "false",
-        //     'item_status' => $item_status,
-        //     'user_created' => $user,
-        //     'date_created' => $currentDate,
-        // );
+        try {
+            if ($multipleStatus === 1) {
 
-        // $detailsData = array(
-        //     'item_id' => $uniqueID,
-        //     'name' => $itemName,
-        //     'model' => $model,
-        //     'price' => $price,
-        //     'serial_num' => $serialNum,
-        //     'cpu' => $cpu,
-        //     'gpu' => $gpu,
-        //     'ram' => $ram,
-        //     'storage' => $storage,
-        //     'remarks' => $remarks,
-        //     'deleted' => "false",
-        //     'date_acquired' => $acquired,
-        //     'date_end' => $expire,
-        //     'user_created' => $user,
-        //     'date_created' => $currentDate,
-        // );
+                for ($i = 1; $i <= $multiple; $i++) {
+                    $uniqueID = $this->generateItemCode();
+                    $itemName = $this->itemName($model, $brand);
 
-        // try {
-        //     DB::table('t_inventory')->insert($inventoryData);
-        //     DB::table('t_itemdetails')->insert($detailsData);
-        //     $this->addQuantity($item_category);
-        //     $logController = new LogController();
-        //     $logController->sendLog("Item " . $uniqueID . " Succesfully added");
-        //     return response()->json(['success' => true, 'message' => 'Item added successfully.']);
-        // } catch (\Exception $e) {
-        //     // Log or report the actual error message
-        //     Log::error($e->getMessage());
-        //     return response()->json(['success' => false, 'message' => 'An error occurred while adding the item.']);
-        // }
+                    $inventoryData = array(
+                        'item_id' => $uniqueID,
+                        'supplier_id' => $supplier_name,
+                        'category_id' =>  $item_category,
+                        'brand_id' => $brand,
+                        'deleted' => "false",
+                        'item_status' => $item_status,
+                        'user_created' => $user,
+                        'date_created' => $currentDate,
+                    );
+
+                    $detailsData = array(
+                        'item_id' => $uniqueID,
+                        'name' => $itemName,
+                        'model' => $model,
+                        'price' => $price,
+                        'serial_num' => $serialNum,
+                        'cpu' => $cpu,
+                        'gpu' => $gpu,
+                        'ram' => $ram,
+                        'storage' => $storage,
+                        'remarks' => $remarks,
+                        'deleted' => "false",
+                        'date_acquired' => $acquired,
+                        'date_end' => $expire,
+                        'user_created' => $user,
+                        'date_created' => $currentDate,
+                    );
+
+                    DB::table('t_inventory')->insert($inventoryData);
+                    DB::table('t_itemdetails')->insert($detailsData);
+                    $this->addQuantity($item_category);
+                    $logController = new LogController();
+                    $logController->sendLog("Item " . $uniqueID . " Succesfully added");
+                }
+            } else {
+                $uniqueID = $this->generateItemCode();
+                $itemName = $this->itemName($model, $brand);
+
+                $inventoryData = array(
+                    'item_id' => $uniqueID,
+                    'supplier_id' => $supplier_name,
+                    'category_id' =>  $item_category,
+                    'brand_id' => $brand,
+                    'deleted' => "false",
+                    'item_status' => $item_status,
+                    'user_created' => $user,
+                    'date_created' => $currentDate,
+                );
+
+                $detailsData = array(
+                    'item_id' => $uniqueID,
+                    'name' => $itemName,
+                    'model' => $model,
+                    'price' => $price,
+                    'serial_num' => $serialNum,
+                    'cpu' => $cpu,
+                    'gpu' => $gpu,
+                    'ram' => $ram,
+                    'storage' => $storage,
+                    'remarks' => $remarks,
+                    'deleted' => "false",
+                    'date_acquired' => $acquired,
+                    'date_end' => $expire,
+                    'user_created' => $user,
+                    'date_created' => $currentDate,
+                );
+
+                DB::table('t_inventory')->insert($inventoryData);
+                DB::table('t_itemdetails')->insert($detailsData);
+                $this->addQuantity($item_category);
+                $logController = new LogController();
+                $logController->sendLog("Item " . $uniqueID . " Succesfully added");
+            }
+            return response()->json(['success' => true, 'message' => 'Item added successfully.']);
+        } catch (\Exception $e) {
+            // Log or report the actual error message
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => 'An error occurred while adding the item.']);
+        }
     }
 
     public function itemName($model, $brandID)
@@ -134,6 +187,36 @@ class InventoryController extends Controller
         $category = DB::table('m_category')->get();
         return view('inventory', ['categories' => $category]);
     }
+
+    public function getDashboard()
+    {
+        $currentDate = date('d-F-Y');
+        $category = DB::table('m_category')->get();
+        $inventory = DB::table('t_inventory')->get();
+        $itemDetail = DB::table('t_itemdetails')->where("deleted", "false")->get();
+
+        // Define an array to store items that meet the condition
+        $filteredItemDetail = [];
+
+        foreach ($itemDetail as $item) {
+            $status = DB::table('t_inventory')->where('item_id', $item->item_id)->value("item_status");
+
+            // Check if the status is neither "Missing" nor "Defective"
+            if ($status !== "Missing" && $status !== "Defective") {
+                $filteredItemDetail[] = $item;
+            }
+        }
+
+        $logs = DB::table('m_logs')->get();
+
+        return view('dashboard', [
+            'categories' => $category,
+            'logs' => $logs,
+            'inventory' => $inventory,
+            'details' => $filteredItemDetail, // Use the filtered array
+        ]);
+    }
+
     public function getUpdatedEquipment()
     {
         $category = DB::table('m_category')->get();
