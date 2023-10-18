@@ -146,7 +146,7 @@ input[disabled] {
                                 Name:</label>
                             <input type="text" name="name" id="item-serial"
                                 class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                placeholder="Juan Dela Cruz" required="">
+                                placeholder="Employee Name" required="">
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
@@ -154,7 +154,7 @@ input[disabled] {
                                 class="block mb-2 text-sm font-medium text-gray-900">Department:</label>
                             <input type="text" name="department" id="item-model"
                                 class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                placeholder="IT Department" required="">
+                                placeholder="Department" required="">
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
@@ -265,7 +265,7 @@ input[disabled] {
                                     Name:</label>
                                 <input type="text" name="name" id="name1"
                                     class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input"
-                                    placeholder="Juan Dela Cruz" required="">
+                                    placeholder="Employee Name" required="">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
