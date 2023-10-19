@@ -169,8 +169,8 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-dateE" class="block mb-2 text-sm font-medium text-gray-900">Date
-                                    Expiration</label>
-                                <input type="date" value="{{ $specs->date_end}}" name="item-expired" id="item-expired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                                    Expiration (Optional)</label>
+                                <input type="date" value="{{ $specs->date_end}}" name="item-expired" id="item-expired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-model" class="block mb-2 text-sm font-medium text-gray-900">Model</label>
@@ -178,8 +178,8 @@
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
-                                    Number:</label>
-                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $specs->serial_num }}" placeholder="4CE0460D0G" required="">
+                                    Number: (Optional)</label>
+                                <input type="text" name="item-serial" id="item-serial" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" value="{{ $specs->serial_num }}" placeholder="4CE0460D0G">
                             </div>
 
 

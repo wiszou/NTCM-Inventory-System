@@ -246,7 +246,9 @@
             <script>
                 $(document).ready(function() {
                     var table = $('#modalTable').DataTable({
-                            responsive: true
+                            responsive: true,
+                            pageLength: 6,
+                            lengthMenu: [6]
                         })
                         .columns.adjust()
                         .responsive.recalc();

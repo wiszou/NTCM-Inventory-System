@@ -33,9 +33,30 @@ class InventoryController extends Controller
         $multipleStatus = 0;
         $itemName = $this->itemName($model, $brand);
 
+
+        if ($brand === "none" || $supplier_name === "none" || $item_category === "none") {
+            // At least one of the variables is equal to "none"
+            // Do something here, like setting default values or performing an action
+            if ($brand === "none") {
+                return response()->json(['success' => false, 'message' => 'Please select an option in brand.']);
+            }
+            if ($supplier_name === "none") {
+                return response()->json(['success' => false, 'message' => 'Please select an option in supplier.']);
+            }
+            if ($item_category === "none") {
+                return response()->json(['success' => false, 'message' => 'Please select an option in category.']);
+            }
+        }
+
+        if ($acquired == null) {
+            $currentYear = date('Y-m-d');
+            $acquired = $currentYear;
+        }
+
         if ($multiple == null) {
             $multiple = 1;
         }
+
 
         $categoryStatus = DB::table('m_category')
             ->where('category_id', $item_category)->first();
@@ -308,14 +329,19 @@ class InventoryController extends Controller
         $expire = $request->input('item-expired');
         $itemName = $this->itemName($model, $brand);
 
-        $existingRecord = DB::table('t_itemdetails')
-            ->where('serial_num', $serialNum)
-            ->where('deleted', 'false')
-            ->where('item_id', '!=', $id)
-            ->first();
 
-        if ($existingRecord) {
-            return response()->json(['success' => false, 'message' => 'A similar item or serial number already exists.']);
+        if ($serialNum != "N/A") {
+
+
+            $existingRecord = DB::table('t_itemdetails')
+                ->where('serial_num', $serialNum)
+                ->where('deleted', 'false')
+                ->where('item_id', '!=', $id)
+                ->first();
+
+            if ($existingRecord) {
+                return response()->json(['success' => false, 'message' => 'A similar item or serial number already exists.']);
+            }
         }
 
         $inventoryData = array(
