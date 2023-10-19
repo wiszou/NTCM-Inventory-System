@@ -321,7 +321,7 @@
                                                 @if ($item->deleted == "false" && $item->item_status == "Spare" ||
                                                 $item->item_status == "Stock")
                                                 <option value="{{ $item->item_id }}"> {{ $item->serial_num }} -
-                                                    {{ $item->item_id }} - {{ $item->model }}
+                                                    {{ $item->item_id }} - {{ $item->name }}
                                                 </option>
                                                 @endif
                                                 @endforeach

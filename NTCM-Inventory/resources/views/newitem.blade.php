@@ -149,8 +149,8 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-serial" class="block mb-2 text-sm font-medium text-gray-900">Serial
-                                    Number:</label>
-                                <input type="text" name="item-serial" id="serialCheck" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                                    Number:  (Optional)</label>
+                                <input type="text" name="item-serial" id="serialCheck" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
@@ -158,16 +158,16 @@
                                     Acquired</label>
                                 <input type="date" name="item-acquired" id="item-acquired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
                             </div>
-
+ 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="item-dateE" class="block mb-2 text-sm font-medium text-gray-900">Date
-                                    Expiration</label>
-                                <input type="date" name="item-expired" id="item-expired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G" required="">
+                                    Expiration (Optional)</label>
+                                <input type="date" name="item-expired" id="item-expired" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="4CE0460D0G">
                             </div>
 
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price:</label>
+                                <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Price: (Optional)</label>
                                 <input type="text" name="price" id="item-price" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="₱00,000 (Optional)">
                             </div>
 
@@ -222,7 +222,7 @@
 
                                 <div class="flex flex-row">
                                     <div id="hideDiv" hidden>
-                                    <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Multiple:</label>
+                                        <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 ">Multiple:</label>
                                         <input type="Number" name="quantityCheck" id="quantityCheck" class="shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 editable-input" placeholder="Quantity" required="" disabled>
                                     </div>
                                 </div>
@@ -339,7 +339,6 @@
                         gpuInput.removeAttribute('hidden');
                         ramInput.removeAttribute('hidden');
                         storageInput.removeAttribute('hidden');
-                        spacer.removeAttribute('hidden');
                     } else {
                         cpuInput.setAttribute('hidden', true);
                         gpuInput.setAttribute('hidden', true);
@@ -456,7 +455,7 @@
 <script>
     function toggleBrandSelector() {
         var categorySelect = document.getElementById("categorySelector");
-        var brandSelect = document.getElementById("brand");
+        var brandSelect = document.getElementById("brands");
 
         if (categorySelect.value === "none") {
             brandSelect.disabled = true;
@@ -473,22 +472,23 @@
 
         supplierSelect.addEventListener("change", function() {
             const selectedSupplierId = supplierSelect.value;
-        
+
             for (const option of categorySelect.options) {
                 const supplierList = option.getAttribute("compare");
-                console.log("Category List:", supplierList);
-                console.log("Selected Supplier Id:", selectedSupplierId);
+                option.style.display = "none"; // Hide the option
+                option.setAttribute("hidden", "hidden"); // Disable the option
                 if (supplierList) {
                     const compareValues = JSON.parse(supplierList); // Assuming supplierList is a JSON array
                     console.log(compareValues);
                     if (compareValues.includes(selectedSupplierId) || selectedSupplierId === "none") {
                         option.style.display = "block"; // Show the option
                         option.removeAttribute("hidden"); // Enable the option
-                        console.log("Enabled");
+                        // console.log("Enabled");
                     } else {
                         option.style.display = "none"; // Hide the option
-                        option.setAttribute("hidden", "hidden"); // Disable the option
-                        console.log("Disabled");
+
+                        option.setAttribute('hidden', true);
+                        // console.log("Disabled");
                     }
                 }
             }
@@ -508,19 +508,21 @@
             const selectedSupplierId = supplierSelect.value;
             for (const option of categorySelect.options) {
                 const supplierList = option.getAttribute("compare");
-                // console.log("Category List:", supplierList);
-                // console.log("Selected Supplier Id:", selectedSupplierId);
+                option.style.display = "none"; // Hide the option
+                option.setAttribute("hidden", "hidden"); // Disable the option
 
                 if (supplierList) {
                     const compareValues = JSON.parse(supplierList); // Assuming supplierList is a JSON array
+                    console.log(compareValues);
                     if (compareValues.includes(selectedSupplierId) || selectedSupplierId === "none") {
                         option.style.display = "block"; // Show the option
                         option.removeAttribute("hidden"); // Enable the option
-                        // console.log("Enabled");
+
+                        console.log("Enabled");
                     } else {
-                        option.style.display = "none"; // Hide the option
-                        option.setAttribute("hidden", "hidden"); // Disable the option
-                        // console.log("Disabled");
+                        option.style.display = "none";
+                        option.setAttribute('hidden', true);
+                        console.log("Disabled");
                     }
                 }
             }

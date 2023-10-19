@@ -33,10 +33,14 @@ class InventoryController extends Controller
         $multipleStatus = 0;
         $itemName = $this->itemName($model, $brand);
 
+        if ($multiple == null) {
+            $multiple = 1;
+        }
+
         $categoryStatus = DB::table('m_category')
             ->where('category_id', $item_category)->first();
 
-        if ($categoryStatus->consumable === "1") {
+        if ($categoryStatus->consumable === "1" || $serialNum == null) {
             $serialNum = "N/A";
             $multipleStatus = 1;
         } else {
@@ -90,9 +94,8 @@ class InventoryController extends Controller
                         'user_created' => $user,
                         'date_created' => $currentDate,
                     );
-
-                    DB::table('t_inventory')->insert($inventoryData);
                     DB::table('t_itemdetails')->insert($detailsData);
+                    DB::table('t_inventory')->insert($inventoryData);
                     $this->addQuantity($item_category);
                     $logController = new LogController();
                     $logController->sendLog("Item " . $uniqueID . " Succesfully added");
@@ -129,9 +132,8 @@ class InventoryController extends Controller
                     'user_created' => $user,
                     'date_created' => $currentDate,
                 );
-
-                DB::table('t_inventory')->insert($inventoryData);
                 DB::table('t_itemdetails')->insert($detailsData);
+                DB::table('t_inventory')->insert($inventoryData);
                 $this->addQuantity($item_category);
                 $logController = new LogController();
                 $logController->sendLog("Item " . $uniqueID . " Succesfully added");
